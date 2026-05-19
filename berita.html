@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Berita &amp; Artikel - RSUD Tugu Koja</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Atkinson+Hyperlegible+Next:wght@400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f2f4f6",
+                        "secondary-fixed": "#9af2ec",
+                        "surface-container-high": "#e6e8ea",
+                        "primary": "#052c4f",
+                        "secondary-fixed-dim": "#7dd5cf",
+                        "secondary-container": "#97efe9",
+                        "on-secondary-fixed": "#00201e",
+                        "on-primary-container": "#90afd9",
+                        "outline-variant": "#c3c6cf",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e0e3e5",
+                        "on-secondary-fixed-variant": "#00504d",
+                        "primary-container": "#224266",
+                        "primary-fixed-dim": "#aac9f4",
+                        "jakarta-blue": "#224266",
+                        "surface": "#f7f9fb",
+                        "text-main": "#1E293B",
+                        "primary-fixed": "#d2e4ff",
+                        "surface-dim": "#d8dadc",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-container": "#eceef0",
+                        "on-tertiary-fixed-variant": "#92001c",
+                        "tertiary-fixed-dim": "#ffb3b1",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#870019",
+                        "surface-tint": "#426086",
+                        "on-secondary-container": "#006f6a",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#5d000e",
+                        "surface-subtle": "#F1F5F9",
+                        "secondary": "#006a66",
+                        "on-background": "#191c1e",
+                        "text-muted": "#64748B",
+                        "inverse-primary": "#aac9f4",
+                        "surface-bright": "#f7f9fb",
+                        "on-primary-fixed-variant": "#29486d",
+                        "on-surface-variant": "#43474e",
+                        "emergency-red": "#E63946",
+                        "background": "#f7f9fb",
+                        "on-secondary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-tertiary-fixed": "#410007",
+                        "outline": "#73777f",
+                        "on-surface": "#191c1e",
+                        "inverse-surface": "#2d3133",
+                        "on-tertiary": "#ffffff",
+                        "health-green": "#34918C",
+                        "on-tertiary-container": "#ff8b8a",
+                        "on-primary-fixed": "#001c38",
+                        "tertiary-fixed": "#ffdad8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "48px",
+                        "unit": "8px",
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Atkinson Hyperlegible Next"],
+                        "body-lg": ["Atkinson Hyperlegible Next"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "label-lg": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "body-md": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-lg": ["20px", { "lineHeight": "32px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-xl": ["40px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background text-on-surface">
+    <!-- Emergency Top Bar -->
+    <div
+        class="w-full bg-emergency-red text-white py-2 px-gutter flex justify-center items-center gap-4 z-[60] relative">
+        <span class="material-symbols-outlined text-[20px]"
+            style="font-variation-settings: 'FILL' 1;">emergency_home</span>
+        <span class="font-label-md text-label-md">Emergency: 112</span>
+        <div class="h-4 w-[1px] bg-white/30 hidden md:block"></div>
+        <span class="font-label-md text-label-md hidden md:block">IGD 24 Jam: (021) 4393 0530</span>
+    </div>
+    <!-- TopNavBar -->
+    <header class="w-full sticky top-0 z-50 bg-surface-container-lowest border-b border-surface-subtle shadow-sm">
+        <div class="flex justify-between items-center py-4 px-gutter max-w-container-max mx-auto">
+            <a href="index.html"
+                class="font-headline-md text-headline-md font-bold text-jakarta-blue hover:opacity-80 transition-opacity">RSUD
+                Tugu Koja</a>
+            <nav class="hidden md:flex items-center gap-8">
+                <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-jakarta-blue transition-colors"
+                    href="index.html">Beranda</a>
+                <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-jakarta-blue transition-colors"
+                    href="caridokter.html">Cari Dokter</a>
+                <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-jakarta-blue transition-colors"
+                    href="layanan.html">Layanan</a>
+                <a class="font-label-lg text-label-lg text-jakarta-blue border-b-2 border-jakarta-blue pb-1"
+                    href="berita.html">Berita</a>
+                <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-jakarta-blue transition-colors"
+                    href="tentangkami.html">Tentang Kami</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <button
+                    class="px-6 py-2 bg-jakarta-blue text-white rounded-full font-label-lg text-label-lg hover:opacity-80 transition-opacity">Masuk</button>
+                <button class="md:hidden"><span class="material-symbols-outlined text-jakarta-blue">menu</span></button>
+            </div>
+        </div>
+    </header>
+    <main class="min-h-screen">
+        <!-- Hero Section: Featured News -->
+        <section class="relative w-full h-[600px] bg-primary overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img alt="Pencapaian RSUD Tugu Koja" class="w-full h-full object-cover opacity-60 mix-blend-luminosity"
+                    src="https://lh3.googleusercontent.com/aida/ADBb0ug7jdvifqKBwmjivDL9vYMGbG-G0hN_fIdhVfI5AwNqOCGgotJPEK9SRpwMH89ha41e6xW6aq9lKVhUPBOrjn_BRrf0BXfB4PvmEmjmkmD8bTt_gY-Xou_AzqZYfxesSiJ2dK9x0giEexS9u6hzD5CVw0IsjiyqiBAghv5wJb9mAEpHYCK0PiafFpj-i9RUFzpTrsmvda2chE70Ii5kpisIoTz39DwUwoQgJUU8dQ7eJeJ7LOtnIUa6SA">
+                <div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/70 to-transparent"></div>
+            </div>
+            <div
+                class="relative z-10 max-w-container-max mx-auto px-margin-desktop h-full flex flex-col justify-center">
+                <div class="max-w-2xl">
+                    <span
+                        class="inline-block px-4 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md mb-6">Penghargaan
+                        Utama</span>
+                    <h1 class="font-headline-xl text-headline-xl text-white mb-6 leading-tight">RSUD Tugu Koja Meraih
+                        Predikat Rumah Sakit Terakreditasi Paripurna 2024</h1>
+                    <p class="font-body-lg text-body-lg text-white/90 mb-8">Pencapaian ini merupakan bukti komitmen kami
+                        dalam memberikan layanan kesehatan berkualitas tinggi bagi masyarakat Jakarta Utara.</p>
+                    <div class="flex items-center gap-6">
+                        <button
+                            class="bg-health-green text-white px-8 py-4 rounded-xl font-label-lg text-label-lg shadow-lg hover:translate-y-[-2px] transition-all">Baca
+                            Selengkapnya</button>
+                        <span class="flex items-center gap-2 text-white/70 font-label-md text-label-md">
+                            <span class="material-symbols-outlined text-sm">calendar_today</span>
+                            15 Mei 2024
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- News Content Grid + Sidebar -->
+        <section class="max-w-container-max mx-auto px-margin-desktop py-20">
+            <div class="flex flex-col lg:flex-row gap-gutter">
+                <!-- Main Grid -->
+                <div class="flex-1">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+                        <!-- Card 1 -->
+                        <div
+                            class="bg-surface-container-lowest rounded-xl overflow-hidden border border-surface-subtle hover:shadow-xl transition-all group">
+                            <div class="relative h-64 overflow-hidden">
+                                <img alt="Kegiatan Rumah Sakit"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    src="https://lh3.googleusercontent.com/aida/ADBb0ujSZ6pkJSSc7xDSMuCpVKFucTT7ZrV74Tr0tDQCGTFcKyhN9rduMQSX4NnKWScgxvM7SyIRxaAixuKAFCcrppHd6k1bJDdXNLr3uF8jIR65nUz8oZm6gmIYSA002Dh-O3bdrKvNSX8G6KfY9c32Z1KT9lVVe0fu898eHzjx2DQ7HkfvycMBAI3eo4T12trxSTxIcbpm7UOCKLkEFokKAyyLb1XdDiNVxmUghqo3BpEpB-CyaIa3IGW6FaM">
+                                <span
+                                    class="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-lg font-label-md text-label-md text-jakarta-blue">Kegiatan</span>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center gap-3 text-text-muted font-label-md text-label-md mb-3">
+                                    <span class="material-symbols-outlined text-[18px]">calendar_today</span>
+                                    <span class="">10 Mei 2024</span>
+                                </div>
+                                <h3 class="font-headline-md text-headline-md text-primary mb-3 leading-snug">Pelatihan
+                                    Penanganan Gawat Darurat untuk Kader Kesehatan</h3>
+                                <p class="font-body-md text-body-md text-text-muted mb-6 line-clamp-2">Meningkatkan
+                                    kesiapsiagaan masyarakat dalam menangani kondisi darurat medis sebelum dirujuk ke
+                                    rumah sakit.</p>
+                                <a class="flex items-center gap-2 text-jakarta-blue font-label-lg text-label-lg group-hover:gap-4 transition-all"
+                                    href="#">
+                                    Baca Selengkapnya
+                                    <span class="material-symbols-outlined">arrow_forward</span>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div
+                            class="bg-surface-container-lowest rounded-xl overflow-hidden border border-surface-subtle hover:shadow-xl transition-all group">
+                            <div class="relative h-64 overflow-hidden">
+                                <img alt="Senam Ibu Hamil"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    src="https://lh3.googleusercontent.com/aida/ADBb0ugBN-KYjQsgCZodtyAzntoHvoEK4TKruwMjHWSntlKsnP89kvIACy-fSRNSqCrG2NZRnSCMfCZGJwddL72vm2orL9FcP3x7R1VCw_HZSzAYNQVKwIHC9ZvZc1dyq8y4ltWHDGaJyJxWoVwtMfLoXoiKIK3ZXHsx22FMbZy26rG56SOAkuSs45R91kkx-gkk98_Hj2lAYWmXIBnfHBE06To0wCdUpxPXzyyci6H4HkcDu3Ay9NOwYgs_Z3Y">
+                                <span
+                                    class="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-lg font-label-md text-label-md text-health-green">Info
+                                    Kesehatan</span>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center gap-3 text-text-muted font-label-md text-label-md mb-3">
+                                    <span class="material-symbols-outlined text-[18px]">calendar_today</span>
+                                    <span class="">08 Mei 2024</span>
+                                </div>
+                                <h3 class="font-headline-md text-headline-md text-primary mb-3 leading-snug">Pentingnya
+                                    Senam Hamil untuk Mempersiapkan Persalinan Normal</h3>
+                                <p class="font-body-md text-body-md text-text-muted mb-6 line-clamp-2">Manfaat fisik dan
+                                    mental bagi ibu hamil melalui program rutin senam di RSUD Tugu Koja setiap hari
+                                    Sabtu.</p>
+                                <a class="flex items-center gap-2 text-jakarta-blue font-label-lg text-label-lg group-hover:gap-4 transition-all"
+                                    href="#">
+                                    Baca Selengkapnya
+                                    <span class="material-symbols-outlined">arrow_forward</span>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div
+                            class="bg-surface-container-lowest rounded-xl overflow-hidden border border-surface-subtle hover:shadow-xl transition-all group md:col-span-2 flex flex-col md:flex-row">
+                            <div class="relative w-full md:w-1/3 h-64 md:h-auto overflow-hidden">
+                                <img alt="Fasilitas RSUD"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    src="https://lh3.googleusercontent.com/aida/ADBb0uifRF_nVx5MCwo8GwcRxymhHIiXlPE3kn4pgbl5WdZiRaIbhnuvyVUtNau6qYarvmC4VE67eu_m5TU9sug2eJlPp3lBiTDtFiZ9IVpibCZtyEge733iUFE1Lnjwp_f8AqeU9L9qO-ZY5teHBZqal6GsI1h0xUgZPydiS3xDpAHuPLxBevyCgRdiocILbjM2ohWzmkQB_sgPRfybqKyagzhkd4tWRGzbW_QKe6dHAKgUuaqrkTcxl6RxzlU">
+                            </div>
+                            <div class="p-8 flex-1">
+                                <span
+                                    class="inline-block px-3 py-1 bg-surface-container-high rounded-lg font-label-md text-label-md text-jakarta-blue mb-4">Update
+                                    Fasilitas</span>
+                                <div class="flex items-center gap-3 text-text-muted font-label-md text-label-md mb-3">
+                                    <span class="material-symbols-outlined text-[18px]">calendar_today</span>
+                                    <span class="">05 Mei 2024</span>
+                                </div>
+                                <h3 class="font-headline-md text-headline-md text-primary mb-4">Pembukaan Layanan Klinik
+                                    Spesialis Terpadu di Lantai 4</h3>
+                                <p class="font-body-md text-body-md text-text-muted mb-8">RSUD Tugu Koja kini
+                                    menghadirkan area klinik spesialis yang lebih modern dan nyaman untuk meningkatkan
+                                    pengalaman pasien selama konsultasi medis.</p>
+                                <a class="flex items-center gap-2 text-jakarta-blue font-label-lg text-label-lg group-hover:gap-4 transition-all"
+                                    href="#">
+                                    Pelajari Detail Fasilitas
+                                    <span class="material-symbols-outlined">arrow_forward</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sidebar -->
+                <aside class="w-full lg:w-80 flex flex-col gap-8">
+                    <!-- Search Widget -->
+                    <div class="bg-surface-container-low p-6 rounded-xl border border-surface-subtle">
+                        <h4 class="font-headline-md text-[20px] text-primary mb-4">Cari Berita</h4>
+                        <div class="relative">
+                            <input
+                                class="w-full bg-white border-outline-variant rounded-lg px-4 py-3 pr-12 focus:ring-primary focus:border-primary"
+                                placeholder="Kata kunci..." type="text">
+                            <span
+                                class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-text-muted">search</span>
+                        </div>
+                    </div>
+                    <!-- Category Widget -->
+                    <div class="bg-surface-container-low p-6 rounded-xl border border-surface-subtle">
+                        <h4 class="font-headline-md text-[20px] text-primary mb-4">Kategori</h4>
+                        <ul class="space-y-3">
+                            <li class="">
+                                <a class="flex justify-between items-center group" href="#">
+                                    <span
+                                        class="font-body-md text-body-md text-text-main group-hover:text-primary transition-colors">Info
+                                        Kesehatan</span>
+                                    <span
+                                        class="bg-white px-2 py-0.5 rounded text-xs font-bold text-text-muted">12</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a class="flex justify-between items-center group" href="#">
+                                    <span
+                                        class="font-body-md text-body-md text-text-main group-hover:text-primary transition-colors">Pengumuman</span>
+                                    <span
+                                        class="bg-white px-2 py-0.5 rounded text-xs font-bold text-text-muted">5</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a class="flex justify-between items-center group" href="#">
+                                    <span
+                                        class="font-body-md text-body-md text-text-main group-hover:text-primary transition-colors">Event
+                                        &amp; Kegiatan</span>
+                                    <span
+                                        class="bg-white px-2 py-0.5 rounded text-xs font-bold text-text-muted">8</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a class="flex justify-between items-center group" href="#">
+                                    <span
+                                        class="font-body-md text-body-md text-text-main group-hover:text-primary transition-colors">Update
+                                        Fasilitas</span>
+                                    <span
+                                        class="bg-white px-2 py-0.5 rounded text-xs font-bold text-text-muted">3</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Archive Widget -->
+                    <div class="bg-surface-container-low p-6 rounded-xl border border-surface-subtle">
+                        <h4 class="font-headline-md text-[20px] text-primary mb-4">Arsip Bulanan</h4>
+                        <ul class="space-y-3">
+                            <li class=""><a
+                                    class="font-body-md text-body-md text-text-main hover:text-primary flex items-center gap-2"
+                                    href="#"><span class="material-symbols-outlined text-[18px]">folder</span> Mei
+                                    2024</a></li>
+                            <li class=""><a
+                                    class="font-body-md text-body-md text-text-main hover:text-primary flex items-center gap-2"
+                                    href="#"><span class="material-symbols-outlined text-[18px]">folder</span> April
+                                    2024</a></li>
+                            <li class=""><a
+                                    class="font-body-md text-body-md text-text-main hover:text-primary flex items-center gap-2"
+                                    href="#"><span class="material-symbols-outlined text-[18px]">folder</span> Maret
+                                    2024</a></li>
+                            <li class=""><a
+                                    class="font-body-md text-body-md text-text-main hover:text-primary flex items-center gap-2"
+                                    href="#"><span class="material-symbols-outlined text-[18px]">folder</span> Februari
+                                    2024</a></li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </section>
+        <!-- Newsletter Section -->
+        <section class="bg-jakarta-blue py-20">
+            <div class="max-w-container-max mx-auto px-margin-desktop text-center">
+                <h2 class="font-headline-lg text-headline-lg text-white mb-4">Tetap Terupdate dengan Info Kesehatan</h2>
+                <p class="font-body-lg text-body-lg text-white/80 mb-10 max-w-xl mx-auto">Dapatkan tips kesehatan,
+                    pengumuman jadwal dokter, dan informasi fasilitas terbaru langsung ke email Anda.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+                    <input
+                        class="flex-1 bg-white/10 border-white/20 text-white rounded-xl px-6 py-4 focus:ring-secondary focus:border-secondary placeholder:text-white/50"
+                        placeholder="Alamat email Anda" type="email">
+                    <button
+                        class="bg-secondary-fixed text-on-secondary-fixed px-8 py-4 rounded-xl font-label-lg text-label-lg hover:bg-secondary-container transition-all">Berlangganan</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="w-full bg-primary mt-auto">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-12 max-w-container-max mx-auto">
+            <div class="flex flex-col gap-6">
+                <span class="font-headline-md text-headline-md text-on-primary">RSUD Tugu Koja</span>
+                <p class="font-body-md text-body-md text-on-primary/80">Melayani dengan Hati, Menuju Jakarta Sehat.</p>
+                <div class="flex gap-4">
+                    <div
+                        class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center cursor-pointer hover:bg-white/20 transition-all">
+                        <span class="material-symbols-outlined text-white">face_nod</span>
+                    </div>
+                    <div
+                        class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center cursor-pointer hover:bg-white/20 transition-all">
+                        <span class="material-symbols-outlined text-white">camera</span>
+                    </div>
+                    <div
+                        class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center cursor-pointer hover:bg-white/20 transition-all">
+                        <span class="material-symbols-outlined text-white">mail</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-4">
+                <h5 class="text-white font-bold mb-2">Tautan Cepat</h5>
+                <a class="font-body-md text-body-md text-on-primary/80 hover:text-on-primary underline transition-all"
+                    href="#">Kontak</a>
+                <a class="font-body-md text-body-md text-on-primary/80 hover:text-on-primary underline transition-all"
+                    href="#">Lokasi</a>
+                <a class="font-body-md text-body-md text-on-primary/80 hover:text-on-primary underline transition-all"
+                    href="#">Hak Pasien</a>
+            </div>
+            <div class="flex flex-col gap-4">
+                <h5 class="text-white font-bold mb-2">Karir &amp; Legal</h5>
+                <a class="font-body-md text-body-md text-on-primary/80 hover:text-on-primary underline transition-all"
+                    href="#">Karir</a>
+                <a class="font-body-md text-body-md text-on-primary/80 hover:text-on-primary underline transition-all"
+                    href="#">Kebijakan Privasi</a>
+                <a class="font-body-md text-body-md text-on-primary/80 hover:text-on-primary underline transition-all"
+                    href="#">SOP Layanan</a>
+            </div>
+            <div class="flex flex-col gap-4">
+                <h5 class="text-white font-bold mb-2">Hubungi Kami</h5>
+                <p class="font-body-md text-body-md text-on-primary/80 flex items-start gap-2">
+                    <span class="material-symbols-outlined text-[20px]">location_on</span>
+                    Jl. Walang Permai No.39, RT.7/RW.12, Tugu Utara, Koja, Jakarta Utara
+                </p>
+                <p class="font-body-md text-body-md text-on-primary/80 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[20px]">call</span>
+                    (021) 43938480
+                </p>
+            </div>
+        </div>
+        <div class="border-t border-white/10 py-6 text-center">
+            <p class="font-body-md text-body-md text-on-primary/60">© 2024 RSUD Tugu Koja. Rumah Sehat untuk Jakarta.
+            </p>
+        </div>
+    </footer>
+    <script>
+        // Micro-interaction for cards
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-8px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Atkinson+Hyperlegible+Next:wght@400;700&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .bg-glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .map-hotspot:hover .hotspot-pulse {
+            transform: scale(1.5);
+            opacity: 0;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.33);
+            }
+
+            80%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .pulse-animation {
+            animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+        }
+
+        .floor-plan-container {
+            perspective: 1000px;
+        }
+
+        .floor-plan-card {
+            transform: rotateX(10deg) rotateZ(-5deg);
+            transition: transform 0.5s ease;
+        }
+
+        .floor-plan-card:hover {
+            transform: rotateX(0deg) rotateZ(0deg);
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#ff8b8a",
+                        "on-primary-container": "#90afd9",
+                        "inverse-surface": "#2d3133",
+                        "on-background": "#191c1e",
+                        "inverse-primary": "#aac9f4",
+                        "text-muted": "#64748B",
+                        "emergency-red": "#E63946",
+                        "on-secondary-fixed-variant": "#00504d",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "primary-fixed": "#d2e4ff",
+                        "surface-container": "#eceef0",
+                        "tertiary": "#5d000e",
+                        "outline-variant": "#c3c6cf",
+                        "on-tertiary-fixed": "#410007",
+                        "error-container": "#ffdad6",
+                        "outline": "#73777f",
+                        "primary-container": "#224266",
+                        "surface-container-high": "#e6e8ea",
+                        "tertiary-container": "#870019",
+                        "surface-container-low": "#f2f4f6",
+                        "on-secondary-container": "#006f6a",
+                        "on-primary-fixed": "#001c38",
+                        "surface-dim": "#d8dadc",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e0e3e5",
+                        "health-green": "#34918C",
+                        "on-error": "#ffffff",
+                        "jakarta-blue": "#224266",
+                        "background": "#f7f9fb",
+                        "on-secondary-fixed": "#00201e",
+                        "secondary-fixed-dim": "#7dd5cf",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#ffdad8",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#006a66",
+                        "on-surface-variant": "#43474e",
+                        "primary": "#052c4f",
+                        "surface": "#f7f9fb",
+                        "secondary-fixed": "#9af2ec",
+                        "on-primary-fixed-variant": "#29486d",
+                        "text-main": "#1E293B",
+                        "surface-tint": "#426086",
+                        "on-tertiary-fixed-variant": "#92001c",
+                        "surface-subtle": "#F1F5F9",
+                        "on-surface": "#191c1e",
+                        "secondary-container": "#97efe9",
+                        "surface-bright": "#f7f9fb",
+                        "tertiary-fixed-dim": "#ffb3b1",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#aac9f4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "48px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "label-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "body-md": ["Atkinson Hyperlegible Next"],
+                        "body-lg": ["Atkinson Hyperlegible Next"]
+                    },
+                    "fontSize": {
+                        "label-lg": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-xl": ["40px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-lg": ["20px", { "lineHeight": "32px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+    <!-- TopAppBar -->
+    <header
+        class="fixed top-0 w-full z-50 bg-surface border-b border-surface-subtle flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 w-full">
+        <div class="flex items-center gap-4">
+            <a href="{{DATA:SCREEN:SCREEN_15}}" class="font-headline-md text-jakarta-blue font-bold cursor-pointer">RSUD
+                Tugu Koja</a>
+        </div>
+        <div class="flex items-center gap-6">
+            <div
+                class="hidden md:flex bg-surface-container-low px-4 py-2 rounded-full border border-outline-variant items-center gap-3 w-64">
+                <span class="material-symbols-outlined text-on-surface-variant">search</span>
+                <input class="bg-transparent border-none focus:ring-0 text-label-md w-full"
+                    placeholder="Cari ruangan..." type="text">
+            </div>
+            <div class="flex items-center gap-4">
+                <button
+                    class="material-symbols-outlined text-primary hover:bg-surface-container-low transition-colors p-2 rounded-full">notifications</button>
+                <button
+                    class="material-symbols-outlined text-primary hover:bg-surface-container-low transition-colors p-2 rounded-full">help</button>
+                <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-fixed">
+                    <img alt="User profile"
+                        data-alt="A professional headshot of a female doctor in her late 30s wearing a clean white lab coat and a stethoscope around her neck. She has a warm, confident smile and is positioned against a soft-focus, modern clinical background with light blue and white tones. The lighting is bright and professional, conveying trust and healthcare expertise in a corporate medical setting."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzbrxinjTZ9U2H6eCXxYfwQTjHSJupLj3yCmUdIrr8xIHUK7sCP3QnOJUk9pznWypbQ5yy4hQvX6XYBk4QgTFApV2RgDs4VkwRu9q8UdEzTpIwBazzDSWnEupiHPJFDOrXEgpHHORYNZuME3bCAMmrZfZ0mWNvZ0JR4399JEoAgOEJmFWZBeCkUfb4JX8g85uX8-Dj0UH04lq4OTpK2yW_24F2eKJ7e1NIXWs80mhFv-5XCkH-1OL4QcOGSyJyZtVjIAAZM6pRZl0">
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- SideNavBar -->
+    <aside
+        class="fixed left-0 top-16 bottom-0 z-40 h-full w-64 hidden md:flex flex-col bg-surface-container-lowest border-r border-surface-subtle shadow-sm transition-all duration-200 ease-in-out">
+        <div class="p-6">
+            <h2 class="font-headline-md text-jakarta-blue font-bold">Navigasi Denah</h2>
+            <p class="text-on-surface-variant text-label-md">RSUD Tugu Koja</p>
+        </div>
+        <nav class="flex-1 px-4 space-y-2">
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-subtle rounded-lg font-body-md"
+                href="{{DATA:SCREEN:SCREEN_24}}">
+                <span class="material-symbols-outlined">layers</span>
+                Lantai Dasar
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-subtle rounded-lg font-body-md"
+                href="{{DATA:SCREEN:SCREEN_19}}">
+                <span class="material-symbols-outlined">layers</span>
+                Lantai 2
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-subtle rounded-lg font-body-md"
+                href="{{DATA:SCREEN:SCREEN_13}}">
+                <span class="material-symbols-outlined">layers</span>
+                Lantai 3
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container font-bold rounded-lg font-body-md"
+                href="#">
+                <span class="material-symbols-outlined">layers</span>
+                Lantai 4
+            </a>
+        </nav>
+        <div class="p-4 border-t border-surface-subtle">
+            <button
+                class="w-full bg-jakarta-blue text-white py-3 rounded-xl font-label-lg hover:opacity-90 transition-all flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined">call</span>
+                Hubungi Resepsionis
+            </button>
+        </div>
+    </aside>
+    <!-- Main Canvas -->
+    <main class="md:ml-64 mt-16 p-margin-mobile md:p-margin-desktop min-h-screen pb-32 md:pb-16">
+        <div class="max-w-container-max mx-auto">
+            <!-- Header Section -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                <div>
+                    <nav class="flex items-center gap-2 text-on-surface-variant text-label-md mb-2">
+                        <span class="">Denah RSUD</span>
+                        <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+                        <span class="text-primary font-bold">Lantai 4</span>
+                    </nav>
+                    <h1 class="font-headline-xl text-primary">Informasi Lantai 4</h1>
+                    <p class="text-on-surface-variant max-w-2xl mt-2 font-body-lg">Pusat perawatan intensif, tindakan
+                        bedah, dan fasilitas rawat inap eksklusif VVIP/VIP dengan standar kenyamanan tertinggi.</p>
+                </div>
+                <div class="flex gap-2">
+                    <button
+                        class="flex items-center gap-2 px-4 py-2 bg-white border border-outline-variant rounded-full text-label-md hover:bg-surface-container-low transition-colors">
+                        <span class="material-symbols-outlined">print</span> Cetak Denah
+                    </button>
+                    <button
+                        class="flex items-center gap-2 px-4 py-2 bg-white border border-outline-variant rounded-full text-label-md hover:bg-surface-container-low transition-colors">
+                        <span class="material-symbols-outlined">share</span> Bagikan
+                    </button>
+                </div>
+            </div>
+            <!-- Bento Grid Layout -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+                <!-- Interactive Map Area (Left Large) -->
+                <div class="lg:col-span-8 space-y-gutter">
+                    <div
+                        class="relative bg-white border border-surface-subtle rounded-xl overflow-hidden shadow-sm floor-plan-container min-h-[500px] flex flex-col">
+                        <div class="p-6 border-b border-surface-subtle flex justify-between items-center bg-white z-10">
+                            <div class="flex items-center gap-4">
+                                <span class="material-symbols-outlined text-jakarta-blue">map</span>
+                                <span class="font-label-lg">Denah Interaktif Lantai 4</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <button
+                                    class="p-2 bg-surface-container-low rounded-lg hover:bg-surface-container-high transition-colors"
+                                    onclick="zoomMap(1.1)"><span
+                                        class="material-symbols-outlined">zoom_in</span></button>
+                                <button
+                                    class="p-2 bg-surface-container-low rounded-lg hover:bg-surface-container-high transition-colors"
+                                    onclick="zoomMap(0.9)"><span
+                                        class="material-symbols-outlined">zoom_out</span></button>
+                            </div>
+                        </div>
+                        <!-- Map Visualizer -->
+                        <div
+                            class="flex-1 relative bg-surface-subtle flex items-center justify-center p-8 overflow-hidden group">
+                            <div class="floor-plan-card relative w-full max-w-3xl aspect-[16/10] bg-white rounded-lg shadow-xl border border-outline-variant flex items-center justify-center transition-transform duration-500"
+                                id="mapContainer">
+                                <!-- Blueprint/Illustration SVG Placeholder -->
+                                <div class="absolute inset-0 opacity-10 pointer-events-none"
+                                    style="background-image: radial-gradient(#224266 1px, transparent 1px); background-size: 24px 24px;">
+                                </div>
+                                <!-- Inpatient Zone -->
+                                <div
+                                    class="absolute top-10 left-10 w-1/2 h-1/3 bg-health-green/10 border-2 border-health-green/40 rounded-lg flex items-center justify-center hover:bg-health-green/20 transition-all cursor-pointer group/zone">
+                                    <span
+                                        class="text-health-green font-bold text-label-md opacity-60 group-hover/zone:opacity-100">Rawat
+                                        Inap VVIP &amp; VIP</span>
+                                    <div
+                                        class="map-hotspot absolute -top-2 -right-2 w-6 h-6 bg-health-green rounded-full flex items-center justify-center z-20">
+                                        <div
+                                            class="hotspot-pulse absolute inset-0 bg-health-green rounded-full pulse-animation">
+                                        </div>
+                                        <span class="material-symbols-outlined text-white text-[14px]"
+                                            style="font-variation-settings: 'FILL' 1;">bed</span>
+                                    </div>
+                                </div>
+                                <!-- ICU Zone -->
+                                <div
+                                    class="absolute bottom-10 left-10 w-1/3 h-1/2 bg-jakarta-blue/10 border-2 border-jakarta-blue/40 rounded-lg flex items-center justify-center hover:bg-jakarta-blue/20 transition-all cursor-pointer group/zone">
+                                    <span
+                                        class="text-jakarta-blue font-bold text-label-md opacity-60 group-hover/zone:opacity-100">ICU
+                                        / Intensive Care</span>
+                                    <div
+                                        class="map-hotspot absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-jakarta-blue rounded-full flex items-center justify-center z-20">
+                                        <div
+                                            class="hotspot-pulse absolute inset-0 bg-jakarta-blue rounded-full pulse-animation">
+                                        </div>
+                                        <span class="material-symbols-outlined text-white text-[14px]"
+                                            style="font-variation-settings: 'FILL' 1;">monitor_heart</span>
+                                    </div>
+                                </div>
+                                <!-- Operating Rooms -->
+                                <div
+                                    class="absolute top-10 right-10 w-1/3 h-2/3 bg-emergency-red/5 border-2 border-emergency-red/30 rounded-lg flex items-center justify-center hover:bg-emergency-red/10 transition-all cursor-pointer group/zone">
+                                    <span
+                                        class="text-emergency-red font-bold text-label-md opacity-60 group-hover/zone:opacity-100 rotate-90">Ruang
+                                        Operasi (OK)</span>
+                                    <div
+                                        class="map-hotspot absolute bottom-4 right-4 w-6 h-6 bg-emergency-red rounded-full flex items-center justify-center z-20">
+                                        <div
+                                            class="hotspot-pulse absolute inset-0 bg-emergency-red rounded-full pulse-animation">
+                                        </div>
+                                        <span class="material-symbols-outlined text-white text-[14px]"
+                                            style="font-variation-settings: 'FILL' 1;">medical_services</span>
+                                    </div>
+                                </div>
+                                <!-- Central Hub -->
+                                <div
+                                    class="w-12 h-12 bg-white border-4 border-jakarta-blue rounded-full flex items-center justify-center z-30 shadow-lg">
+                                    <span class="material-symbols-outlined text-jakarta-blue font-bold">elevator</span>
+                                </div>
+                            </div>
+                            <!-- Legend Overlay -->
+                            <div
+                                class="absolute bottom-6 left-6 bg-glass p-4 rounded-xl border border-white/50 space-y-2">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-3 h-3 rounded-full bg-health-green"></div>
+                                    <span class="text-label-md">Fasilitas Rawat Inap</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-3 h-3 rounded-full bg-jakarta-blue"></div>
+                                    <span class="text-label-md">Layanan Intensif (ICU)</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-3 h-3 rounded-full bg-emergency-red"></div>
+                                    <span class="text-label-md">Ruang Bedah (OK)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Area Highlights -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+                        <div
+                            class="bg-white p-6 rounded-xl border border-surface-subtle shadow-sm hover:shadow-md transition-shadow group">
+                            <div
+                                class="w-12 h-12 rounded-lg bg-health-green/10 flex items-center justify-center mb-4 text-health-green group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined"
+                                    style="font-variation-settings: 'FILL' 1;">king_bed</span>
+                            </div>
+                            <h3 class="font-label-lg text-primary mb-1">Rawat Inap VVIP</h3>
+                            <p class="text-on-surface-variant text-label-md">12 Kamar eksklusif dengan fasilitas
+                                keluarga lengkap.</p>
+                        </div>
+                        <div
+                            class="bg-white p-6 rounded-xl border border-surface-subtle shadow-sm hover:shadow-md transition-shadow group">
+                            <div
+                                class="w-12 h-12 rounded-lg bg-jakarta-blue/10 flex items-center justify-center mb-4 text-jakarta-blue group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined"
+                                    style="font-variation-settings: 'FILL' 1;">ecg_heart</span>
+                            </div>
+                            <h3 class="font-label-lg text-primary mb-1">Intensive Care</h3>
+                            <p class="text-on-surface-variant text-label-md">Monitoring 24 jam dengan tim medis
+                                spesialis kritis.</p>
+                        </div>
+                        <div
+                            class="bg-white p-6 rounded-xl border border-surface-subtle shadow-sm hover:shadow-md transition-shadow group">
+                            <div
+                                class="w-12 h-12 rounded-lg bg-emergency-red/10 flex items-center justify-center mb-4 text-emergency-red group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined"
+                                    style="font-variation-settings: 'FILL' 1;">vital_signs</span>
+                            </div>
+                            <h3 class="font-label-lg text-primary mb-1">Instalasi Bedah</h3>
+                            <p class="text-on-surface-variant text-label-md">4 Ruang operasi modular steril standar
+                                internasional.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right Sidebar Details -->
+                <div class="lg:col-span-4 space-y-gutter">
+                    <!-- Status Card -->
+                    <div class="bg-jakarta-blue text-white p-6 rounded-xl relative overflow-hidden">
+                        <div class="relative z-10">
+                            <h2 class="font-headline-md mb-2">Ketersediaan Kamar</h2>
+                            <div class="space-y-4 mt-4">
+                                <div class="flex justify-between items-center border-b border-white/20 pb-2">
+                                    <span class="text-label-md text-white/80">VVIP President</span>
+                                    <span class="font-bold">2 Kamar</span>
+                                </div>
+                                <div class="flex justify-between items-center border-b border-white/20 pb-2">
+                                    <span class="text-label-md text-white/80">VIP A</span>
+                                    <span class="font-bold">5 Kamar</span>
+                                </div>
+                                <div class="flex justify-between items-center border-b border-white/20 pb-2">
+                                    <span class="text-label-md text-white/80">ICU</span>
+                                    <span
+                                        class="bg-emergency-red px-2 py-0.5 rounded text-[12px] font-bold">PENUH</span>
+                                </div>
+                            </div>
+                            <a href="{{DATA:SCREEN:SCREEN_23}}"
+                                class="w-full mt-6 py-3 bg-white text-jakarta-blue rounded-xl font-bold hover:bg-primary-fixed transition-colors inline-block text-center">Booking
+                                Kamar</a>
+                        </div>
+                        <!-- Abstract Background Decoration -->
+                        <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+                    </div>
+                    <!-- Facility Gallery -->
+                    <div class="bg-white border border-surface-subtle rounded-xl p-6 shadow-sm">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-label-lg text-primary">Pratinjau Fasilitas</h3>
+                            <a class="text-jakarta-blue text-label-md hover:underline" href="#">Lihat Semua</a>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="group cursor-pointer overflow-hidden rounded-lg aspect-video relative">
+                                <img alt="VVIP Room Interior"
+                                    data-alt="A high-end VVIP hospital room interior with a luxurious modern aesthetic. The room features a premium adjustable medical bed, soft ambient lighting, a comfortable lounge sofa for family, and large windows with a view. The color palette is composed of calming neutral tones, warm wood accents, and clean white linens, creating a serene and hotel-like environment for recovery."
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAiPvJRQXanS7jGE_H2g6L6K3zbiUzvmrH3094INnwLs-5tAVwmqbCILQ6c3YjlPPdlMo-Z7MpXdWDl70AC1fhcI50OM0I4xxPZAPw08-m-D4kk0IND5QkDUSQ5zqM7_xhisPKuF-ebwhK0iPHmEXDF28mj3HSteEViifsoEOh_l1M4fODGv1hLYbgYBqbxDjy_ye-JRunMi0sdUIiN5G8GXDhyezs5aM_FZn2RAvwNb2JYURMmzj2dEbRvOyYrdeybPqZ3zm7BZE">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <p class="text-white text-label-md font-bold">Kamar VVIP President Suite</p>
+                                </div>
+                            </div>
+                            <div class="group cursor-pointer overflow-hidden rounded-lg aspect-video relative">
+                                <img alt="Modern Operating Theatre"
+                                    data-alt="A state-of-the-art surgical operating theatre with advanced medical technology and equipment. The room is dominated by high-tech surgical lights, monitors showing vital signs, and stainless steel surfaces. The atmosphere is sterile and clinical with a cool blue lighting scheme, conveying the precision and advanced medical capabilities of a leading modern hospital."
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDM3cTeDsFLUJIyIc2HkbRJHwsdwJmqW-sISa0oZtnE48cPRKCvkymLxGETstcnl0kqvRdtmTbJ36PCa4lcKMfOmnUbHpA4MuTupIEPJnDCrwmO3XFkLEFSjZW9xjRL6FfpKiacyruMXo-tdGCPAdb2rrhtFZFu010QM5_LVsZqaKDG0Ab0Tv-EBnxnsY3tPKJMDM3Y0CO5v_fqC3jWygdZXBHaORgxG2-IJCc0xjPlFbTmr1AaTSKczdvf2-yEpNcZTMDRjy8sxMQ">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <p class="text-white text-label-md font-bold">Ruang Operasi Modular</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Important Information -->
+                    <div class="bg-surface-container-low border border-surface-subtle rounded-xl p-6">
+                        <div class="flex items-center gap-3 mb-4 text-primary">
+                            <span class="material-symbols-outlined">info</span>
+                            <h3 class="font-label-lg">Aturan Jam Besuk</h3>
+                        </div>
+                        <ul class="space-y-3 text-label-md text-on-surface-variant">
+                            <li class="flex items-start gap-2">
+                                <span class="material-symbols-outlined text-[18px] text-jakarta-blue">schedule</span>
+                                <span class="">Pagi: 10:00 - 12:00 WIB</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="material-symbols-outlined text-[18px] text-jakarta-blue">schedule</span>
+                                <span class="">Sore: 17:00 - 19:00 WIB</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="material-symbols-outlined text-[18px] text-emergency-red">warning</span>
+                                <span class="">Area ICU: Dilarang Besuk (Kecuali Izin Khusus)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- BottomNavBar (Mobile Only) -->
+    <nav
+        class="fixed bottom-0 left-0 w-full z-50 md:hidden bg-surface border-t border-surface-subtle flex justify-around items-center px-4 py-2 pb-safe shadow-lg">
+        <a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-all p-2 rounded-lg"
+            href="#">
+            <span class="material-symbols-outlined">home</span>
+            <span class="text-label-md font-label-md">Beranda</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-all p-2 rounded-lg"
+            href="#">
+            <span class="material-symbols-outlined">calendar_month</span>
+            <span class="text-label-md font-label-md">Jadwal</span>
+        </a>
+        <a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-4 py-1 transition-all"
+            href="#">
+            <span class="material-symbols-outlined">map</span>
+            <span class="text-label-md font-label-md">Denah</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-emergency-red hover:bg-surface-container-high transition-all p-2 rounded-lg"
+            href="#">
+            <span class="material-symbols-outlined">emergency</span>
+            <span class="text-label-md font-label-md">Darurat</span>
+        </a>
+    </nav>
+    <script>
+        let currentScale = 1;
+        const mapContainer = document.getElementById('mapContainer');
+
+        function zoomMap(factor) {
+            currentScale *= factor;
+            // Limit scale
+            currentScale = Math.min(Math.max(0.5, currentScale), 2);
+            mapContainer.style.transform = `rotateX(0deg) rotateZ(0deg) scale(${currentScale})`;
+
+            // Temporary disable the perspective card effect while zoomed for better interaction
+            if (currentScale !== 1) {
+                mapContainer.classList.remove('floor-plan-card');
+            } else {
+                mapContainer.classList.add('floor-plan-card');
+            }
+        }
+
+        // Add micro-interaction to zones
+        document.querySelectorAll('.group\\/zone').forEach(zone => {
+            zone.addEventListener('mouseenter', () => {
+                const title = zone.querySelector('span').innerText;
+                console.log(`Entering area: ${title}`);
+            });
+
+            zone.addEventListener('click', () => {
+                alert(`Menampilkan detail area: ${zone.querySelector('span').innerText}`);
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>
