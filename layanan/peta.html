@@ -51,30 +51,7 @@
     </style>
 </head>
 <body class="bg-background text-on-surface font-body-md min-h-screen overflow-hidden">
-    <!-- Emergency Top Bar -->
-    <div class="w-full bg-emergency-red text-white py-2 px-gutter flex justify-center items-center gap-4 z-[60] relative">
-        <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">emergency_home</span>
-        <span class="font-label-md text-label-md">Emergency: 112</span>
-        <div class="h-4 w-[1px] bg-white/30 hidden md:block"></div>
-        <span class="font-label-md text-label-md hidden md:block">IGD 24 Jam: (021) 4393 0530</span>
-    </div>
-    <!-- TopAppBar -->
-    <header class="w-full sticky top-0 z-50 flex flex-col items-center bg-surface-container-lowest border-b border-surface-subtle shadow-sm">
-        <div class="max-w-container-max w-full flex items-center justify-between px-gutter py-4 mx-auto">
-            <a href="../index.html" class="font-headline-md text-headline-md text-jakarta-blue font-bold hover:opacity-80 transition-opacity">RSUD Tugu Koja</a>
-            <nav class="hidden md:flex items-center gap-8">
-                <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-jakarta-blue transition-colors" href="../index.html">Beranda</a>
-                <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-jakarta-blue transition-colors" href="../caridokter.html">Cari Dokter</a>
-                <a class="font-label-lg text-label-lg text-jakarta-blue border-b-2 border-jakarta-blue pb-1" href="../layanan.html">Layanan</a>
-                <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-jakarta-blue transition-colors" href="../berita.html">Berita</a>
-                <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-jakarta-blue transition-colors" href="../tentangkami.html">Tentang Kami</a>
-            </nav>
-            <div class="flex items-center gap-4">
-                <button class="px-6 py-2 bg-jakarta-blue text-white rounded-full font-label-lg text-label-lg hover:opacity-80 transition-opacity">Masuk</button>
-                <button class="md:hidden"><span class="material-symbols-outlined text-jakarta-blue">menu</span></button>
-            </div>
-        </div>
-    </header>
+    <div id="navbar-container"></div>
 
     <div class="flex" style="height: calc(100vh - 96px);">
         <!-- SideNavBar -->
@@ -297,6 +274,9 @@
 
         window.onload = () => changeFloor('Dasar');
     </script>
+
+    <script src="../components/navbar.js"></script>
+    <script src="../components/footer.js"></script>
 </body>
 </html>
 

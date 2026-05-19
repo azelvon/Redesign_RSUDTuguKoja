@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html class="light" lang="id">
 
 <head>
@@ -123,40 +123,7 @@
 </head>
 
 <body class="bg-background text-on-surface">
-    <!-- Emergency Top Bar -->
-    <div
-        class="w-full bg-emergency-red text-white py-2 px-gutter flex justify-center items-center gap-4 z-[60] relative">
-        <span class="material-symbols-outlined text-[20px]"
-            style="font-variation-settings: 'FILL' 1;">emergency_home</span>
-        <span class="font-label-md text-label-md">Emergency: 112</span>
-        <div class="h-4 w-[1px] bg-white/30 hidden md:block"></div>
-        <span class="font-label-md text-label-md hidden md:block">IGD 24 Jam: (021) 4393 0530</span>
-    </div>
-    <!-- TopNavBar -->
-    <header class="w-full sticky top-0 z-50 bg-surface-container-lowest border-b border-surface-subtle shadow-sm">
-        <div class="flex justify-between items-center py-4 px-gutter max-w-container-max mx-auto">
-            <a href="index.html"
-                class="font-headline-md text-headline-md font-bold text-jakarta-blue hover:opacity-80 transition-opacity">RSUD
-                Tugu Koja</a>
-            <nav class="hidden md:flex items-center gap-8">
-                <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-jakarta-blue transition-colors"
-                    href="index.html">Beranda</a>
-                <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-jakarta-blue transition-colors"
-                    href="caridokter.html">Cari Dokter</a>
-                <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-jakarta-blue transition-colors"
-                    href="layanan.html">Layanan</a>
-                <a class="font-label-lg text-label-lg text-jakarta-blue border-b-2 border-jakarta-blue pb-1"
-                    href="berita.html">Berita</a>
-                <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-jakarta-blue transition-colors"
-                    href="tentangkami.html">Tentang Kami</a>
-            </nav>
-            <div class="flex items-center gap-4">
-                <button
-                    class="px-6 py-2 bg-jakarta-blue text-white rounded-full font-label-lg text-label-lg hover:opacity-80 transition-opacity">Masuk</button>
-                <button class="md:hidden"><span class="material-symbols-outlined text-jakarta-blue">menu</span></button>
-            </div>
-        </div>
-    </header>
+    <div id="navbar-container"></div>
     <main class="min-h-screen">
         <!-- Hero Section: Featured News -->
         <section class="relative w-full h-[600px] bg-primary overflow-hidden">
@@ -374,61 +341,7 @@
         </section>
     </main>
     <!-- Footer -->
-    <footer class="w-full bg-primary mt-auto">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-12 max-w-container-max mx-auto">
-            <div class="flex flex-col gap-6">
-                <span class="font-headline-md text-headline-md text-on-primary">RSUD Tugu Koja</span>
-                <p class="font-body-md text-body-md text-on-primary/80">Melayani dengan Hati, Menuju Jakarta Sehat.</p>
-                <div class="flex gap-4">
-                    <div
-                        class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center cursor-pointer hover:bg-white/20 transition-all">
-                        <span class="material-symbols-outlined text-white">face_nod</span>
-                    </div>
-                    <div
-                        class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center cursor-pointer hover:bg-white/20 transition-all">
-                        <span class="material-symbols-outlined text-white">camera</span>
-                    </div>
-                    <div
-                        class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center cursor-pointer hover:bg-white/20 transition-all">
-                        <span class="material-symbols-outlined text-white">mail</span>
-                    </div>
-                </div>
-            </div>
-            <div class="flex flex-col gap-4">
-                <h5 class="text-white font-bold mb-2">Tautan Cepat</h5>
-                <a class="font-body-md text-body-md text-on-primary/80 hover:text-on-primary underline transition-all"
-                    href="#">Kontak</a>
-                <a class="font-body-md text-body-md text-on-primary/80 hover:text-on-primary underline transition-all"
-                    href="#">Lokasi</a>
-                <a class="font-body-md text-body-md text-on-primary/80 hover:text-on-primary underline transition-all"
-                    href="#">Hak Pasien</a>
-            </div>
-            <div class="flex flex-col gap-4">
-                <h5 class="text-white font-bold mb-2">Karir &amp; Legal</h5>
-                <a class="font-body-md text-body-md text-on-primary/80 hover:text-on-primary underline transition-all"
-                    href="#">Karir</a>
-                <a class="font-body-md text-body-md text-on-primary/80 hover:text-on-primary underline transition-all"
-                    href="#">Kebijakan Privasi</a>
-                <a class="font-body-md text-body-md text-on-primary/80 hover:text-on-primary underline transition-all"
-                    href="#">SOP Layanan</a>
-            </div>
-            <div class="flex flex-col gap-4">
-                <h5 class="text-white font-bold mb-2">Hubungi Kami</h5>
-                <p class="font-body-md text-body-md text-on-primary/80 flex items-start gap-2">
-                    <span class="material-symbols-outlined text-[20px]">location_on</span>
-                    Jl. Walang Permai No.39, RT.7/RW.12, Tugu Utara, Koja, Jakarta Utara
-                </p>
-                <p class="font-body-md text-body-md text-on-primary/80 flex items-center gap-2">
-                    <span class="material-symbols-outlined text-[20px]">call</span>
-                    (021) 43938480
-                </p>
-            </div>
-        </div>
-        <div class="border-t border-white/10 py-6 text-center">
-            <p class="font-body-md text-body-md text-on-primary/60">© 2024 RSUD Tugu Koja. Rumah Sehat untuk Jakarta.
-            </p>
-        </div>
-    </footer>
+    <div id="footer-container"></div>
     <script>
         // Micro-interaction for cards
         document.querySelectorAll('.group').forEach(card => {
@@ -442,6 +355,9 @@
     </script>
 
 
+
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
 </body>
 
 </html>
