@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html lang="id">
 
@@ -137,37 +137,7 @@
 </head>
 
 <body class="font-body-md text-body-md">
-    <!-- Emergency Top Bar -->
-    <div class="w-full bg-emergency-red text-white py-2 px-gutter flex justify-center items-center gap-4 z-[60] relative">
-        <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">emergency_home</span>
-        <span class="font-label-md text-label-md">Emergency: 112</span>
-        <div class="h-4 w-[1px] bg-white/30 hidden md:block"></div>
-        <span class="font-label-md text-label-md hidden md:block">IGD 24 Jam: (021) 4393 0530</span>
-    </div>
-    <!-- TopAppBar -->
-    <header class="w-full sticky top-0 z-50 flex flex-col items-center bg-surface-container-lowest border-b border-surface-subtle shadow-sm">
-        <div class="max-w-container-max w-full flex items-center justify-between px-gutter py-4 mx-auto">
-            <a href="../index.html" class="font-headline-md text-headline-md text-jakarta-blue font-bold hover:opacity-80 transition-opacity">RSUD Tugu Koja</a>
-            <nav class="hidden md:flex items-center gap-8">
-                <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-jakarta-blue transition-colors"
-                    href="../index.html">Beranda</a>
-                <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-jakarta-blue transition-colors"
-                    href="../caridokter.html">Cari Dokter</a>
-                <a class="font-label-lg text-label-lg text-jakarta-blue border-b-2 border-jakarta-blue pb-1"
-                    href="../layanan.html">Layanan</a>
-                <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-jakarta-blue transition-colors"
-                    href="../berita.html">Berita</a>
-                <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-jakarta-blue transition-colors"
-                    href="../tentangkami.html">Tentang Kami</a>
-            </nav>
-            <div class="flex items-center gap-4">
-                <button class="px-6 py-2 bg-jakarta-blue text-white rounded-full font-label-lg text-label-lg hover:opacity-80 transition-opacity">Masuk</button>
-                <button class="md:hidden">
-                    <span class="material-symbols-outlined text-jakarta-blue">menu</span>
-                </button>
-            </div>
-        </div>
-    </header>
+    <div id="navbar-container"></div>
     <main class="max-w-container-max mx-auto px-gutter py-12 min-h-screen">
         <!-- Breadcrumb & Header -->
         <div class="mb-12">
@@ -405,58 +375,7 @@
         </button>
     </div>
     <!-- Footer -->
-    <footer class="w-full bg-surface-container-low border-t border-surface-subtle mt-12">
-        <div class="w-full py-12 px-gutter max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="flex flex-col gap-4">
-                <span class="font-headline-sm text-headline-sm text-jakarta-blue font-bold">RSUD Tugu Koja</span>
-                <p class="text-on-surface-variant font-body-md">Rumah Sehat untuk Jakarta. Memberikan pelayanan
-                    kesehatan prima dan profesional untuk seluruh warga.</p>
-                <div class="flex gap-4 mt-4">
-                    <div
-                        class="w-10 h-10 rounded-full bg-white border border-outline-variant flex items-center justify-center cursor-pointer hover:bg-jakarta-blue hover:text-white transition-colors">
-                        <span class="material-symbols-outlined text-lg">public</span>
-                    </div>
-                    <div
-                        class="w-10 h-10 rounded-full bg-white border border-outline-variant flex items-center justify-center cursor-pointer hover:bg-jakarta-blue hover:text-white transition-colors">
-                        <span class="material-symbols-outlined text-lg">mail</span>
-                    </div>
-                    <div
-                        class="w-10 h-10 rounded-full bg-white border border-outline-variant flex items-center justify-center cursor-pointer hover:bg-jakarta-blue hover:text-white transition-colors">
-                        <span class="material-symbols-outlined text-lg">call</span>
-                    </div>
-                </div>
-            </div>
-            <div class="flex flex-col gap-4">
-                <h5 class="font-label-lg text-label-lg text-jakarta-blue">Tautan Cepat</h5>
-                <ul class="flex flex-col gap-2">
-                    <li><a class="text-on-surface-variant hover:underline decoration-jakarta-blue" href="#">Informasi
-                            Kontak</a></li>
-                    <li><a class="text-on-surface-variant hover:underline decoration-jakarta-blue" href="#">Peta
-                            Lokasi</a></li>
-                    <li><a class="text-on-surface-variant hover:underline decoration-jakarta-blue" href="#">Hak
-                            Pasien</a></li>
-                    <li><a class="text-on-surface-variant hover:underline decoration-jakarta-blue" href="#">Karir</a>
-                    </li>
-                    <li><a class="text-on-surface-variant hover:underline decoration-jakarta-blue" href="#">Kontak
-                            Pengaduan</a></li>
-                </ul>
-            </div>
-            <div class="flex flex-col gap-4">
-                <h5 class="font-label-lg text-label-lg text-jakarta-blue">Alamat</h5>
-                <p class="text-on-surface-variant">Jl. Walang Permai No.39, RW.12, Tugu Utara, Kec. Koja, Jkt Utara,
-                    Daerah Khusus Ibukota Jakarta 14260</p>
-                <div class="mt-4 rounded-xl overflow-hidden border border-outline-variant h-32">
-                    <img class="w-full h-full object-cover grayscale opacity-50"
-                        data-alt="A detailed map overview showing the location of a medical institution in North Jakarta, Tugu Koja area. The map is designed with high-end UI aesthetics, using subtle gray tones and blue marker accents to represent a provincial health institution's geographical accessibility. Minimalist labels and clear street grids ensure high legibility for visitors."
-                        data-location="Jakarta Utara"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8u03ACDu3sQDPG_33N1banOEB5xHiz8FRglTuIzkVc85j9kI5I1lSBQYCJqKGqZjHn9x_qliXk4HsgiP_TQ76muCHL6JYzioUWK2CXLPODixfkGKQ9vUIk8G1BG8oPGYk8eFR4vtHTGtNQsvxKCHieM4RIsv1hnlBYfaxhryv6VAXx66rqZYquXb1N01KyNBAbwNr7J8t7KyHJ9aKuLJE3x2i0Bi1y6JFVXhNjlUQt4ZVtJ9N81wCFIng2OLM6yRwVRMO9WYujyk" />
-                </div>
-            </div>
-        </div>
-        <div class="max-w-container-max mx-auto px-gutter py-6 border-t border-surface-subtle text-center md:text-left">
-            <span class="text-on-surface-variant opacity-70">© 2024 RSUD Tugu Koja - Rumah Sehat untuk Jakarta</span>
-        </div>
-    </footer>
+    <div id="footer-container"></div>
     <script>
         // Simple search interaction
         const searchInputDesktop = document.getElementById('deptSearchDesktop');
@@ -493,6 +412,9 @@
             });
         });
     </script>
+
+    <script src="../components/navbar.js"></script>
+    <script src="../components/footer.js"></script>
 </body>
 
 </html>
