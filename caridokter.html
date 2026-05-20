@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html class="light" lang="id">
 
@@ -84,7 +84,7 @@
                         "unit": "8px",
                         "gutter": "24px",
                         "margin-mobile": "16px",
-                        "margin-desktop": "48px",
+                        "margin-desktop": "32px",
                         "container-max": "1280px"
                     },
                     "fontFamily": {
@@ -101,10 +101,10 @@
                         "label-lg": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
                         "body-lg": ["20px", { "lineHeight": "32px", "fontWeight": "400" }],
                         "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
-                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-md": ["18px", { "lineHeight": "32px", "fontWeight": "600" }],
                         "body-md": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
                         "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
-                        "headline-xl": ["40px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-xl": ["20px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
                         "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }]
                     }
                 },
@@ -165,115 +165,107 @@
             <span class="text-primary font-bold">Berdasarkan Bagian Tubuh</span>
         </nav>
         <!-- Segmented Control -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
-            <button
-                class="flex flex-col items-center justify-center gap-2 p-8 rounded-2xl border border-surface-subtle bg-white hover:shadow-lg transition-all group">
-                <span
-                    class="material-symbols-outlined text-jakarta-blue text-4xl group-hover:scale-110 transition-transform">person_search</span>
-                <span class="font-headline-md text-headline-md text-primary">Daftar Dokter A-Z</span>
-                <span class="font-body-md text-text-muted text-center mt-2">Cari berdasarkan nama dokter
-                    spesialis</span>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6" id="search-tabs">
+            <button id="btn-az" onclick="switchTab('az')"
+                class="tab-btn flex flex-col items-center justify-center gap-2 p-6 rounded-2xl border border-surface-subtle bg-white hover:shadow-lg transition-all group">
+                <span class="material-symbols-outlined text-4xl group-hover:scale-110 transition-transform icon-color text-jakarta-blue">person_search</span>
+                <span class="font-headline-md text-headline-md text-primary title-color">Daftar Dokter A-Z</span>
             </button>
-            <button
-                class="flex flex-col items-center justify-center gap-2 p-8 rounded-2xl border-2 border-jakarta-blue bg-jakarta-blue text-white shadow-xl">
-                <span class="material-symbols-outlined text-white text-4xl"
-                    style="font-variation-settings: 'FILL' 1;">ecg_heart</span>
-                <span class="font-headline-md text-headline-md">Cari Gejala</span>
-                <span class="font-body-md text-white/80 text-center mt-2">Temukan dokter berdasarkan keluhan
-                    tubuh</span>
+            <button id="btn-gejala" onclick="switchTab('gejala')"
+                class="tab-btn flex flex-col items-center justify-center gap-2 p-6 rounded-2xl border-2 border-jakarta-blue bg-jakarta-blue text-white shadow-xl">
+                <span class="material-symbols-outlined text-4xl icon-color text-white" style="font-variation-settings: 'FILL' 1;">ecg_heart</span>
+                <span class="font-headline-md text-headline-md title-color text-white">Cari Gejala</span>
             </button>
-            <button
-                class="flex flex-col items-center justify-center gap-2 p-8 rounded-2xl border border-surface-subtle bg-white hover:shadow-lg transition-all group">
-                <span
-                    class="material-symbols-outlined text-jakarta-blue text-4xl group-hover:scale-110 transition-transform">clinical_notes</span>
-                <span class="font-headline-md text-headline-md text-primary">Spesialisasi</span>
-                <span class="font-body-md text-text-muted text-center mt-2">Pilih dari daftar spesialisasi medis</span>
+            <button id="btn-spesialisasi" onclick="switchTab('spesialisasi')"
+                class="tab-btn flex flex-col items-center justify-center gap-2 p-6 rounded-2xl border border-surface-subtle bg-white hover:shadow-lg transition-all group">
+                <span class="material-symbols-outlined text-4xl group-hover:scale-110 transition-transform icon-color text-jakarta-blue">clinical_notes</span>
+                <span class="font-headline-md text-headline-md text-primary title-color">Spesialisasi</span>
             </button>
         </div>
-        <section
-            class="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-surface-subtle overflow-hidden relative">
-            <div class="text-center mb-12">
-                <h1 class="font-headline-xl text-headline-xl text-primary mb-2">Pilih Bagian Tubuh</h1>
-                <p class="font-body-md text-body-md text-text-muted">Klik pada area yang mengalami keluhan untuk melihat
-                    dokter yang tepat.</p>
-            </div>
-            <div class="flex flex-col lg:flex-row items-center justify-center gap-16 relative z-10">
-                <!-- Anatomy Illustration Container -->
-                <div class="relative w-full max-w-[400px] aspect-[1/2] flex items-center justify-center">
-                    <div class="absolute inset-0 bg-blue-50/30 rounded-full blur-3xl -z-10"></div>
-                    <!-- SVG Silhouette Mockup -->
-                    <svg class="interactive-silhouette w-full h-full drop-shadow-2xl" id="anatomy-svg"
-                        viewbox="0 0 200 500">
-                        <!-- Head -->
-                        <path class="active"
-                            d="M100,20 C85,20 75,35 75,55 C75,75 85,85 100,85 C115,85 125,75 125,55 C125,35 115,20 100,20 Z"
-                            data-region="Kepala" id="part-head"></path>
-                        <!-- Neck -->
-                        <path d="M85,85 L115,85 L110,105 L90,105 Z" data-region="Leher" id="part-neck"></path>
-                        <!-- Chest -->
-                        <path d="M60,105 L140,105 C150,130 150,160 140,200 L60,200 C50,160 50,130 60,105 Z"
-                            data-region="Dada &amp; Paru" id="part-chest"></path>
-                        <!-- Abdomen -->
-                        <path d="M60,200 L140,200 L135,280 L65,280 Z" data-region="Perut &amp; Organ Dalam"
-                            id="part-abdomen"></path>
-                        <!-- Limbs (Simplified) -->
-                        <path
-                            d="M60,105 L30,150 L20,250 L40,250 L50,180 L60,150 Z M140,105 L170,150 L180,250 L160,250 L150,180 L140,150 Z"
-                            data-region="Tangan &amp; Otot" id="part-arms"></path>
-                        <path
-                            d="M65,280 L55,400 L60,480 L85,480 L90,400 L100,320 L110,400 L115,480 L140,480 L145,400 L135,280 Z"
-                            data-region="Kaki &amp; Sendi" id="part-legs"></path>
-                    </svg>
-                    <!-- Instructional Overlay -->
-                    <div
-                        class="absolute top-0 right-0 md:-right-12 floating-action bg-white shadow-lg p-3 rounded-xl border border-surface-subtle hidden md:flex items-center gap-2">
-                        <span class="material-symbols-outlined text-jakarta-blue">ads_click</span>
-                        <span class="text-label-md font-label-md">Klik untuk memilih</span>
-                    </div>
+
+        <div id="filter-container">
+            <!-- AZ Section -->
+            <section id="section-az" class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-surface-subtle hidden relative">
+                <div class="text-center mb-6">
+                    <h1 class="font-headline-xl text-headline-xl text-primary mb-2">Cari Berdasarkan Abjad</h1>
+                    <p class="font-body-md text-body-md text-text-muted">Pilih inisial nama dokter yang Anda cari.</p>
                 </div>
-                <!-- Results Panel -->
-                <div class="w-full lg:w-[450px] space-y-6">
-                    <div class="bg-surface-container-lowest border border-surface-subtle rounded-2xl p-6 shadow-sm min-h-[500px] flex flex-col relative"
-                        id="region-card">
-                        <!-- Header with Breadcrumb-like title -->
-                        <div class="flex items-center justify-between mb-6 pb-4 border-b border-surface-subtle">
-                            <div>
-                                <span
-                                    class="text-label-md font-label-md text-text-muted uppercase tracking-wider block mb-1">Wilayah
-                                    Terpilih</span>
-                                <div class="flex items-center gap-2 text-primary font-headline-md text-headline-md">
-                                    <h2 id="active-region-name">Kepala</h2>
-                                    <span class="material-symbols-outlined text-lg hidden"
-                                        id="breadcrumb-separator">chevron_right</span>
-                                    <span class="hidden text-text-muted font-normal" id="active-sub-region-name"></span>
+                <div class="flex flex-wrap gap-3 justify-center max-w-4xl mx-auto mb-6" id="az-buttons">
+                    <!-- Injected by JS -->
+                </div>
+                <div class="relative max-w-2xl mx-auto">
+                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-text-muted">search</span>
+                    <input type="text" placeholder="Atau ketik nama dokter..." class="w-full pl-12 pr-4 py-4 rounded-xl border border-surface-subtle focus:outline-none focus:border-jakarta-blue font-body-md transition-colors">
+                </div>
+            </section>
+
+            <!-- Spesialisasi Section -->
+            <section id="section-spesialisasi" class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-surface-subtle hidden relative">
+                <div class="text-center mb-6">
+                    <h1 class="font-headline-xl text-headline-xl text-primary mb-2">Pilih Spesialisasi</h1>
+                    <p class="font-body-md text-body-md text-text-muted">Temukan dokter berdasarkan bidang keahlian medis yang dibutuhkan.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" id="spesialisasi-list">
+                    <!-- Injected by JS -->
+                </div>
+            </section>
+
+            <!-- Gejala Section -->
+            <section id="section-gejala" class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-surface-subtle overflow-hidden relative">
+                <div class="text-center mb-6">
+                    <h1 class="font-headline-xl text-headline-xl text-primary mb-2">Pilih Bagian Tubuh</h1>
+                    <p class="font-body-md text-body-md text-text-muted">Klik pada area yang mengalami keluhan untuk melihat dokter yang tepat.</p>
+                </div>
+                <div class="flex flex-col lg:flex-row items-center justify-center gap-16 relative z-10">
+                    <!-- Anatomy Illustration Container -->
+                    <div class="relative w-full max-w-[280px] aspect-[1/2] flex items-center justify-center">
+                        <div class="absolute inset-0 bg-blue-50/30 rounded-full blur-3xl -z-10"></div>
+                        <!-- SVG Silhouette Mockup -->
+                        <svg class="interactive-silhouette w-full h-full drop-shadow-2xl" id="anatomy-svg" viewbox="0 0 200 500">
+                            <!-- Head -->
+                            <path class="active" d="M100,20 C85,20 75,35 75,55 C75,75 85,85 100,85 C115,85 125,75 125,55 C125,35 115,20 100,20 Z" data-region="Kepala" id="part-head"></path>
+                            <!-- Neck -->
+                            <path d="M85,85 L115,85 L110,105 L90,105 Z" data-region="Leher" id="part-neck"></path>
+                            <!-- Chest -->
+                            <path d="M60,105 L140,105 C150,130 150,160 140,200 L60,200 C50,160 50,130 60,105 Z" data-region="Dada &amp; Paru" id="part-chest"></path>
+                            <!-- Abdomen -->
+                            <path d="M60,200 L140,200 L135,280 L65,280 Z" data-region="Perut &amp; Organ Dalam" id="part-abdomen"></path>
+                            <!-- Limbs (Simplified) -->
+                            <path d="M60,105 L30,150 L20,250 L40,250 L50,180 L60,150 Z M140,105 L170,150 L180,250 L160,250 L150,180 L140,150 Z" data-region="Tangan &amp; Otot" id="part-arms"></path>
+                            <path d="M65,280 L55,400 L60,480 L85,480 L90,400 L100,320 L110,400 L115,480 L140,480 L145,400 L135,280 Z" data-region="Kaki &amp; Sendi" id="part-legs"></path>
+                        </svg>
+                        <!-- Instructional Overlay removed as requested -->
+                    </div>
+                    <!-- Results Panel -->
+                    <div class="w-full lg:w-[350px] space-y-4">
+                        <div class="bg-surface-container-lowest border border-surface-subtle rounded-2xl p-5 shadow-sm min-h-[350px] flex flex-col relative" id="region-card">
+                            <!-- Header with Breadcrumb-like title -->
+                            <div class="flex items-center justify-between mb-6 pb-4 border-b border-surface-subtle">
+                                <div>
+                                    <span class="text-[12px] font-bold text-text-muted uppercase tracking-wider block mb-1">Wilayah Terpilih</span>
+                                    <div class="flex items-center gap-2 text-primary font-headline-sm text-headline-sm">
+                                        <h2 id="active-region-name">Kepala</h2>
+                                        <span class="material-symbols-outlined text-lg hidden" id="breadcrumb-separator">chevron_right</span>
+                                        <span class="hidden text-text-muted font-normal" id="active-sub-region-name"></span>
+                                    </div>
                                 </div>
+                                <button class="hidden bg-surface-container hover:bg-surface-container-high text-primary p-2 rounded-full transition-colors" id="back-btn">
+                                    <span class="material-symbols-outlined">arrow_back</span>
+                                </button>
                             </div>
-                            <button
-                                class="hidden bg-surface-container hover:bg-surface-container-high text-primary p-2 rounded-full transition-colors"
-                                id="back-btn">
-                                <span class="material-symbols-outlined">arrow_back</span>
+                            <!-- Content Area -->
+                            <div class="flex-grow space-y-4" id="service-list">
+                                <!-- Dynamic Content initially filled via JS -->
+                            </div>
+                            <button class="w-full mt-6 py-3 bg-jakarta-blue text-white rounded-xl font-label-md text-label-md hover:brightness-110 transition-all flex items-center justify-center gap-2" id="view-all-btn">
+                                Lihat Semua Dokter <span class="material-symbols-outlined">arrow_forward</span>
                             </button>
                         </div>
-                        <!-- Content Area -->
-                        <div class="flex-grow space-y-4" id="service-list">
-                            <!-- Dynamic Content initially filled via JS -->
-                        </div>
-                        <button
-                            class="w-full mt-8 py-4 bg-jakarta-blue text-white rounded-xl font-label-lg text-label-lg hover:brightness-110 transition-all flex items-center justify-center gap-2"
-                            id="view-all-btn">
-                            Lihat Semua Dokter <span class="material-symbols-outlined">arrow_forward</span>
-                        </button>
                     </div>
                 </div>
-            </div>
-            <!-- Background Texture -->
-            <div
-                class="absolute bottom-0 right-0 opacity-[0.03] pointer-events-none transform translate-x-1/4 translate-y-1/4">
-                <img class="w-[600px]"
-                    data-alt="A macro photography shot of clean, sterile medical equipment and architectural patterns of a modern hospital ward. The image emphasizes high-key lighting, shades of teal and clinical white, and sharp geometric lines that evoke a sense of professional healthcare and technological precision. The mood is calm, trustworthy, and ultra-modern."
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBI2TwgP60vg7wUPMbgKJvAP6-NdDU8R6U6R_TIxqCkiNoFuB68mO4flTtKrPHmRdVMh7RDzkL5J7pR2t3s95nLuv5vnzMWh8Jiu-H74WN-7B0LpAzGHUHkg5NfMl02iz9hBtgh__rlHAoaTm_Rg4IsYZJt5-IQnrUZU_QHfPPVz9XaLwyW2nTpaWk5hPE_kB3GpNn4UPPg4nMZBKXPJJJDXmgShR78FZq9s1nANyOSmNritufpFaOeoTdegYVON4YN1_d5kvPbHPo" />
-            </div>
-        </section>
+                <!-- Background removed to fix box overlap bug -->
+            </section>
+        </div>
         <!-- Results Section (Initially Hidden, shown when a condition is clicked) -->
         <section class="mt-16 hidden" id="results-section">
             <h2 class="font-headline-lg text-headline-lg text-primary mb-8 border-b border-surface-subtle pb-4">
@@ -518,13 +510,13 @@
 
             setTimeout(() => {
                 serviceList.innerHTML = data.services.map((s, index) => `
-                    <div class="p-4 rounded-xl border border-surface-subtle bg-white hover:bg-surface-container-low transition-colors cursor-pointer flex items-center justify-between group animate-in fade-in slide-in-from-right-4 duration-300" 
+                    <div class="p-3 rounded-xl border border-surface-subtle bg-white hover:bg-surface-container-low transition-colors cursor-pointer flex items-center justify-between group animate-in fade-in slide-in-from-right-4 duration-300" 
                          onclick="showConditions('${region}', ${index})">
-                        <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 rounded-full bg-jakarta-blue/10 flex items-center justify-center">
-                                <span class="material-symbols-outlined text-jakarta-blue text-sm">${s.icon}</span>
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-jakarta-blue/10 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-jakarta-blue text-[14px]">${s.icon}</span>
                             </div>
-                            <span class="font-label-lg text-label-lg">${s.name}</span>
+                            <span class="font-label-md text-label-md">${s.name}</span>
                         </div>
                         <span class="material-symbols-outlined text-text-muted group-hover:translate-x-1 transition-transform">chevron_right</span>
                     </div>
@@ -550,9 +542,9 @@
 
             setTimeout(() => {
                 serviceList.innerHTML = service.conditions.map(condition => `
-                    <div class="p-4 rounded-xl border border-surface-subtle bg-white hover:border-jakarta-blue hover:shadow-sm transition-all cursor-pointer flex items-center justify-between group animate-in fade-in slide-in-from-right-4 duration-300"
+                    <div class="p-3 rounded-xl border border-surface-subtle bg-white hover:border-jakarta-blue hover:shadow-sm transition-all cursor-pointer flex items-center justify-between group animate-in fade-in slide-in-from-right-4 duration-300"
                          onclick="showResults('${condition}')">
-                        <span class="font-label-lg text-label-lg text-primary">${condition}</span>
+                        <span class="font-label-md text-label-md text-primary">${condition}</span>
                         <span class="material-symbols-outlined text-jakarta-blue opacity-0 group-hover:opacity-100 transition-opacity">search</span>
                     </div>
                 `).join('');
@@ -566,6 +558,97 @@
             resultsSection.classList.remove('hidden');
             resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
+
+        // Generate A-Z buttons
+        const azContainer = document.getElementById('az-buttons');
+        if (azContainer) {
+            const alphabet = Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i));
+            azContainer.innerHTML = alphabet.map(char => `
+                <button class="w-12 h-12 rounded-xl border border-surface-subtle bg-white hover:bg-jakarta-blue hover:text-white font-headline-md text-primary transition-all shadow-sm flex items-center justify-center"
+                    onclick="showResults('Dokter inisial ${char}')">${char}</button>
+            `).join('');
+        }
+
+        // Generate Spesialisasi list
+        const spesialisasiContainer = document.getElementById('spesialisasi-list');
+        if (spesialisasiContainer) {
+            const specialties = [
+                { name: 'Spesialis Anak', icon: 'child_care' },
+                { name: 'Spesialis Kandungan', icon: 'pregnant_woman' },
+                { name: 'Spesialis Penyakit Dalam', icon: 'body_system' },
+                { name: 'Spesialis Bedah', icon: 'surgical' },
+                { name: 'Spesialis Mata', icon: 'visibility' },
+                { name: 'Spesialis THT', icon: 'hearing' },
+                { name: 'Spesialis Jantung', icon: 'cardiology' },
+                { name: 'Spesialis Saraf', icon: 'neurology' },
+                { name: 'Spesialis Paru', icon: 'pulmonology' },
+                { name: 'Spesialis Kulit & Kelamin', icon: 'dermatology' },
+                { name: 'Spesialis Radiologi', icon: 'radiology' },
+                { name: 'Spesialis Anestesi', icon: 'masks' }
+            ];
+
+            spesialisasiContainer.innerHTML = specialties.map(spec => `
+                <button class="flex items-center gap-4 p-4 rounded-xl border border-surface-subtle bg-white hover:border-jakarta-blue hover:shadow-md transition-all text-left group"
+                    onclick="showResults('${spec.name}')">
+                    <div class="w-12 h-12 flex-shrink-0 rounded-full bg-jakarta-blue/10 flex items-center justify-center group-hover:bg-jakarta-blue transition-colors">
+                        <span class="material-symbols-outlined text-jakarta-blue group-hover:text-white transition-colors">${spec.icon}</span>
+                    </div>
+                    <span class="font-label-lg text-label-lg text-primary flex-grow">${spec.name}</span>
+                </button>
+            `).join('');
+        }
+
+        // Tab Switching Logic
+        window.switchTab = function (tabId) {
+            const targetSection = document.getElementById('section-' + tabId);
+            const isCurrentlyActive = !targetSection.classList.contains('hidden');
+
+            // Hide all sections
+            document.getElementById('section-az').classList.add('hidden');
+            document.getElementById('section-gejala').classList.add('hidden');
+            document.getElementById('section-spesialisasi').classList.add('hidden');
+
+            // Reset all tab buttons
+            const tabs = ['btn-az', 'btn-gejala', 'btn-spesialisasi'];
+            tabs.forEach(id => {
+                const btn = document.getElementById(id);
+                btn.className = "tab-btn flex flex-col items-center justify-center gap-2 p-6 rounded-2xl border border-surface-subtle bg-white hover:shadow-lg transition-all group cursor-pointer";
+                
+                const title = btn.querySelector('.title-color');
+                title.classList.remove('text-white');
+                title.classList.add('text-primary');
+                
+                const icon = btn.querySelector('.icon-color');
+                icon.classList.remove('text-white');
+                icon.classList.add('text-jakarta-blue');
+                icon.style.fontVariationSettings = "'FILL' 0";
+            });
+
+            // If the tab clicked was already active, we just leave the filter hidden (toggled off)
+            // Hasil pencarian TIDAK disembunyikan di sini.
+            if (isCurrentlyActive) {
+                return;
+            }
+
+            // Hide results section when switching to a DIFFERENT tab
+            resultsSection.classList.add('hidden');
+
+            // Show selected section
+            targetSection.classList.remove('hidden');
+
+            // Activate selected tab button
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.className = "tab-btn flex flex-col items-center justify-center gap-2 p-6 rounded-2xl border-2 border-jakarta-blue bg-jakarta-blue text-white shadow-xl cursor-pointer";
+            
+            const activeTitle = activeBtn.querySelector('.title-color');
+            activeTitle.classList.add('text-white');
+            activeTitle.classList.remove('text-primary');
+            
+            const activeIcon = activeBtn.querySelector('.icon-color');
+            activeIcon.classList.add('text-white');
+            activeIcon.classList.remove('text-jakarta-blue');
+            activeIcon.style.fontVariationSettings = "'FILL' 1";
+        };
     </script>
 
     <script src="components/navbar.js"></script>
