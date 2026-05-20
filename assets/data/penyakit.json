@@ -1,0 +1,730 @@
+[
+  {
+    "id": "kepala",
+    "nama": "Kepala",
+    "icon": "fa-head-side",
+    "subArea": [
+      {
+        "id": "mata",
+        "nama": "Mata",
+        "icon": "fa-eye",
+        "penyakit": [
+          {
+            "id": "katarak",
+            "nama": "Katarak",
+            "deskripsi": "Kekeruhan pada lensa mata yang menyebabkan penglihatan kabur dan buram.",
+            "gejala": ["Penglihatan kabur", "Sensitif terhadap cahaya", "Penglihatan ganda", "Warna tampak pudar"],
+            "poliklinik": "Poli Mata"
+          },
+          {
+            "id": "glaukoma",
+            "nama": "Glaukoma",
+            "deskripsi": "Peningkatan tekanan dalam bola mata yang dapat merusak saraf optik.",
+            "gejala": ["Nyeri mata", "Penglihatan menyempit", "Mual dan muntah", "Mata merah"],
+            "poliklinik": "Poli Mata"
+          },
+          {
+            "id": "konjungtivitis",
+            "nama": "Konjungtivitis",
+            "deskripsi": "Peradangan pada selaput bening yang melapisi bagian putih mata dan kelopak mata bagian dalam.",
+            "gejala": ["Mata merah", "Gatal pada mata", "Keluar kotoran mata", "Mata berair"],
+            "poliklinik": "Poli Mata"
+          },
+          {
+            "id": "kelainan-refraksi",
+            "nama": "Kelainan Refraksi (Miopi, Hipermetropi, Astigmatisme)",
+            "deskripsi": "Gangguan penglihatan akibat bentuk bola mata atau kelengkungan kornea yang tidak normal.",
+            "gejala": ["Penglihatan kabur jauh atau dekat", "Sering menyipitkan mata", "Sakit kepala", "Mata cepat lelah"],
+            "poliklinik": "Poli Mata"
+          },
+          {
+            "id": "mata-kering",
+            "nama": "Mata Kering",
+            "deskripsi": "Kondisi di mana mata tidak menghasilkan cukup air mata atau air mata menguap terlalu cepat.",
+            "gejala": ["Mata terasa kering dan perih", "Sensasi berpasir", "Mata merah", "Penglihatan kabur sesaat"],
+            "poliklinik": "Poli Mata"
+          }
+        ]
+      },
+      {
+        "id": "telinga",
+        "nama": "Telinga",
+        "icon": "fa-ear-listen",
+        "penyakit": [
+          {
+            "id": "otitis-media",
+            "nama": "Otitis Media",
+            "deskripsi": "Infeksi pada telinga bagian tengah yang sering terjadi pada anak-anak.",
+            "gejala": ["Nyeri telinga", "Demam", "Gangguan pendengaran", "Keluar cairan dari telinga"],
+            "poliklinik": "Poli THT"
+          },
+          {
+            "id": "gangguan-pendengaran",
+            "nama": "Gangguan Pendengaran",
+            "deskripsi": "Penurunan kemampuan mendengar yang bisa bersifat konduktif atau sensorineural.",
+            "gejala": ["Sulit mendengar percakapan", "Sering meminta pengulangan", "Menaikkan volume TV", "Telinga berdenging"],
+            "poliklinik": "Poli THT"
+          },
+          {
+            "id": "vertigo",
+            "nama": "Vertigo",
+            "deskripsi": "Sensasi pusing berputar yang disebabkan oleh gangguan pada telinga bagian dalam.",
+            "gejala": ["Pusing berputar", "Mual dan muntah", "Kehilangan keseimbangan", "Nistagmus"],
+            "poliklinik": "Poli THT"
+          }
+        ]
+      },
+      {
+        "id": "hidung",
+        "nama": "Hidung",
+        "icon": "fa-nose",
+        "penyakit": [
+          {
+            "id": "sinusitis",
+            "nama": "Sinusitis",
+            "deskripsi": "Peradangan pada rongga sinus yang menyebabkan hidung tersumbat dan nyeri wajah.",
+            "gejala": ["Hidung tersumbat", "Nyeri wajah", "Ingus kental", "Sakit kepala"],
+            "poliklinik": "Poli THT"
+          },
+          {
+            "id": "rinitis-alergi",
+            "nama": "Rinitis Alergi",
+            "deskripsi": "Peradangan pada lapisan hidung akibat reaksi alergi terhadap zat tertentu.",
+            "gejala": ["Bersin-bersin", "Hidung berair", "Hidung gatal", "Mata berair"],
+            "poliklinik": "Poli THT"
+          },
+          {
+            "id": "polip-hidung",
+            "nama": "Polip Hidung",
+            "deskripsi": "Pertumbuhan jaringan lunak non-kanker pada lapisan hidung atau sinus.",
+            "gejala": ["Hidung tersumbat kronis", "Berkurangnya penciuman", "Pilek berkepanjangan", "Nyeri wajah"],
+            "poliklinik": "Poli THT"
+          },
+          {
+            "id": "epistaksis",
+            "nama": "Epistaksis (Mimisan)",
+            "deskripsi": "Pendarahan dari hidung akibat pecahnya pembuluh darah di rongga hidung.",
+            "gejala": ["Darah keluar dari hidung", "Sensasi cairan di tenggorokan", "Pusing jika banyak darah keluar"],
+            "poliklinik": "Poli THT"
+          }
+        ]
+      },
+      {
+        "id": "mulut-dan-gigi",
+        "nama": "Mulut dan Gigi",
+        "icon": "fa-teeth",
+        "penyakit": [
+          {
+            "id": "karies-gigi",
+            "nama": "Karies Gigi",
+            "deskripsi": "Kerusakan pada struktur gigi akibat bakteri yang menghasilkan asam dari sisa makanan.",
+            "gejala": ["Lubang pada gigi", "Nyeri gigi", "Sensitif terhadap makanan manis/dingin/panas", "Bau mulut"],
+            "poliklinik": "Klinik Gigi Umum"
+          },
+          {
+            "id": "pulpitis",
+            "nama": "Pulpitis",
+            "deskripsi": "Peradangan pada pulpa (saraf) gigi yang biasanya disebabkan oleh karies yang sudah dalam.",
+            "gejala": ["Nyeri gigi hebat dan berdenyut", "Nyeri saat mengunyah", "Sensitif berkepanjangan", "Bengkak pada gusi"],
+            "poliklinik": "Poli Gigi dan Mulut"
+          },
+          {
+            "id": "gingivitis",
+            "nama": "Gingivitis (Radang Gusi)",
+            "deskripsi": "Peradangan pada gusi yang ditandai gusi bengkak, merah, dan mudah berdarah.",
+            "gejala": ["Gusi merah dan bengkak", "Gusi berdarah saat sikat gigi", "Bau mulut", "Gusi lunak"],
+            "poliklinik": "Klinik Gigi Umum"
+          }
+        ]
+      },
+      {
+        "id": "otak",
+        "nama": "Otak",
+        "icon": "fa-brain",
+        "penyakit": [
+          {
+            "id": "stroke",
+            "nama": "Stroke",
+            "deskripsi": "Gangguan aliran darah ke otak yang menyebabkan kerusakan sel-sel otak.",
+            "gejala": ["Kelemahan satu sisi tubuh", "Kesulitan bicara", "Penglihatan kabur mendadak", "Pusing hebat"],
+            "poliklinik": "Poli Saraf"
+          },
+          {
+            "id": "migrain",
+            "nama": "Migrain",
+            "deskripsi": "Sakit kepala berdenyut yang biasanya terjadi di satu sisi kepala.",
+            "gejala": ["Nyeri kepala berdenyut", "Mual", "Sensitif cahaya dan suara", "Gangguan penglihatan"],
+            "poliklinik": "Poli Saraf"
+          },
+          {
+            "id": "epilepsi",
+            "nama": "Epilepsi",
+            "deskripsi": "Gangguan sistem saraf pusat yang menyebabkan kejang berulang.",
+            "gejala": ["Kejang berulang", "Kehilangan kesadaran", "Tatapan kosong", "Gerakan tidak terkontrol"],
+            "poliklinik": "Poli Saraf"
+          },
+          {
+            "id": "demensia",
+            "nama": "Demensia",
+            "deskripsi": "Penurunan kemampuan kognitif yang mengganggu aktivitas sehari-hari, sering terjadi pada lansia.",
+            "gejala": ["Lupa ingatan jangka pendek", "Kesulitan komunikasi", "Disorientasi waktu dan tempat", "Perubahan perilaku"],
+            "poliklinik": "Poli Saraf"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "leher",
+    "nama": "Leher",
+    "icon": "fa-head-side-mask",
+    "subArea": [
+      {
+        "id": "tenggorokan",
+        "nama": "Tenggorokan",
+        "icon": "fa-throat",
+        "penyakit": [
+          {
+            "id": "faringitis",
+            "nama": "Faringitis",
+            "deskripsi": "Peradangan pada faring (tenggorokan) yang menyebabkan sakit tenggorokan.",
+            "gejala": ["Sakit tenggorokan", "Sulit menelan", "Demam", "Pembengkakan kelenjar getah bening"],
+            "poliklinik": "Poli THT"
+          },
+          {
+            "id": "tonsilitis",
+            "nama": "Tonsilitis (Radang Amandel)",
+            "deskripsi": "Peradangan pada tonsil akibat infeksi bakteri atau virus.",
+            "gejala": ["Sakit tenggorokan parah", "Amandel bengkak dan merah", "Demam tinggi", "Bau mulut"],
+            "poliklinik": "Poli THT"
+          },
+          {
+            "id": "laringitis",
+            "nama": "Laringitis",
+            "deskripsi": "Peradangan pada laring (kotak suara) yang menyebabkan suara serak.",
+            "gejala": ["Suara serak atau hilang", "Sakit tenggorokan", "Batuk kering", "Rasa gatal di tenggorokan"],
+            "poliklinik": "Poli THT"
+          }
+        ]
+      },
+      {
+        "id": "tiroid",
+        "nama": "Kelenjar Tiroid",
+        "icon": "fa-shield",
+        "penyakit": [
+          {
+            "id": "hipertiroid",
+            "nama": "Hipertiroidisme",
+            "deskripsi": "Kondisi di mana kelenjar tiroid menghasilkan hormon tiroid secara berlebihan.",
+            "gejala": ["Penurunan berat badan", "Jantung berdebar", "Tremor", "Keringat berlebih"],
+            "poliklinik": "Poli Penyakit Dalam"
+          },
+          {
+            "id": "hipotiroid",
+            "nama": "Hipotiroidisme",
+            "deskripsi": "Kondisi di mana kelenjar tiroid tidak memproduksi cukup hormon tiroid.",
+            "gejala": ["Kelelahan", "Kenaikan berat badan", "Kulit kering", "Sensitif terhadap dingin"],
+            "poliklinik": "Poli Penyakit Dalam"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tangan",
+    "nama": "Tangan",
+    "icon": "fa-hand",
+    "subArea": [
+      {
+        "id": "bahu",
+        "nama": "Bahu",
+        "icon": "fa-shoulder",
+        "penyakit": [
+          {
+            "id": "frozen-shoulder",
+            "nama": "Frozen Shoulder",
+            "deskripsi": "Kekakuan dan nyeri pada sendi bahu yang membatasi gerakan.",
+            "gejala": ["Nyeri bahu", "Kaku sendi bahu", "Sulit mengangkat tangan", "Nyeri saat tidur miring"],
+            "poliklinik": "Poli Rehabilitasi Medik"
+          }
+        ]
+      },
+      {
+        "id": "siku",
+        "nama": "Siku",
+        "icon": "fa-angle",
+        "penyakit": [
+          {
+            "id": "tennis-elbow",
+            "nama": "Tennis Elbow (Epikondilitis Lateral)",
+            "deskripsi": "Peradangan pada tendon di bagian luar siku akibat gerakan berulang.",
+            "gejala": ["Nyeri siku bagian luar", "Lemah saat menggenggam", "Nyeri saat memutar lengan", "Nyeri menjalar ke lengan bawah"],
+            "poliklinik": "Poli Rehabilitasi Medik"
+          }
+        ]
+      },
+      {
+        "id": "pergelangan-tangan",
+        "nama": "Pergelangan Tangan",
+        "icon": "fa-wrist",
+        "penyakit": [
+          {
+            "id": "carpal-tunnel",
+            "nama": "Sindrom Terowongan Karpal (Carpal Tunnel Syndrome)",
+            "deskripsi": "Tekanan pada saraf median di pergelangan tangan yang menyebabkan nyeri dan mati rasa.",
+            "gejala": ["Kesemutan pada jari", "Mati rasa", "Nyeri pergelangan tangan", "Kelemahan genggaman"],
+            "poliklinik": "Poli Saraf"
+          },
+          {
+            "id": "neuropati-tangan",
+            "nama": "Neuropati Perifer Tangan",
+            "deskripsi": "Kerusakan saraf tepi pada tangan yang menyebabkan kesemutan, mati rasa, atau kelemahan.",
+            "gejala": ["Kesemutan dan mati rasa", "Nyeri seperti terbakar", "Kelemahan otot tangan", "Sensitivitas berlebihan"],
+            "poliklinik": "Poli Saraf"
+          }
+        ]
+      },
+      {
+        "id": "jari-tangan",
+        "nama": "Jari Tangan",
+        "icon": "fa-hand-fingers",
+        "penyakit": [
+          {
+            "id": "trigger-finger",
+            "nama": "Trigger Finger",
+            "deskripsi": "Kondisi di mana jari tangan terkunci dalam posisi tertekuk.",
+            "gejala": ["Jari terkunci saat ditekuk", "Bunyi klik saat jari digerakkan", "Kaku pada pagi hari", "Benjolan di pangkal jari"],
+            "poliklinik": "Poli Rehabilitasi Medik"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dada",
+    "nama": "Dada",
+    "icon": "fa-lungs",
+    "subArea": [
+      {
+        "id": "jantung",
+        "nama": "Jantung",
+        "icon": "fa-heart-pulse",
+        "penyakit": [
+          {
+            "id": "penyakit-jantung-koroner",
+            "nama": "Penyakit Jantung Koroner",
+            "deskripsi": "Penyempitan pembuluh darah koroner yang memasok darah ke jantung.",
+            "gejala": ["Nyeri dada (angina)", "Sesak napas", "Jantung berdebar", "Kelelahan"],
+            "poliklinik": "Poli Jantung"
+          },
+          {
+            "id": "gagal-jantung",
+            "nama": "Gagal Jantung",
+            "deskripsi": "Kondisi di mana jantung tidak mampu memompa darah secara efisien.",
+            "gejala": ["Sesak napas", "Bengkak pada kaki", "Kelelahan", "Batuk kronis"],
+            "poliklinik": "Poli Jantung"
+          },
+          {
+            "id": "aritmia",
+            "nama": "Aritmia",
+            "deskripsi": "Gangguan irama jantung yang menyebabkan detak jantung tidak teratur.",
+            "gejala": ["Jantung berdebar", "Pusing", "Sesak napas", "Nyeri dada"],
+            "poliklinik": "Poli Jantung"
+          },
+          {
+            "id": "hipertensi",
+            "nama": "Hipertensi (Tekanan Darah Tinggi)",
+            "deskripsi": "Kondisi tekanan darah yang terus-menerus tinggi, meningkatkan risiko penyakit jantung dan stroke.",
+            "gejala": ["Sakit kepala", "Sesak napas", "Mimisan", "Sering tanpa gejala"],
+            "poliklinik": "Poli Jantung"
+          }
+        ]
+      },
+      {
+        "id": "paru-paru",
+        "nama": "Paru-Paru",
+        "icon": "fa-lungs",
+        "penyakit": [
+          {
+            "id": "asma",
+            "nama": "Asma Bronkial",
+            "deskripsi": "Penyakit kronis yang menyebabkan penyempitan dan peradangan saluran napas.",
+            "gejala": ["Sesak napas", "Mengi (wheezing)", "Batuk terutama malam hari", "Dada terasa sesak"],
+            "poliklinik": "Poli Paru"
+          },
+          {
+            "id": "pneumonia",
+            "nama": "Pneumonia",
+            "deskripsi": "Infeksi yang menyebabkan peradangan pada kantung udara di paru-paru.",
+            "gejala": ["Batuk berdahak", "Demam tinggi", "Sesak napas", "Nyeri dada saat bernapas"],
+            "poliklinik": "Poli Paru"
+          },
+          {
+            "id": "tuberkulosis",
+            "nama": "Tuberkulosis (TBC)",
+            "deskripsi": "Infeksi bakteri Mycobacterium tuberculosis yang terutama menyerang paru-paru.",
+            "gejala": ["Batuk lebih dari 2 minggu", "Batuk berdarah", "Keringat malam", "Penurunan berat badan"],
+            "poliklinik": "Poli Paru"
+          },
+          {
+            "id": "ppok",
+            "nama": "PPOK (Penyakit Paru Obstruktif Kronik)",
+            "deskripsi": "Penyakit paru kronis yang menghalangi aliran udara dari paru-paru.",
+            "gejala": ["Sesak napas progresif", "Batuk kronis", "Produksi dahak berlebih", "Mengi"],
+            "poliklinik": "Poli Paru"
+          }
+        ]
+      },
+      {
+        "id": "kulit-dada",
+        "nama": "Kulit Dada",
+        "icon": "fa-shirt",
+        "penyakit": [
+          {
+            "id": "dermatitis",
+            "nama": "Dermatitis",
+            "deskripsi": "Peradangan pada kulit yang menyebabkan kemerahan, gatal, dan ruam.",
+            "gejala": ["Kulit merah dan gatal", "Ruam", "Kulit kering dan bersisik", "Bengkak"],
+            "poliklinik": "Poli Kulit dan Kelamin"
+          },
+          {
+            "id": "psoriasis",
+            "nama": "Psoriasis",
+            "deskripsi": "Penyakit autoimun yang menyebabkan pertumbuhan sel kulit berlebih dan membentuk bercak tebal bersisik.",
+            "gejala": ["Bercak merah tebal bersisik putih", "Kulit kering pecah-pecah", "Gatal dan nyeri", "Kuku menebal"],
+            "poliklinik": "Poli Kulit dan Kelamin"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "perut",
+    "nama": "Perut",
+    "icon": "fa-stomach",
+    "subArea": [
+      {
+        "id": "lambung",
+        "nama": "Lambung",
+        "icon": "fa-stomach",
+        "penyakit": [
+          {
+            "id": "gastritis",
+            "nama": "Gastritis (Maag)",
+            "deskripsi": "Peradangan pada dinding lambung yang menyebabkan nyeri ulu hati.",
+            "gejala": ["Nyeri ulu hati", "Mual dan muntah", "Perut kembung", "Hilang nafsu makan"],
+            "poliklinik": "Poli Penyakit Dalam"
+          },
+          {
+            "id": "gerd",
+            "nama": "GERD (Gastroesophageal Reflux Disease)",
+            "deskripsi": "Naiknya asam lambung ke kerongkongan yang menyebabkan rasa terbakar.",
+            "gejala": ["Heartburn", "Rasa asam di mulut", "Sulit menelan", "Batuk kronis"],
+            "poliklinik": "Poli Penyakit Dalam"
+          }
+        ]
+      },
+      {
+        "id": "usus",
+        "nama": "Usus",
+        "icon": "fa-intestine",
+        "penyakit": [
+          {
+            "id": "apendisitis",
+            "nama": "Apendisitis (Radang Usus Buntu)",
+            "deskripsi": "Peradangan pada usus buntu yang memerlukan penanganan segera.",
+            "gejala": ["Nyeri perut kanan bawah", "Demam", "Mual dan muntah", "Hilang nafsu makan"],
+            "poliklinik": "Poli Bedah"
+          },
+          {
+            "id": "hernia",
+            "nama": "Hernia",
+            "deskripsi": "Penonjolan organ tubuh melalui celah atau area lemah pada dinding otot yang mengelilinginya.",
+            "gejala": ["Benjolan di perut atau selangkangan", "Nyeri saat mengangkat beban", "Rasa berat di perut", "Nyeri saat batuk"],
+            "poliklinik": "Poli Bedah"
+          },
+          {
+            "id": "hemoroid",
+            "nama": "Hemoroid (Wasir)",
+            "deskripsi": "Pembengkakan pembuluh darah di area anus dan rektum bawah.",
+            "gejala": ["Pendarahan saat BAB", "Gatal di area anus", "Nyeri saat duduk", "Benjolan di anus"],
+            "poliklinik": "Poli Bedah"
+          }
+        ]
+      },
+      {
+        "id": "hati",
+        "nama": "Hati (Liver)",
+        "icon": "fa-liver",
+        "penyakit": [
+          {
+            "id": "hepatitis",
+            "nama": "Hepatitis",
+            "deskripsi": "Peradangan pada hati yang bisa disebabkan oleh virus, alkohol, atau penyebab lain.",
+            "gejala": ["Kuning pada kulit dan mata", "Kelelahan", "Nyeri perut kanan atas", "Urine berwarna gelap"],
+            "poliklinik": "Poli Penyakit Dalam"
+          },
+          {
+            "id": "perlemakan-hati",
+            "nama": "Perlemakan Hati (Fatty Liver)",
+            "deskripsi": "Penumpukan lemak berlebih dalam sel-sel hati.",
+            "gejala": ["Kelelahan", "Nyeri perut kanan atas", "Pembesaran hati", "Sering tanpa gejala"],
+            "poliklinik": "Poli Penyakit Dalam"
+          }
+        ]
+      },
+      {
+        "id": "ginjal",
+        "nama": "Ginjal",
+        "icon": "fa-kidneys",
+        "penyakit": [
+          {
+            "id": "batu-ginjal",
+            "nama": "Batu Ginjal",
+            "deskripsi": "Kristal keras yang terbentuk di dalam ginjal dari mineral dan garam.",
+            "gejala": ["Nyeri pinggang hebat", "Kencing berdarah", "Mual dan muntah", "Nyeri saat buang air kecil"],
+            "poliklinik": "Poli Penyakit Dalam"
+          },
+          {
+            "id": "gagal-ginjal",
+            "nama": "Gagal Ginjal Kronis",
+            "deskripsi": "Penurunan fungsi ginjal secara bertahap dalam jangka waktu lama.",
+            "gejala": ["Kelelahan", "Bengkak pada kaki", "Sesak napas", "Mual"],
+            "poliklinik": "Poli Penyakit Dalam"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaki",
+    "nama": "Kaki",
+    "icon": "fa-shoe-prints",
+    "subArea": [
+      {
+        "id": "pinggul",
+        "nama": "Pinggul",
+        "icon": "fa-hip",
+        "penyakit": [
+          {
+            "id": "nyeri-pinggul",
+            "nama": "Nyeri Pinggul (Hip Pain)",
+            "deskripsi": "Nyeri pada area sendi pinggul yang bisa disebabkan oleh arthritis, cedera, atau peradangan.",
+            "gejala": ["Nyeri pinggul", "Kaku sendi", "Sulit berjalan", "Pincang"],
+            "poliklinik": "Poli Rehabilitasi Medik"
+          }
+        ]
+      },
+      {
+        "id": "lutut",
+        "nama": "Lutut",
+        "icon": "fa-knee",
+        "penyakit": [
+          {
+            "id": "osteoarthritis-lutut",
+            "nama": "Osteoarthritis Lutut",
+            "deskripsi": "Keausan tulang rawan pada sendi lutut yang menyebabkan nyeri dan bengkak.",
+            "gejala": ["Nyeri lutut", "Bengkak", "Kaku terutama pagi hari", "Bunyi saat digerakkan"],
+            "poliklinik": "Poli Rehabilitasi Medik"
+          },
+          {
+            "id": "cedera-ligamen-lutut",
+            "nama": "Cedera Ligamen Lutut",
+            "deskripsi": "Robekan pada ligamen lutut yang sering terjadi saat berolahraga.",
+            "gejala": ["Bunyi 'pop' saat cedera", "Bengkak cepat", "Lutut tidak stabil", "Nyeri hebat"],
+            "poliklinik": "Poli Rehabilitasi Medik"
+          }
+        ]
+      },
+      {
+        "id": "betis",
+        "nama": "Betis dan Tulang Kering",
+        "icon": "fa-leg",
+        "penyakit": [
+          {
+            "id": "nyeri-muskuloskeletal",
+            "nama": "Nyeri Muskuloskeletal Kaki",
+            "deskripsi": "Nyeri pada otot, tendon, atau tulang kaki akibat aktivitas berlebihan atau cedera.",
+            "gejala": ["Nyeri otot kaki", "Kram", "Kaku", "Bengkak ringan"],
+            "poliklinik": "Poli Rehabilitasi Medik"
+          }
+        ]
+      },
+      {
+        "id": "telapak-kaki",
+        "nama": "Telapak Kaki dan Jari Kaki",
+        "icon": "fa-foot",
+        "penyakit": [
+          {
+            "id": "asam-urat",
+            "nama": "Gout (Asam Urat)",
+            "deskripsi": "Bentuk arthritis yang ditandai dengan serangan nyeri mendadak pada sendi, terutama jempol kaki.",
+            "gejala": ["Nyeri sendi mendadak dan hebat", "Sendi merah dan bengkak", "Rasa panas pada sendi", "Serangan sering malam hari"],
+            "poliklinik": "Poli Penyakit Dalam"
+          },
+          {
+            "id": "plantar-fasciitis",
+            "nama": "Plantar Fasciitis",
+            "deskripsi": "Peradangan pada jaringan tebal di bagian bawah kaki yang menghubungkan tulang tumit ke jari kaki.",
+            "gejala": ["Nyeri tumit terutama pagi hari", "Nyeri setelah berdiri lama", "Kaku pada telapak kaki", "Nyeri membaik saat bergerak"],
+            "poliklinik": "Poli Rehabilitasi Medik"
+          }
+        ]
+      },
+      {
+        "id": "kulit-kaki",
+        "nama": "Kulit Kaki",
+        "icon": "fa-socks",
+        "penyakit": [
+          {
+            "id": "infeksi-kulit-kaki",
+            "nama": "Infeksi Jamur Kaki (Tinea Pedis)",
+            "deskripsi": "Infeksi jamur pada kulit kaki, terutama di sela-sela jari kaki.",
+            "gejala": ["Kulit mengelupas di sela jari", "Gatal", "Kulit kemerahan", "Kulit pecah-pecah"],
+            "poliklinik": "Poli Kulit dan Kelamin"
+          },
+          {
+            "id": "eksim-kaki",
+            "nama": "Eksim (Dermatitis) Kaki",
+            "deskripsi": "Peradangan kulit kronis pada area kaki yang menyebabkan kulit kering, gatal, dan kemerahan.",
+            "gejala": ["Kulit kering dan bersisik", "Gatal hebat", "Kemerahan", "Kulit menebal"],
+            "poliklinik": "Poli Kulit dan Kelamin"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "panggul-reproduksi",
+    "nama": "Panggul dan Reproduksi",
+    "icon": "fa-person-dress",
+    "subArea": [
+      {
+        "id": "organ-reproduksi-wanita",
+        "nama": "Organ Reproduksi Wanita",
+        "icon": "fa-venus",
+        "penyakit": [
+          {
+            "id": "kista-ovarium",
+            "nama": "Kista Ovarium",
+            "deskripsi": "Kantong berisi cairan yang terbentuk di dalam atau pada ovarium (indung telur).",
+            "gejala": ["Nyeri panggul", "Siklus menstruasi tidak teratur", "Perut terasa penuh", "Nyeri saat berhubungan"],
+            "poliklinik": "Poli Kebidanan dan Kandungan"
+          },
+          {
+            "id": "miom",
+            "nama": "Mioma Uteri (Miom)",
+            "deskripsi": "Tumor jinak yang tumbuh di dinding rahim.",
+            "gejala": ["Menstruasi berlebihan", "Nyeri panggul", "Sering buang air kecil", "Sembelit"],
+            "poliklinik": "Poli Kebidanan dan Kandungan"
+          },
+          {
+            "id": "endometriosis",
+            "nama": "Endometriosis",
+            "deskripsi": "Kondisi di mana jaringan yang membentuk lapisan dalam rahim tumbuh di luar rahim.",
+            "gejala": ["Nyeri hebat saat menstruasi", "Nyeri panggul kronis", "Nyeri saat berhubungan", "Infertilitas"],
+            "poliklinik": "Poli Kebidanan dan Kandungan"
+          },
+          {
+            "id": "preeklampsia",
+            "nama": "Preeklampsia",
+            "deskripsi": "Komplikasi kehamilan yang ditandai dengan tekanan darah tinggi dan tanda kerusakan organ.",
+            "gejala": ["Tekanan darah tinggi", "Protein dalam urine", "Sakit kepala hebat", "Bengkak pada tangan dan wajah"],
+            "poliklinik": "Poli Kebidanan dan Kandungan"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "seluruh-tubuh",
+    "nama": "Sistemik / Seluruh Tubuh",
+    "icon": "fa-child",
+    "subArea": [
+      {
+        "id": "darah-dan-imun",
+        "nama": "Darah dan Sistem Imun",
+        "icon": "fa-droplet",
+        "penyakit": [
+          {
+            "id": "anemia",
+            "nama": "Anemia",
+            "deskripsi": "Kondisi kekurangan sel darah merah atau hemoglobin yang sehat.",
+            "gejala": ["Kelelahan", "Kulit pucat", "Sesak napas", "Pusing"],
+            "poliklinik": "Laboratorium Patologi Klinik"
+          },
+          {
+            "id": "leukemia",
+            "nama": "Leukemia",
+            "deskripsi": "Kanker jaringan pembentuk darah tubuh, termasuk tulang sumsum dan sistem limfatik.",
+            "gejala": ["Demam atau menggigil", "Kelelahan parah", "Sering infeksi", "Mudah memar atau berdarah"],
+            "poliklinik": "Laboratorium Patologi Klinik"
+          },
+          {
+            "id": "demam-berdarah",
+            "nama": "Demam Berdarah Dengue (DBD)",
+            "deskripsi": "Infeksi virus dengue yang ditularkan oleh nyamuk, mempengaruhi darah dan trombosit.",
+            "gejala": ["Demam tinggi mendadak", "Nyeri sendi dan otot", "Ruam kulit", "Pendarahan ringan"],
+            "poliklinik": "Laboratorium Patologi Klinik"
+          }
+        ]
+      },
+      {
+        "id": "kondisi-kritis-dan-nyeri",
+        "nama": "Kondisi Kritis dan Manajemen Nyeri",
+        "icon": "fa-heart-pulse",
+        "penyakit": [
+          {
+            "id": "nyeri-pasca-operasi",
+            "nama": "Nyeri Pasca Operasi",
+            "deskripsi": "Nyeri akut yang terjadi setelah prosedur pembedahan yang memerlukan manajemen khusus.",
+            "gejala": ["Nyeri hebat di area operasi", "Keterbatasan gerak", "Peningkatan detak jantung", "Sulit tidur"],
+            "poliklinik": "Poli Anestesi"
+          },
+          {
+            "id": "gagal-napas-akut",
+            "nama": "Gagal Napas Akut",
+            "deskripsi": "Kondisi darurat di mana paru-paru tidak dapat memberikan cukup oksigen ke darah.",
+            "gejala": ["Sesak napas berat", "Kulit kebiruan", "Kebingungan", "Penurunan kesadaran"],
+            "poliklinik": "Poli Anestesi"
+          },
+          {
+            "id": "syok",
+            "nama": "Syok (Medis)",
+            "deskripsi": "Kondisi kritis akibat aliran darah yang tidak memadai ke seluruh tubuh.",
+            "gejala": ["Tekanan darah sangat rendah", "Napas cepat", "Kulit dingin dan pucat", "Nadi cepat dan lemah"],
+            "poliklinik": "Poli Anestesi"
+          }
+        ]
+      },
+      {
+        "id": "kelainan-struktural",
+        "nama": "Kelainan Struktural dan Tumor",
+        "icon": "fa-x-ray",
+        "penyakit": [
+          {
+            "id": "fraktur",
+            "nama": "Fraktur (Patah Tulang)",
+            "deskripsi": "Terputusnya kontinuitas tulang yang biasanya disebabkan oleh trauma atau cedera.",
+            "gejala": ["Nyeri hebat pada area cedera", "Bengkak", "Perubahan bentuk tulang", "Sulit digerakkan"],
+            "poliklinik": "Poli Radiologi"
+          },
+          {
+            "id": "tumor-jinak",
+            "nama": "Tumor Jinak",
+            "deskripsi": "Pertumbuhan sel abnormal yang tidak menyebar ke bagian tubuh lain.",
+            "gejala": ["Benjolan yang dapat diraba", "Sering tanpa gejala", "Tergantung lokasi pertumbuhan"],
+            "poliklinik": "Poli Radiologi"
+          },
+          {
+            "id": "kanker",
+            "nama": "Kanker (Tumor Ganas)",
+            "deskripsi": "Pertumbuhan sel abnormal yang dapat menyebar dan merusak jaringan sekitarnya.",
+            "gejala": ["Penurunan berat badan tanpa sebab", "Benjolan menetap", "Kelelahan kronis", "Nyeri berulang"],
+            "poliklinik": "Poli Radiologi"
+          }
+        ]
+      }
+    ]
+  }
+]

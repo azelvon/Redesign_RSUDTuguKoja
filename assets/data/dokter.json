@@ -1,0 +1,613 @@
+[
+  {
+    "id": "dr-001",
+    "nama": "dr. Hendra Pratama Wijaya, Sp.OG",
+    "foto": "assets/img/dokter/default-male.png",
+    "spesialisasi": "Spesialis Kebidanan dan Kandungan",
+    "poliklinik": ["Poli Kebidanan dan Kandungan"],
+    "deskripsi": "Dokter spesialis kebidanan dan kandungan berpengalaman lebih dari 15 tahun dalam menangani berbagai kasus obstetri dan ginekologi. Memiliki keahlian khusus dalam penanganan kehamilan risiko tinggi dan persalinan operatif.",
+    "pendidikan": [
+      "Fakultas Kedokteran Universitas Indonesia",
+      "Spesialis Obstetri dan Ginekologi - Universitas Gadjah Mada"
+    ],
+    "keahlian": ["kista-ovarium", "miom", "endometriosis", "preeklampsia"],
+    "jadwal": [
+      { "hari": "Senin", "pagi": null, "sore": "14:00-16:00" },
+      { "hari": "Selasa", "pagi": "09:00-12:00", "sore": null },
+      { "hari": "Rabu", "pagi": null, "sore": "14:00-16:00" },
+      { "hari": "Kamis", "pagi": "09:00-12:00", "sore": "13:00-15:00" },
+      { "hari": "Jumat", "pagi": null, "sore": null },
+      { "hari": "Sabtu", "pagi": "09:00-12:00", "sore": null }
+    ]
+  },
+  {
+    "id": "dr-002",
+    "nama": "dr. Sinta Maharani, Sp.OG",
+    "foto": "assets/img/dokter/default-female.png",
+    "spesialisasi": "Spesialis Kebidanan dan Kandungan",
+    "poliklinik": ["Poli Kebidanan dan Kandungan"],
+    "deskripsi": "Dokter spesialis kebidanan dan kandungan yang fokus pada kesehatan reproduksi wanita dan perawatan prenatal. Berdedikasi dalam memberikan layanan komprehensif bagi ibu hamil.",
+    "pendidikan": [
+      "Fakultas Kedokteran Universitas Padjadjaran",
+      "Spesialis Obstetri dan Ginekologi - Universitas Indonesia"
+    ],
+    "keahlian": ["kista-ovarium", "miom", "endometriosis", "preeklampsia"],
+    "jadwal": [
+      { "hari": "Senin", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Selasa", "pagi": null, "sore": "14:00-16:00" },
+      { "hari": "Rabu", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Kamis", "pagi": null, "sore": null },
+      { "hari": "Jumat", "pagi": "08:00-11:00", "sore": "13:00-15:00" },
+      { "hari": "Sabtu", "pagi": null, "sore": null }
+    ]
+  },
+  {
+    "id": "dr-003",
+    "nama": "dr. Ratna Kusumawati, Sp.PD",
+    "foto": "assets/img/dokter/default-female.png",
+    "spesialisasi": "Spesialis Penyakit Dalam",
+    "poliklinik": ["Poli Penyakit Dalam"],
+    "deskripsi": "Dokter spesialis penyakit dalam dengan keahlian di bidang gastroenterologi dan hepatologi. Berpengalaman dalam penanganan penyakit kronis dan degeneratif.",
+    "pendidikan": [
+      "Fakultas Kedokteran Universitas Diponegoro",
+      "Spesialis Penyakit Dalam - Universitas Indonesia"
+    ],
+    "keahlian": ["gastritis", "gerd", "hepatitis", "perlemakan-hati", "batu-ginjal"],
+    "jadwal": [
+      { "hari": "Senin", "pagi": "08:30-11:30", "sore": null },
+      { "hari": "Selasa", "pagi": "08:30-11:30", "sore": null },
+      { "hari": "Rabu", "pagi": "08:30-11:30", "sore": null },
+      { "hari": "Kamis", "pagi": "08:30-11:30", "sore": null },
+      { "hari": "Jumat", "pagi": "08:30-11:30", "sore": null },
+      { "hari": "Sabtu", "pagi": null, "sore": null }
+    ]
+  },
+  {
+    "id": "dr-004",
+    "nama": "dr. Daniel Hutapea, Sp.PD",
+    "foto": "assets/img/dokter/default-male.png",
+    "spesialisasi": "Spesialis Penyakit Dalam",
+    "poliklinik": ["Poli Penyakit Dalam"],
+    "deskripsi": "Dokter spesialis penyakit dalam yang mendalami bidang endokrinologi dan metabolisme. Aktif dalam edukasi pencegahan penyakit tidak menular kepada masyarakat.",
+    "pendidikan": [
+      "Fakultas Kedokteran Universitas Sumatera Utara",
+      "Spesialis Penyakit Dalam - Universitas Padjadjaran"
+    ],
+    "keahlian": ["hipertiroid", "hipotiroid", "asam-urat", "gastritis", "gagal-ginjal"],
+    "jadwal": [
+      { "hari": "Senin", "pagi": null, "sore": null },
+      { "hari": "Selasa", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Rabu", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Kamis", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Jumat", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Sabtu", "pagi": "08:00-11:00", "sore": null }
+    ]
+  },
+  {
+    "id": "dr-005",
+    "nama": "dr. Firman Harahap, Sp.PD, FINASIM",
+    "foto": "assets/img/dokter/default-male.png",
+    "spesialisasi": "Spesialis Penyakit Dalam",
+    "poliklinik": ["Poli Penyakit Dalam"],
+    "deskripsi": "Konsultan penyakit dalam dengan gelar Fellowship Indonesian Association of Internal Medicine. Memiliki pengalaman luas dalam tatalaksana penyakit dalam kompleks dan multisistem.",
+    "pendidikan": [
+      "Fakultas Kedokteran Universitas Hasanuddin",
+      "Spesialis Penyakit Dalam - Universitas Airlangga",
+      "Fellowship PAPDI (FINASIM)"
+    ],
+    "keahlian": ["gagal-ginjal", "hepatitis", "perlemakan-hati", "gerd", "batu-ginjal"],
+    "jadwal": [
+      { "hari": "Senin", "pagi": null, "sore": "13:00-15:00" },
+      { "hari": "Selasa", "pagi": null, "sore": "13:00-15:00" },
+      { "hari": "Rabu", "pagi": null, "sore": "13:00-15:00" },
+      { "hari": "Kamis", "pagi": null, "sore": "13:00-15:00" },
+      { "hari": "Jumat", "pagi": null, "sore": "13:00-15:00" },
+      { "hari": "Sabtu", "pagi": null, "sore": null }
+    ]
+  },
+  {
+    "id": "dr-006",
+    "nama": "dr. Anisa Putri Rahmawati, Sp.A",
+    "foto": "assets/img/dokter/default-female.png",
+    "spesialisasi": "Spesialis Anak",
+    "poliklinik": ["Poli Anak"],
+    "deskripsi": "Dokter spesialis anak yang berdedikasi dalam tumbuh kembang anak dan imunisasi. Dikenal ramah dan sabar dalam menangani pasien anak-anak.",
+    "pendidikan": [
+      "Fakultas Kedokteran Universitas Airlangga",
+      "Spesialis Ilmu Kesehatan Anak - Universitas Indonesia"
+    ],
+    "keahlian": ["asma", "pneumonia", "dermatitis", "otitis-media", "gastritis"],
+    "jadwal": [
+      { "hari": "Senin", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Selasa", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Rabu", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Kamis", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Jumat", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Sabtu", "pagi": null, "sore": null }
+    ]
+  },
+  {
+    "id": "dr-007",
+    "nama": "dr. Bagus Setiawan, M.Sc., Sp.A",
+    "foto": "assets/img/dokter/default-male.png",
+    "spesialisasi": "Spesialis Anak",
+    "poliklinik": ["Poli Anak"],
+    "deskripsi": "Dokter spesialis anak dengan gelar Master of Science dalam bidang pediatri tropis. Memiliki minat khusus dalam penanganan penyakit infeksi dan demam pada anak.",
+    "pendidikan": [
+      "Fakultas Kedokteran Universitas Gadjah Mada",
+      "M.Sc. Tropical Pediatrics - Universitas Gadjah Mada",
+      "Spesialis Ilmu Kesehatan Anak - Universitas Diponegoro"
+    ],
+    "keahlian": ["pneumonia", "tuberkulosis", "gastritis", "rinitis-alergi", "dermatitis"],
+    "jadwal": [
+      { "hari": "Senin", "pagi": null, "sore": "13:00-15:00" },
+      { "hari": "Selasa", "pagi": null, "sore": "13:00-15:00" },
+      { "hari": "Rabu", "pagi": null, "sore": "13:00-15:00" },
+      { "hari": "Kamis", "pagi": null, "sore": "13:00-15:00" },
+      { "hari": "Jumat", "pagi": null, "sore": null },
+      { "hari": "Sabtu", "pagi": "08:00-11:00", "sore": null }
+    ]
+  },
+  {
+    "id": "dr-008",
+    "nama": "dr. Clara Handayani, Sp.M",
+    "foto": "assets/img/dokter/default-female.png",
+    "spesialisasi": "Spesialis Mata",
+    "poliklinik": ["Poli Mata"],
+    "deskripsi": "Dokter spesialis mata dengan keahlian dalam bedah katarak dan kelainan refraksi. Berpengalaman menggunakan teknologi terkini dalam diagnosis dan terapi penyakit mata.",
+    "pendidikan": [
+      "Fakultas Kedokteran Universitas Indonesia",
+      "Spesialis Ilmu Kesehatan Mata - Universitas Padjadjaran"
+    ],
+    "keahlian": ["katarak", "kelainan-refraksi", "glaukoma", "konjungtivitis", "mata-kering"],
+    "jadwal": [
+      { "hari": "Senin", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Selasa", "pagi": null, "sore": "12:00-14:00" },
+      { "hari": "Rabu", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Kamis", "pagi": null, "sore": null },
+      { "hari": "Jumat", "pagi": null, "sore": null },
+      { "hari": "Sabtu", "pagi": null, "sore": null }
+    ]
+  },
+  {
+    "id": "dr-009",
+    "nama": "dr. Rizky Aditya Nugroho, Sp.M",
+    "foto": "assets/img/dokter/default-male.png",
+    "spesialisasi": "Spesialis Mata",
+    "poliklinik": ["Poli Mata"],
+    "deskripsi": "Dokter spesialis mata yang fokus pada penanganan penyakit retina dan vitreous. Aktif dalam penelitian di bidang oftalmologi dan menjadi pembicara di berbagai seminar kesehatan mata.",
+    "pendidikan": [
+      "Fakultas Kedokteran Universitas Brawijaya",
+      "Spesialis Ilmu Kesehatan Mata - Universitas Airlangga"
+    ],
+    "keahlian": ["mata-kering", "konjungtivitis", "katarak", "glaukoma", "kelainan-refraksi"],
+    "jadwal": [
+      { "hari": "Senin", "pagi": null, "sore": null },
+      { "hari": "Selasa", "pagi": null, "sore": null },
+      { "hari": "Rabu", "pagi": null, "sore": null },
+      { "hari": "Kamis", "pagi": null, "sore": "13:00-15:00" },
+      { "hari": "Jumat", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Sabtu", "pagi": "08:00-11:00", "sore": null }
+    ]
+  },
+  {
+    "id": "dr-010",
+    "nama": "dr. Nadia Fitriani, Sp.P",
+    "foto": "assets/img/dokter/default-female.png",
+    "spesialisasi": "Spesialis Paru",
+    "poliklinik": ["Poli Paru", "Klinik TB-RO"],
+    "deskripsi": "Dokter spesialis paru yang berpengalaman dalam penanganan tuberkulosis dan penyakit paru obstruktif. Aktif dalam program penanggulangan TB di tingkat daerah.",
+    "pendidikan": [
+      "Fakultas Kedokteran Universitas Sebelas Maret",
+      "Spesialis Pulmonologi dan Kedokteran Respirasi - Universitas Indonesia"
+    ],
+    "keahlian": ["tuberkulosis", "asma", "ppok", "pneumonia"],
+    "jadwal": [
+      { "hari": "Senin", "pagi": null, "sore": null },
+      { "hari": "Selasa", "pagi": "08:00-11:00", "sore": "12:00-14:00" },
+      { "hari": "Rabu", "pagi": null, "sore": null },
+      { "hari": "Kamis", "pagi": "08:00-11:00", "sore": "12:00-14:00" },
+      { "hari": "Jumat", "pagi": null, "sore": null },
+      { "hari": "Sabtu", "pagi": "08:00-11:00", "sore": null }
+    ]
+  },
+  {
+    "id": "dr-011",
+    "nama": "dr. Arief Rahman, Sp.P",
+    "foto": "assets/img/dokter/default-male.png",
+    "spesialisasi": "Spesialis Paru",
+    "poliklinik": ["Poli Paru", "Klinik TB-RO"],
+    "deskripsi": "Dokter spesialis paru dengan minat khusus dalam onkologi paru dan intervensi pulmonologi. Berpengalaman dalam prosedur bronkoskopi diagnostik dan terapeutik.",
+    "pendidikan": [
+      "Fakultas Kedokteran Universitas Padjadjaran",
+      "Spesialis Pulmonologi dan Kedokteran Respirasi - Universitas Padjadjaran"
+    ],
+    "keahlian": ["pneumonia", "ppok", "tuberkulosis", "asma"],
+    "jadwal": [
+      { "hari": "Senin", "pagi": "08:00-11:00", "sore": "12:00-15:00" },
+      { "hari": "Selasa", "pagi": null, "sore": null },
+      { "hari": "Rabu", "pagi": "08:00-11:00", "sore": "13:00-15:00" },
+      { "hari": "Kamis", "pagi": null, "sore": null },
+      { "hari": "Jumat", "pagi": null, "sore": "13:00-15:00" },
+      { "hari": "Sabtu", "pagi": null, "sore": null }
+    ]
+  },
+  {
+    "id": "dr-012",
+    "nama": "dr. Dewi Kartika Sari, Sp.DV",
+    "foto": "assets/img/dokter/default-female.png",
+    "spesialisasi": "Spesialis Kulit dan Kelamin",
+    "poliklinik": ["Poli Kulit dan Kelamin"],
+    "deskripsi": "Dokter spesialis kulit dan kelamin yang ahli dalam penanganan berbagai kelainan kulit, penyakit menular seksual, dan dermatologi kosmetik.",
+    "pendidikan": [
+      "Fakultas Kedokteran Universitas Gadjah Mada",
+      "Spesialis Dermatologi dan Venereologi - Universitas Indonesia"
+    ],
+    "keahlian": ["dermatitis", "psoriasis", "infeksi-kulit-kaki", "eksim-kaki"],
+    "jadwal": [
+      { "hari": "Senin", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Selasa", "pagi": "08:00-11:00", "sore": "12:00-14:00" },
+      { "hari": "Rabu", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Kamis", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Jumat", "pagi": null, "sore": null },
+      { "hari": "Sabtu", "pagi": null, "sore": null }
+    ]
+  },
+  {
+    "id": "dr-013",
+    "nama": "dr. Wahyu Nugroho, Sp.KFR",
+    "foto": "assets/img/dokter/default-male.png",
+    "spesialisasi": "Spesialis Kedokteran Fisik dan Rehabilitasi",
+    "poliklinik": ["Poli Rehabilitasi Medik"],
+    "deskripsi": "Dokter spesialis kedokteran fisik dan rehabilitasi yang fokus pada pemulihan fungsi tubuh pasca cedera dan stroke. Berpengalaman dalam program rehabilitasi komprehensif.",
+    "pendidikan": [
+      "Fakultas Kedokteran Universitas Indonesia",
+      "Spesialis Kedokteran Fisik dan Rehabilitasi - Universitas Indonesia"
+    ],
+    "keahlian": ["frozen-shoulder", "tennis-elbow", "osteoarthritis-lutut", "nyeri-muskuloskeletal", "plantar-fasciitis"],
+    "jadwal": [
+      { "hari": "Senin", "pagi": null, "sore": "14:30-16:30" },
+      { "hari": "Selasa", "pagi": null, "sore": "14:30-16:30" },
+      { "hari": "Rabu", "pagi": null, "sore": "14:30-16:30" },
+      { "hari": "Kamis", "pagi": null, "sore": "14:30-16:30" },
+      { "hari": "Jumat", "pagi": null, "sore": "14:30-16:30" },
+      { "hari": "Sabtu", "pagi": null, "sore": null }
+    ]
+  },
+  {
+    "id": "dr-014",
+    "nama": "dr. Maya Anggraini, Sp.THT",
+    "foto": "assets/img/dokter/default-female.png",
+    "spesialisasi": "Spesialis THT",
+    "poliklinik": ["Poli THT"],
+    "deskripsi": "Dokter spesialis THT-KL dengan keahlian dalam penanganan gangguan telinga, hidung, dan tenggorokan. Berpengalaman dalam tindakan bedah minor THT.",
+    "pendidikan": [
+      "Fakultas Kedokteran Universitas Airlangga",
+      "Spesialis THT-KL - Universitas Airlangga"
+    ],
+    "keahlian": ["sinusitis", "tonsilitis", "gangguan-pendengaran", "vertigo", "polip-hidung"],
+    "jadwal": [
+      { "hari": "Senin", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Selasa", "pagi": null, "sore": null },
+      { "hari": "Rabu", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Kamis", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Jumat", "pagi": null, "sore": null },
+      { "hari": "Sabtu", "pagi": null, "sore": null }
+    ]
+  },
+  {
+    "id": "dr-015",
+    "nama": "dr. Fajar Kurniawan, Sp.THT",
+    "foto": "assets/img/dokter/default-male.png",
+    "spesialisasi": "Spesialis THT",
+    "poliklinik": ["Poli THT"],
+    "deskripsi": "Dokter spesialis THT-KL yang fokus pada penanganan gangguan keseimbangan dan rinologi. Aktif mengikuti perkembangan terkini dalam bidang THT.",
+    "pendidikan": [
+      "Fakultas Kedokteran Universitas Diponegoro",
+      "Spesialis THT-KL - Universitas Gadjah Mada"
+    ],
+    "keahlian": ["rinitis-alergi", "otitis-media", "faringitis", "epistaksis", "laringitis"],
+    "jadwal": [
+      { "hari": "Senin", "pagi": null, "sore": null },
+      { "hari": "Selasa", "pagi": "09:00-11:00", "sore": "15:00-17:00" },
+      { "hari": "Rabu", "pagi": null, "sore": null },
+      { "hari": "Kamis", "pagi": null, "sore": "15:00-17:00" },
+      { "hari": "Jumat", "pagi": "09:00-11:00", "sore": "15:00-17:00" },
+      { "hari": "Sabtu", "pagi": null, "sore": null }
+    ]
+  },
+  {
+    "id": "dr-016",
+    "nama": "dr. Ahmad Fauzi, M.Si.Med., Sp.B",
+    "foto": "assets/img/dokter/default-male.png",
+    "spesialisasi": "Spesialis Bedah",
+    "poliklinik": ["Poli Bedah"],
+    "deskripsi": "Dokter spesialis bedah umum dengan gelar Magister Ilmu Biomedik. Berpengalaman dalam operasi bedah digestif dan bedah laparoskopi minimal invasif.",
+    "pendidikan": [
+      "Fakultas Kedokteran Universitas Diponegoro",
+      "M.Si.Med. Ilmu Biomedik - Universitas Diponegoro",
+      "Spesialis Bedah - Universitas Diponegoro"
+    ],
+    "keahlian": ["hernia", "apendisitis", "hemoroid"],
+    "jadwal": [
+      { "hari": "Senin", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Selasa", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Rabu", "pagi": null, "sore": "15:00-17:00" },
+      { "hari": "Kamis", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Jumat", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Sabtu", "pagi": null, "sore": null }
+    ]
+  },
+  {
+    "id": "dr-017",
+    "nama": "dr. Dian Permata, Sp.B",
+    "foto": "assets/img/dokter/default-female.png",
+    "spesialisasi": "Spesialis Bedah",
+    "poliklinik": ["Poli Bedah"],
+    "deskripsi": "Dokter spesialis bedah umum yang berpengalaman dalam penanganan kasus trauma dan bedah onkologi. Memiliki pendekatan holistik dalam perawatan pasien bedah.",
+    "pendidikan": [
+      "Fakultas Kedokteran Universitas Padjadjaran",
+      "Spesialis Bedah - Universitas Indonesia"
+    ],
+    "keahlian": ["apendisitis", "hemoroid", "hernia"],
+    "jadwal": [
+      { "hari": "Senin", "pagi": null, "sore": "13:00-15:00" },
+      { "hari": "Selasa", "pagi": null, "sore": "13:00-15:00" },
+      { "hari": "Rabu", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Kamis", "pagi": null, "sore": "15:00-17:00" },
+      { "hari": "Jumat", "pagi": null, "sore": "15:00-17:00" },
+      { "hari": "Sabtu", "pagi": null, "sore": null }
+    ]
+  },
+  {
+    "id": "dr-018",
+    "nama": "drg. Larasati Dewi, Sp.KG",
+    "foto": "assets/img/dokter/default-female.png",
+    "spesialisasi": "Spesialis Konservasi Gigi",
+    "poliklinik": ["Poli Gigi dan Mulut"],
+    "deskripsi": "Dokter gigi spesialis konservasi gigi yang ahli dalam perawatan saluran akar dan restorasi gigi. Mengutamakan pendekatan konservatif untuk mempertahankan gigi alami pasien.",
+    "pendidikan": [
+      "Fakultas Kedokteran Gigi Universitas Indonesia",
+      "Spesialis Konservasi Gigi - Universitas Indonesia"
+    ],
+    "keahlian": ["pulpitis", "karies-gigi", "gingivitis"],
+    "jadwal": [
+      { "hari": "Senin", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Selasa", "pagi": "08:00-11:00", "sore": "12:00-14:00" },
+      { "hari": "Rabu", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Kamis", "pagi": null, "sore": null },
+      { "hari": "Jumat", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Sabtu", "pagi": null, "sore": null }
+    ]
+  },
+  {
+    "id": "dr-019",
+    "nama": "drg. Putri Amelia, Sp.KG",
+    "foto": "assets/img/dokter/default-female.png",
+    "spesialisasi": "Spesialis Konservasi Gigi",
+    "poliklinik": ["Poli Gigi dan Mulut"],
+    "deskripsi": "Dokter gigi spesialis konservasi gigi yang fokus pada kedokteran gigi estetik dan endodontik. Berdedikasi memberikan perawatan gigi terbaik dengan teknologi modern.",
+    "pendidikan": [
+      "Fakultas Kedokteran Gigi Universitas Trisakti",
+      "Spesialis Konservasi Gigi - Universitas Padjadjaran"
+    ],
+    "keahlian": ["pulpitis", "karies-gigi", "gingivitis"],
+    "jadwal": [
+      { "hari": "Senin", "pagi": null, "sore": null },
+      { "hari": "Selasa", "pagi": null, "sore": null },
+      { "hari": "Rabu", "pagi": null, "sore": null },
+      { "hari": "Kamis", "pagi": null, "sore": "12:00-14:00" },
+      { "hari": "Jumat", "pagi": null, "sore": "12:00-14:00" },
+      { "hari": "Sabtu", "pagi": "08:00-11:00", "sore": null }
+    ]
+  },
+  {
+    "id": "dr-020",
+    "nama": "dr. Budi Santoso, Sp.N",
+    "foto": "assets/img/dokter/default-male.png",
+    "spesialisasi": "Spesialis Saraf",
+    "poliklinik": ["Poli Saraf"],
+    "deskripsi": "Dokter spesialis saraf dengan keahlian dalam penanganan stroke dan epilepsi. Berpengalaman dalam pemeriksaan elektroensefalografi (EEG) dan elektromiografi (EMG).",
+    "pendidikan": [
+      "Fakultas Kedokteran Universitas Indonesia",
+      "Spesialis Neurologi - Universitas Indonesia"
+    ],
+    "keahlian": ["stroke", "epilepsi", "migrain", "neuropati-tangan", "demensia"],
+    "jadwal": [
+      { "hari": "Senin", "pagi": "07:00-11:00", "sore": null },
+      { "hari": "Selasa", "pagi": "07:00-11:00", "sore": null },
+      { "hari": "Rabu", "pagi": null, "sore": "13:00-16:00" },
+      { "hari": "Kamis", "pagi": "07:00-11:00", "sore": null },
+      { "hari": "Jumat", "pagi": "07:00-11:00", "sore": null },
+      { "hari": "Sabtu", "pagi": null, "sore": null }
+    ]
+  },
+  {
+    "id": "dr-021",
+    "nama": "dr. Raka Mahendra, Sp.N",
+    "foto": "assets/img/dokter/default-male.png",
+    "spesialisasi": "Spesialis Saraf",
+    "poliklinik": ["Poli Saraf"],
+    "deskripsi": "Dokter spesialis saraf yang mendalami bidang nyeri dan gangguan saraf tepi. Memiliki pendekatan multidisiplin dalam penanganan pasien neurologis.",
+    "pendidikan": [
+      "Fakultas Kedokteran Universitas Gadjah Mada",
+      "Spesialis Neurologi - Universitas Gadjah Mada"
+    ],
+    "keahlian": ["carpal-tunnel", "demensia", "migrain", "neuropati-tangan", "stroke"],
+    "jadwal": [
+      { "hari": "Senin", "pagi": null, "sore": "13:00-17:00" },
+      { "hari": "Selasa", "pagi": null, "sore": null },
+      { "hari": "Rabu", "pagi": "08:00-13:00", "sore": null },
+      { "hari": "Kamis", "pagi": null, "sore": "13:00-17:00" },
+      { "hari": "Jumat", "pagi": null, "sore": "13:00-17:00" },
+      { "hari": "Sabtu", "pagi": "08:00-13:00", "sore": null }
+    ]
+  },
+  {
+    "id": "dr-022",
+    "nama": "dr. Wulan Sari, Sp.JP",
+    "foto": "assets/img/dokter/default-female.png",
+    "spesialisasi": "Spesialis Jantung dan Pembuluh Darah",
+    "poliklinik": ["Poli Jantung"],
+    "deskripsi": "Dokter spesialis jantung dan pembuluh darah dengan keahlian dalam ekokardiografi dan penanganan gagal jantung. Aktif dalam program pencegahan penyakit kardiovaskular.",
+    "pendidikan": [
+      "Fakultas Kedokteran Universitas Indonesia",
+      "Spesialis Jantung dan Pembuluh Darah - Universitas Indonesia"
+    ],
+    "keahlian": ["penyakit-jantung-koroner", "gagal-jantung", "hipertensi", "aritmia"],
+    "jadwal": [
+      { "hari": "Senin", "pagi": null, "sore": null },
+      { "hari": "Selasa", "pagi": "08:00-12:00", "sore": null },
+      { "hari": "Rabu", "pagi": null, "sore": null },
+      { "hari": "Kamis", "pagi": "08:00-12:00", "sore": null },
+      { "hari": "Jumat", "pagi": null, "sore": null },
+      { "hari": "Sabtu", "pagi": "08:00-12:00", "sore": null }
+    ]
+  },
+  {
+    "id": "dr-023",
+    "nama": "dr. Tania Puspita, Sp.JP",
+    "foto": "assets/img/dokter/default-female.png",
+    "spesialisasi": "Spesialis Jantung dan Pembuluh Darah",
+    "poliklinik": ["Poli Jantung"],
+    "deskripsi": "Dokter spesialis jantung dan pembuluh darah yang berpengalaman dalam tatalaksana sindrom koroner akut dan intervensi kardiovaskular non-invasif.",
+    "pendidikan": [
+      "Fakultas Kedokteran Universitas Airlangga",
+      "Spesialis Jantung dan Pembuluh Darah - Universitas Airlangga"
+    ],
+    "keahlian": ["penyakit-jantung-koroner", "aritmia", "hipertensi", "gagal-jantung"],
+    "jadwal": [
+      { "hari": "Senin", "pagi": "08:00-12:00", "sore": null },
+      { "hari": "Selasa", "pagi": null, "sore": null },
+      { "hari": "Rabu", "pagi": "08:00-12:00", "sore": null },
+      { "hari": "Kamis", "pagi": null, "sore": null },
+      { "hari": "Jumat", "pagi": "08:00-12:00", "sore": null },
+      { "hari": "Sabtu", "pagi": null, "sore": null }
+    ]
+  },
+  {
+    "id": "dr-024",
+    "nama": "dr. Sri Mulyani, Sp.An",
+    "foto": "assets/img/dokter/default-female.png",
+    "spesialisasi": "Spesialis Anestesi",
+    "poliklinik": ["Poli Anestesi"],
+    "deskripsi": "Dokter spesialis anestesiologi dan terapi intensif dengan keahlian dalam manajemen nyeri perioperatif dan penanganan pasien kritis di ICU.",
+    "pendidikan": [
+      "Fakultas Kedokteran Universitas Sebelas Maret",
+      "Spesialis Anestesiologi dan Terapi Intensif - Universitas Gadjah Mada"
+    ],
+    "keahlian": ["nyeri-pasca-operasi", "gagal-napas-akut", "syok"],
+    "jadwal": [
+      { "hari": "Senin", "pagi": null, "sore": null },
+      { "hari": "Selasa", "pagi": "08:00-11:00", "sore": "12:00-14:00" },
+      { "hari": "Rabu", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Kamis", "pagi": null, "sore": null },
+      { "hari": "Jumat", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Sabtu", "pagi": "08:00-11:00", "sore": null }
+    ]
+  },
+  {
+    "id": "dr-025",
+    "nama": "dr. Kevin Wijaya, Sp.An",
+    "foto": "assets/img/dokter/default-male.png",
+    "spesialisasi": "Spesialis Anestesi",
+    "poliklinik": ["Poli Anestesi"],
+    "deskripsi": "Dokter spesialis anestesiologi yang fokus pada anestesi pediatri dan obstetri. Berpengalaman dalam penanganan jalan napas sulit dan anestesi untuk operasi darurat.",
+    "pendidikan": [
+      "Fakultas Kedokteran Universitas Padjadjaran",
+      "Spesialis Anestesiologi dan Terapi Intensif - Universitas Padjadjaran"
+    ],
+    "keahlian": ["nyeri-pasca-operasi", "gagal-napas-akut", "syok"],
+    "jadwal": [
+      { "hari": "Senin", "pagi": "08:00-12:00", "sore": null },
+      { "hari": "Selasa", "pagi": null, "sore": null },
+      { "hari": "Rabu", "pagi": null, "sore": "13:00-15:00" },
+      { "hari": "Kamis", "pagi": "08:00-12:00", "sore": "13:00-15:00" },
+      { "hari": "Jumat", "pagi": null, "sore": "13:00-15:00" },
+      { "hari": "Sabtu", "pagi": null, "sore": null }
+    ]
+  },
+  {
+    "id": "dr-026",
+    "nama": "dr. Andi Prasetya, Sp.PK",
+    "foto": "assets/img/dokter/default-male.png",
+    "spesialisasi": "Spesialis Patologi Klinik",
+    "poliklinik": ["Laboratorium Patologi Klinik"],
+    "deskripsi": "Dokter spesialis patologi klinik yang ahli dalam interpretasi hasil laboratorium dan diagnosis penyakit melalui pemeriksaan darah, urine, dan cairan tubuh.",
+    "pendidikan": [
+      "Fakultas Kedokteran Universitas Brawijaya",
+      "Spesialis Patologi Klinik - Universitas Airlangga"
+    ],
+    "keahlian": ["anemia", "leukemia", "demam-berdarah"],
+    "jadwal": [
+      { "hari": "Senin", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Selasa", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Rabu", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Kamis", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Jumat", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Sabtu", "pagi": null, "sore": null }
+    ]
+  },
+  {
+    "id": "dr-027",
+    "nama": "dr. Galih Ramadhan, Sp.Rad",
+    "foto": "assets/img/dokter/default-male.png",
+    "spesialisasi": "Spesialis Radiologi",
+    "poliklinik": ["Poli Radiologi"],
+    "deskripsi": "Dokter spesialis radiologi yang berpengalaman dalam interpretasi pencitraan diagnostik termasuk rontgen, USG, CT-scan, dan MRI.",
+    "pendidikan": [
+      "Fakultas Kedokteran Universitas Indonesia",
+      "Spesialis Radiologi - Universitas Indonesia"
+    ],
+    "keahlian": ["fraktur", "tumor-jinak", "kanker"],
+    "jadwal": [
+      { "hari": "Senin", "pagi": "08:00-11:00", "sore": "12:00-14:00" },
+      { "hari": "Selasa", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Rabu", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Kamis", "pagi": "08:00-11:00", "sore": null },
+      { "hari": "Jumat", "pagi": null, "sore": null },
+      { "hari": "Sabtu", "pagi": null, "sore": null }
+    ]
+  },
+  {
+    "id": "dr-028",
+    "nama": "dr. Teguh Santoso, Sp.Ak",
+    "foto": "assets/img/dokter/default-male.png",
+    "spesialisasi": "Spesialis Akupunktur",
+    "poliklinik": ["Poli Akupunktur"],
+    "deskripsi": "Dokter spesialis akupunktur medis yang menggabungkan pendekatan kedokteran modern dengan terapi akupunktur untuk penanganan nyeri dan berbagai kondisi kronis.",
+    "pendidikan": [
+      "Fakultas Kedokteran Universitas Trisakti",
+      "Spesialis Akupunktur Medis - Universitas Indonesia"
+    ],
+    "keahlian": ["migrain", "stroke", "frozen-shoulder", "nyeri-muskuloskeletal", "osteoarthritis-lutut"],
+    "jadwal": [
+      { "hari": "Senin", "pagi": "08:00-13:00", "sore": null },
+      { "hari": "Selasa", "pagi": "08:00-13:00", "sore": null },
+      { "hari": "Rabu", "pagi": "08:00-13:00", "sore": null },
+      { "hari": "Kamis", "pagi": "08:00-13:00", "sore": null },
+      { "hari": "Jumat", "pagi": "08:00-13:00", "sore": null },
+      { "hari": "Sabtu", "pagi": null, "sore": null }
+    ]
+  },
+  {
+    "id": "dr-029",
+    "nama": "drg. Fikri Ramadhani",
+    "foto": "assets/img/dokter/default-male.png",
+    "spesialisasi": "Dokter Gigi Umum",
+    "poliklinik": ["Klinik Gigi Umum"],
+    "deskripsi": "Dokter gigi umum yang berpengalaman dalam pelayanan kesehatan gigi dan mulut dasar. Memberikan perawatan preventif, restoratif, dan edukasi kesehatan gigi kepada pasien.",
+    "pendidikan": [
+      "Fakultas Kedokteran Gigi Universitas Gadjah Mada"
+    ],
+    "keahlian": ["karies-gigi", "gingivitis", "pulpitis"],
+    "jadwal": [
+      { "hari": "Senin", "pagi": "08:00-13:00", "sore": null },
+      { "hari": "Selasa", "pagi": "08:00-13:00", "sore": null },
+      { "hari": "Rabu", "pagi": "08:00-13:00", "sore": null },
+      { "hari": "Kamis", "pagi": "08:00-13:00", "sore": null },
+      { "hari": "Jumat", "pagi": "08:00-13:00", "sore": null },
+      { "hari": "Sabtu", "pagi": null, "sore": null }
+    ]
+  }
+]
