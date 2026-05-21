@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Standar Operasional Prosedur | RSUD Tugu Koja</title>
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Atkinson+Hyperlegible+Next:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "secondary-fixed-dim": "#7dd5cf",
+            "on-secondary": "#ffffff",
+            "surface-variant": "#e0e3e5",
+            "inverse-surface": "#2d3133",
+            "jakarta-blue": "#224266",
+            "on-secondary-fixed-variant": "#00504d",
+            "surface-container-low": "#f2f4f6",
+            "on-surface-variant": "#43474e",
+            "inverse-primary": "#aac9f4",
+            "on-tertiary-container": "#ff8b8a",
+            "on-primary": "#ffffff",
+            "outline-variant": "#c3c6cf",
+            "surface-bright": "#f7f9fb",
+            "secondary": "#006a66",
+            "primary-container": "#224266",
+            "on-tertiary": "#ffffff",
+            "on-error-container": "#93000a",
+            "surface-container": "#eceef0",
+            "surface-tint": "#426086",
+            "on-surface": "#191c1e",
+            "on-error": "#ffffff",
+            "surface-dim": "#d8dadc",
+            "tertiary-fixed": "#ffdad8",
+            "tertiary-container": "#870019",
+            "on-background": "#191c1e",
+            "on-primary-fixed": "#001c38",
+            "primary-fixed": "#d2e4ff",
+            "primary": "#052c4f",
+            "on-tertiary-fixed": "#410007",
+            "on-tertiary-fixed-variant": "#92001c",
+            "outline": "#73777f",
+            "emergency-red": "#E63946",
+            "surface-container-high": "#e6e8ea",
+            "background": "#f7f9fb",
+            "secondary-fixed": "#9af2ec",
+            "primary-fixed-dim": "#aac9f4",
+            "error": "#ba1a1a",
+            "surface": "#f7f9fb",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary-fixed": "#00201e",
+            "surface-subtle": "#F1F5F9",
+            "on-primary-fixed-variant": "#29486d",
+            "on-secondary-container": "#006f6a",
+            "tertiary-fixed-dim": "#ffb3b1",
+            "health-green": "#34918C",
+            "text-main": "#1E293B",
+            "on-primary-container": "#90afd9",
+            "secondary-container": "#97efe9",
+            "error-container": "#ffdad6",
+            "inverse-on-surface": "#eff1f3",
+            "surface-container-highest": "#e0e3e5",
+            "tertiary": "#5d000e",
+            "text-muted": "#64748B"
+          },
+          borderRadius: {
+            DEFAULT: "0.25rem",
+            lg: "0.5rem",
+            xl: "0.75rem",
+            full: "9999px"
+          },
+          spacing: {
+            "margin-desktop": "48px",
+            "margin-mobile": "16px",
+            gutter: "24px",
+            unit: "8px",
+            "container-max": "1280px"
+          },
+          fontFamily: {
+            "headline-md": ["Plus Jakarta Sans"],
+            "body-md": ["Atkinson Hyperlegible Next"],
+            "body-lg": ["Atkinson Hyperlegible Next"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"]
+          },
+          fontSize: {
+            "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+            "body-md": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+            "body-lg": ["20px", { lineHeight: "32px", fontWeight: "400" }],
+            "label-lg": ["16px", { lineHeight: "24px", fontWeight: "600" }],
+            "headline-xl": ["40px", { lineHeight: "52px", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "headline-lg-mobile": ["24px", { lineHeight: "32px", fontWeight: "700" }],
+            "label-md": ["14px", { lineHeight: "20px", fontWeight: "600" }],
+            "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "700" }]
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .sop-table-row:hover {
+      background-color: #f8fafc;
+      transform: translateX(4px);
+      transition: all 0.2s ease;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(8px);
+    }
+    .breathing-margin {
+      padding-left: clamp(16px, 5vw, 48px);
+      padding-right: clamp(16px, 5vw, 48px);
+    }
+  </style>
+</head>
+
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col">
+
+  <div id="navbar-container"></div>
+
+  <main class="flex-grow max-w-container-max mx-auto w-full breathing-margin py-8">
+
+    <!-- Breadcrumb -->
+    <nav class="flex items-center gap-2 mb-8 text-on-surface-variant font-label-md">
+      <a class="hover:text-jakarta-blue" href="index.html">Beranda</a>
+      <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+      <a class="hover:text-jakarta-blue" href="standar pelayanan.html">Standar Pelayanan</a>
+      <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+      <span class="text-jakarta-blue font-bold">SOP</span>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="mb-12">
+      <h1 class="font-headline-xl text-headline-xl text-jakarta-blue mb-4">Standar Operasional Prosedur</h1>
+      <p class="text-body-lg font-body-lg text-on-surface-variant max-w-3xl">
+        Dokumentasi resmi tata laksana pelayanan kesehatan di RSUD Tugu Koja untuk menjamin kualitas, keamanan pasien,
+        dan efisiensi operasional sesuai standar akreditasi nasional.
+      </p>
+    </div>
+
+    <!-- SOP Content -->
+    <div class="w-full">
+
+      <!-- Main SOP List -->
+      <div class="bg-white rounded-xl border border-outline-variant overflow-hidden shadow-sm">
+
+        <!-- Table Header -->
+        <div class="grid grid-cols-12 bg-surface-container-low px-6 py-4 border-b border-outline-variant font-label-lg text-jakarta-blue">
+          <div class="col-span-8 md:col-span-9">Nama Prosedur</div>
+          <div class="col-span-4 md:col-span-3 text-right">Aksi</div>
+        </div>
+
+        <!-- SOP List Items -->
+        <div class="divide-y divide-outline-variant">
+
+          <!-- Row: Operasi Elektif -->
+          <div class="grid grid-cols-12 px-6 py-5 items-center sop-table-row">
+            <div class="col-span-8 md:col-span-9 flex items-center gap-4">
+              <div class="bg-jakarta-blue/10 p-2 rounded-lg text-jakarta-blue hidden sm:block">
+                <span class="material-symbols-outlined">article</span>
+              </div>
+              <span class="font-body-md text-on-surface">SOP Alur Pelayanan Operasi Elektif</span>
+            </div>
+            <div class="col-span-4 md:col-span-3 flex justify-end gap-2">
+              <a href="https://drive.google.com/file/d/18bvNCzbyN6WcRzHtS836__XWU1thr1KG/view" target="_blank"
+                class="text-jakarta-blue font-bold text-label-md hover:underline flex items-center gap-1 group">
+                Lihat Detail
+                <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">visibility</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Row: ICU -->
+          <div class="grid grid-cols-12 px-6 py-5 items-center sop-table-row">
+            <div class="col-span-8 md:col-span-9 flex items-center gap-4">
+              <div class="bg-jakarta-blue/10 p-2 rounded-lg text-jakarta-blue hidden sm:block">
+                <span class="material-symbols-outlined">article</span>
+              </div>
+              <span class="font-body-md text-on-surface">SOP Alur Penerimaan Pasien Baru Ruang ICU</span>
+            </div>
+            <div class="col-span-4 md:col-span-3 flex justify-end gap-2">
+              <a href="https://drive.google.com/file/d/1KkVuPExVkjJkFgH1yc00tPMxuotOgQ3n/view" target="_blank"
+                class="text-jakarta-blue font-bold text-label-md hover:underline flex items-center gap-1 group">
+                Lihat Detail
+                <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">visibility</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Row: Perinatologi -->
+          <div class="grid grid-cols-12 px-6 py-5 items-center sop-table-row">
+            <div class="col-span-8 md:col-span-9 flex items-center gap-4">
+              <div class="bg-jakarta-blue/10 p-2 rounded-lg text-jakarta-blue hidden sm:block">
+                <span class="material-symbols-outlined">article</span>
+              </div>
+              <span class="font-body-md text-on-surface">SOP Alur Penerimaan Pasien Baru Ruang Perinatologi</span>
+            </div>
+            <div class="col-span-4 md:col-span-3 flex justify-end gap-2">
+              <a href="https://drive.google.com/file/d/1UlmJZD0kmUwUAnsRFWyRQWaEVrZ12AqI/view" target="_blank"
+                class="text-jakarta-blue font-bold text-label-md hover:underline flex items-center gap-1 group">
+                Lihat Detail
+                <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">visibility</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Row: Pengadaan Barang -->
+          <div class="grid grid-cols-12 px-6 py-5 items-center sop-table-row">
+            <div class="col-span-8 md:col-span-9 flex items-center gap-4">
+              <div class="bg-jakarta-blue/10 p-2 rounded-lg text-jakarta-blue hidden sm:block">
+                <span class="material-symbols-outlined">article</span>
+              </div>
+              <span class="font-body-md text-on-surface">SOP Alur Pengadaan Barang dan Jasa</span>
+            </div>
+            <div class="col-span-4 md:col-span-3 flex justify-end gap-2">
+              <a href="https://drive.google.com/file/d/1UvDXXZVUdtCXVY0DPd_i-k5PIJ6mh_vC/view" target="_blank"
+                class="text-jakarta-blue font-bold text-label-md hover:underline flex items-center gap-1 group">
+                Lihat Detail
+                <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">visibility</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Row: Ruang Bersalin -->
+          <div class="grid grid-cols-12 px-6 py-5 items-center sop-table-row">
+            <div class="col-span-8 md:col-span-9 flex items-center gap-4">
+              <div class="bg-jakarta-blue/10 p-2 rounded-lg text-jakarta-blue hidden sm:block">
+                <span class="material-symbols-outlined">article</span>
+              </div>
+              <span class="font-body-md text-on-surface">SOP Alur Perawatan Pasien di Ruang Bersalin</span>
+            </div>
+            <div class="col-span-4 md:col-span-3 flex justify-end gap-2">
+              <a href="https://drive.google.com/file/d/1mL8j6t7HLYpTQwYS-xeOAROl17rQg2Sp/view" target="_blank"
+                class="text-jakarta-blue font-bold text-label-md hover:underline flex items-center gap-1 group">
+                Lihat Detail
+                <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">visibility</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Row: Rawat Inap -->
+          <div class="grid grid-cols-12 px-6 py-5 items-center sop-table-row">
+            <div class="col-span-8 md:col-span-9 flex items-center gap-4">
+              <div class="bg-jakarta-blue/10 p-2 rounded-lg text-jakarta-blue hidden sm:block">
+                <span class="material-symbols-outlined">article</span>
+              </div>
+              <span class="font-body-md text-on-surface">SOP Alur Perawatan Pasien Rawat Inap</span>
+            </div>
+            <div class="col-span-4 md:col-span-3 flex justify-end gap-2">
+              <a href="https://drive.google.com/file/d/1aY1Cqr1Uvq_rDSSJVw7l0G39UwvXpMGQ/view" target="_blank"
+                class="text-jakarta-blue font-bold text-label-md hover:underline flex items-center gap-1 group">
+                Lihat Detail
+                <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">visibility</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Row: Rawat Jalan BPJS -->
+          <div class="grid grid-cols-12 px-6 py-5 items-center sop-table-row">
+            <div class="col-span-8 md:col-span-9 flex items-center gap-4">
+              <div class="bg-jakarta-blue/10 p-2 rounded-lg text-jakarta-blue hidden sm:block">
+                <span class="material-symbols-outlined text-health-green" style="font-variation-settings: 'FILL' 1;">description</span>
+              </div>
+              <span class="font-body-md text-on-surface">SOP Alur Rawat Jalan Pasien BPJS</span>
+            </div>
+            <div class="col-span-4 md:col-span-3 flex justify-end gap-2">
+              <a href="https://drive.google.com/file/d/1Yn2GUviUd8rJe0KNN9kdivYDSSe9zTXY/view" target="_blank"
+                class="text-jakarta-blue font-bold text-label-md hover:underline flex items-center gap-1 group">
+                Lihat Detail
+                <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">visibility</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Row: Rawat Jalan Umum -->
+          <div class="grid grid-cols-12 px-6 py-5 items-center sop-table-row">
+            <div class="col-span-8 md:col-span-9 flex items-center gap-4">
+              <div class="bg-jakarta-blue/10 p-2 rounded-lg text-jakarta-blue hidden sm:block">
+                <span class="material-symbols-outlined">article</span>
+              </div>
+              <span class="font-body-md text-on-surface">SOP Alur Rawat Jalan Pasien Umum</span>
+            </div>
+            <div class="col-span-4 md:col-span-3 flex justify-end gap-2">
+              <a href="https://drive.google.com/file/d/1YNHBfn37RrhZ0ZKAfviMue7OCRhL4w9q/view" target="_blank"
+                class="text-jakarta-blue font-bold text-label-md hover:underline flex items-center gap-1 group">
+                Lihat Detail
+                <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">visibility</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Row: Code Red -->
+          <div class="grid grid-cols-12 px-6 py-5 items-center sop-table-row">
+            <div class="col-span-8 md:col-span-9 flex items-center gap-4">
+              <div class="bg-emergency-red/10 p-2 rounded-lg text-emergency-red hidden sm:block">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">emergency_share</span>
+              </div>
+              <span class="font-body-md text-on-surface font-semibold text-emergency-red">SOP Code Red (Keadaan Darurat Kebakaran)</span>
+            </div>
+            <div class="col-span-4 md:col-span-3 flex justify-end gap-2">
+              <a href="https://drive.google.com/file/d/1jqb2hYeoJP_Im0tN4pE-LINyxJA8loxr/view" target="_blank"
+                class="text-jakarta-blue font-bold text-label-md hover:underline flex items-center gap-1 group">
+                Lihat Detail
+                <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">visibility</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Row: MCU -->
+          <div class="grid grid-cols-12 px-6 py-5 items-center sop-table-row">
+            <div class="col-span-8 md:col-span-9 flex items-center gap-4">
+              <div class="bg-jakarta-blue/10 p-2 rounded-lg text-jakarta-blue hidden sm:block">
+                <span class="material-symbols-outlined">article</span>
+              </div>
+              <span class="font-body-md text-on-surface">SOP Pelayanan MCU (Medical Check Up)</span>
+            </div>
+            <div class="col-span-4 md:col-span-3 flex justify-end gap-2">
+              <a href="https://drive.google.com/file/d/13UaNhuywqNuOiFvu1HFq1kigqg3gXg7-/view" target="_blank"
+                class="text-jakarta-blue font-bold text-label-md hover:underline flex items-center gap-1 group">
+                Lihat Detail
+                <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">visibility</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Row: Gempa Bumi -->
+          <div class="grid grid-cols-12 px-6 py-5 items-center sop-table-row">
+            <div class="col-span-8 md:col-span-9 flex items-center gap-4">
+              <div class="bg-jakarta-blue/10 p-2 rounded-lg text-jakarta-blue hidden sm:block">
+                <span class="material-symbols-outlined">volcano</span>
+              </div>
+              <span class="font-body-md text-on-surface">SOP Penanganan Gempa Bumi</span>
+            </div>
+            <div class="col-span-4 md:col-span-3 flex justify-end gap-2">
+              <a href="https://drive.google.com/file/d/1EZTpMoeJmxMvX1fAGKiyZttvgr5lBhW6/view" target="_blank"
+                class="text-jakarta-blue font-bold text-label-md hover:underline flex items-center gap-1 group">
+                Lihat Detail
+                <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">visibility</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Row: Pasien Gawat Darurat -->
+          <div class="grid grid-cols-12 px-6 py-5 items-center sop-table-row">
+            <div class="col-span-8 md:col-span-9 flex items-center gap-4">
+              <div class="bg-jakarta-blue/10 p-2 rounded-lg text-jakarta-blue hidden sm:block">
+                <span class="material-symbols-outlined">local_hospital</span>
+              </div>
+              <span class="font-body-md text-on-surface">SOP Penanganan Pasien Gawat Darurat</span>
+            </div>
+            <div class="col-span-4 md:col-span-3 flex justify-end gap-2">
+              <a href="https://drive.google.com/file/d/13Db1M5IX-7lDDc2JnVTVwOa0C8Hxzmft/view" target="_blank"
+                class="text-jakarta-blue font-bold text-label-md hover:underline flex items-center gap-1 group">
+                Lihat Detail
+                <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">visibility</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Row: Pasien PONEK -->
+          <div class="grid grid-cols-12 px-6 py-5 items-center sop-table-row">
+            <div class="col-span-8 md:col-span-9 flex items-center gap-4">
+              <div class="bg-jakarta-blue/10 p-2 rounded-lg text-jakarta-blue hidden sm:block">
+                <span class="material-symbols-outlined">local_hospital</span>
+              </div>
+              <span class="font-body-md text-on-surface">SOP Penanganan Pasien PONEK</span>
+            </div>
+            <div class="col-span-4 md:col-span-3 flex justify-end gap-2">
+              <a href="https://drive.google.com/file/d/1UMNX06BlEQycgooYUN7oxApSbT9m05IY/view" target="_blank"
+                class="text-jakarta-blue font-bold text-label-md hover:underline flex items-center gap-1 group">
+                Lihat Detail
+                <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">visibility</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Featured Section (Asymmetric Layout) -->
+      <section class="mt-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div class="relative aspect-video rounded-3xl overflow-hidden shadow-2xl">
+          <img
+            alt="Hospital Staff reviewing SOP"
+            class="w-full h-full object-cover"
+            data-alt="A team of diverse medical professionals in a bright, modern hospital corridor reviewing high-tech digital tablets. The environment is clean and sterile with soft Jakarta Blue architectural accents and warm ambient lighting. The mood is professional and focused, reflecting a culture of quality and precision in healthcare standards. High-end photography style with shallow depth of field."
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6TskTVSZctd7vhISJqzMxrNnycove_COHJ6BndU2nwS42uBtIgMCLGggwd2lW1k6_4hzaD9re5OjfryE5R5kIUryYqgsQEINfsIdd-SczpDINqgTI3RhHjRcwmx3jWXgg-GztM_pVEUq4i-IzZWL9xs90Cg6JLdNEx75FMU6oYkH2_qWSJs1h4aJm3oKpg5aXdt20ivkWJ3ZyBtQ1OGWb1gUnGSaiZJG0JVXs05Uy5Fvh0M1qp7oVPagXRlHk5-jnpKlwu44jKdI"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-jakarta-blue/80 to-transparent flex items-end p-8">
+            <p class="text-on-primary font-bold text-headline-md leading-tight">Berkomitmen pada Standar Pelayanan Terbaik</p>
+          </div>
+        </div>
+        <div class="space-y-6">
+          <div class="inline-block px-4 py-1 bg-secondary-container text-on-secondary-container rounded-full text-label-md font-bold">PEMBERITAHUAN</div>
+          <h2 class="text-headline-lg font-headline-lg text-jakarta-blue">Pembaruan Berkala SOP 2024</h2>
+          <p class="text-body-lg text-on-surface-variant">
+            Kami secara rutin memperbarui Standar Operasional Prosedur untuk mengintegrasikan teknologi medis terbaru
+            dan protokol kesehatan internasional. Pastikan Anda selalu merujuk pada versi digital terbaru.
+          </p>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-health-green">check_circle</span>
+              <span class="text-body-md">Terverifikasi oleh Komite Mutu RSUD Tugu Koja</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-health-green">check_circle</span>
+              <span class="text-body-md">Sesuai dengan Akreditasi STARKES Kemenkes RI</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-health-green">check_circle</span>
+              <span class="text-body-md">Tersedia dalam format digital dan cetak terkendali</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script>
+    // Simple search highlighting interaction
+    const searchInput = document.querySelector('input[type="text"]');
+    const rows = document.querySelectorAll('.sop-table-row');
+
+    searchInput.addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase();
+      rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(term) ? 'grid' : 'none';
+      });
+    });
+  </script>
+
+  <script src="components/navbar.js"></script>
+  <script src="components/footer.js"></script>
+
+</body>
+
+</html>

@@ -174,20 +174,31 @@
                         <span class="material-symbols-outlined text-outline ml-4">search</span>
 
                         <input
+                            id="globalSearchInput"
                             class="flex-1 border-none focus:ring-0 font-body-md text-body-md px-4 py-3 outline-none"
                             placeholder="Cari Dokter atau Layanan..."
                             type="text"
+                            onkeydown="if (event.key === 'Enter') redirectSearch()"
                         >
 
                         <button
+                            type="button"
                             class="bg-health-green text-white px-8 py-3 rounded-xl font-label-lg text-label-lg hover:brightness-110 transition-all"
-                            onclick="window.location.href='caridokter.html'">
+                            onclick="redirectSearch()">
                             Cari
                         </button>
                     </div>
                 </div>
             </div>
         </section>
+        <script>
+            function redirectSearch() {
+                const input = document.getElementById('globalSearchInput');
+                const query = input?.value.trim();
+                const target = query ? `pencarian.html?q=${encodeURIComponent(query)}` : 'pencarian.html';
+                window.location.href = target;
+            }
+        </script>
         <!-- Quick Access (Bento Style) -->
         <section class="relative -mt-20 z-20 max-w-container-max mx-auto px-gutter mb-24">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -209,7 +220,7 @@
                 </div>
                 <!-- Card 2 -->
                 <div class="glass-card p-8 rounded-2xl shadow-md hover:shadow-xl transition-all cursor-pointer group flex flex-col justify-between h-full duration-700 opacity-100 translate-y-0"
-                    onclick="window.location.href='standarpelayanan.html'">
+                    onclick="window.location.href='standar%20pelayanan.html'">
                     <div>
                         <div
                             class="w-14 h-14 bg-jakarta-blue/10 rounded-xl flex items-center justify-center text-jakarta-blue mb-6 group-hover:bg-jakarta-blue group-hover:text-white transition-colors">

@@ -1,0 +1,68 @@
+{
+  "dokter": [
+    {
+      "id": 1,
+      "name": "dr. Bambang Herlambang, Sp.JP",
+      "title": "Spesialis Jantung & Pembuluh Darah",
+      "status": "Tersedia",
+      "schedule": "Sen, Rab, Jum",
+      "location": "Lantai 2, Ruang 204",
+      "floor": "2",
+      "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuCf8mVRYp6L86MRuHIULiuhp34ohot8U--sCiXpOm0GyiumI-KyjnAdCm1gZtzqNrxZQqu5w-psWHCdeMrelONZffgvpG_CSgF9nKhx9P6ibDZTlZke8daH6FOw-lt-XaM6OndAKsv511D8y6r0xsUlLRJGUyqdA4vXNGlDSjoGZpCEtWEXigoq3ZOT_8ddsdGOSrL2pg9aee5qgiZTDiLFGvyIPD8HzrMkjWO26AMQ5xqq9I_pJq5OOymSz1nRrVApFukvD44FkyY",
+      "excerpt": "Dokter spesialis jantung dengan pengalaman klinis 15 tahun dalam perawatan pasien jantung dan pembuluh darah.",
+      "keywords": ["jantung", "kardiologi", "spesialis", "jantung dan pembuluh darah", "ekokardiografi"]
+    },
+    {
+      "id": 2,
+      "name": "dr. Siti Aminah, Sp.JP (K)",
+      "title": "Konsultan Kardiologi Intervensi",
+      "status": "Sedang Praktik",
+      "schedule": "Sel, Kam, Sab",
+      "location": "Lantai 2, Ruang 210",
+      "floor": "2",
+      "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuCUoWyzRMZZitaFmIcupZZs7461Lu8T3MN6CpvgCL-jcZVKtUyj_PwPz3gCLf2YfVVgZ2VxibsaiS7O5jbPgWbT5c-q_U73otOxpihlGeW45Qspr9fZb9WcV7T6bgOVPLyg6MS_pIAlX2Ybi_nCtYxsFL7cG09UayGDBbKowZ6Depd1osD2gnrNIqxAL31P_zU0JamqETDxU1O0YobgrmrkTAloK0iw85JBDywlWCdTFNv6-K7xUKE_aMeDUQ9oCPN93C-wLib5fOU",
+      "excerpt": "Konsultan kardiologi intervensi untuk perawatan angiografi, stent, dan pemantauan penyakit jantung koroner.",
+      "keywords": ["kardiologi intervensi", "angiografi", "stent", "jantung", "konsultan"]
+    }
+  ],
+  "layanan": [
+    {
+      "id": 1,
+      "title": "Ekokardiografi (USG Jantung)",
+      "description": "Layanan diagnostik unggulan menggunakan gelombang suara frekuensi tinggi untuk gambaran struktur dan fungsi jantung secara real-time.",
+      "icon": "monitor_heart",
+      "location": "Lantai 2",
+      "category": "layanan",
+      "keywords": ["jantung", "ekokardiografi", "usg", "diagnostik", "kardiologi"]
+    },
+    {
+      "id": 2,
+      "title": "Rehabilitasi Medis Jantung",
+      "description": "Program rehabilitasi pasca-prosedur jantung untuk memulihkan kondisi fisik dan mengurangi risiko komplikasi.",
+      "icon": "fitness_center",
+      "location": "Lantai 3",
+      "category": "layanan",
+      "keywords": ["rehabilitasi", "jantung", "kardiovaskular", "pemulihan", "program"]
+    }
+  ],
+  "berita": [
+    {
+      "id": 1,
+      "title": "Menjaga Kesehatan Jantung di Usia Produktif",
+      "date": "15 November 2024",
+      "category": "Edukasi",
+      "summary": "Penyakit jantung tidak lagi hanya menyerang usia lanjut. Berikut adalah 5 langkah mudah menjaga kesehatan jantung.",
+      "url": "#",
+      "keywords": ["jantung", "kesehatan", "edukasi", "usia produktif", "pola makan"]
+    },
+    {
+      "id": 2,
+      "title": "Pemeriksaan Rutin Jantung Gratis di RSUD Tugu Koja",
+      "date": "2 Desember 2024",
+      "category": "Info Publik",
+      "summary": "RSUD Tugu Koja membuka layanan pemeriksaan jantung gratis setiap hari Sabtu sepanjang bulan berikutnya.",
+      "url": "#",
+      "keywords": ["pemeriksaan", "jantung", "layanan gratis", "info publik", "klinik"]
+    }
+  ]
+}

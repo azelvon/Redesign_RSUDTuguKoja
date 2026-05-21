@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Atkinson+Hyperlegible+Next:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-primary-container": "#90afd9",
+                        "text-muted": "#64748B",
+                        "on-primary-fixed-variant": "#29486d",
+                        "surface-variant": "#e0e3e5",
+                        "secondary-fixed": "#9af2ec",
+                        "secondary-fixed-dim": "#7dd5cf",
+                        "outline-variant": "#c3c6cf",
+                        "tertiary": "#5d000e",
+                        "primary": "#052c4f",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#2d3133",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-tertiary-fixed-variant": "#92001c",
+                        "emergency-red": "#E63946",
+                        "background": "#f7f9fb",
+                        "surface-container": "#eceef0",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#426086",
+                        "primary-container": "#224266",
+                        "on-primary-fixed": "#001c38",
+                        "outline": "#73777f",
+                        "on-secondary-fixed": "#00201e",
+                        "secondary": "#006a66",
+                        "tertiary-fixed": "#ffdad8",
+                        "tertiary-container": "#870019",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#d2e4ff",
+                        "surface-container-low": "#f2f4f6",
+                        "error-container": "#ffdad6",
+                        "surface": "#f7f9fb",
+                        "inverse-primary": "#aac9f4",
+                        "tertiary-fixed-dim": "#ffb3b1",
+                        "secondary-container": "#97efe9",
+                        "surface-subtle": "#F1F5F9",
+                        "on-secondary-container": "#006f6a",
+                        "on-tertiary-container": "#ff8b8a",
+                        "on-tertiary-fixed": "#410007",
+                        "on-background": "#191c1e",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#d8dadc",
+                        "surface-bright": "#f7f9fb",
+                        "on-secondary-fixed-variant": "#00504d",
+                        "on-secondary": "#ffffff",
+                        "jakarta-blue": "#224266",
+                        "text-main": "#1E293B",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e6e8ea",
+                        "primary-fixed-dim": "#aac9f4",
+                        "on-surface": "#191c1e",
+                        "health-green": "#34918C",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-surface-variant": "#43474e"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        unit: "8px",
+                        "margin-desktop": "48px",
+                        "margin-mobile": "16px",
+                        gutter: "24px",
+                        "container-max": "1280px"
+                    },
+                    fontFamily: {
+                        "label-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "body-md": ["Atkinson Hyperlegible Next"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-lg": ["Atkinson Hyperlegible Next"]
+                    },
+                    fontSize: {
+                        "label-lg": ["16px", { lineHeight: "24px", fontWeight: "600" }],
+                        "label-md": ["14px", { lineHeight: "20px", fontWeight: "600" }],
+                        "headline-xl": ["40px", { lineHeight: "52px", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "body-md": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+                        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+                        "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "700" }],
+                        "headline-lg-mobile": ["24px", { lineHeight: "32px", fontWeight: "700" }],
+                        "body-lg": ["20px", { lineHeight: "32px", fontWeight: "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="text-on-surface bg-background selection:bg-primary-fixed selection:text-on-primary-fixed">
+
+    <div id="navbar-container"></div>
+
+    <main>
+
+        <!-- Hero Section -->
+        <section class="relative h-[calc(60vh+80px)] min-h-[500px] w-full overflow-hidden flex items-center">
+            <div class="absolute inset-0 z-0">
+                <img
+                    class="w-full h-full object-cover"
+                    alt="RSUD Tugu Koja building"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_uVkg7oya6LINY6PjkMfR942XZSy3lSYS5kN8gRpGYCfjWGt1VbLCKjc0vlsx7VeGjdA_Qdc0ZNftv6OrGqORVpr2JKQse1FKGw1y1R-f1dxvToxUpir0xto1xr10DeYWr52rz8SfLo0g7YoJEJvXFGApByYVPa1zeZ9lOhThGXPaHeHyBrDdE6AVnUXNLiIWTsy4mE30FXLgkv4qUiqvA_J935PhFQBrrLtdQWa6ikPl0cW_5iMtnz9Odj6Np08EuMqWFdxnebU"
+                />
+                <div class="absolute inset-0 bg-gradient-to-r from-jakarta-blue/80 via-jakarta-blue/40 to-transparent"></div>
+            </div>
+            <div class="relative z-10 max-w-container-max mx-auto px-margin-desktop w-full pt-20">
+                <div class="max-w-2xl">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 text-primary border border-primary/10 mb-6">
+                        <span class="material-symbols-outlined text-[18px]">verified</span>
+                        <span class="font-label-md text-label-md">Rumah Sehat untuk Jakarta</span>
+                    </div>
+                    <h1 class="font-headline-xl text-headline-xl text-white mb-4 leading-tight">Standar Pelayanan RSUD Tugu Koja</h1>
+                    <p class="font-body-lg text-body-lg text-white/90 mb-8 max-w-2xl">Komitmen kami dalam menyediakan layanan kesehatan berkualitas melalui transparansi standar operasional dan fasilitas terbaik.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#" class="bg-white text-jakarta-blue px-8 py-3 rounded-full font-label-lg text-label-lg hover:scale-105 transition-transform">Lihat Standar</a>
+                        <a href="#" class="border-2 border-white text-white px-8 py-3 rounded-full font-label-lg text-label-lg hover:bg-white/10 transition-colors">Hubungi Kami</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Breadcrumb -->
+        <nav class="py-6 px-margin-desktop max-w-container-max mx-auto text-jakarta-blue font-label-md">
+            <div class="flex items-center gap-2">
+                <a href="index.html" class="hover:text-primary">Beranda</a>
+                <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+                <span class="text-jakarta-blue">Standar Pelayanan</span>
+            </div>
+        </nav>
+
+        <!-- Bento Grid Standards -->
+        <section class="py-20 px-margin-desktop max-w-container-max mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+
+                <!-- 1. Fasilitas & Sarana (Large Featured) -->
+                <a href="layanan.html" class="md:col-span-8 bg-surface-container-lowest border border-surface-subtle rounded-xl p-8 group hover:shadow-lg transition-all duration-300 relative overflow-hidden flex flex-col justify-between">
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 rounded-2xl bg-primary/5 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-[32px]" data-icon="hospital">local_hospital</span>
+                        </div>
+                        <h3 class="font-headline-md text-headline-md text-jakarta-blue mb-3">Fasilitas &amp; Sarana Medis</h3>
+                        <p class="font-body-md text-body-md text-text-muted max-w-md">Informasi lengkap alat medis terkini, ketersediaan tempat tidur, dan sarana pendukung kenyamanan pasien selama masa perawatan.</p>
+                    </div>
+                    <div class="mt-8 relative z-10">
+                        <span class="font-label-lg text-label-lg text-primary flex items-center gap-2 group/btn">
+                            Lihat Detail Fasilitas
+                            <span class="material-symbols-outlined transition-transform group-hover/btn:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
+                        </span>
+                    </div>
+                    <div class="absolute bottom-0 right-0 w-1/3 h-full opacity-5 pointer-events-none group-hover:opacity-10 transition-opacity">
+                        <span class="material-symbols-outlined text-[240px] absolute -bottom-10 -right-10" data-icon="medical_services">medical_services</span>
+                    </div>
+                </a>
+
+                <!-- 2. Kebersihan Tangan -->
+                <a href="https://www.youtube.com/watch?v=iVnQayWFjHQ" target="_blank" class="md:col-span-4 bg-surface-container-lowest border border-surface-subtle rounded-xl p-8 group hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-health-green/10 flex items-center justify-center text-health-green mb-6 group-hover:rotate-12 transition-transform">
+                            <span class="material-symbols-outlined text-[28px]" data-icon="clean_hands">clean_hands</span>
+                        </div>
+                        <h3 class="font-headline-md text-headline-md text-jakarta-blue mb-3">Kepatuhan Kebersihan Tangan</h3>
+                        <p class="font-body-md text-body-md text-text-muted">Standar kebersihan ketat untuk memastikan keselamatan pasien dan pencegahan infeksi nosokomial.</p>
+                    </div>
+                    <div class="mt-6 relative z-10">
+                        <span class="font-label-lg text-label-lg text-health-green flex items-center gap-2 group/btn">
+                            Lihat Video
+                            <span class="material-symbols-outlined transition-transform group-hover/btn:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- 3. SOP -->
+                <a href="sop.html" class="md:col-span-4 bg-surface-container-lowest border border-surface-subtle rounded-xl p-8 group hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center text-primary mb-6">
+                            <span class="material-symbols-outlined text-[28px]" data-icon="description">description</span>
+                        </div>
+                        <h3 class="font-headline-md text-headline-md text-jakarta-blue mb-3">Standar Operasional Prosedur</h3>
+                        <p class="font-body-md text-body-md text-text-muted">Panduan tata kelola layanan medis yang terstruktur demi akurasi dan kecepatan tindakan medis.</p>
+                    </div>
+                    <div class="mt-6 relative z-10">
+                        <span class="font-label-lg text-label-lg text-primary flex items-center gap-2 group/btn">
+                            Lihat Detail
+                            <span class="material-symbols-outlined transition-transform group-hover/btn:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- 4. Manajemen Resiko -->
+                <a href="https://drive.google.com/file/d/1A_Kf3PfymLMeAfh-pHhNYMULJD3hA1Vy/view?usp=sharing" target="_blank" class="md:col-span-4 bg-surface-container-lowest border border-surface-subtle rounded-xl p-8 group hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-emergency-red/5 flex items-center justify-center text-emergency-red mb-6">
+                            <span class="material-symbols-outlined text-[28px]" data-icon="security">security</span>
+                        </div>
+                        <h3 class="font-headline-md text-headline-md text-jakarta-blue mb-3">Manajemen Resiko</h3>
+                        <p class="font-body-md text-body-md text-text-muted">Sistem mitigasi dan penanganan resiko medis yang komprehensif untuk perlindungan pasien dan staf.</p>
+                    </div>
+                    <div class="mt-6 relative z-10">
+                        <span class="font-label-lg text-label-lg text-emergency-red flex items-center gap-2 group/btn">
+                            Lihat Detail
+                            <span class="material-symbols-outlined transition-transform group-hover/btn:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- 5. Pengendalian Gratifikasi -->
+                <a href="https://drive.google.com/file/d/12BZom0qbeQixhjxyb6RHb_C3ZaDZyQEP/view?usp=sharing" target="_blank" class="md:col-span-4 bg-surface-container-lowest border border-surface-subtle rounded-xl p-8 group hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary mb-6">
+                            <span class="material-symbols-outlined text-[28px]" data-icon="verified_user">verified_user</span>
+                        </div>
+                        <h3 class="font-headline-md text-headline-md text-jakarta-blue mb-3">Anti Gratifikasi</h3>
+                        <p class="font-body-md text-body-md text-text-muted">Zona integritas dengan pelayanan transparan, adil, dan sepenuhnya bebas dari pungutan liar.</p>
+                    </div>
+                    <div class="mt-6 relative z-10">
+                        <span class="font-label-lg text-label-lg text-secondary flex items-center gap-2 group/btn">
+                            Baca Kebijakan
+                            <span class="material-symbols-outlined transition-transform group-hover/btn:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- 6. Mutu Pelayanan (Asymmetric Feature) -->
+                <div class="md:col-span-12 bg-jakarta-blue text-on-primary rounded-xl p-10 group hover:shadow-xl transition-all duration-300 flex flex-col md:flex-row items-center gap-12 overflow-hidden relative">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-primary-container rounded-full blur-[100px] -mr-32 -mt-32"></div>
+                    <div class="relative z-10 flex-1">
+                        <div class="inline-flex items-center gap-2 mb-6">
+                            <span class="material-symbols-outlined text-secondary-fixed" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="font-label-lg text-label-lg text-secondary-fixed">Indikator Mutu Pelayanan</span>
+                        </div>
+                        <h2 class="font-headline-lg text-headline-lg mb-4 text-white">Komitmen Mutu Berkelanjutan</h2>
+                        <p class="font-body-lg text-body-lg text-on-primary-container max-w-2xl">
+                            Laporan rutin capaian indikator mutu nasional dan internal kami sebagai wujud transparansi kepada publik dan upaya peningkatan kualitas tiada henti.
+                        </p>
+                        <div class="flex flex-wrap gap-4 mt-8">
+                            <div class="bg-primary-container/40 border border-on-primary-container/20 px-6 py-4 rounded-xl">
+                                <div class="text-secondary-fixed font-bold text-2xl">98%</div>
+                                <div class="font-label-md text-label-md opacity-80">Kepuasan Pasien</div>
+                            </div>
+                            <div class="bg-primary-container/40 border border-on-primary-container/20 px-6 py-4 rounded-xl">
+                                <div class="text-secondary-fixed font-bold text-2xl">&lt; 5m</div>
+                                <div class="font-label-md text-label-md opacity-80">Waktu Tunggu</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative z-10 w-full md:w-1/3 aspect-square rounded-2xl overflow-hidden shadow-2xl">
+                        <img
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            data-alt="A macro shot of a sophisticated medical monitoring system displaying clear vital data graphs in a high-tech medical environment. The lighting is soft and clinical, highlighting the high-definition interface which uses calming shades of teal and dark blue. The overall composition is clean and focused, symbolizing the intersection of advanced technology and high-quality patient care in a modern Jakarta healthcare facility."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBibGIrc9nkUXqox8ev9WFYaDGdSwnPQsfA8UM4XnPvM32wnnlRrHi7QLtKdqqcqARw2g1d6BFjgeVt42As0aiqYnpR-QA5eHdqgOyh97EdgdPvJHOv0mLQVCc3DaDjcSTsrQYidVWYgv_e24I6pM1M3l49gyhx94i4FRWFXY2rHVbGMIRg_QvVS7NGoByEvOJPQz7vEvXUqNbRDSAjx7Hv0d61QX3qzS15siRVPjj_d9lACmXmG709WnT52Xeu_kzkFcOwcJCl_Io"
+                        />
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-20 bg-surface-container-low border-y border-surface-subtle">
+            <div class="max-w-container-max mx-auto px-margin-desktop flex flex-col md:flex-row items-center justify-between gap-10">
+                <div class="max-w-xl">
+                    <h2 class="font-headline-lg text-headline-lg text-jakarta-blue mb-4">Butuh Informasi Lebih Lanjut?</h2>
+                    <p class="font-body-md text-body-md text-text-muted">Dapatkan bantuan informasi mengenai alur pelayanan, pendaftaran online, atau keluhan pelanggan melalui kanal resmi kami.</p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+                    <button class="bg-primary text-on-primary px-8 py-4 rounded-xl font-label-lg text-label-lg hover:shadow-lg transition-all active:scale-95">Hubungi Kami</button>
+                    <button class="bg-surface-container-lowest border border-primary text-primary px-8 py-4 rounded-xl font-label-lg text-label-lg hover:bg-primary/5 transition-all active:scale-95">Pendaftaran Online</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full mt-auto bg-primary">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter py-12 px-margin-desktop max-w-container-max mx-auto">
+            <div class="md:col-span-1">
+                <div class="font-headline-md text-headline-md font-bold text-on-primary mb-6">RSUD Tugu Koja</div>
+                <p class="text-on-primary-container font-body-md text-body-md mb-6">Rumah Sehat untuk Jakarta. Melayani dengan hati, profesional, dan berintegritas.</p>
+            </div>
+            <div>
+                <h4 class="font-label-lg text-label-lg text-secondary-fixed mb-6">Layanan Populer</h4>
+                <div class="flex flex-col gap-4">
+                    <a class="text-on-primary-container hover:text-white transition-colors font-body-md text-body-md hover:underline" href="#">Pendaftaran Online</a>
+                    <a class="text-on-primary-container hover:text-white transition-colors font-body-md text-body-md hover:underline" href="#">Jadwal Dokter</a>
+                    <a class="text-on-primary-container hover:text-white transition-colors font-body-md text-body-md hover:underline" href="#">Rawat Jalan</a>
+                    <a class="text-on-primary-container hover:text-white transition-colors font-body-md text-body-md hover:underline" href="#">Fasilitas Rawat Inap</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-label-lg text-label-lg text-secondary-fixed mb-6">Tautan Penting</h4>
+                <div class="flex flex-col gap-4">
+                    <a class="text-on-primary-container hover:text-white transition-colors font-body-md text-body-md hover:underline" href="#">Standar Pelayanan</a>
+                    <a class="text-on-primary-container hover:text-white transition-colors font-body-md text-body-md hover:underline" href="#">Hubungi Kami</a>
+                    <a class="text-on-primary-container hover:text-white transition-colors font-body-md text-body-md hover:underline" href="#">Karir</a>
+                    <a class="text-on-primary-container hover:text-white transition-colors font-body-md text-body-md hover:underline" href="#">Kebijakan Privasi</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-label-lg text-label-lg text-secondary-fixed mb-6">Hubungi Kami</h4>
+                <div class="flex flex-col gap-4 text-on-primary-container font-body-md text-body-md">
+                    <p>Jl. Walang Permai No.39, Tugu Utara, Kec. Koja, Jakarta Utara</p>
+                    <p>Telepon: (021) 43938478</p>
+                    <div class="flex gap-4 mt-2">
+                        <a class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center hover:bg-on-primary-fixed-variant transition-colors" href="#">
+                            <span class="material-symbols-outlined text-[20px]" data-icon="public">public</span>
+                        </a>
+                        <a class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center hover:bg-on-primary-fixed-variant transition-colors" href="#">
+                            <span class="material-symbols-outlined text-[20px]" data-icon="mail">mail</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-on-primary-container/10 py-8 text-center text-on-primary-container font-body-md text-body-md">
+            © 2024 RSUD Tugu Koja - Rumah Sehat untuk Jakarta. Hak Cipta Dilindungi.
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation -->
+    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-surface-container-lowest border-t border-surface-subtle px-6 py-3 flex justify-between items-center z-50">
+        <button class="flex flex-col items-center gap-1 text-text-muted">
+            <span class="material-symbols-outlined" data-icon="home">home</span>
+            <span class="text-[10px] font-bold">Home</span>
+        </button>
+        <button class="flex flex-col items-center gap-1 text-primary">
+            <span class="material-symbols-outlined" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+            <span class="text-[10px] font-bold">Standar</span>
+        </button>
+        <button class="flex flex-col items-center gap-1 text-text-muted">
+            <span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+            <span class="text-[10px] font-bold">Jadwal</span>
+        </button>
+        <button class="flex flex-col items-center gap-1 text-emergency-red">
+            <span class="material-symbols-outlined" data-icon="emergency">emergency</span>
+            <span class="text-[10px] font-bold">IGD</span>
+        </button>
+    </div>
+
+    <script>
+        // Micro-interactions and simple effects
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.group');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    // Slight vibration effect on icon if exists
+                    const icon = card.querySelector('.material-symbols-outlined');
+                    if (icon) {
+                        icon.style.transition = 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                    }
+                });
+            });
+
+            // Smooth scroll anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+
+</body>
+</html>
