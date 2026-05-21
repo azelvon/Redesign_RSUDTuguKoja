@@ -1,0 +1,107 @@
+[
+  {
+    "ruang": "PICU",
+    "kapasitas": 2,
+    "terisi": 0,
+    "booking": 0,
+    "tersedia": 2
+  },
+  {
+    "ruang": "RUANG ISOLASI - PERINA",
+    "kapasitas": 0,
+    "terisi": 0,
+    "booking": 0,
+    "tersedia": 0
+  },
+  {
+    "ruang": "PERINA",
+    "kapasitas": 2,
+    "terisi": 1,
+    "booking": 0,
+    "tersedia": 1
+  },
+  {
+    "ruang": "NICU - ISOLASI TEKANAN NEGATIF VENTILATOR - NICU",
+    "kapasitas": 2,
+    "terisi": 0,
+    "booking": 0,
+    "tersedia": 2
+  },
+  {
+    "ruang": "NICU",
+    "kapasitas": 1,
+    "terisi": 0,
+    "booking": 0,
+    "tersedia": 1
+  },
+  {
+    "ruang": "ICU",
+    "kapasitas": 4,
+    "terisi": 3,
+    "booking": 0,
+    "tersedia": 1
+  },
+  {
+    "ruang": "VIP",
+    "kapasitas": 2,
+    "terisi": 0,
+    "booking": 0,
+    "tersedia": 2
+  },
+  {
+    "ruang": "RUANG ISOLASI - ISOLASI NON TEKANAN NEGATIF",
+    "kapasitas": 4,
+    "terisi": 4,
+    "booking": 0,
+    "tersedia": 0
+  },
+  {
+    "ruang": "RUANG ISOLASI - ISOLASI TEKANAN NEGATIF",
+    "kapasitas": 2,
+    "terisi": 1,
+    "booking": 0,
+    "tersedia": 1
+  },
+  {
+    "ruang": "KELAS 1",
+    "kapasitas": 6,
+    "terisi": 6,
+    "booking": 0,
+    "tersedia": 0
+  },
+  {
+    "ruang": "KELAS 2",
+    "kapasitas": 11,
+    "terisi": 8,
+    "booking": 5,
+    "tersedia": 0
+  },
+  {
+    "ruang": "KELAS 3",
+    "kapasitas": 52,
+    "terisi": 50,
+    "booking": 3,
+    "tersedia": 0
+  },
+  {
+    "ruang": "ICU - ISOLASI TEKANAN NEGATIF VENTILATOR - ICU",
+    "kapasitas": 2,
+    "terisi": 0,
+    "booking": 0,
+    "tersedia": 2
+  },
+  {
+    "ruang": "RUANG BERSALIN - KELAS 2",
+    "kapasitas": 4,
+    "terisi": 2,
+    "booking": 5,
+    "tersedia": 0
+  },
+  {
+    "ruang": "RUANG BERSALIN - KELAS 3",
+    "kapasitas": 8,
+    "terisi": 6,
+    "booking": 3,
+    "tersedia": 0
+  }
+]

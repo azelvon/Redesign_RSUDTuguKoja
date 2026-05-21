@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="utf-8">
@@ -26,28 +26,56 @@
                         "background": "#f7f9fb", "on-background": "#191c1e",
                         "text-muted": "#64748B", "text-main": "#1E293B"
                     },
-                    "spacing": { "gutter": "24px", "unit": "8px", "container-max": "1280px", "margin-mobile": "16px", "margin-desktop": "48px" },
-                    "fontFamily": { "label-lg": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "headline-xl": ["Plus Jakarta Sans"], "body-md": ["Atkinson Hyperlegible Next"], "body-lg": ["Atkinson Hyperlegible Next"] },
-                    "fontSize": {
-                        "label-lg": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
-                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
-                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
-                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
-                        "body-md": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
-                    }
+                    "fontFamily": { "label-lg": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "headline-xl": ["Plus Jakarta Sans"], "body-md": ["Atkinson Hyperlegible Next"], "body-lg": ["Atkinson Hyperlegible Next"] }
                 }
             }
         }
     </script>
     <style>
         .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
-        .floor-zone { transition: all 0.2s; cursor: pointer; }
-        .floor-zone:hover { fill: #aac9f4; }
-        .floor-zone.active { fill: #224266; stroke: #ffffff; stroke-width: 2px; }
-        .floor-zone.active + text { fill: #ffffff; }
-        .glass-panel { background: rgba(255,255,255,0.85); backdrop-filter: blur(8px); }
         .custom-scrollbar::-webkit-scrollbar { width: 4px; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        
+        /* Tooltip */
+        #floor-tooltip {
+            pointer-events: none;
+            transition: opacity 0.2s ease-out;
+        }
+
+        /* SVG Room Styles */
+        .room-rect {
+            fill: #ffffff;
+            stroke: #cbd5e1;
+            stroke-width: 2;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .room-group:hover .room-rect {
+            fill: #e2e8f0;
+            stroke: #94a3b8;
+        }
+        .room-group.active .room-rect {
+            fill: #d2e4ff;
+            stroke: #224266;
+            stroke-width: 3;
+        }
+        .room-group.dimmed .room-rect {
+            fill: #f1f5f9;
+            stroke: #e2e8f0;
+            opacity: 0.4;
+        }
+        .room-group.dimmed text, .room-group.dimmed foreignObject {
+            opacity: 0.4;
+        }
+        
+        @keyframes blinkHighlight {
+            0% { fill: #d2e4ff; stroke-width: 4; stroke: #224266; }
+            50% { fill: #ffffff; stroke-width: 2; stroke: #cbd5e1; }
+            100% { fill: #d2e4ff; stroke-width: 4; stroke: #224266; }
+        }
+        .room-group.highlight-blink .room-rect {
+            animation: blinkHighlight 1s infinite alternate;
+        }
     </style>
 </head>
 <body class="bg-background text-on-surface font-body-md min-h-screen overflow-hidden">
@@ -55,105 +83,259 @@
 
     <div class="flex" style="height: calc(100vh - 96px);">
         <!-- SideNavBar -->
-        <aside class="h-full w-64 hidden md:flex flex-col bg-surface-container-lowest border-r border-surface-subtle shadow-sm z-40">
-            <div class="p-6">
-                <h2 class="font-headline-md text-jakarta-blue font-bold">Navigasi Denah</h2>
+        <aside class="h-full w-72 hidden md:flex flex-col bg-surface-container-lowest border-r border-surface-subtle shadow-sm z-40 relative">
+            <div class="p-6 border-b border-surface-subtle">
+                <h2 class="font-headline-md text-jakarta-blue font-bold">Peta Fasilitas</h2>
                 <p class="text-on-surface-variant font-label-md">RSUD Tugu Koja</p>
             </div>
-            <nav class="flex-1 px-4 space-y-2 overflow-y-auto custom-scrollbar">
-                <div class="pb-2 pt-4 px-2 text-on-surface-variant font-label-md uppercase tracking-wider">Lantai</div>
-                <button class="w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 font-label-lg" id="btn-floor-Dasar" onclick="changeFloor('Dasar')">
-                    <span class="material-symbols-outlined">layers</span><span>Lantai Dasar</span>
-                </button>
-                <button class="w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 font-label-lg" id="btn-floor-2" onclick="changeFloor('2')">
-                    <span class="material-symbols-outlined">layers</span><span>Lantai 2</span>
-                </button>
-                <button class="w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 font-label-lg" id="btn-floor-3" onclick="changeFloor('3')">
-                    <span class="material-symbols-outlined">layers</span><span>Lantai 3</span>
-                </button>
-                <button class="w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 font-label-lg" id="btn-floor-4" onclick="changeFloor('4')">
-                    <span class="material-symbols-outlined">layers</span><span>Lantai 4</span>
-                </button>
-                <div class="pb-2 pt-6 px-2 text-on-surface-variant font-label-md uppercase tracking-wider">Kategori</div>
-                <div class="space-y-1">
-                    <button class="w-full flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors">
-                        <span class="material-symbols-outlined">medical_services</span><span class="text-label-md">Poliklinik</span>
+            <nav class="flex-1 px-4 space-y-2 overflow-y-auto custom-scrollbar py-4">
+                
+                <div class="pb-2 px-2 text-on-surface-variant font-label-md uppercase tracking-wider">Kategori Layanan</div>
+                <div class="space-y-1" id="category-filters">
+                    <button class="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 font-label-md bg-primary-container text-white shadow-md filter-btn" data-cat="all">
+                        <span class="material-symbols-outlined">map</span><span>Semua Area</span>
                     </button>
-                    <button class="w-full flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors">
-                        <span class="material-symbols-outlined">emergency</span><span class="text-label-md">IGD</span>
+                    <button class="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 font-label-md text-on-surface hover:bg-surface-subtle filter-btn" data-cat="Gawat Darurat">
+                        <span class="material-symbols-outlined text-emergency-red">emergency</span><span>Gawat Darurat</span>
                     </button>
-                    <button class="w-full flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors">
-                        <span class="material-symbols-outlined">hub</span><span class="text-label-md">Fasilitas Umum</span>
+                    <button class="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 font-label-md text-on-surface hover:bg-surface-subtle filter-btn" data-cat="Rawat Jalan">
+                        <span class="material-symbols-outlined text-health-green">stethoscope</span><span>Rawat Jalan / Poliklinik</span>
+                    </button>
+                    <button class="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 font-label-md text-on-surface hover:bg-surface-subtle filter-btn" data-cat="Rawat Inap & Kritis">
+                        <span class="material-symbols-outlined text-jakarta-blue">bed</span><span>Rawat Inap & Kritis</span>
+                    </button>
+                    <button class="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 font-label-md text-on-surface hover:bg-surface-subtle filter-btn" data-cat="Fasilitas & Penunjang">
+                        <span class="material-symbols-outlined text-orange-500">biotech</span><span>Fasilitas & Penunjang</span>
+                    </button>
+                </div>
+
+                <div class="pb-2 pt-6 px-2 text-on-surface-variant font-label-md uppercase tracking-wider">Navigasi Cepat</div>
+                <div class="space-y-1" id="floor-nav">
+                    <button class="w-full flex items-center justify-between px-4 py-2 text-on-surface-variant hover:bg-surface-subtle rounded-lg transition-colors" onclick="focusFloor('4')">
+                        <span class="text-label-md">Lantai 4</span> <span class="text-xs text-on-surface-variant">Rawat Inap</span>
+                    </button>
+                    <button class="w-full flex items-center justify-between px-4 py-2 text-on-surface-variant hover:bg-surface-subtle rounded-lg transition-colors" onclick="focusFloor('3')">
+                        <span class="text-label-md">Lantai 3</span> <span class="text-xs text-on-surface-variant">Perawatan Kritis</span>
+                    </button>
+                    <button class="w-full flex items-center justify-between px-4 py-2 text-on-surface-variant hover:bg-surface-subtle rounded-lg transition-colors" onclick="focusFloor('2')">
+                        <span class="text-label-md">Lantai 2</span> <span class="text-xs text-on-surface-variant">Rawat Jalan</span>
+                    </button>
+                    <button class="w-full flex items-center justify-between px-4 py-2 text-on-surface-variant hover:bg-surface-subtle rounded-lg transition-colors" onclick="focusFloor('1')">
+                        <span class="text-label-md">Lantai 1</span> <span class="text-xs text-on-surface-variant">IGD & Lobi</span>
                     </button>
                 </div>
             </nav>
-            <div class="p-4 mt-auto">
-                <button class="w-full py-3 bg-jakarta-blue text-white rounded-xl font-bold flex items-center justify-center gap-2">
-                    <span class="material-symbols-outlined text-[20px]">call</span> Hubungi Resepsionis
-                </button>
-            </div>
         </aside>
 
         <!-- Main Canvas -->
         <main class="flex-1 relative bg-surface-container-low overflow-hidden flex flex-col">
-            <!-- Search Overlay -->
+            
+            <!-- Tooltip for Building Hover -->
+            <div id="floor-tooltip" class="fixed opacity-0 z-50 bg-jakarta-blue text-white p-4 rounded-xl shadow-2xl w-64 border border-primary-fixed-dim/30 pointer-events-none">
+                <h4 class="font-bold text-lg mb-1" id="tt-title">Lantai X</h4>
+                <p class="text-sm text-primary-fixed-dim mb-2" id="tt-desc">Deskripsi</p>
+                <div class="h-px w-full bg-white/20 mb-2"></div>
+                <ul class="text-xs space-y-1 list-disc list-inside text-surface-bright" id="tt-list">
+                </ul>
+                <div class="mt-3 text-[10px] text-primary-fixed-dim text-center uppercase tracking-widest flex items-center justify-center gap-1">
+                    Klik Untuk Membuka <span class="material-symbols-outlined text-[12px]">touch_app</span>
+                </div>
+            </div>
+
+            <!-- Top Controls Overlay -->
             <div class="absolute top-6 left-6 right-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 z-20 pointer-events-none">
-                <div class="pointer-events-auto">
-                    <nav class="flex items-center gap-2 text-on-surface-variant font-label-md bg-white/60 backdrop-blur-md px-4 py-2 rounded-full border border-surface-subtle">
+                <div class="pointer-events-auto flex items-center gap-4">
+                    <nav class="flex items-center gap-2 text-on-surface-variant font-label-md bg-white/80 backdrop-blur-md px-4 py-3 rounded-2xl border border-surface-subtle shadow-sm">
                         <a href="../index.html" class="hover:text-jakarta-blue transition-colors">Beranda</a>
                         <span class="material-symbols-outlined text-[16px]">chevron_right</span>
                         <a href="../layanan.html" class="hover:text-jakarta-blue transition-colors">Layanan</a>
                         <span class="material-symbols-outlined text-[16px]">chevron_right</span>
-                        <span class="text-jakarta-blue font-bold">Peta Rumah Sakit</span>
+                        <span class="text-jakarta-blue font-bold">Peta RS</span>
                     </nav>
+                    
+                    <!-- Back to Building Button (Hidden initially) -->
+                    <button id="btn-back-3d" class="hidden items-center gap-2 bg-jakarta-blue text-white px-4 py-3 rounded-2xl font-bold shadow-lg hover:bg-primary transition-all" onclick="resetToBuilding()">
+                        <span class="material-symbols-outlined">domain</span> Kembali ke Gedung
+                    </button>
                 </div>
-                <div class="w-full md:w-80 pointer-events-auto">
-                    <div class="relative">
-                        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
-                        <input class="w-full pl-12 pr-4 py-3 bg-white border border-outline-variant rounded-2xl shadow-sm focus:ring-2 focus:ring-jakarta-blue outline-none text-body-md" placeholder="Cari ruangan..." type="text">
-                    </div>
+
+                <!-- Search Bar -->
+                <div class="w-full md:w-96 pointer-events-auto relative">
+                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+                    <input id="search-input" class="w-full pl-12 pr-4 py-3 bg-white/90 backdrop-blur-md border border-outline-variant rounded-2xl shadow-lg focus:ring-2 focus:ring-jakarta-blue outline-none text-body-md transition-all" placeholder="Cari ruangan atau poli..." type="text">
+                    <div id="search-results" class="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-xl border border-surface-subtle max-h-60 overflow-y-auto hidden z-50"></div>
                 </div>
             </div>
 
-            <!-- Map -->
-            <div class="flex-1 flex items-center justify-center p-8 md:p-16">
-                <div class="relative w-full max-w-4xl aspect-[16/10] bg-white rounded-[2rem] shadow-xl border border-surface-subtle overflow-hidden flex flex-col">
-                    <div class="p-6 border-b border-surface-subtle flex justify-between items-center bg-surface-bright">
-                        <div>
-                            <h3 class="font-headline-lg text-jakarta-blue" id="current-floor-title">Lantai Dasar</h3>
-                            <p class="text-on-surface-variant font-body-md" id="current-floor-subtitle">Pusat Layanan Utama & Gawat Darurat</p>
-                        </div>
-                        <div class="flex gap-2">
-                            <button class="p-2 bg-white border border-outline-variant rounded-lg hover:bg-surface-subtle"><span class="material-symbols-outlined">zoom_in</span></button>
-                            <button class="p-2 bg-white border border-outline-variant rounded-lg hover:bg-surface-subtle"><span class="material-symbols-outlined">zoom_out</span></button>
-                        </div>
+            <!-- Floor Title Display (Flat Mode Only) -->
+            <div id="flat-floor-title" class="absolute bottom-6 left-6 z-20 pointer-events-none opacity-0 transition-opacity duration-500 bg-white/90 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-surface-subtle">
+                <h3 class="font-headline-lg text-jakarta-blue" id="current-floor-name">Lantai X</h3>
+                <p class="text-on-surface-variant font-body-md" id="current-floor-desc">Deskripsi</p>
+            </div>
+
+            <!-- 1. BUILDING FACADE VIEW -->
+            <div id="building-view" class="flex-1 flex items-center justify-center relative p-8 bg-gradient-to-br from-surface-container-lowest to-surface-container transition-opacity duration-500">
+                <div class="relative w-full max-w-[500px] h-[550px] bg-white flex flex-col justify-end shadow-[0_30px_60px_rgba(34,66,102,0.15)] rounded-t-[2rem] border border-surface-subtle overflow-hidden">
+                    
+                    <!-- Roof Header -->
+                    <div class="absolute top-0 w-full h-12 bg-gradient-to-r from-primary to-jakarta-blue rounded-t-[2rem] flex items-center justify-center border-b-4 border-health-green">
+                        <span class="text-white text-sm font-bold tracking-[0.2em]">RSUD TUGU KOJA</span>
                     </div>
-                    <div class="flex-1 bg-[#f1f5f9] relative p-8">
-                        <svg class="w-full h-full drop-shadow-2xl" viewBox="0 0 800 500">
-                            <rect fill="#e2e8f0" height="400" rx="20" width="700" x="50" y="50"></rect>
-                            <g id="floor-map-content"></g>
+                    
+                    <!-- Floor 4 -->
+                    <div class="flex-1 flex flex-col justify-center px-8 hover:bg-primary-fixed-dim/30 transition-colors cursor-pointer border-b border-surface-subtle mt-12 relative group" onclick="focusFloor('4')" onmousemove="moveTooltip(event, '4')" onmouseenter="showTooltip('4')" onmouseleave="hideTooltip()">
+                        <div class="flex justify-between w-full opacity-60 group-hover:opacity-100 transition-opacity">
+                            <div class="w-16 h-20 bg-[#f1f5f9] rounded-t-lg border-b-4 border-jakarta-blue flex items-center justify-center"><div class="w-10 h-14 bg-primary-fixed/50 rounded-sm"></div></div>
+                            <div class="w-16 h-20 bg-[#f1f5f9] rounded-t-lg border-b-4 border-jakarta-blue flex items-center justify-center"><div class="w-10 h-14 bg-primary-fixed/50 rounded-sm"></div></div>
+                            <div class="w-16 h-20 bg-[#f1f5f9] rounded-t-lg border-b-4 border-jakarta-blue flex items-center justify-center"><div class="w-10 h-14 bg-primary-fixed/50 rounded-sm"></div></div>
+                            <div class="w-16 h-20 bg-[#f1f5f9] rounded-t-lg border-b-4 border-jakarta-blue flex items-center justify-center"><div class="w-10 h-14 bg-primary-fixed/50 rounded-sm"></div></div>
+                        </div>
+                        <div class="absolute right-4 top-1/2 -translate-y-1/2 text-2xl font-bold text-surface-variant group-hover:text-jakarta-blue transition-colors">4</div>
+                    </div>
+
+                    <!-- Floor 3 -->
+                    <div class="flex-1 flex flex-col justify-center px-8 hover:bg-primary-fixed-dim/30 transition-colors cursor-pointer border-b border-surface-subtle relative group" onclick="focusFloor('3')" onmousemove="moveTooltip(event, '3')" onmouseenter="showTooltip('3')" onmouseleave="hideTooltip()">
+                        <div class="flex justify-between w-full opacity-60 group-hover:opacity-100 transition-opacity">
+                            <div class="w-16 h-20 bg-[#f1f5f9] rounded-t-lg border-b-4 border-health-green flex items-center justify-center"><div class="w-10 h-14 bg-primary-fixed/50 rounded-sm"></div></div>
+                            <div class="w-16 h-20 bg-[#f1f5f9] rounded-t-lg border-b-4 border-health-green flex items-center justify-center"><div class="w-10 h-14 bg-primary-fixed/50 rounded-sm"></div></div>
+                            <div class="w-16 h-20 bg-[#f1f5f9] rounded-t-lg border-b-4 border-health-green flex items-center justify-center"><div class="w-10 h-14 bg-primary-fixed/50 rounded-sm"></div></div>
+                            <div class="w-16 h-20 bg-[#f1f5f9] rounded-t-lg border-b-4 border-health-green flex items-center justify-center"><div class="w-10 h-14 bg-primary-fixed/50 rounded-sm"></div></div>
+                        </div>
+                        <div class="absolute right-4 top-1/2 -translate-y-1/2 text-2xl font-bold text-surface-variant group-hover:text-jakarta-blue transition-colors">3</div>
+                    </div>
+
+                    <!-- Floor 2 -->
+                    <div class="flex-1 flex flex-col justify-center px-8 hover:bg-primary-fixed-dim/30 transition-colors cursor-pointer border-b border-surface-subtle relative group" onclick="focusFloor('2')" onmousemove="moveTooltip(event, '2')" onmouseenter="showTooltip('2')" onmouseleave="hideTooltip()">
+                        <div class="flex justify-between w-full opacity-60 group-hover:opacity-100 transition-opacity">
+                            <div class="w-16 h-20 bg-[#f1f5f9] rounded-t-lg border-b-4 border-orange-400 flex items-center justify-center"><div class="w-10 h-14 bg-primary-fixed/50 rounded-sm"></div></div>
+                            <div class="w-16 h-20 bg-[#f1f5f9] rounded-t-lg border-b-4 border-orange-400 flex items-center justify-center"><div class="w-10 h-14 bg-primary-fixed/50 rounded-sm"></div></div>
+                            <div class="w-16 h-20 bg-[#f1f5f9] rounded-t-lg border-b-4 border-orange-400 flex items-center justify-center"><div class="w-10 h-14 bg-primary-fixed/50 rounded-sm"></div></div>
+                            <div class="w-16 h-20 bg-[#f1f5f9] rounded-t-lg border-b-4 border-orange-400 flex items-center justify-center"><div class="w-10 h-14 bg-primary-fixed/50 rounded-sm"></div></div>
+                        </div>
+                        <div class="absolute right-4 top-1/2 -translate-y-1/2 text-2xl font-bold text-surface-variant group-hover:text-jakarta-blue transition-colors">2</div>
+                    </div>
+
+                    <!-- Floor 1 -->
+                    <div class="flex-[1.2] flex items-end justify-center px-8 hover:bg-primary-fixed-dim/30 transition-colors cursor-pointer relative group pb-0 bg-surface-bright" onclick="focusFloor('1')" onmousemove="moveTooltip(event, '1')" onmouseenter="showTooltip('1')" onmouseleave="hideTooltip()">
+                        <div class="flex justify-between w-full h-full items-end opacity-80 group-hover:opacity-100 transition-opacity">
+                            <div class="w-16 h-20 bg-[#f1f5f9] rounded-t-lg mb-4 border-b-4 border-emergency-red flex items-center justify-center"><div class="w-10 h-14 bg-primary-fixed/50 rounded-sm"></div></div>
+                            <!-- Main Entrance -->
+                            <div class="w-32 h-28 bg-surface-container-high rounded-t-xl border-t-[6px] border-x-[6px] border-jakarta-blue flex justify-center items-end relative overflow-hidden">
+                                <div class="absolute top-2 text-[10px] font-bold text-jakarta-blue text-center w-full">IGD & LOBI</div>
+                                <div class="w-full h-16 bg-white flex mt-auto">
+                                    <div class="flex-1 border-r-2 border-surface-subtle"></div>
+                                    <div class="flex-1 border-r-2 border-surface-subtle"></div>
+                                    <div class="flex-1"></div>
+                                </div>
+                            </div>
+                            <div class="w-16 h-20 bg-[#f1f5f9] rounded-t-lg mb-4 border-b-4 border-emergency-red flex items-center justify-center"><div class="w-10 h-14 bg-primary-fixed/50 rounded-sm"></div></div>
+                        </div>
+                        <div class="absolute right-4 top-1/2 -translate-y-1/2 text-2xl font-bold text-surface-variant group-hover:text-jakarta-blue transition-colors">1</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 2. FLAT FLOOR PLAN VIEW (Hidden initially) -->
+            <div id="map-scene" class="hidden flex-1 items-center justify-center p-8 bg-gradient-to-br from-surface-container-low to-surface-container">
+                <div class="relative w-[800px] h-[500px]">
+                    <!-- Floor 1 -->
+                    <div class="absolute top-0 left-0 w-full h-full transition-opacity duration-300 opacity-0 pointer-events-none" id="svg-container-1">
+                        <svg viewBox="0 0 800 500" class="w-full h-full drop-shadow-2xl">
+                            <rect x="25" y="25" width="750" height="450" rx="20" fill="#f8fafc" stroke="#94a3b8" stroke-width="4"></rect>
+                            <g id="svg-floor-1"></g>
                         </svg>
-                        <div class="absolute bottom-6 right-6 flex flex-col gap-2 glass-panel p-4 rounded-xl border border-surface-subtle shadow-md">
-                            <div class="flex items-center gap-2 text-label-md"><div class="w-3 h-3 rounded-full bg-jakarta-blue"></div> Layanan Utama</div>
-                            <div class="flex items-center gap-2 text-label-md"><div class="w-3 h-3 rounded-full bg-health-green"></div> Poliklinik</div>
-                            <div class="flex items-center gap-2 text-label-md"><div class="w-3 h-3 rounded-full bg-emergency-red"></div> Gawat Darurat</div>
-                        </div>
+                    </div>
+                    <!-- Floor 2 -->
+                    <div class="absolute top-0 left-0 w-full h-full transition-opacity duration-300 opacity-0 pointer-events-none" id="svg-container-2">
+                        <svg viewBox="0 0 800 500" class="w-full h-full drop-shadow-2xl">
+                            <rect x="25" y="25" width="750" height="450" rx="20" fill="#f8fafc" stroke="#94a3b8" stroke-width="4"></rect>
+                            <g id="svg-floor-2"></g>
+                        </svg>
+                    </div>
+                    <!-- Floor 3 -->
+                    <div class="absolute top-0 left-0 w-full h-full transition-opacity duration-300 opacity-0 pointer-events-none" id="svg-container-3">
+                        <svg viewBox="0 0 800 500" class="w-full h-full drop-shadow-2xl">
+                            <rect x="25" y="25" width="750" height="450" rx="20" fill="#f8fafc" stroke="#94a3b8" stroke-width="4"></rect>
+                            <g id="svg-floor-3"></g>
+                        </svg>
+                    </div>
+                    <!-- Floor 4 -->
+                    <div class="absolute top-0 left-0 w-full h-full transition-opacity duration-300 opacity-0 pointer-events-none" id="svg-container-4">
+                        <svg viewBox="0 0 800 500" class="w-full h-full drop-shadow-2xl">
+                            <rect x="25" y="25" width="750" height="450" rx="20" fill="#f8fafc" stroke="#94a3b8" stroke-width="4"></rect>
+                            <g id="svg-floor-4"></g>
+                        </svg>
                     </div>
                 </div>
             </div>
 
-            <!-- Room Info Card -->
-            <div class="absolute right-6 top-1/2 -translate-y-1/2 w-80 translate-x-[120%] transition-transform duration-500 z-30" id="room-info-card">
-                <div class="bg-white rounded-2xl shadow-2xl border border-surface-subtle overflow-hidden">
-                    <div class="relative h-32 bg-jakarta-blue flex items-center justify-center">
-                        <span class="material-symbols-outlined text-white text-6xl" id="info-icon">medical_services</span>
-                        <button class="absolute top-2 right-2 text-white/70 hover:text-white" onclick="hideInfo()"><span class="material-symbols-outlined">close</span></button>
+            <!-- Room Info Card Popup -->
+            <div class="absolute right-6 top-24 bottom-6 w-80 translate-x-[120%] transition-transform duration-500 z-30" id="room-info-card">
+                <div class="bg-white rounded-2xl shadow-2xl border border-surface-subtle h-full overflow-hidden flex flex-col">
+                    <div class="relative h-40 bg-gradient-to-br from-jakarta-blue to-primary flex flex-col items-center justify-center p-6 text-center">
+                        <span class="material-symbols-outlined text-white text-5xl mb-2" id="info-icon">medical_services</span>
+                        <h4 class="text-headline-md text-white font-bold leading-tight" id="info-title">Nama Ruangan</h4>
+                        <div id="info-status-badge" class="mt-2 px-3 py-1 text-xs font-bold rounded-full hidden">BUKA</div>
+                        <button class="absolute top-4 right-4 text-white/70 hover:text-white bg-black/20 rounded-full p-1" onclick="hideInfo()">
+                            <span class="material-symbols-outlined">close</span>
+                        </button>
                     </div>
-                    <div class="p-6">
-                        <span class="text-label-md text-health-green font-bold uppercase tracking-wider" id="info-category">Kategori</span>
-                        <h4 class="text-headline-md text-jakarta-blue font-bold" id="info-title">Nama Ruangan</h4>
-                        <p class="text-on-surface-variant text-body-md my-4" id="info-desc">Deskripsi singkat lokasi dan layanan.</p>
-                        <button class="w-full py-3 bg-surface-subtle text-jakarta-blue font-bold rounded-xl hover:bg-primary-container hover:text-white transition-colors">Lihat Jadwal Dokter</button>
+                    <div class="p-6 flex-1 overflow-y-auto">
+                        <div class="inline-block px-3 py-1 bg-surface-subtle text-jakarta-blue rounded-full text-xs font-bold uppercase tracking-wider mb-4" id="info-category">Kategori</div>
+                        
+                        <p class="text-on-surface-variant text-body-md mb-6" id="info-desc">Deskripsi singkat lokasi dan layanan.</p>
+                        
+                        <!-- Bed Availability Module (Hidden by default) -->
+                        <div id="info-bed-module" class="mb-6 hidden bg-surface-container-lowest border border-surface-subtle rounded-xl p-4 shadow-sm">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="material-symbols-outlined text-jakarta-blue">bed</span>
+                                <span class="font-bold text-jakarta-blue">Status Tempat Tidur</span>
+                            </div>
+                            <div class="flex justify-between items-end">
+                                <div>
+                                    <span class="text-3xl font-bold" id="info-bed-tersedia">0</span>
+                                    <span class="text-on-surface-variant text-sm">/ <span id="info-bed-kapasitas">0</span> Tersedia</span>
+                                </div>
+                                <div id="info-bed-status" class="px-2 py-1 rounded text-xs font-bold text-white bg-health-green">
+                                    TERSEDIA
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- General Info Box -->
+                        <div class="space-y-4">
+                            <div class="flex gap-3">
+                                <span class="material-symbols-outlined text-on-surface-variant">schedule</span>
+                                <div>
+                                    <p class="font-bold text-sm">Jam Operasional</p>
+                                    <p class="text-sm text-on-surface-variant">Senin - Jumat: 08:00 - 16:00</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-3">
+                                <span class="material-symbols-outlined text-on-surface-variant">assignment</span>
+                                <div>
+                                    <p class="font-bold text-sm">Persiapan Dokumen</p>
+                                    <p class="text-sm text-on-surface-variant">KTP, Kartu BPJS/Asuransi, Surat Rujukan (jika ada).</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Doctor List Container -->
+                        <div id="info-doctor-list" class="mt-6 hidden">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="material-symbols-outlined text-jakarta-blue text-[20px]">group</span>
+                                <h5 class="font-bold text-sm text-jakarta-blue">Dokter Spesialis</h5>
+                            </div>
+                            <div id="info-doctor-items" class="space-y-2">
+                                <!-- Dynamic Doctor Items -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 border-t border-surface-subtle bg-surface-bright">
+                        <a href="../caridokter.html" id="btn-jadwal-dokter" class="w-full py-3 bg-jakarta-blue text-white font-bold rounded-xl hover:bg-primary transition-colors flex justify-center items-center gap-2">
+                            <span class="material-symbols-outlined">calendar_month</span> Lihat Jadwal Dokter
+                        </a>
                     </div>
                 </div>
             </div>
@@ -163,120 +345,628 @@
     <!-- Mobile Bottom Nav -->
     <nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-2 bg-surface border-t border-surface-subtle shadow-lg md:hidden z-50">
         <a href="../index.html" class="flex flex-col items-center text-on-surface-variant">
-            <span class="material-symbols-outlined">home</span><span class="text-label-md">Beranda</span>
+            <span class="material-symbols-outlined">home</span><span class="text-xs mt-1">Beranda</span>
         </a>
-        <div class="flex flex-col items-center bg-primary-container text-on-primary-container rounded-xl px-4 py-1">
-            <span class="material-symbols-outlined">map</span><span class="text-label-md">Peta</span>
+        <div class="flex flex-col items-center text-jakarta-blue font-bold" onclick="resetToBuilding()">
+            <span class="material-symbols-outlined">map</span><span class="text-xs mt-1">Peta</span>
         </div>
         <a href="../caridokter.html" class="flex flex-col items-center text-on-surface-variant">
-            <span class="material-symbols-outlined">stethoscope</span><span class="text-label-md">Dokter</span>
+            <span class="material-symbols-outlined">stethoscope</span><span class="text-xs mt-1">Dokter</span>
         </a>
-        <div class="flex flex-col items-center text-on-surface-variant">
-            <span class="material-symbols-outlined text-emergency-red">emergency</span><span class="text-label-md">Darurat</span>
-        </div>
     </nav>
 
     <script>
+        // Hover Tooltip Data
+        const tooltipData = {
+            '1': { title: 'Lantai 1', desc: 'Lobi & Penunjang Cepat', items: ['IGD 24 Jam', 'Laboratorium & Radiologi', 'Apotek (Farmasi)', 'Pendaftaran & PPID'] },
+            '2': { title: 'Lantai 2', desc: 'Rawat Jalan & Terapi Anak', items: ['Poli Spesialis (Anak, Dalam, Bedah, dll)', 'Klinik Gigi', 'Instalasi Tumbuh Kembang'] },
+            '3': { title: 'Lantai 3', desc: 'Area Perawatan Kritis & Melahirkan', items: ['Kamar Bersalin (VK)', 'Perinatologi', 'ICU, NICU, PICU', 'Ruang Isolasi'] },
+            '4': { title: 'Lantai 4', desc: 'Rawat Inap & Operasi', items: ['Bangsal Umum (Kelas I & III)', 'Instalasi Bedah Sentral (IBS)', 'Ruang CSSD (Sterilisasi)'] }
+        };
+
+        function showTooltip(level) {
+            const tt = document.getElementById('floor-tooltip');
+            const data = tooltipData[level];
+            document.getElementById('tt-title').innerText = data.title;
+            document.getElementById('tt-desc').innerText = data.desc;
+            document.getElementById('tt-list').innerHTML = data.items.map(i => `<li>${i}</li>`).join('');
+            tt.classList.remove('opacity-0');
+        }
+
+        function moveTooltip(e, level) {
+            const tt = document.getElementById('floor-tooltip');
+            tt.style.left = (e.clientX + 20) + 'px';
+            tt.style.top = (e.clientY + 20) + 'px';
+        }
+
+        function hideTooltip() {
+            const tt = document.getElementById('floor-tooltip');
+            tt.classList.add('opacity-0');
+        }
+
+        // Data denah ruangan
         const floorData = {
-            'Dasar': {
-                title: 'Lantai Dasar', subtitle: 'Pusat Layanan Utama & Gawat Darurat',
+            '1': {
+                title: 'Lantai 1', subtitle: 'Lobi & Penunjang Cepat',
                 rooms: [
-                    { name: 'IGD', cat: 'Gawat Darurat', icon: 'emergency', x: 70, y: 70, w: 200, h: 150, info: 'Buka 24 Jam - Sisi Barat' },
-                    { name: 'Pendaftaran', cat: 'Administrasi', icon: 'assignment', x: 280, y: 70, w: 300, h: 100, info: 'Sisi Tengah - Dekat Lobi' },
-                    { name: 'Farmasi', cat: 'Apotek', icon: 'medication', x: 590, y: 70, w: 140, h: 360, info: 'Layanan Resep & Obat', vertical: true },
-                    { name: 'Radiologi', cat: 'Penunjang Medis', icon: 'settings_accessibility', x: 70, y: 230, w: 200, h: 200, info: 'Rontgen, CT Scan, MRI' },
-                    { name: 'Kantin & Area Tunggu', cat: 'Fasilitas Umum', icon: 'restaurant', x: 280, y: 180, w: 300, h: 250, info: 'Area Makan & Minum' }
+                    { id: 'igd', name: 'Instalasi Gawat Darurat (IGD)', cat: 'Gawat Darurat', x: 50, y: 50, w: 200, h: 250, info: 'Layanan Gawat Darurat 24 Jam dengan penanganan cepat.', icon: 'emergency' },
+                    { id: 'lobi', name: 'Lobi Utama', cat: 'Fasilitas & Penunjang', x: 50, y: 325, w: 200, h: 125, info: 'Area Tunggu & Penerimaan Utama', icon: 'meeting_room' },
+                    { id: 'lab', name: 'Laboratorium', cat: 'Fasilitas & Penunjang', x: 275, y: 50, w: 150, h: 150, info: 'Pemeriksaan darah, urine, dan spesimen lainnya.', icon: 'biotech' },
+                    { id: 'rad', name: 'Radiologi', cat: 'Fasilitas & Penunjang', x: 450, y: 50, w: 150, h: 150, info: 'Layanan Rontgen, CT Scan, dan MRI.', icon: 'radiology' },
+                    { id: 'apotek', name: 'Apotek (Farmasi)', cat: 'Fasilitas & Penunjang', x: 625, y: 50, w: 125, h: 150, info: 'Pengambilan resep obat rawat jalan.', icon: 'medication' },
+                    { id: 'ppid', name: 'Pojok Informasi PPID', cat: 'Fasilitas & Penunjang', x: 275, y: 225, w: 200, h: 100, info: 'Pusat Informasi dan Layanan Pengaduan.', icon: 'info' },
+                    { id: 'pendaftaran', name: 'Loket Pendaftaran', cat: 'Fasilitas & Penunjang', x: 500, y: 225, w: 250, h: 100, info: 'Pendaftaran Pasien & Kasir Pembayaran', icon: 'app_registration' }
                 ]
             },
             '2': {
-                title: 'Lantai 2', subtitle: 'Poliklinik Spesialis & Laboratorium',
+                title: 'Lantai 2', subtitle: 'Rawat Jalan & Terapi Anak',
                 rooms: [
-                    { name: 'Poli Mata', cat: 'Poliklinik', icon: 'visibility', x: 70, y: 70, w: 180, h: 180, info: 'Layanan Spesialis Mata' },
-                    { name: 'Poli Gigi', cat: 'Poliklinik', icon: 'dentistry', x: 260, y: 70, w: 180, h: 180, info: 'Layanan Kesehatan Gigi' },
-                    { name: 'Laboratorium', cat: 'Penunjang', icon: 'biotech', x: 450, y: 70, w: 280, h: 180, info: 'Cek Darah & Spesimen' },
-                    { name: 'Poli Bedah', cat: 'Poliklinik', icon: 'medical_services', x: 70, y: 260, w: 320, h: 170, info: 'Layanan Konsultasi Bedah' },
-                    { name: 'Poli THT', cat: 'Poliklinik', icon: 'hearing', x: 410, y: 260, w: 320, h: 170, info: 'Telinga, Hidung, Tenggorokan' }
+                    { id: 'poli-anak', name: 'Poli Anak', cat: 'Rawat Jalan', x: 50, y: 50, w: 150, h: 150, info: 'Pemeriksaan kesehatan bayi dan anak.', icon: 'child_care', poliKeys: ['Poli Anak'] },
+                    { id: 'poli-dalam', name: 'Poli Dalam', cat: 'Rawat Jalan', x: 225, y: 50, w: 150, h: 150, info: 'Konsultasi dan pemeriksaan penyakit dalam.', icon: 'stethoscope', poliKeys: ['Poli Penyakit Dalam'] },
+                    { id: 'poli-bedah', name: 'Poli Bedah', cat: 'Rawat Jalan', x: 400, y: 50, w: 150, h: 150, info: 'Konsultasi pra dan pasca operasi.', icon: 'medical_services', poliKeys: ['Poli Bedah'] },
+                    { id: 'poli-kandungan', name: 'Poli Kebidanan', cat: 'Rawat Jalan', x: 575, y: 50, w: 175, h: 150, info: 'Pemeriksaan kehamilan dan kesehatan reproduksi.', icon: 'pregnant_woman', poliKeys: ['Poli Kebidanan dan Kandungan'] },
+                    { id: 'poli-gigi', name: 'Klinik Gigi', cat: 'Rawat Jalan', x: 50, y: 225, w: 200, h: 225, info: 'Perawatan dan pemeriksaan gigi & mulut.', icon: 'dentistry', poliKeys: ['Poli Gigi dan Mulut', 'Klinik Gigi Umum'] },
+                    { id: 'tumbuh-kembang', name: 'Instalasi Tumbuh Kembang', cat: 'Rawat Jalan', x: 275, y: 225, w: 250, h: 225, info: 'Terapi tumbuh kembang, fisioterapi anak, dan psikologi anak.', icon: 'escalator_warning' },
+                    { id: 'khusus', name: 'Layanan Khusus (EEG)', cat: 'Fasilitas & Penunjang', x: 550, y: 225, w: 200, h: 225, info: 'Pemeriksaan gelombang otak (EEG) & pendengaran (BERA).', icon: 'neurology' }
                 ]
             },
             '3': {
-                title: 'Lantai 3', subtitle: 'Rawat Inap & Fasilitas Ibadah',
+                title: 'Lantai 3', subtitle: 'Area Perawatan Kritis & Melahirkan',
                 rooms: [
-                    { name: 'Rawat Inap VIP', cat: 'Rawat Inap', icon: 'hotel', x: 70, y: 70, w: 400, h: 200, info: 'Kamar Eksklusif Single Bed' },
-                    { name: 'Rawat Inap Kelas 1', cat: 'Rawat Inap', icon: 'bed', x: 70, y: 280, w: 400, h: 150, info: 'Kamar Kapasitas 2 Bed' },
-                    { name: 'Musholla', cat: 'Ibadah', icon: 'mosque', x: 490, y: 70, w: 240, h: 360, info: 'Area Ibadah Pria & Wanita' }
+                    { id: 'vk', name: 'Kamar Bersalin (VK)', cat: 'Rawat Inap & Kritis', x: 50, y: 50, w: 200, h: 200, info: 'Ruang persalinan dan observasi pasca melahirkan.', icon: 'baby_changing_station', bedKeys: ['RUANG BERSALIN - KELAS 2', 'RUANG BERSALIN - KELAS 3'] },
+                    { id: 'perina', name: 'Perinatologi', cat: 'Rawat Inap & Kritis', x: 275, y: 50, w: 200, h: 200, info: 'Perawatan bayi baru lahir yang membutuhkan observasi khusus.', icon: 'crib', bedKeys: ['PERINA', 'RUANG ISOLASI - PERINA'] },
+                    { id: 'isolasi', name: 'Ruang Isolasi', cat: 'Rawat Inap & Kritis', x: 500, y: 50, w: 250, h: 400, info: 'Ruang perawatan khusus infeksius dengan tekanan negatif.', icon: 'coronavirus', bedKeys: ['RUANG ISOLASI - ISOLASI NON TEKANAN NEGATIF', 'RUANG ISOLASI - ISOLASI TEKANAN NEGATIF'] },
+                    { id: 'icu', name: 'ICU', cat: 'Rawat Inap & Kritis', x: 50, y: 275, w: 150, h: 175, info: 'Intensive Care Unit untuk pasien dewasa kritis.', icon: 'monitor_heart', bedKeys: ['ICU', 'ICU - ISOLASI TEKANAN NEGATIF VENTILATOR - ICU'] },
+                    { id: 'nicu', name: 'NICU', cat: 'Rawat Inap & Kritis', x: 225, y: 275, w: 125, h: 175, info: 'Neonatal Intensive Care Unit untuk bayi kritis.', icon: 'child_friendly', bedKeys: ['NICU', 'NICU - ISOLASI TEKANAN NEGATIF VENTILATOR - NICU'] },
+                    { id: 'picu', name: 'PICU', cat: 'Rawat Inap & Kritis', x: 375, y: 275, w: 100, h: 175, info: 'Pediatric Intensive Care Unit untuk anak-anak.', icon: 'pediatrics', bedKeys: ['PICU'] }
                 ]
             },
             '4': {
-                title: 'Lantai 4', subtitle: 'Kantor Manajemen & Administrasi Pusat',
+                title: 'Lantai 4', subtitle: 'Rawat Inap & Operasi',
                 rooms: [
-                    { name: 'Ruang Rapat', cat: 'Manajemen', icon: 'groups', x: 70, y: 70, w: 500, h: 150, info: 'Ruang Rapat Pleno' },
-                    { name: 'Kantor Direksi', cat: 'Manajemen', icon: 'admin_panel_settings', x: 70, y: 230, w: 240, h: 200, info: 'Area Pimpinan RSUD' },
-                    { name: 'SDM & Humas', cat: 'Manajemen', icon: 'work', x: 330, y: 230, w: 400, h: 200, info: 'Administrasi Kepegawaian' }
+                    { id: 'kelas1', name: 'Bangsal Kelas I', cat: 'Rawat Inap & Kritis', x: 50, y: 50, w: 200, h: 400, info: 'Kamar rawat inap VIP dan Kelas I dengan fasilitas premium.', icon: 'bed', bedKeys: ['KELAS 1', 'VIP'] },
+                    { id: 'kelas3', name: 'Bangsal Kelas III', cat: 'Rawat Inap & Kritis', x: 275, y: 50, w: 250, h: 200, info: 'Ruang perawatan umum Kelas II dan Kelas III.', icon: 'bed', bedKeys: ['KELAS 2', 'KELAS 3'] },
+                    { id: 'ibs', name: 'IBS (Bedah Sentral)', cat: 'Rawat Inap & Kritis', x: 275, y: 275, w: 250, h: 175, info: 'Instalasi Bedah Sentral (Kamar Operasi).', icon: 'surgical' },
+                    { id: 'cssd', name: 'Ruang CSSD', cat: 'Fasilitas & Penunjang', x: 550, y: 50, w: 200, h: 400, info: 'Pusat sterilisasi alat medis rumah sakit.', icon: 'cleaning_services' }
                 ]
             }
         };
 
-        function changeFloor(floor) {
-            ['Dasar', '2', '3', '4'].forEach(f => {
-                const btn = document.getElementById(`btn-floor-${f}`);
-                if (f === floor) {
-                    btn.classList.add('bg-primary-container', 'text-on-primary-container', 'font-bold');
-                    btn.classList.remove('text-on-surface-variant', 'hover:bg-surface-subtle');
-                } else {
-                    btn.classList.remove('bg-primary-container', 'text-on-primary-container', 'font-bold');
-                    btn.classList.add('text-on-surface-variant', 'hover:bg-surface-subtle');
+        let currentViewMode = 'building'; // 'building' | 'flat'
+        let bedDataMap = {};
+        let doctorData = [];
+        let klinikData = [];
+
+        // Load API data
+        async function loadData() {
+            try {
+                const response = await fetch('../assets/data/bed.json');
+                const data = await response.json();
+                data.forEach(item => { bedDataMap[item.ruang] = item; });
+            } catch (err) {
+                console.error("Gagal memuat data tempat tidur", err);
+            }
+            try {
+                const resDoc = await fetch('../assets/data/dokter.json');
+                doctorData = await resDoc.json();
+                const resKli = await fetch('../assets/data/klinik.json');
+                klinikData = await resKli.json();
+            } catch (err) {
+                console.error("Gagal memuat jadwal", err);
+            }
+            renderAllFloors();
+        }
+
+        function isTimeInSchedule(timeStr, scheduleStr) {
+            if(!scheduleStr) return false;
+            const [start, end] = scheduleStr.split('-');
+            if(!start || !end) return false;
+            return timeStr >= start && timeStr <= end;
+        }
+
+        function getPoliStatusDetail(poliKeys) {
+            if(!poliKeys || poliKeys.length === 0) return null;
+            
+            const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+            const now = new Date();
+            const today = days[now.getDay()];
+            const currentHourMinute = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+
+            let allBlocksToday = [];
+
+            doctorData.forEach(doc => {
+                if(doc.poliklinik.some(p => poliKeys.includes(p))) {
+                    const jadwalToday = doc.jadwal.find(j => j.hari === today);
+                    if(jadwalToday) {
+                        if(jadwalToday.pagi) allBlocksToday.push(jadwalToday.pagi);
+                        if(jadwalToday.sore) allBlocksToday.push(jadwalToday.sore);
+                    }
                 }
             });
 
-            const data = floorData[floor];
-            document.getElementById('current-floor-title').innerText = data.title;
-            document.getElementById('current-floor-subtitle').innerText = data.subtitle;
-
-            const mapG = document.getElementById('floor-map-content');
-            mapG.innerHTML = '';
-
-            data.rooms.forEach(room => {
-                const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-                rect.setAttribute("x", room.x); rect.setAttribute("y", room.y);
-                rect.setAttribute("width", room.w); rect.setAttribute("height", room.h);
-                rect.setAttribute("rx", "12"); rect.setAttribute("fill", "#fff");
-                rect.classList.add("floor-zone");
-                rect.onclick = () => {
-                    document.querySelectorAll('.floor-zone').forEach(r => r.classList.remove('active'));
-                    rect.classList.add('active');
-                    showInfo(room.name, room.cat, room.icon, room.info);
-                };
-                mapG.appendChild(rect);
-
-                const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-                text.setAttribute("x", room.x + room.w / 2);
-                text.setAttribute("y", room.y + room.h / 2 + 5);
-                text.setAttribute("text-anchor", "middle");
-                text.classList.add("font-bold", "fill-current", "pointer-events-none", "text-sm");
-                if (room.vertical) text.setAttribute("style", "writing-mode: vertical-rl;");
-                text.textContent = room.name;
-                mapG.appendChild(text);
+            klinikData.forEach(kli => {
+                if(poliKeys.includes(kli.nama)) {
+                    const jadwalToday = kli.jadwal.find(j => j.hari === today);
+                    if(jadwalToday) {
+                        if(jadwalToday.pagi) allBlocksToday.push(jadwalToday.pagi);
+                        if(jadwalToday.sore) allBlocksToday.push(jadwalToday.sore);
+                    }
+                }
             });
-            hideInfo();
+
+            if(allBlocksToday.length === 0) {
+                return { isOpen: false, nextTime: 'Besok' };
+            }
+
+            let currentlyOpenEnds = [];
+            let futureStarts = [];
+
+            allBlocksToday.forEach(block => {
+                const [start, end] = block.split('-');
+                if(!start || !end) return;
+                if(currentHourMinute >= start && currentHourMinute <= end) {
+                    currentlyOpenEnds.push(end);
+                } else if(currentHourMinute < start) {
+                    futureStarts.push(start);
+                }
+            });
+
+            if(currentlyOpenEnds.length > 0) {
+                currentlyOpenEnds.sort();
+                const closesAt = currentlyOpenEnds[currentlyOpenEnds.length - 1];
+                return { isOpen: true, nextTime: closesAt };
+            } else {
+                if(futureStarts.length > 0) {
+                    futureStarts.sort();
+                    const opensAt = futureStarts[0];
+                    return { isOpen: false, nextTime: opensAt };
+                } else {
+                    return { isOpen: false, nextTime: 'Besok' };
+                }
+            }
         }
 
-        function showInfo(title, cat, icon, desc) {
-            document.getElementById('info-title').innerText = title;
-            document.getElementById('info-category').innerText = cat;
-            document.getElementById('info-icon').innerText = icon;
-            document.getElementById('info-desc').innerText = desc;
+        function calculateBeds(bedKeys) {
+            if (!bedKeys || Object.keys(bedDataMap).length === 0) return null;
+            let tersedia = 0, kapasitas = 0;
+            bedKeys.forEach(key => {
+                if (bedDataMap[key]) {
+                    tersedia += bedDataMap[key].tersedia;
+                    kapasitas += bedDataMap[key].kapasitas;
+                }
+            });
+            return { tersedia, kapasitas };
+        }
+
+        function isDoctorOnDuty(doc) {
+            const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+            const now = new Date();
+            const today = days[now.getDay()];
+            const currentHourMinute = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+
+            const jadwalToday = doc.jadwal.find(j => j.hari === today);
+            if(jadwalToday) {
+                if(isTimeInSchedule(currentHourMinute, jadwalToday.pagi) || isTimeInSchedule(currentHourMinute, jadwalToday.sore)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // Render SVG for a specific floor
+        function renderAllFloors() {
+            Object.keys(floorData).forEach(level => {
+                const svgG = document.getElementById(`svg-floor-${level}`);
+                svgG.innerHTML = ''; // Clear existing
+                
+                const data = floorData[level];
+                
+                data.rooms.forEach(room => {
+                    const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
+                    group.classList.add("room-group");
+                    group.setAttribute("id", `room-${room.id}`);
+                    group.dataset.cat = room.cat;
+                    
+                    group.onclick = (e) => {
+                        e.stopPropagation();
+                        highlightAndShowInfo(room, level);
+                    };
+
+                    const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                    rect.setAttribute("x", room.x); rect.setAttribute("y", room.y);
+                    rect.setAttribute("width", room.w); rect.setAttribute("height", room.h);
+                    rect.setAttribute("rx", "12");
+                    rect.classList.add("room-rect");
+                    group.appendChild(rect);
+
+                    const fo = document.createElementNS("http://www.w3.org/2000/svg", "foreignObject");
+                    fo.setAttribute("x", room.x + 10); fo.setAttribute("y", room.y + 10);
+                    fo.setAttribute("width", room.w - 20); fo.setAttribute("height", room.h - 20);
+                    fo.style.pointerEvents = "none";
+                    
+                    const div = document.createElement("div");
+                    div.style.width = "100%"; div.style.height = "100%";
+                    div.style.display = "flex"; div.style.flexDirection = "column";
+                    div.style.alignItems = "center"; div.style.justifyContent = "center";
+                    div.style.textAlign = "center";
+                    
+                    div.innerHTML = `
+                        <span class="material-symbols-outlined text-[#64748B] mb-1" style="font-size: ${room.w > 150 ? '32px' : '24px'}">${room.icon}</span>
+                        <span class="font-bold text-jakarta-blue text-sm md:text-base leading-tight">${room.name}</span>
+                    `;
+                    fo.appendChild(div);
+                    group.appendChild(fo);
+
+                    const bedInfo = calculateBeds(room.bedKeys);
+                    if (bedInfo !== null) {
+                        const isAvailable = bedInfo.tersedia > 0;
+                        const badgeColor = isAvailable ? '#34918C' : '#E63946'; 
+                        
+                        const badgeG = document.createElementNS("http://www.w3.org/2000/svg", "g");
+                        badgeG.setAttribute("transform", `translate(${room.x + room.w - 45}, ${room.y + 10})`);
+                        
+                        const badgeRect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                        badgeRect.setAttribute("width", "35"); badgeRect.setAttribute("height", "25");
+                        badgeRect.setAttribute("rx", "6"); badgeRect.setAttribute("fill", badgeColor);
+                        
+                        const badgeText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                        badgeText.setAttribute("x", "17.5"); badgeText.setAttribute("y", "17");
+                        badgeText.setAttribute("fill", "white"); badgeText.setAttribute("text-anchor", "middle");
+                        badgeText.setAttribute("font-size", "12"); badgeText.setAttribute("font-weight", "bold");
+                        badgeText.textContent = bedInfo.tersedia;
+
+                        badgeG.appendChild(badgeRect);
+                        badgeG.appendChild(badgeText);
+                        group.appendChild(badgeG);
+                    }
+
+                    // Poli Status Badge
+                    const poliStatus = getPoliStatusDetail(room.poliKeys);
+                    if (poliStatus) {
+                        const badgeColor = poliStatus.isOpen ? '#34918C' : '#E63946';
+                        const badgeTextContent = poliStatus.isOpen ? `Tutup ${poliStatus.nextTime}` : `Buka ${poliStatus.nextTime}`;
+                        
+                        const badgeG = document.createElementNS("http://www.w3.org/2000/svg", "g");
+                        badgeG.setAttribute("transform", `translate(${room.x + room.w/2 - 40}, ${room.y + room.h - 30})`);
+                        
+                        const badgeRect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                        badgeRect.setAttribute("width", "80"); badgeRect.setAttribute("height", "22");
+                        badgeRect.setAttribute("rx", "11"); badgeRect.setAttribute("fill", badgeColor);
+                        
+                        const badgeText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                        badgeText.setAttribute("x", "40"); badgeText.setAttribute("y", "15");
+                        badgeText.setAttribute("fill", "white"); badgeText.setAttribute("text-anchor", "middle");
+                        badgeText.setAttribute("font-size", "10"); badgeText.setAttribute("font-weight", "bold");
+                        badgeText.textContent = badgeTextContent;
+
+                        badgeG.appendChild(badgeRect);
+                        badgeG.appendChild(badgeText);
+                        group.appendChild(badgeG);
+                    }
+
+                    svgG.appendChild(group);
+                });
+            });
+        }
+
+        // View Mode Toggles
+        function focusFloor(level) {
+            currentViewMode = 'flat';
+            hideTooltip();
+            
+            // Hide building view
+            const bView = document.getElementById('building-view');
+            bView.classList.add('hidden');
+            bView.classList.remove('flex');
+            
+            // Show map scene
+            const mapScene = document.getElementById('map-scene');
+            mapScene.classList.remove('hidden');
+            mapScene.classList.add('flex');
+            
+            // Adjust opacity for specific floor SVG
+            ['1', '2', '3', '4'].forEach(lvl => {
+                const container = document.getElementById(`svg-container-${lvl}`);
+                if (lvl === level) {
+                    container.classList.remove('opacity-0', 'pointer-events-none');
+                    container.classList.add('opacity-100', 'pointer-events-auto', 'z-10');
+                } else {
+                    container.classList.add('opacity-0', 'pointer-events-none');
+                    container.classList.remove('opacity-100', 'pointer-events-auto', 'z-10');
+                }
+            });
+
+            // Show UI controls
+            document.getElementById('btn-back-3d').classList.remove('hidden');
+            document.getElementById('btn-back-3d').classList.add('flex');
+            
+            const titleBox = document.getElementById('flat-floor-title');
+            titleBox.classList.remove('opacity-0');
+            document.getElementById('current-floor-name').innerText = floorData[level].title;
+            document.getElementById('current-floor-desc').innerText = floorData[level].subtitle;
+        }
+
+        function resetToBuilding() {
+            currentViewMode = 'building';
+            
+            // Show building view
+            const bView = document.getElementById('building-view');
+            bView.classList.remove('hidden');
+            bView.classList.add('flex');
+            
+            // Hide map scene
+            const mapScene = document.getElementById('map-scene');
+            mapScene.classList.add('hidden');
+            mapScene.classList.remove('flex');
+            
+            // Hide specific floor SVGs
+            ['1', '2', '3', '4'].forEach(lvl => {
+                const container = document.getElementById(`svg-container-${lvl}`);
+                container.classList.add('opacity-0', 'pointer-events-none');
+                container.classList.remove('opacity-100', 'pointer-events-auto', 'z-10');
+            });
+
+            // Hide UI controls
+            document.getElementById('btn-back-3d').classList.add('hidden');
+            document.getElementById('btn-back-3d').classList.remove('flex');
+            document.getElementById('flat-floor-title').classList.add('opacity-0');
+            
+            hideInfo();
+            removeHighlights();
+        }
+
+        // Room Selection & Info Card
+        function highlightAndShowInfo(room, level) {
+            removeHighlights();
+            const group = document.getElementById(`room-${room.id}`);
+            if(group) {
+                group.classList.add('active');
+            }
+
+            document.getElementById('info-title').innerText = room.name;
+            document.getElementById('info-category').innerText = room.cat;
+            document.getElementById('info-icon').innerText = room.icon;
+            document.getElementById('info-desc').innerText = room.info;
+            
+            const bedModule = document.getElementById('info-bed-module');
+            const bedInfo = calculateBeds(room.bedKeys);
+            if(bedInfo !== null) {
+                bedModule.classList.remove('hidden');
+                document.getElementById('info-bed-tersedia').innerText = bedInfo.tersedia;
+                document.getElementById('info-bed-kapasitas').innerText = bedInfo.kapasitas;
+                
+                const statusBadge = document.getElementById('info-bed-status');
+                if(bedInfo.tersedia > 0) {
+                    statusBadge.innerText = "TERSEDIA";
+                    statusBadge.className = "px-2 py-1 rounded text-xs font-bold text-white bg-health-green";
+                    document.getElementById('info-bed-tersedia').className = "text-3xl font-bold text-health-green";
+                } else {
+                    statusBadge.innerText = "PENUH";
+                    statusBadge.className = "px-2 py-1 rounded text-xs font-bold text-white bg-emergency-red";
+                    document.getElementById('info-bed-tersedia').className = "text-3xl font-bold text-emergency-red";
+                }
+            } else {
+                bedModule.classList.add('hidden');
+            }
+
+            // Check Poli Status
+            const statusBadge = document.getElementById('info-status-badge');
+            const docListContainer = document.getElementById('info-doctor-list');
+            const docItems = document.getElementById('info-doctor-items');
+            docItems.innerHTML = '';
+
+            function generateSlug(name) {
+                return name.toLowerCase()
+                           .replace(/[^a-z0-9\s-]/g, '')
+                           .replace(/\s+/g, '-')
+                           .replace(/-+/g, '-');
+            }
+
+            if(room.poliKeys) {
+                const poliStatus = getPoliStatusDetail(room.poliKeys);
+                statusBadge.classList.remove('hidden');
+                if(poliStatus.isOpen) {
+                    statusBadge.innerText = `SEKARANG BUKA (Tutup ${poliStatus.nextTime})`;
+                    statusBadge.className = 'mt-2 px-4 py-1 text-xs font-bold rounded-full bg-health-green text-white';
+                } else {
+                    statusBadge.innerText = `SEKARANG TUTUP (Buka ${poliStatus.nextTime})`;
+                    statusBadge.className = 'mt-2 px-4 py-1 text-xs font-bold rounded-full bg-emergency-red text-white';
+                }
+
+                // Populate Doctors
+                const roomDoctors = doctorData.filter(d => d.poliklinik.some(p => room.poliKeys.includes(p)));
+                if(roomDoctors.length > 0) {
+                    docListContainer.classList.remove('hidden');
+                    roomDoctors.forEach(doc => {
+                        const isOnDuty = isDoctorOnDuty(doc);
+                        const statusColor = isOnDuty ? 'text-health-green' : 'text-on-surface-variant opacity-70';
+                        const statusText = isOnDuty ? 'Sedang Bertugas' : 'Tidak Bertugas';
+                        const dotColor = isOnDuty ? 'bg-health-green' : 'bg-surface-variant';
+                        const slug = generateSlug(doc.nama);
+                        
+                        docItems.innerHTML += `
+                            <div class="flex items-center justify-between p-3 bg-surface-bright border border-surface-subtle rounded-xl hover:shadow-sm transition-shadow">
+                               <div class="flex flex-col pr-2">
+                                   <span class="font-bold text-sm text-jakarta-blue leading-tight mb-1">${doc.nama}</span>
+                                   <span class="text-[11px] text-on-surface-variant mb-1">${doc.spesialisasi}</span>
+                                   <div class="flex items-center gap-1.5">
+                                       <div class="w-1.5 h-1.5 rounded-full ${dotColor}"></div>
+                                       <span class="text-[10px] font-bold uppercase tracking-wider ${statusColor}">${statusText}</span>
+                                   </div>
+                               </div>
+                               <a href="../caridokter/profil.html?slug=${slug}" class="shrink-0 w-8 h-8 flex items-center justify-center bg-surface-subtle rounded-full hover:bg-primary-container hover:text-white transition-colors" title="Lihat Profil">
+                                   <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+                               </a>
+                            </div>
+                        `;
+                    });
+                } else {
+                    docListContainer.classList.add('hidden');
+                }
+            } else {
+                statusBadge.classList.add('hidden');
+                docListContainer.classList.add('hidden');
+            }
+
+            const btnJadwal = document.getElementById('btn-jadwal-dokter');
+            if(room.cat.includes('Rawat Jalan')) {
+                btnJadwal.style.display = 'flex';
+            } else {
+                btnJadwal.style.display = 'none';
+            }
+
             document.getElementById('room-info-card').classList.remove('translate-x-[120%]');
         }
 
         function hideInfo() {
             document.getElementById('room-info-card').classList.add('translate-x-[120%]');
+            removeHighlights();
         }
 
-        window.onload = () => changeFloor('Dasar');
-    </script>
+        function removeHighlights() {
+            document.querySelectorAll('.room-group').forEach(el => {
+                el.classList.remove('active', 'highlight-blink');
+            });
+        }
 
+        // Filtering
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active styles
+                document.querySelectorAll('.filter-btn').forEach(b => {
+                    b.classList.remove('bg-primary-container', 'text-white', 'shadow-md');
+                    b.classList.add('text-on-surface');
+                });
+                btn.classList.remove('text-on-surface');
+                btn.classList.add('bg-primary-container', 'text-white', 'shadow-md');
+
+                const cat = btn.dataset.cat;
+
+                // Determine which floors contain this category
+                let targetFloors = new Set();
+                if (cat !== 'all') {
+                    Object.keys(floorData).forEach(lvl => {
+                        const hasCategory = floorData[lvl].rooms.some(r => r.cat.includes(cat) || r.cat === cat);
+                        if (hasCategory) {
+                            targetFloors.add(lvl);
+                        }
+                    });
+                } else {
+                    targetFloors = new Set(['1', '2', '3', '4']); // All floors
+                }
+
+                // Switch to building view
+                if (currentViewMode !== 'building') {
+                    resetToBuilding();
+                }
+
+                // Highlight relevant floors in building view
+                const bView = document.getElementById('building-view');
+                const floors = bView.querySelectorAll('.group'); // The floor divs
+                
+                floors.forEach(floor => {
+                    // Extract level from onclick attribute, or we can use data-level if we add it
+                    const levelMatch = floor.getAttribute('onclick').match(/focusFloor\('(\d)'\)/);
+                    if (levelMatch) {
+                        const level = levelMatch[1];
+                        if (cat === 'all' || targetFloors.has(level)) {
+                            // Highlight
+                            floor.style.opacity = '1';
+                            floor.style.filter = cat !== 'all' ? 'brightness(1.1) drop-shadow(0 0 10px rgba(34, 66, 102, 0.3))' : 'none';
+                        } else {
+                            // Dim
+                            floor.style.opacity = '0.3';
+                            floor.style.filter = 'grayscale(0.5)';
+                        }
+                    }
+                });
+
+                // Also apply the 2D flat map dimming logic (for when they zoom in later)
+                document.querySelectorAll('.room-group').forEach(group => {
+                    if (cat === 'all') {
+                        group.classList.remove('dimmed');
+                    } else {
+                        if (group.dataset.cat.includes(cat) || group.dataset.cat === cat) {
+                            group.classList.remove('dimmed');
+                        } else {
+                            group.classList.add('dimmed');
+                        }
+                    }
+                });
+            });
+        });
+
+        // Search Autocomplete & Focus
+        const searchInput = document.getElementById('search-input');
+        const searchResults = document.getElementById('search-results');
+        
+        let allRoomsFlat = [];
+        Object.keys(floorData).forEach(lvl => {
+            floorData[lvl].rooms.forEach(r => {
+                allRoomsFlat.push({ ...r, level: lvl, levelTitle: floorData[lvl].title });
+            });
+        });
+
+        searchInput.addEventListener('input', (e) => {
+            const q = e.target.value.toLowerCase();
+            searchResults.innerHTML = '';
+            
+            if(q.length < 2) {
+                searchResults.classList.add('hidden');
+                return;
+            }
+
+            const matches = allRoomsFlat.filter(r => r.name.toLowerCase().includes(q) || r.cat.toLowerCase().includes(q));
+            
+            if(matches.length > 0) {
+                matches.forEach(m => {
+                    const div = document.createElement('div');
+                    div.className = "px-4 py-3 hover:bg-surface-subtle cursor-pointer border-b border-surface-subtle last:border-0";
+                    div.innerHTML = `
+                        <div class="font-bold text-jakarta-blue text-sm">${m.name}</div>
+                        <div class="text-xs text-on-surface-variant flex justify-between">
+                            <span>${m.cat}</span> <span>${m.levelTitle}</span>
+                        </div>
+                    `;
+                    div.onclick = () => {
+                        searchInput.value = '';
+                        searchResults.classList.add('hidden');
+                        executeSearchFocus(m);
+                    };
+                    searchResults.appendChild(div);
+                });
+                searchResults.classList.remove('hidden');
+            } else {
+                searchResults.classList.add('hidden');
+            }
+        });
+
+        function executeSearchFocus(roomData) {
+            if(currentViewMode === 'building' || !document.getElementById(`svg-container-${roomData.level}`).classList.contains('opacity-100')) {
+                focusFloor(roomData.level);
+            }
+            
+            setTimeout(() => {
+                highlightAndShowInfo(roomData, roomData.level);
+                const group = document.getElementById(`room-${roomData.id}`);
+                if(group) {
+                    group.classList.add('highlight-blink');
+                    setTimeout(() => group.classList.remove('highlight-blink'), 3000);
+                }
+            }, 300); // Wait for fade in transition
+        }
+
+        document.addEventListener('click', (e) => {
+            if(!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                searchResults.classList.add('hidden');
+            }
+        });
+
+        // Initialize
+        window.onload = () => {
+            loadData();
+        };
+    </script>
     <script src="../components/navbar.js"></script>
-    <script src="../components/footer.js"></script>
 </body>
 </html>
-

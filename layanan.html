@@ -1,408 +1,596 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 
 <html lang="id">
-
-<head>
+  <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Fasilitas - RSUD Tugu Koja</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Atkinson+Hyperlegible+Next:wght@400;700&amp;display=swap"
-        rel="stylesheet" />
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Atkinson+Hyperlegible+Next:wght@400;700&amp;display=swap"
+      rel="stylesheet"
+    />
     <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
     <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
     <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
     </style>
     <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "on-error-container": "#93000a",
-                        "surface-container-high": "#e6e8ea",
-                        "on-primary-fixed-variant": "#29486d",
-                        "outline-variant": "#c3c6cf",
-                        "jakarta-blue": "#224266",
-                        "error": "#ba1a1a",
-                        "on-primary-container": "#90afd9",
-                        "tertiary-container": "#870019",
-                        "on-secondary-fixed": "#00201e",
-                        "surface-container-low": "#f2f4f6",
-                        "health-green": "#34918C",
-                        "secondary-fixed": "#9af2ec",
-                        "secondary-fixed-dim": "#7dd5cf",
-                        "emergency-red": "#E63946",
-                        "tertiary": "#5d000e",
-                        "background": "#f7f9fb",
-                        "on-tertiary-fixed-variant": "#92001c",
-                        "tertiary-fixed": "#ffdad8",
-                        "on-error": "#ffffff",
-                        "on-background": "#191c1e",
-                        "inverse-primary": "#aac9f4",
-                        "primary": "#052c4f",
-                        "on-secondary-fixed-variant": "#00504d",
-                        "on-primary": "#ffffff",
-                        "surface-container-lowest": "#ffffff",
-                        "outline": "#73777f",
-                        "primary-container": "#224266",
-                        "secondary-container": "#97efe9",
-                        "text-muted": "#64748B",
-                        "surface": "#f7f9fb",
-                        "surface-bright": "#f7f9fb",
-                        "on-tertiary": "#ffffff",
-                        "tertiary-fixed-dim": "#ffb3b1",
-                        "surface-dim": "#d8dadc",
-                        "primary-fixed-dim": "#aac9f4",
-                        "on-surface": "#191c1e",
-                        "on-primary-fixed": "#001c38",
-                        "surface-container-highest": "#e0e3e5",
-                        "surface-container": "#eceef0",
-                        "secondary": "#006a66",
-                        "surface-subtle": "#F1F5F9",
-                        "on-surface-variant": "#43474e",
-                        "surface-variant": "#e0e3e5",
-                        "primary-fixed": "#d2e4ff",
-                        "surface-tint": "#426086",
-                        "text-main": "#1E293B",
-                        "on-tertiary-container": "#ff8b8a",
-                        "on-secondary": "#ffffff",
-                        "inverse-surface": "#2d3133",
-                        "inverse-on-surface": "#eff1f3",
-                        "error-container": "#ffdad6",
-                        "on-tertiary-fixed": "#410007",
-                        "on-secondary-container": "#006f6a"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "gutter": "24px",
-                        "unit": "8px",
-                        "margin-mobile": "16px",
-                        "margin-desktop": "48px",
-                        "container-max": "1280px"
-                    },
-                    "fontFamily": {
-                        "label-lg": ["Plus Jakarta Sans"],
-                        "headline-md": ["Plus Jakarta Sans"],
-                        "label-md": ["Plus Jakarta Sans"],
-                        "headline-lg-mobile": ["Plus Jakarta Sans"],
-                        "headline-lg": ["Plus Jakarta Sans"],
-                        "body-lg": ["Atkinson Hyperlegible Next"],
-                        "headline-xl": ["Plus Jakarta Sans"],
-                        "body-md": ["Atkinson Hyperlegible Next"]
-                    },
-                    "fontSize": {
-                        "label-lg": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
-                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
-                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
-                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
-                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
-                        "body-lg": ["20px", { "lineHeight": "32px", "fontWeight": "400" }],
-                        "headline-xl": ["40px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-                        "body-md": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
-                    }
-                },
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error-container": "#93000a",
+              "surface-container-high": "#e6e8ea",
+              "on-primary-fixed-variant": "#29486d",
+              "outline-variant": "#c3c6cf",
+              "jakarta-blue": "#224266",
+              error: "#ba1a1a",
+              "on-primary-container": "#90afd9",
+              "tertiary-container": "#870019",
+              "on-secondary-fixed": "#00201e",
+              "surface-container-low": "#f2f4f6",
+              "health-green": "#34918C",
+              "secondary-fixed": "#9af2ec",
+              "secondary-fixed-dim": "#7dd5cf",
+              "emergency-red": "#E63946",
+              tertiary: "#5d000e",
+              background: "#f7f9fb",
+              "on-tertiary-fixed-variant": "#92001c",
+              "tertiary-fixed": "#ffdad8",
+              "on-error": "#ffffff",
+              "on-background": "#191c1e",
+              "inverse-primary": "#aac9f4",
+              primary: "#052c4f",
+              "on-secondary-fixed-variant": "#00504d",
+              "on-primary": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              outline: "#73777f",
+              "primary-container": "#224266",
+              "secondary-container": "#97efe9",
+              "text-muted": "#64748B",
+              surface: "#f7f9fb",
+              "surface-bright": "#f7f9fb",
+              "on-tertiary": "#ffffff",
+              "tertiary-fixed-dim": "#ffb3b1",
+              "surface-dim": "#d8dadc",
+              "primary-fixed-dim": "#aac9f4",
+              "on-surface": "#191c1e",
+              "on-primary-fixed": "#001c38",
+              "surface-container-highest": "#e0e3e5",
+              "surface-container": "#eceef0",
+              secondary: "#006a66",
+              "surface-subtle": "#F1F5F9",
+              "on-surface-variant": "#43474e",
+              "surface-variant": "#e0e3e5",
+              "primary-fixed": "#d2e4ff",
+              "surface-tint": "#426086",
+              "text-main": "#1E293B",
+              "on-tertiary-container": "#ff8b8a",
+              "on-secondary": "#ffffff",
+              "inverse-surface": "#2d3133",
+              "inverse-on-surface": "#eff1f3",
+              "error-container": "#ffdad6",
+              "on-tertiary-fixed": "#410007",
+              "on-secondary-container": "#006f6a",
             },
-        }
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              gutter: "24px",
+              unit: "8px",
+              "margin-mobile": "16px",
+              "margin-desktop": "48px",
+              "container-max": "1280px",
+            },
+            fontFamily: {
+              "label-lg": ["Plus Jakarta Sans"],
+              "headline-md": ["Plus Jakarta Sans"],
+              "label-md": ["Plus Jakarta Sans"],
+              "headline-lg-mobile": ["Plus Jakarta Sans"],
+              "headline-lg": ["Plus Jakarta Sans"],
+              "body-lg": ["Atkinson Hyperlegible Next"],
+              "headline-xl": ["Plus Jakarta Sans"],
+              "body-md": ["Atkinson Hyperlegible Next"],
+            },
+            fontSize: {
+              "label-lg": ["16px", { lineHeight: "24px", fontWeight: "600" }],
+              "headline-md": [
+                "24px",
+                { lineHeight: "32px", fontWeight: "600" },
+              ],
+              "label-md": ["14px", { lineHeight: "20px", fontWeight: "600" }],
+              "headline-lg-mobile": [
+                "24px",
+                { lineHeight: "32px", fontWeight: "700" },
+              ],
+              "headline-lg": [
+                "32px",
+                {
+                  lineHeight: "40px",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "700",
+                },
+              ],
+              "body-lg": ["20px", { lineHeight: "32px", fontWeight: "400" }],
+              "headline-xl": [
+                "40px",
+                {
+                  lineHeight: "52px",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "body-md": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+            },
+          },
+        },
+      };
     </script>
-</head>
+  </head>
 
-<body class="bg-surface text-on-surface">
+  <body class="bg-surface text-on-surface">
     <div id="navbar-container"></div>
     <main>
-        <!-- Hero Section -->
-        <section class="relative h-[60vh] min-h-[400px] w-full overflow-hidden flex items-center">
-            <div class="absolute inset-0 z-0">
-                <img alt="RSUD Tugu Koja Hospital Building" class="w-full h-full object-cover"
-                    src="https://lh3.googleusercontent.com/aida/ADBb0ui1evh3r6omMESkVeXM-W4Uc6s_rM9mnUZ1wuazC-8FyvFjxSLkU51vz6b4sHW6oXYkWBoEgJPkondOWQJfaS54CF3GYP_mBM1HCrWm_4DRx10yiG1Xgu6iCpBS_SPvpArSO3cWujei8nyHOPanxKeWaQy5l9KW999vJ_NqGbrl4xoBTqyQ--q5Wi4cY6nasOHIQGrPCyfVRqpy8_KMR17kcvJUqcIewLxno8__Y9cOJQGwzx4ABW4y458" />
-                <div class="absolute inset-0 bg-gradient-to-r from-jakarta-blue/80 via-jakarta-blue/40 to-transparent">
-                </div>
+      <!-- Hero Section -->
+      <section
+        class="relative h-[60vh] min-h-[400px] w-full overflow-hidden flex items-center"
+      >
+        <div class="absolute inset-0 z-0">
+          <img
+            alt="RSUD Tugu Koja Hospital Building"
+            class="w-full h-full object-cover"
+            src="https://lh3.googleusercontent.com/aida/ADBb0ui1evh3r6omMESkVeXM-W4Uc6s_rM9mnUZ1wuazC-8FyvFjxSLkU51vz6b4sHW6oXYkWBoEgJPkondOWQJfaS54CF3GYP_mBM1HCrWm_4DRx10yiG1Xgu6iCpBS_SPvpArSO3cWujei8nyHOPanxKeWaQy5l9KW999vJ_NqGbrl4xoBTqyQ--q5Wi4cY6nasOHIQGrPCyfVRqpy8_KMR17kcvJUqcIewLxno8__Y9cOJQGwzx4ABW4y458"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-jakarta-blue/80 via-jakarta-blue/40 to-transparent"
+          ></div>
+        </div>
+        <div class="relative z-10 max-w-container-max mx-auto px-gutter w-full">
+          <div class="max-w-2xl">
+            <h1 class="font-headline-xl text-headline-xl text-white mb-4">
+              Fasilitas &amp; Sarana Medis Modern
+            </h1>
+            <p class="font-body-lg text-body-lg text-white/90 mb-8">
+              Menghadirkan teknologi kesehatan terkini dan kenyamanan terbaik
+              bagi kesembuhan dan kesejahteraan keluarga Jakarta.
+            </p>
+            <div class="flex gap-4">
+              <button
+                class="bg-white text-jakarta-blue px-8 py-3 rounded-full font-label-lg text-label-lg hover:scale-105 transition-transform"
+              >
+                Lihat Detail Layanan
+              </button>
+              <a href="layanan/peta.html"
+                ><button
+                  class="border-2 border-white text-white px-8 py-3 rounded-full font-label-lg text-label-lg hover:bg-white/10 transition-colors"
+                >
+                  Tur Virtual
+                </button></a
+              >
             </div>
-            <div class="relative z-10 max-w-container-max mx-auto px-gutter w-full">
-                <div class="max-w-2xl">
-                    <h1 class="font-headline-xl text-headline-xl text-white mb-4">Fasilitas &amp; Sarana Medis Modern
-                    </h1>
-                    <p class="font-body-lg text-body-lg text-white/90 mb-8">Menghadirkan teknologi kesehatan terkini dan
-                        kenyamanan terbaik bagi kesembuhan dan kesejahteraan keluarga Jakarta.</p>
-                    <div class="flex gap-4">
-                        <button
-                            class="bg-white text-jakarta-blue px-8 py-3 rounded-full font-label-lg text-label-lg hover:scale-105 transition-transform">Lihat
-                            Detail Layanan</button>
-                        <button
-                            class="border-2 border-white text-white px-8 py-3 rounded-full font-label-lg text-label-lg hover:bg-white/10 transition-colors">Tur
-                            Virtual</button>
-                    </div>
-                </div>
+          </div>
+        </div>
+      </section>
+      <!-- Layanan Unggulan (Bento Grid) -->
+      <section class="py-20 max-w-container-max mx-auto px-gutter">
+        <div class="mb-12">
+          <h2 class="font-headline-lg text-headline-lg text-jakarta-blue mb-2">
+            Layanan Unggulan
+          </h2>
+          <div class="w-20 h-1.5 bg-health-green rounded-full"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[600px]">
+          <!-- IGD -->
+          <div
+            class="md:col-span-4 bg-jakarta-blue rounded-xl p-8 flex flex-col justify-between text-white relative overflow-hidden group"
+          >
+            <div class="relative z-10">
+              <div
+                class="bg-emergency-red w-16 h-16 rounded-lg flex items-center justify-center mb-6"
+              >
+                <span
+                  class="material-symbols-outlined text-4xl text-white"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >emergency</span
+                >
+              </div>
+              <h3 class="font-headline-md text-headline-md mb-2">IGD 24 Jam</h3>
+              <p class="font-body-md text-body-md text-white/80">
+                Penanganan darurat medis tercepat dengan tim ahli trauma dan
+                peralatan pendukung hidup lanjutan.
+              </p>
             </div>
-        </section>
-        <!-- Layanan Unggulan (Bento Grid) -->
-        <section class="py-20 max-w-container-max mx-auto px-gutter">
-            <div class="mb-12">
-                <h2 class="font-headline-lg text-headline-lg text-jakarta-blue mb-2">Layanan Unggulan</h2>
-                <div class="w-20 h-1.5 bg-health-green rounded-full"></div>
+            <div class="mt-8 relative z-10">
+              <span class="font-label-md text-label-md underline cursor-pointer"
+                >Siaga 24/7 →</span
+              >
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[600px]">
-                <!-- IGD -->
-                <div
-                    class="md:col-span-4 bg-jakarta-blue rounded-xl p-8 flex flex-col justify-between text-white relative overflow-hidden group">
-                    <div class="relative z-10">
-                        <div class="bg-emergency-red w-16 h-16 rounded-lg flex items-center justify-center mb-6">
-                            <span class="material-symbols-outlined text-4xl text-white"
-                                style="font-variation-settings: 'FILL' 1;">emergency</span>
-                        </div>
-                        <h3 class="font-headline-md text-headline-md mb-2">IGD 24 Jam</h3>
-                        <p class="font-body-md text-body-md text-white/80">Penanganan darurat medis tercepat dengan tim
-                            ahli trauma dan peralatan pendukung hidup lanjutan.</p>
-                    </div>
-                    <div class="mt-8 relative z-10">
-                        <span class="font-label-md text-label-md underline cursor-pointer">Siaga 24/7 →</span>
-                    </div>
-                    <div class="absolute -right-8 -bottom-8 opacity-10 group-hover:scale-110 transition-transform">
-                        <span class="material-symbols-outlined text-[160px]">medical_services</span>
-                    </div>
-                </div>
-                <!-- Poliklinik -->
-                <div
-                    class="md:col-span-8 bg-surface-container-low border border-surface-subtle rounded-xl p-8 flex flex-col md:flex-row gap-8 items-center group">
-                    <div class="flex-1 order-2 md:order-1">
-                        <span class="material-symbols-outlined text-health-green text-5xl mb-4">stethoscope</span>
-                        <h3 class="font-headline-md text-headline-md text-jakarta-blue mb-4">Poliklinik Rawat Jalan</h3>
-                        <p class="font-body-md text-body-md text-on-surface-variant mb-6">Tersedia lebih dari 15
-                            spesialisasi medis mulai dari Penyakit Dalam hingga Bedah Mulut dengan sistem antrean online
-                            yang modern.</p>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="flex items-center gap-2"><span
-                                    class="material-symbols-outlined text-health-green">check_circle</span> <span
-                                    class="text-label-md">15+ Spesialis</span></div>
-                            <div class="flex items-center gap-2"><span
-                                    class="material-symbols-outlined text-health-green">check_circle</span> <span
-                                    class="text-label-md">Antrean Digital</span></div>
-                        </div>
-                    </div>
-                    <div class="w-full md:w-1/2 h-64 rounded-lg overflow-hidden order-1 md:order-2">
-                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            data-alt="A clean, minimalist hospital outpatient clinic waiting area with modern seating and bright, natural lighting. The scene reflects a professional and calming atmosphere typical of high-quality Jakarta healthcare facilities, emphasizing comfort and cleanliness."
-                            src="https://lh3.googleusercontent.com/aida/ADBb0uifRF_nVx5MCwo8GwcRxymhHIiXlPE3kn4pgbl5WdZiRaIbhnuvyVUtNau6qYarvmC4VE67eu_m5TU9sug2eJlPp3lBiTDtFiZ9IVpibCZtyEge733iUFE1Lnjwp_f8AqeU9L9qO-ZY5teHBZqal6GsI1h0xUgZPydiS3xDpAHuPLxBevyCgRdiocILbjM2ohWzmkQB_sgPRfybqKyagzhkd4tWRGzbW_QKe6dHAKgUuaqrkTcxl6RxzlU" />
-                    </div>
-                </div>
-                <!-- Rawat Inap -->
-                <div
-                    class="md:col-span-7 bg-surface-container-lowest border border-surface-subtle rounded-xl p-8 flex gap-8 items-center">
-                    <div class="flex-1">
-                        <h3 class="font-headline-md text-headline-md text-jakarta-blue mb-2">Rawat Inap</h3>
-                        <p class="font-body-md text-body-md text-on-surface-variant mb-6">Kamar perawatan yang dirancang
-                            untuk kenyamanan pemulihan pasien. Tersedia kelas VVIP, VIP, hingga Kelas Standar.</p>
-                        <ul class="space-y-2">
-                            <li class="flex items-center gap-3 text-body-md"><span
-                                    class="material-symbols-outlined text-jakarta-blue">hotel</span> Fasilitas Bed
-                                Modern</li>
-                            <li class="flex items-center gap-3 text-body-md"><span
-                                    class="material-symbols-outlined text-jakarta-blue">restaurant</span> Nutrisi Pasien
-                                Terjaga</li>
-                        </ul>
-                    </div>
-                    <div
-                        class="hidden lg:block w-48 h-48 bg-jakarta-blue/5 rounded-full flex items-center justify-center">
-                        <span class="material-symbols-outlined text-jakarta-blue text-7xl">bed</span>
-                    </div>
-                </div>
-                <!-- MCU -->
-                <div
-                    class="md:col-span-5 bg-health-green rounded-xl p-8 text-white flex flex-col justify-between group overflow-hidden relative">
-                    <div class="relative z-10">
-                        <h3 class="font-headline-md text-headline-md mb-2">Medical Check Up</h3>
-                        <p class="font-body-md text-body-md text-white/90">Pencegahan lebih baik daripada pengobatan.
-                            Pilih paket pemeriksaan yang sesuai dengan kebutuhan Anda.</p>
-                    </div>
-                    <button
-                        class="bg-white text-health-green px-6 py-2 rounded-full font-label-md text-label-md w-fit relative z-10 mt-6 active:scale-95 transition-transform">Pesan
-                        Paket MCU</button>
-                    <div class="absolute -right-4 -bottom-4 text-white/10 group-hover:rotate-12 transition-transform">
-                        <span class="material-symbols-outlined text-[120px]">monitor_heart</span>
-                    </div>
-                </div>
+            <div
+              class="absolute -right-8 -bottom-8 opacity-10 group-hover:scale-110 transition-transform"
+            >
+              <span class="material-symbols-outlined text-[160px]"
+                >medical_services</span
+              >
             </div>
-        </section>
-        <!-- Fasilitas Penunjang -->
-        <section class="bg-surface-container-low py-20 border-y border-surface-subtle">
-            <div class="max-w-container-max mx-auto px-gutter">
-                <div class="text-center mb-16">
-                    <h2 class="font-headline-lg text-headline-lg text-jakarta-blue mb-4">Fasilitas Penunjang Medis</h2>
-                    <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">Kami mengintegrasikan
-                        teknologi diagnosa mutakhir untuk akurasi pengobatan yang maksimal bagi seluruh pasien.</p>
+          </div>
+          <!-- Poliklinik -->
+          <div
+            class="md:col-span-8 bg-surface-container-low border border-surface-subtle rounded-xl p-8 flex flex-col md:flex-row gap-8 items-center group"
+          >
+            <div class="flex-1 order-2 md:order-1">
+              <span
+                class="material-symbols-outlined text-health-green text-5xl mb-4"
+                >stethoscope</span
+              >
+              <h3
+                class="font-headline-md text-headline-md text-jakarta-blue mb-4"
+              >
+                Poliklinik Rawat Jalan
+              </h3>
+              <p class="font-body-md text-body-md text-on-surface-variant mb-6">
+                Tersedia lebih dari 15 spesialisasi medis mulai dari Penyakit
+                Dalam hingga Bedah Mulut dengan sistem antrean online yang
+                modern.
+              </p>
+              <div class="grid grid-cols-2 gap-4">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-health-green"
+                    >check_circle</span
+                  >
+                  <span class="text-label-md">15+ Spesialis</span>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <!-- Card 1 -->
-                    <div
-                        class="bg-surface-container-lowest p-8 rounded-xl border border-surface-subtle shadow-sm hover:shadow-md transition-shadow">
-                        <div class="text-jakarta-blue mb-4">
-                            <span class="material-symbols-outlined text-4xl">biotech</span>
-                        </div>
-                        <h4 class="font-headline-md text-headline-md text-jakarta-blue mb-3">Laboratorium</h4>
-                        <p class="font-body-md text-body-md text-on-surface-variant">Layanan tes darah, urine, dan
-                            patologi klinik dengan hasil yang cepat dan akurat.</p>
-                    </div>
-                    <!-- Card 2 -->
-                    <div
-                        class="bg-surface-container-lowest p-8 rounded-xl border border-surface-subtle shadow-sm hover:shadow-md transition-shadow">
-                        <div class="text-jakarta-blue mb-4">
-                            <span class="material-symbols-outlined text-4xl">radiology</span>
-                        </div>
-                        <h4 class="font-headline-md text-headline-md text-jakarta-blue mb-3">Radiologi</h4>
-                        <p class="font-body-md text-body-md text-on-surface-variant">Dilengkapi CT Scan 64 Slices,
-                            Digital X-Ray, dan USG 4D terbaru.</p>
-                    </div>
-                    <!-- Card 3 -->
-                    <div
-                        class="bg-surface-container-lowest p-8 rounded-xl border border-surface-subtle shadow-sm hover:shadow-md transition-shadow">
-                        <div class="text-jakarta-blue mb-4">
-                            <span class="material-symbols-outlined text-4xl">medication</span>
-                        </div>
-                        <h4 class="font-headline-md text-headline-md text-jakarta-blue mb-3">Farmasi 24 Jam</h4>
-                        <p class="font-body-md text-body-md text-on-surface-variant">Layanan penebusan resep obat yang
-                            terintegrasi dengan sistem rekam medis.</p>
-                    </div>
-                    <!-- Card 4 -->
-                    <div
-                        class="bg-surface-container-lowest p-8 rounded-xl border border-surface-subtle shadow-sm hover:shadow-md transition-shadow">
-                        <div class="text-jakarta-blue mb-4">
-                            <span class="material-symbols-outlined text-4xl">physical_therapy</span>
-                        </div>
-                        <h4 class="font-headline-md text-headline-md text-jakarta-blue mb-3">Rehabilitasi</h4>
-                        <p class="font-body-md text-body-md text-on-surface-variant">Layanan fisioterapi dan pemulihan
-                            fisik oleh terapis berpengalaman.</p>
-                    </div>
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-health-green"
+                    >check_circle</span
+                  >
+                  <span class="text-label-md">Antrean Digital</span>
                 </div>
+              </div>
             </div>
-        </section>
-        <!-- Fasilitas Umum -->
-        <section class="py-20 max-w-container-max mx-auto px-gutter">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
-                <div>
-                    <h2 class="font-headline-lg text-headline-lg text-jakarta-blue mb-2">Fasilitas Umum</h2>
-                    <p class="font-body-md text-body-md text-on-surface-variant">Kenyamanan pendamping dan pengunjung
-                        adalah prioritas kami.</p>
-                </div>
-                <div class="flex gap-2">
-                    <button
-                        class="p-2 border border-surface-subtle rounded-full text-jakarta-blue hover:bg-jakarta-blue hover:text-white transition-colors"
-                        onclick="scrollPublic(-300)">
-                        <span class="material-symbols-outlined">chevron_left</span>
-                    </button>
-                    <button
-                        class="p-2 border border-surface-subtle rounded-full text-jakarta-blue hover:bg-jakarta-blue hover:text-white transition-colors"
-                        onclick="scrollPublic(300)">
-                        <span class="material-symbols-outlined">chevron_right</span>
-                    </button>
-                </div>
+            <div
+              class="w-full md:w-1/2 h-64 rounded-lg overflow-hidden order-1 md:order-2"
+            >
+              <img
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                data-alt="A clean, minimalist hospital outpatient clinic waiting area with modern seating and bright, natural lighting. The scene reflects a professional and calming atmosphere typical of high-quality Jakarta healthcare facilities, emphasizing comfort and cleanliness."
+                src="https://lh3.googleusercontent.com/aida/ADBb0uifRF_nVx5MCwo8GwcRxymhHIiXlPE3kn4pgbl5WdZiRaIbhnuvyVUtNau6qYarvmC4VE67eu_m5TU9sug2eJlPp3lBiTDtFiZ9IVpibCZtyEge733iUFE1Lnjwp_f8AqeU9L9qO-ZY5teHBZqal6GsI1h0xUgZPydiS3xDpAHuPLxBevyCgRdiocILbjM2ohWzmkQB_sgPRfybqKyagzhkd4tWRGzbW_QKe6dHAKgUuaqrkTcxl6RxzlU"
+              />
             </div>
-            <div class="flex overflow-x-auto gap-6 pb-8 snap-x no-scrollbar scroll-smooth" id="public-scroll">
-                <!-- Facility Item -->
-                <div class="min-w-[300px] snap-start">
-                    <div class="h-48 rounded-xl mb-4 overflow-hidden">
-                        <img class="w-full h-full object-cover"
-                            data-alt="A spacious and serene modern prayer room (Musholla) inside a hospital, featuring minimalist architectural design, soft warm lighting, and pristine white walls to create a peaceful atmosphere for spiritual reflection."
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlmq5tK6ZFA9Ys7ZNAOfPivH2JeWdZyPQq1W3BSn5BmlucrYQ2r8dXX85o1a6Ife9xlAinMJYye44usZOyYk9xy1cbpFc8f0U4VC2ju8IlLcH8vqJDfUoHIW8qmBzDOBQvpgdz4OTRbrTf8tbEkpmDJH4ebRXfOMyHaFCTVrMY1j4Fz-3rDbSfX-qZwo4ohedocPGkE2uZOdTMxsZMTMyKY6NYjPCCmtCHHKIwIKQ7DhbhCBtDqXuhl3wL6PBjcP9dOPBKKgEaGVQ" />
-                    </div>
-                    <h5 class="font-label-lg text-label-lg text-jakarta-blue">Musholla</h5>
-                    <p class="font-body-md text-body-md text-on-surface-variant">Area ibadah yang luas dan bersih untuk
-                        ketenangan batin.</p>
-                </div>
-                <!-- Facility Item -->
-                <div class="min-w-[300px] snap-start">
-                    <div class="h-48 rounded-xl mb-4 overflow-hidden">
-                        <img class="w-full h-full object-cover"
-                            data-alt="A wide and organized multi-level hospital parking area with clear directional signs and bright LED lighting, ensuring security and convenience for patients and visitors arriving by vehicle."
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYMIYq8rD_TaVcxtCCGD55Ki0-1pP-C6Q3bif9wQJmJkNxZa7UiSrGSqU1Q0UCG-ngwAys2PZVzvjwHPx6HA6ktzVcLz3u-HX76ZNZ5yrpOCkGWEjbHC2pjTZg6nQzyPyc-kbWUKP5bpk-WCrI3xro0HUTTaAWNVpyxhmHUINhi3gaquMqJ8WcgHTAAmKHLS-OTCxTrZi_ypo-hvw9yWgbxlo8L_xLAEL1FKKl823vJTwDp1Hu1zcJ74DQr689b8J-kFO7SRGFePc" />
-                    </div>
-                    <h5 class="font-label-lg text-label-lg text-jakarta-blue">Area Parkir Luas</h5>
-                    <p class="font-body-md text-body-md text-on-surface-variant">Gedung parkir terpadu dengan sistem
-                        keamanan 24 jam.</p>
-                </div>
-                <!-- Facility Item -->
-                <div class="min-w-[300px] snap-start">
-                    <div class="h-48 rounded-xl mb-4 overflow-hidden">
-                        <img class="w-full h-full object-cover"
-                            data-alt="A clean and modern hospital cafeteria featuring a healthy menu display, natural wood furniture, and large windows that let in soft daylight, promoting a sense of wellness and nutrition."
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKC_xGAnFsFLmgAOA3JqKS_nDZaDM_29zXWMsNP-I_zEO4sF7P4Sj94CEMpsLxWMgIFCEi9XDEIUDPm2w1kgtoLZsm1hmA8xThxO_imkWcpjJVxrfBrKDjZYsmMT1laBy6HuNC2HhLYDQgTipkeQOrwobJnc5G2-vcXJHYkcmQOxKUBfckNjRFWFfDhKNSLbYq4SNNl-7y_d5G8Uk01k26JKAKPk_xkessEgLDNrshdMMDPtw1fHvOdeWploCN8UORYl0cZU2LCnA" />
-                    </div>
-                    <h5 class="font-label-lg text-label-lg text-jakarta-blue">Kantin Sehat</h5>
-                    <p class="font-body-md text-body-md text-on-surface-variant">Menyajikan makanan bergizi dengan
-                        standar kebersihan tinggi.</p>
-                </div>
-                <!-- Facility Item -->
-                <div class="min-w-[300px] snap-start">
-                    <div class="h-48 rounded-xl mb-4 overflow-hidden">
-                        <img class="w-full h-full object-cover"
-                            data-alt="An expansive and comfortable hospital waiting lounge with ergonomic seating, indoor greenery, and large screens for appointment queue information, designed to reduce stress for patients and families."
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOMYEw5zAYoh1kNt9TWyRvHGfBQuE0wYoySfPN5FIP4F7CsdqH3mjz8RXb4ZWJuESLAR8ooC5gRP0n30ZBVAgXks_wKOBUSjS-pHXQQsE0AG0ad7nrjNajmnwvp4q6pBJgAIph5QgLU-XFnX0lvDPRVqLjpNPTWWg2Xq7jmj823BtV3jFVYxwsHs8R7Gu4FWTrB94cdmjPI8gqMsG1WhMxT4eXt16QPxOygNRf2ojh7Sx6-AKGmJlbikYz2s93ZpdGLsAzRABDEuk" />
-                    </div>
-                    <h5 class="font-label-lg text-label-lg text-jakarta-blue">Ruang Tunggu Nyaman</h5>
-                    <p class="font-body-md text-body-md text-on-surface-variant">Dilengkapi dengan akses Wi-Fi gratis
-                        dan pengisi daya ponsel.</p>
-                </div>
+          </div>
+          <!-- Rawat Inap -->
+          <div
+            class="md:col-span-7 bg-surface-container-lowest border border-surface-subtle rounded-xl p-8 flex gap-8 items-center"
+          >
+            <div class="flex-1">
+              <h3
+                class="font-headline-md text-headline-md text-jakarta-blue mb-2"
+              >
+                Rawat Inap
+              </h3>
+              <p class="font-body-md text-body-md text-on-surface-variant mb-6">
+                Kamar perawatan yang dirancang untuk kenyamanan pemulihan
+                pasien. Tersedia kelas VVIP, VIP, hingga Kelas Standar.
+              </p>
+              <ul class="space-y-2">
+                <li class="flex items-center gap-3 text-body-md">
+                  <span class="material-symbols-outlined text-jakarta-blue"
+                    >hotel</span
+                  >
+                  Fasilitas Bed Modern
+                </li>
+                <li class="flex items-center gap-3 text-body-md">
+                  <span class="material-symbols-outlined text-jakarta-blue"
+                    >restaurant</span
+                  >
+                  Nutrisi Pasien Terjaga
+                </li>
+              </ul>
             </div>
-        </section>
+            <div
+              class="hidden lg:block w-48 h-48 bg-jakarta-blue/5 rounded-full flex items-center justify-center"
+            >
+              <span class="material-symbols-outlined text-jakarta-blue text-7xl"
+                >bed</span
+              >
+            </div>
+          </div>
+          <!-- MCU -->
+          <div
+            class="md:col-span-5 bg-health-green rounded-xl p-8 text-white flex flex-col justify-between group overflow-hidden relative"
+          >
+            <div class="relative z-10">
+              <h3 class="font-headline-md text-headline-md mb-2">
+                Medical Check Up
+              </h3>
+              <p class="font-body-md text-body-md text-white/90">
+                Pencegahan lebih baik daripada pengobatan. Pilih paket
+                pemeriksaan yang sesuai dengan kebutuhan Anda.
+              </p>
+            </div>
+            <button
+              class="bg-white text-health-green px-6 py-2 rounded-full font-label-md text-label-md w-fit relative z-10 mt-6 active:scale-95 transition-transform"
+            >
+              Pesan Paket MCU
+            </button>
+            <div
+              class="absolute -right-4 -bottom-4 text-white/10 group-hover:rotate-12 transition-transform"
+            >
+              <span class="material-symbols-outlined text-[120px]"
+                >monitor_heart</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Fasilitas Penunjang -->
+      <section
+        class="bg-surface-container-low py-20 border-y border-surface-subtle"
+      >
+        <div class="max-w-container-max mx-auto px-gutter">
+          <div class="text-center mb-16">
+            <h2
+              class="font-headline-lg text-headline-lg text-jakarta-blue mb-4"
+            >
+              Fasilitas Penunjang Medis
+            </h2>
+            <p
+              class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto"
+            >
+              Kami mengintegrasikan teknologi diagnosa mutakhir untuk akurasi
+              pengobatan yang maksimal bagi seluruh pasien.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Card 1 -->
+            <div
+              class="bg-surface-container-lowest p-8 rounded-xl border border-surface-subtle shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div class="text-jakarta-blue mb-4">
+                <span class="material-symbols-outlined text-4xl">biotech</span>
+              </div>
+              <h4
+                class="font-headline-md text-headline-md text-jakarta-blue mb-3"
+              >
+                Laboratorium
+              </h4>
+              <p class="font-body-md text-body-md text-on-surface-variant">
+                Layanan tes darah, urine, dan patologi klinik dengan hasil yang
+                cepat dan akurat.
+              </p>
+            </div>
+            <!-- Card 2 -->
+            <div
+              class="bg-surface-container-lowest p-8 rounded-xl border border-surface-subtle shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div class="text-jakarta-blue mb-4">
+                <span class="material-symbols-outlined text-4xl"
+                  >radiology</span
+                >
+              </div>
+              <h4
+                class="font-headline-md text-headline-md text-jakarta-blue mb-3"
+              >
+                Radiologi
+              </h4>
+              <p class="font-body-md text-body-md text-on-surface-variant">
+                Dilengkapi CT Scan 64 Slices, Digital X-Ray, dan USG 4D terbaru.
+              </p>
+            </div>
+            <!-- Card 3 -->
+            <div
+              class="bg-surface-container-lowest p-8 rounded-xl border border-surface-subtle shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div class="text-jakarta-blue mb-4">
+                <span class="material-symbols-outlined text-4xl"
+                  >medication</span
+                >
+              </div>
+              <h4
+                class="font-headline-md text-headline-md text-jakarta-blue mb-3"
+              >
+                Farmasi 24 Jam
+              </h4>
+              <p class="font-body-md text-body-md text-on-surface-variant">
+                Layanan penebusan resep obat yang terintegrasi dengan sistem
+                rekam medis.
+              </p>
+            </div>
+            <!-- Card 4 -->
+            <div
+              class="bg-surface-container-lowest p-8 rounded-xl border border-surface-subtle shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div class="text-jakarta-blue mb-4">
+                <span class="material-symbols-outlined text-4xl"
+                  >physical_therapy</span
+                >
+              </div>
+              <h4
+                class="font-headline-md text-headline-md text-jakarta-blue mb-3"
+              >
+                Rehabilitasi
+              </h4>
+              <p class="font-body-md text-body-md text-on-surface-variant">
+                Layanan fisioterapi dan pemulihan fisik oleh terapis
+                berpengalaman.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Fasilitas Umum -->
+      <section class="py-20 max-w-container-max mx-auto px-gutter">
+        <div
+          class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4"
+        >
+          <div>
+            <h2
+              class="font-headline-lg text-headline-lg text-jakarta-blue mb-2"
+            >
+              Fasilitas Umum
+            </h2>
+            <p class="font-body-md text-body-md text-on-surface-variant">
+              Kenyamanan pendamping dan pengunjung adalah prioritas kami.
+            </p>
+          </div>
+          <div class="flex gap-2">
+            <button
+              class="p-2 border border-surface-subtle rounded-full text-jakarta-blue hover:bg-jakarta-blue hover:text-white transition-colors"
+              onclick="scrollPublic(-300)"
+            >
+              <span class="material-symbols-outlined">chevron_left</span>
+            </button>
+            <button
+              class="p-2 border border-surface-subtle rounded-full text-jakarta-blue hover:bg-jakarta-blue hover:text-white transition-colors"
+              onclick="scrollPublic(300)"
+            >
+              <span class="material-symbols-outlined">chevron_right</span>
+            </button>
+          </div>
+        </div>
+        <div
+          class="flex overflow-x-auto gap-6 pb-8 snap-x no-scrollbar scroll-smooth"
+          id="public-scroll"
+        >
+          <!-- Facility Item -->
+          <div class="min-w-[300px] snap-start">
+            <div class="h-48 rounded-xl mb-4 overflow-hidden">
+              <img
+                class="w-full h-full object-cover"
+                data-alt="A spacious and serene modern prayer room (Musholla) inside a hospital, featuring minimalist architectural design, soft warm lighting, and pristine white walls to create a peaceful atmosphere for spiritual reflection."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlmq5tK6ZFA9Ys7ZNAOfPivH2JeWdZyPQq1W3BSn5BmlucrYQ2r8dXX85o1a6Ife9xlAinMJYye44usZOyYk9xy1cbpFc8f0U4VC2ju8IlLcH8vqJDfUoHIW8qmBzDOBQvpgdz4OTRbrTf8tbEkpmDJH4ebRXfOMyHaFCTVrMY1j4Fz-3rDbSfX-qZwo4ohedocPGkE2uZOdTMxsZMTMyKY6NYjPCCmtCHHKIwIKQ7DhbhCBtDqXuhl3wL6PBjcP9dOPBKKgEaGVQ"
+              />
+            </div>
+            <h5 class="font-label-lg text-label-lg text-jakarta-blue">
+              Musholla
+            </h5>
+            <p class="font-body-md text-body-md text-on-surface-variant">
+              Area ibadah yang luas dan bersih untuk ketenangan batin.
+            </p>
+          </div>
+          <!-- Facility Item -->
+          <div class="min-w-[300px] snap-start">
+            <div class="h-48 rounded-xl mb-4 overflow-hidden">
+              <img
+                class="w-full h-full object-cover"
+                data-alt="A wide and organized multi-level hospital parking area with clear directional signs and bright LED lighting, ensuring security and convenience for patients and visitors arriving by vehicle."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYMIYq8rD_TaVcxtCCGD55Ki0-1pP-C6Q3bif9wQJmJkNxZa7UiSrGSqU1Q0UCG-ngwAys2PZVzvjwHPx6HA6ktzVcLz3u-HX76ZNZ5yrpOCkGWEjbHC2pjTZg6nQzyPyc-kbWUKP5bpk-WCrI3xro0HUTTaAWNVpyxhmHUINhi3gaquMqJ8WcgHTAAmKHLS-OTCxTrZi_ypo-hvw9yWgbxlo8L_xLAEL1FKKl823vJTwDp1Hu1zcJ74DQr689b8J-kFO7SRGFePc"
+              />
+            </div>
+            <h5 class="font-label-lg text-label-lg text-jakarta-blue">
+              Area Parkir Luas
+            </h5>
+            <p class="font-body-md text-body-md text-on-surface-variant">
+              Gedung parkir terpadu dengan sistem keamanan 24 jam.
+            </p>
+          </div>
+          <!-- Facility Item -->
+          <div class="min-w-[300px] snap-start">
+            <div class="h-48 rounded-xl mb-4 overflow-hidden">
+              <img
+                class="w-full h-full object-cover"
+                data-alt="A clean and modern hospital cafeteria featuring a healthy menu display, natural wood furniture, and large windows that let in soft daylight, promoting a sense of wellness and nutrition."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKC_xGAnFsFLmgAOA3JqKS_nDZaDM_29zXWMsNP-I_zEO4sF7P4Sj94CEMpsLxWMgIFCEi9XDEIUDPm2w1kgtoLZsm1hmA8xThxO_imkWcpjJVxrfBrKDjZYsmMT1laBy6HuNC2HhLYDQgTipkeQOrwobJnc5G2-vcXJHYkcmQOxKUBfckNjRFWFfDhKNSLbYq4SNNl-7y_d5G8Uk01k26JKAKPk_xkessEgLDNrshdMMDPtw1fHvOdeWploCN8UORYl0cZU2LCnA"
+              />
+            </div>
+            <h5 class="font-label-lg text-label-lg text-jakarta-blue">
+              Kantin Sehat
+            </h5>
+            <p class="font-body-md text-body-md text-on-surface-variant">
+              Menyajikan makanan bergizi dengan standar kebersihan tinggi.
+            </p>
+          </div>
+          <!-- Facility Item -->
+          <div class="min-w-[300px] snap-start">
+            <div class="h-48 rounded-xl mb-4 overflow-hidden">
+              <img
+                class="w-full h-full object-cover"
+                data-alt="An expansive and comfortable hospital waiting lounge with ergonomic seating, indoor greenery, and large screens for appointment queue information, designed to reduce stress for patients and families."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOMYEw5zAYoh1kNt9TWyRvHGfBQuE0wYoySfPN5FIP4F7CsdqH3mjz8RXb4ZWJuESLAR8ooC5gRP0n30ZBVAgXks_wKOBUSjS-pHXQQsE0AG0ad7nrjNajmnwvp4q6pBJgAIph5QgLU-XFnX0lvDPRVqLjpNPTWWg2Xq7jmj823BtV3jFVYxwsHs8R7Gu4FWTrB94cdmjPI8gqMsG1WhMxT4eXt16QPxOygNRf2ojh7Sx6-AKGmJlbikYz2s93ZpdGLsAzRABDEuk"
+              />
+            </div>
+            <h5 class="font-label-lg text-label-lg text-jakarta-blue">
+              Ruang Tunggu Nyaman
+            </h5>
+            <p class="font-body-md text-body-md text-on-surface-variant">
+              Dilengkapi dengan akses Wi-Fi gratis dan pengisi daya ponsel.
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
     <!-- SideNavBar (FAB Style) -->
     <aside class="fixed right-8 bottom-8 z-40 flex items-center justify-center">
-        <a class="bg-jakarta-blue dark:bg-primary-container text-white p-4 rounded-full shadow-md hover:shadow-lg hover:scale-105 transform transition-all active:scale-95 flex items-center gap-3"
-            href="#">
-            <span class="material-symbols-outlined text-white">calendar_month</span>
-            <span class="font-label-md text-label-md font-bold pr-2">Daftar Online</span>
-        </a>
+      <a
+        class="bg-jakarta-blue dark:bg-primary-container text-white p-4 rounded-full shadow-md hover:shadow-lg hover:scale-105 transform transition-all active:scale-95 flex items-center gap-3"
+        href="#"
+      >
+        <span class="material-symbols-outlined text-white">calendar_month</span>
+        <span class="font-label-md text-label-md font-bold pr-2"
+          >Daftar Online</span
+        >
+      </a>
     </aside>
     <!-- Footer -->
     <div id="footer-container"></div>
     <script>
-        function scrollPublic(distance) {
-            document.getElementById('public-scroll').scrollBy({
-                left: distance,
-                behavior: 'smooth'
-            });
-        }
-
-        // Simple intersection observer for reveal effects
-        const observerOptions = {
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('opacity-100', 'translate-y-0');
-                    entry.target.classList.remove('opacity-0', 'translate-y-10');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('section > div').forEach(el => {
-            el.classList.add('transition-all', 'duration-700', 'ease-out', 'opacity-0', 'translate-y-10');
-            observer.observe(el);
+      function scrollPublic(distance) {
+        document.getElementById("public-scroll").scrollBy({
+          left: distance,
+          behavior: "smooth",
         });
+      }
+
+      // Simple intersection observer for reveal effects
+      const observerOptions = {
+        threshold: 0.1,
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("opacity-100", "translate-y-0");
+            entry.target.classList.remove("opacity-0", "translate-y-10");
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll("section > div").forEach((el) => {
+        el.classList.add(
+          "transition-all",
+          "duration-700",
+          "ease-out",
+          "opacity-0",
+          "translate-y-10",
+        );
+        observer.observe(el);
+      });
     </script>
 
     <script src="components/navbar.js"></script>
     <script src="components/footer.js"></script>
-</body>
-
+  </body>
 </html>
