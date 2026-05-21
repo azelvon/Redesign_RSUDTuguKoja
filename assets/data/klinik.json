@@ -1,0 +1,112 @@
+[
+  {
+    "id": "klinik-gizi",
+    "nama": "Klinik Gizi",
+    "tipe": "klinik",
+    "icon": "fa-apple-whole",
+    "deskripsi": "Klinik yang menyediakan layanan konsultasi gizi dan diet untuk pasien dengan berbagai kondisi kesehatan, termasuk diabetes, hipertensi, obesitas, dan gangguan makan.",
+    "layanan": [
+      "Konsultasi gizi individu",
+      "Perencanaan diet khusus",
+      "Edukasi gizi untuk penyakit kronis",
+      "Pemantauan status gizi",
+      "Konseling gizi ibu hamil dan menyusui"
+    ],
+    "jadwal": [
+      { "hari": "Senin", "pagi": null, "sore": null },
+      { "hari": "Selasa", "pagi": "08:00-13:00", "sore": null },
+      { "hari": "Rabu", "pagi": "08:00-13:00", "sore": null },
+      { "hari": "Kamis", "pagi": null, "sore": null },
+      { "hari": "Jumat", "pagi": "08:00-13:00", "sore": null },
+      { "hari": "Sabtu", "pagi": null, "sore": null }
+    ]
+  },
+  {
+    "id": "klinik-mcu",
+    "nama": "Klinik MCU",
+    "tipe": "klinik",
+    "icon": "fa-clipboard-check",
+    "deskripsi": "Klinik Medical Check Up yang menyediakan layanan pemeriksaan kesehatan menyeluruh untuk deteksi dini penyakit dan evaluasi kondisi kesehatan secara berkala.",
+    "layanan": [
+      "Pemeriksaan kesehatan umum",
+      "Pemeriksaan laboratorium lengkap",
+      "Pemeriksaan radiologi",
+      "Tes kesehatan prakerja",
+      "Paket MCU perusahaan"
+    ],
+    "jadwal": [
+      { "hari": "Senin", "pagi": "08:00-13:00", "sore": null },
+      { "hari": "Selasa", "pagi": "08:00-13:00", "sore": null },
+      { "hari": "Rabu", "pagi": "08:00-13:00", "sore": null },
+      { "hari": "Kamis", "pagi": "08:00-13:00", "sore": null },
+      { "hari": "Jumat", "pagi": "08:00-13:00", "sore": null },
+      { "hari": "Sabtu", "pagi": null, "sore": null }
+    ]
+  },
+  {
+    "id": "klinik-geriatri",
+    "nama": "Klinik Geriatri",
+    "tipe": "klinik",
+    "icon": "fa-person-cane",
+    "deskripsi": "Klinik khusus yang menangani kesehatan pasien lanjut usia (lansia) dengan pendekatan komprehensif, meliputi penanganan penyakit degeneratif dan peningkatan kualitas hidup.",
+    "layanan": [
+      "Pemeriksaan kesehatan lansia",
+      "Penanganan penyakit degeneratif",
+      "Asesmen geriatri komprehensif",
+      "Manajemen polifarmasi",
+      "Konsultasi pencegahan jatuh"
+    ],
+    "jadwal": [
+      { "hari": "Senin", "pagi": "08:00-13:00", "sore": null },
+      { "hari": "Selasa", "pagi": null, "sore": null },
+      { "hari": "Rabu", "pagi": "08:00-13:00", "sore": null },
+      { "hari": "Kamis", "pagi": null, "sore": null },
+      { "hari": "Jumat", "pagi": "08:00-13:00", "sore": null },
+      { "hari": "Sabtu", "pagi": null, "sore": null }
+    ]
+  },
+  {
+    "id": "klinik-sehati",
+    "nama": "Klinik Sehati",
+    "tipe": "klinik",
+    "icon": "fa-heart",
+    "deskripsi": "Klinik Sehati (Sehat Jiwa dan Hati) menyediakan layanan kesehatan jiwa dan konseling psikologis untuk membantu pasien mengatasi masalah kesehatan mental.",
+    "layanan": [
+      "Konsultasi kesehatan jiwa",
+      "Konseling psikologis",
+      "Penanganan gangguan kecemasan",
+      "Penanganan depresi",
+      "Edukasi kesehatan mental"
+    ],
+    "jadwal": [
+      { "hari": "Senin", "pagi": null, "sore": null },
+      { "hari": "Selasa", "pagi": "10:00-13:00", "sore": null },
+      { "hari": "Rabu", "pagi": null, "sore": null },
+      { "hari": "Kamis", "pagi": null, "sore": null },
+      { "hari": "Jumat", "pagi": "10:00-13:00", "sore": null },
+      { "hari": "Sabtu", "pagi": null, "sore": null }
+    ]
+  },
+  {
+    "id": "layanan-fisioterapi",
+    "nama": "Layanan Fisioterapi",
+    "tipe": "layanan",
+    "icon": "fa-dumbbell",
+    "deskripsi": "Layanan fisioterapi yang menyediakan terapi fisik untuk pemulihan fungsi gerak tubuh pasca cedera, operasi, atau kondisi neurologis.",
+    "layanan": [
+      "Fisioterapi muskuloskeletal",
+      "Fisioterapi neurologis",
+      "Fisioterapi pasca operasi",
+      "Terapi latihan dan mobilisasi",
+      "Elektroterapi dan ultrasound terapi"
+    ],
+    "jadwal": [
+      { "hari": "Senin", "pagi": "11:00-17:00", "sore": null },
+      { "hari": "Selasa", "pagi": "11:00-17:00", "sore": null },
+      { "hari": "Rabu", "pagi": "11:00-17:00", "sore": null },
+      { "hari": "Kamis", "pagi": "11:00-17:00", "sore": null },
+      { "hari": "Jumat", "pagi": "11:00-17:00", "sore": null },
+      { "hari": "Sabtu", "pagi": null, "sore": null }
+    ]
+  }
+]

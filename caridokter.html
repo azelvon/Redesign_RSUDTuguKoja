@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html class="light" lang="id">
 
@@ -84,7 +84,7 @@
                         "unit": "8px",
                         "gutter": "24px",
                         "margin-mobile": "16px",
-                        "margin-desktop": "48px",
+                        "margin-desktop": "32px",
                         "container-max": "1280px"
                     },
                     "fontFamily": {
@@ -101,10 +101,10 @@
                         "label-lg": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
                         "body-lg": ["20px", { "lineHeight": "32px", "fontWeight": "400" }],
                         "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
-                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-md": ["18px", { "lineHeight": "32px", "fontWeight": "600" }],
                         "body-md": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
                         "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
-                        "headline-xl": ["40px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-xl": ["20px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
                         "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }]
                     }
                 },
@@ -125,14 +125,19 @@
             transition: all 0.3s ease;
             cursor: pointer;
             fill: #E2E8F0;
+            stroke: #ffffff;
+            stroke-width: 2px;
+            stroke-linejoin: round;
         }
 
         .interactive-silhouette path:hover {
             fill: #94A3B8;
+            stroke: #CBD5E1;
         }
 
         .interactive-silhouette path.active {
             fill: #224266;
+            stroke: #1a3350;
         }
 
         .floating-action {
@@ -150,6 +155,101 @@
                 transform: translateY(-5px);
             }
         }
+
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateX(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .line-clamp-1 {
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        #service-list {
+            transition: opacity 0.15s ease;
+        }
+
+        /* Doctor Profile Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
+        .modal-content {
+            position: relative;
+            background: #fff;
+            border-radius: 1.5rem;
+            max-width: 640px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transform: translateY(24px) scale(0.96);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .modal-overlay.active .modal-content {
+            transform: translateY(0) scale(1);
+        }
+        .modal-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        .modal-content::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .modal-content::-webkit-scrollbar-thumb {
+            background: #c3c6cf;
+            border-radius: 3px;
+        }
+        .schedule-table td, .schedule-table th {
+            padding: 8px 12px;
+            text-align: center;
+            font-size: 13px;
+        }
+        .schedule-table th {
+            font-weight: 600;
+            color: #43474e;
+        }
+        .schedule-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .schedule-badge.available {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        .schedule-badge.unavailable {
+            color: #bdbdbd;
+        }
     </style>
 </head>
 
@@ -165,120 +265,135 @@
             <span class="text-primary font-bold">Berdasarkan Bagian Tubuh</span>
         </nav>
         <!-- Segmented Control -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
-            <button
-                class="flex flex-col items-center justify-center gap-2 p-8 rounded-2xl border border-surface-subtle bg-white hover:shadow-lg transition-all group">
-                <span
-                    class="material-symbols-outlined text-jakarta-blue text-4xl group-hover:scale-110 transition-transform">person_search</span>
-                <span class="font-headline-md text-headline-md text-primary">Daftar Dokter A-Z</span>
-                <span class="font-body-md text-text-muted text-center mt-2">Cari berdasarkan nama dokter
-                    spesialis</span>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6" id="search-tabs">
+            <button id="btn-az" onclick="switchTab('az')"
+                class="tab-btn flex flex-col items-center justify-center gap-2 p-6 rounded-2xl border border-surface-subtle bg-white hover:shadow-lg transition-all group">
+                <span class="material-symbols-outlined text-4xl group-hover:scale-110 transition-transform icon-color text-jakarta-blue">person_search</span>
+                <span class="font-headline-md text-headline-md text-primary title-color">Daftar Dokter A-Z</span>
             </button>
-            <button
-                class="flex flex-col items-center justify-center gap-2 p-8 rounded-2xl border-2 border-jakarta-blue bg-jakarta-blue text-white shadow-xl">
-                <span class="material-symbols-outlined text-white text-4xl"
-                    style="font-variation-settings: 'FILL' 1;">ecg_heart</span>
-                <span class="font-headline-md text-headline-md">Cari Gejala</span>
-                <span class="font-body-md text-white/80 text-center mt-2">Temukan dokter berdasarkan keluhan
-                    tubuh</span>
+            <button id="btn-gejala" onclick="switchTab('gejala')"
+                class="tab-btn flex flex-col items-center justify-center gap-2 p-6 rounded-2xl border-2 border-jakarta-blue bg-jakarta-blue text-white shadow-xl">
+                <span class="material-symbols-outlined text-4xl icon-color text-white" style="font-variation-settings: 'FILL' 1;">ecg_heart</span>
+                <span class="font-headline-md text-headline-md title-color text-white">Cari Gejala</span>
             </button>
-            <button
-                class="flex flex-col items-center justify-center gap-2 p-8 rounded-2xl border border-surface-subtle bg-white hover:shadow-lg transition-all group">
-                <span
-                    class="material-symbols-outlined text-jakarta-blue text-4xl group-hover:scale-110 transition-transform">clinical_notes</span>
-                <span class="font-headline-md text-headline-md text-primary">Spesialisasi</span>
-                <span class="font-body-md text-text-muted text-center mt-2">Pilih dari daftar spesialisasi medis</span>
+            <button id="btn-spesialisasi" onclick="switchTab('spesialisasi')"
+                class="tab-btn flex flex-col items-center justify-center gap-2 p-6 rounded-2xl border border-surface-subtle bg-white hover:shadow-lg transition-all group">
+                <span class="material-symbols-outlined text-4xl group-hover:scale-110 transition-transform icon-color text-jakarta-blue">clinical_notes</span>
+                <span class="font-headline-md text-headline-md text-primary title-color">Spesialisasi</span>
             </button>
         </div>
-        <section
-            class="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-surface-subtle overflow-hidden relative">
-            <div class="text-center mb-12">
-                <h1 class="font-headline-xl text-headline-xl text-primary mb-2">Pilih Bagian Tubuh</h1>
-                <p class="font-body-md text-body-md text-text-muted">Klik pada area yang mengalami keluhan untuk melihat
-                    dokter yang tepat.</p>
-            </div>
-            <div class="flex flex-col lg:flex-row items-center justify-center gap-16 relative z-10">
-                <!-- Anatomy Illustration Container -->
-                <div class="relative w-full max-w-[400px] aspect-[1/2] flex items-center justify-center">
-                    <div class="absolute inset-0 bg-blue-50/30 rounded-full blur-3xl -z-10"></div>
-                    <!-- SVG Silhouette Mockup -->
-                    <svg class="interactive-silhouette w-full h-full drop-shadow-2xl" id="anatomy-svg"
-                        viewbox="0 0 200 500">
-                        <!-- Head -->
-                        <path class="active"
-                            d="M100,20 C85,20 75,35 75,55 C75,75 85,85 100,85 C115,85 125,75 125,55 C125,35 115,20 100,20 Z"
-                            data-region="Kepala" id="part-head"></path>
-                        <!-- Neck -->
-                        <path d="M85,85 L115,85 L110,105 L90,105 Z" data-region="Leher" id="part-neck"></path>
-                        <!-- Chest -->
-                        <path d="M60,105 L140,105 C150,130 150,160 140,200 L60,200 C50,160 50,130 60,105 Z"
-                            data-region="Dada &amp; Paru" id="part-chest"></path>
-                        <!-- Abdomen -->
-                        <path d="M60,200 L140,200 L135,280 L65,280 Z" data-region="Perut &amp; Organ Dalam"
-                            id="part-abdomen"></path>
-                        <!-- Limbs (Simplified) -->
-                        <path
-                            d="M60,105 L30,150 L20,250 L40,250 L50,180 L60,150 Z M140,105 L170,150 L180,250 L160,250 L150,180 L140,150 Z"
-                            data-region="Tangan &amp; Otot" id="part-arms"></path>
-                        <path
-                            d="M65,280 L55,400 L60,480 L85,480 L90,400 L100,320 L110,400 L115,480 L140,480 L145,400 L135,280 Z"
-                            data-region="Kaki &amp; Sendi" id="part-legs"></path>
-                    </svg>
-                    <!-- Instructional Overlay -->
-                    <div
-                        class="absolute top-0 right-0 md:-right-12 floating-action bg-white shadow-lg p-3 rounded-xl border border-surface-subtle hidden md:flex items-center gap-2">
-                        <span class="material-symbols-outlined text-jakarta-blue">ads_click</span>
-                        <span class="text-label-md font-label-md">Klik untuk memilih</span>
-                    </div>
+
+        <div id="filter-container">
+            <!-- AZ Section -->
+            <section id="section-az" class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-surface-subtle hidden relative">
+                <div class="text-center mb-6">
+                    <h1 class="font-headline-xl text-headline-xl text-primary mb-2">Cari Berdasarkan Abjad</h1>
+                    <p class="font-body-md text-body-md text-text-muted">Pilih inisial nama dokter yang Anda cari.</p>
                 </div>
-                <!-- Results Panel -->
-                <div class="w-full lg:w-[450px] space-y-6">
-                    <div class="bg-surface-container-lowest border border-surface-subtle rounded-2xl p-6 shadow-sm min-h-[500px] flex flex-col relative"
-                        id="region-card">
-                        <!-- Header with Breadcrumb-like title -->
-                        <div class="flex items-center justify-between mb-6 pb-4 border-b border-surface-subtle">
-                            <div>
-                                <span
-                                    class="text-label-md font-label-md text-text-muted uppercase tracking-wider block mb-1">Wilayah
-                                    Terpilih</span>
-                                <div class="flex items-center gap-2 text-primary font-headline-md text-headline-md">
-                                    <h2 id="active-region-name">Kepala</h2>
-                                    <span class="material-symbols-outlined text-lg hidden"
-                                        id="breadcrumb-separator">chevron_right</span>
-                                    <span class="hidden text-text-muted font-normal" id="active-sub-region-name"></span>
-                                </div>
-                            </div>
-                            <button
-                                class="hidden bg-surface-container hover:bg-surface-container-high text-primary p-2 rounded-full transition-colors"
-                                id="back-btn">
-                                <span class="material-symbols-outlined">arrow_back</span>
-                            </button>
+                <div class="flex flex-wrap gap-3 justify-center max-w-4xl mx-auto mb-6" id="az-buttons">
+                    <!-- Injected by JS -->
+                </div>
+                <div class="relative max-w-2xl mx-auto">
+                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-text-muted">search</span>
+                    <input type="text" placeholder="Atau ketik nama dokter..." class="w-full pl-12 pr-4 py-4 rounded-xl border border-surface-subtle focus:outline-none focus:border-jakarta-blue font-body-md transition-colors">
+                </div>
+            </section>
+
+            <!-- Spesialisasi Section -->
+            <section id="section-spesialisasi" class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-surface-subtle hidden relative">
+                <div class="text-center mb-6">
+                    <h1 class="font-headline-xl text-headline-xl text-primary mb-2">Pilih Spesialisasi</h1>
+                    <p class="font-body-md text-body-md text-text-muted">Temukan dokter berdasarkan bidang keahlian medis yang dibutuhkan.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" id="spesialisasi-list">
+                    <!-- Injected by JS -->
+                </div>
+            </section>
+
+            <!-- Gejala Section -->
+            <section id="section-gejala" class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-surface-subtle overflow-hidden relative">
+                <div class="text-center mb-6">
+                    <h1 class="font-headline-xl text-headline-xl text-primary mb-2">Pilih Bagian Tubuh</h1>
+                    <p class="font-body-md text-body-md text-text-muted">Klik pada area yang mengalami keluhan untuk melihat dokter yang tepat.</p>
+                </div>
+                <div class="flex flex-col lg:flex-row items-center justify-center gap-16 relative z-10">
+                    <!-- Anatomy Illustration Container -->
+                    <div class="flex flex-col items-center gap-4 flex-shrink-0">
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-blue-50/30 rounded-full blur-3xl -z-10"></div>
+                            <!-- SVG Silhouette Mockup -->
+                            <svg class="interactive-silhouette w-[180px] h-[380px] drop-shadow-2xl" id="anatomy-svg" viewBox="0 0 200 500" preserveAspectRatio="xMidYMid meet">
+                                <!-- Kepala -->
+                                <path class="active" d="M100,20 C85,20 75,35 75,55 C75,75 85,85 100,85 C115,85 125,75 125,55 C125,35 115,20 100,20 Z" data-region="kepala" id="part-head">
+                                    <title>Kepala</title>
+                                </path>
+                                <!-- Leher -->
+                                <path d="M85,85 L115,85 L110,105 L90,105 Z" data-region="leher" id="part-neck">
+                                    <title>Leher</title>
+                                </path>
+                                <!-- Dada -->
+                                <path d="M60,105 L140,105 C150,130 150,160 140,200 L60,200 C50,160 50,130 60,105 Z" data-region="dada" id="part-chest">
+                                    <title>Dada</title>
+                                </path>
+                                <!-- Perut -->
+                                <path d="M60,200 L140,200 L135,265 L65,265 Z" data-region="perut" id="part-abdomen">
+                                    <title>Perut</title>
+                                </path>
+                                <!-- Panggul & Reproduksi -->
+                                <path d="M65,265 L135,265 L130,300 L70,300 Z" data-region="panggul-reproduksi" id="part-pelvis">
+                                    <title>Panggul &amp; Reproduksi</title>
+                                </path>
+                                <!-- Tangan -->
+                                <path d="M60,105 L30,150 L20,260 L40,260 L50,180 L60,150 Z M140,105 L170,150 L180,260 L160,260 L150,180 L140,150 Z" data-region="tangan" id="part-arms">
+                                    <title>Tangan</title>
+                                </path>
+                                <!-- Kaki -->
+                                <path d="M70,300 L60,400 L60,480 L85,480 L90,400 L100,330 L110,400 L115,480 L140,480 L140,400 L130,300 Z" data-region="kaki" id="part-legs">
+                                    <title>Kaki</title>
+                                </path>
+                            </svg>
                         </div>
-                        <!-- Content Area -->
-                        <div class="flex-grow space-y-4" id="service-list">
-                            <!-- Dynamic Content initially filled via JS -->
-                        </div>
-                        <button
-                            class="w-full mt-8 py-4 bg-jakarta-blue text-white rounded-xl font-label-lg text-label-lg hover:brightness-110 transition-all flex items-center justify-center gap-2"
-                            id="view-all-btn">
-                            Lihat Semua Dokter <span class="material-symbols-outlined">arrow_forward</span>
+                        <!-- Tombol Seluruh Tubuh -->
+                        <button class="px-4 py-2 rounded-full bg-jakarta-blue/10 text-jakarta-blue font-label-md text-label-md hover:bg-jakarta-blue hover:text-white transition-all flex items-center gap-2 border border-jakarta-blue/20 shadow-sm whitespace-nowrap" id="btn-seluruh-tubuh" data-region="seluruh-tubuh">
+                            <span class="material-symbols-outlined text-[18px]">accessibility_new</span>
+                            Sistemik / Seluruh Tubuh
                         </button>
                     </div>
+                    <!-- Results Panel -->
+                    <div class="w-full lg:w-[350px] space-y-4">
+                        <div class="bg-surface-container-lowest border border-surface-subtle rounded-2xl p-5 shadow-sm h-[420px] flex flex-col relative" id="region-card">
+                            <!-- Header with Breadcrumb-like title -->
+                            <div class="flex items-center justify-between mb-6 pb-4 border-b border-surface-subtle">
+                                <div>
+                                    <span class="text-[12px] font-bold text-text-muted uppercase tracking-wider block mb-1">Wilayah Terpilih</span>
+                                    <div class="flex items-center gap-2 text-primary font-headline-sm text-headline-sm">
+                                        <h2 id="active-region-name">Kepala</h2>
+                                        <span class="material-symbols-outlined text-lg hidden" id="breadcrumb-separator">chevron_right</span>
+                                        <span class="hidden text-text-muted font-normal" id="active-sub-region-name"></span>
+                                    </div>
+                                </div>
+                                <button class="hidden bg-surface-container hover:bg-surface-container-high text-primary w-10 h-10 rounded-full transition-colors flex items-center justify-center flex-shrink-0" id="back-btn">
+                                    <span class="material-symbols-outlined">arrow_back</span>
+                                </button>
+                            </div>
+                            <!-- Content Area -->
+                            <div class="flex-grow space-y-2 overflow-y-auto pr-1" id="service-list">
+                                <!-- Dynamic Content initially filled via JS -->
+                            </div>
+                            <button class="w-full mt-4 py-3 bg-jakarta-blue text-white rounded-xl font-label-md text-label-md hover:brightness-110 transition-all flex items-center justify-center gap-2 flex-shrink-0" id="view-all-btn">
+                                Lihat Semua Dokter <span class="material-symbols-outlined">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <!-- Background Texture -->
-            <div
-                class="absolute bottom-0 right-0 opacity-[0.03] pointer-events-none transform translate-x-1/4 translate-y-1/4">
-                <img class="w-[600px]"
-                    data-alt="A macro photography shot of clean, sterile medical equipment and architectural patterns of a modern hospital ward. The image emphasizes high-key lighting, shades of teal and clinical white, and sharp geometric lines that evoke a sense of professional healthcare and technological precision. The mood is calm, trustworthy, and ultra-modern."
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBI2TwgP60vg7wUPMbgKJvAP6-NdDU8R6U6R_TIxqCkiNoFuB68mO4flTtKrPHmRdVMh7RDzkL5J7pR2t3s95nLuv5vnzMWh8Jiu-H74WN-7B0LpAzGHUHkg5NfMl02iz9hBtgh__rlHAoaTm_Rg4IsYZJt5-IQnrUZU_QHfPPVz9XaLwyW2nTpaWk5hPE_kB3GpNn4UPPg4nMZBKXPJJJDXmgShR78FZq9s1nANyOSmNritufpFaOeoTdegYVON4YN1_d5kvPbHPo" />
-            </div>
-        </section>
+                <!-- Background removed to fix box overlap bug -->
+            </section>
+        </div>
         <!-- Results Section (Initially Hidden, shown when a condition is clicked) -->
         <section class="mt-16 hidden" id="results-section">
             <h2 class="font-headline-lg text-headline-lg text-primary mb-8 border-b border-surface-subtle pb-4">
-                <span class="text-health-green" id="results-count">8</span> Rekomendasi untuk <span
-                    id="results-query">Mata (Oftalmologi)</span>
+                <span class="text-health-green" id="results-count">0</span> Rekomendasi untuk <span
+                    id="results-query"></span>
             </h2>
             <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
                 <!-- Sidebar Filters -->
@@ -286,97 +401,37 @@
                     <h3 class="font-headline-md text-headline-md text-primary mb-4">Filter Pencarian</h3>
                     <div class="border-b border-surface-subtle pb-4">
                         <button
-                            class="flex items-center justify-between w-full font-label-lg text-label-lg text-primary mb-2">
-                            Hari Praktik <span class="material-symbols-outlined">expand_more</span>
+                            class="flex items-center justify-between w-full font-label-lg text-label-lg text-primary mb-2"
+                            onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('span').innerText = this.nextElementSibling.classList.contains('hidden') ? 'expand_more' : 'expand_less';">
+                            Hari Praktik <span class="material-symbols-outlined">expand_less</span>
                         </button>
-                        <div class="space-y-2 mt-2">
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input class="rounded text-jakarta-blue focus:ring-jakarta-blue" type="checkbox" />
-                                <span>Senin</span>
-                            </label>
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input class="rounded text-jakarta-blue focus:ring-jakarta-blue" type="checkbox" />
-                                <span>Rabu</span>
-                            </label>
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input class="rounded text-jakarta-blue focus:ring-jakarta-blue" type="checkbox" />
-                                <span>Jumat</span>
-                            </label>
+                        <div class="space-y-2 mt-2" id="filter-hari">
+                            <!-- Dynamically built -->
                         </div>
                     </div>
                     <div class="border-b border-surface-subtle pb-4">
                         <button
-                            class="flex items-center justify-between w-full font-label-lg text-label-lg text-primary mb-2">
-                            Lokasi Poliklinik <span class="material-symbols-outlined">expand_more</span>
-                        </button>
-                    </div>
-                    <div class="border-b border-surface-subtle pb-4">
-                        <button
-                            class="flex items-center justify-between w-full font-label-lg text-label-lg text-primary mb-2">
+                            class="flex items-center justify-between w-full font-label-lg text-label-lg text-primary mb-2"
+                            onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('span').innerText = this.nextElementSibling.classList.contains('hidden') ? 'expand_more' : 'expand_less';">
                             Jenis Kelamin <span class="material-symbols-outlined">expand_more</span>
                         </button>
+                        <div class="space-y-2 mt-2 hidden" id="filter-gender">
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input class="rounded text-jakarta-blue focus:ring-jakarta-blue" type="checkbox" value="male" onchange="applyFilters()" />
+                                <span>Laki-laki</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input class="rounded text-jakarta-blue focus:ring-jakarta-blue" type="checkbox" value="female" onchange="applyFilters()" />
+                                <span>Perempuan</span>
+                            </label>
+                        </div>
                     </div>
-                    <button class="text-text-muted font-label-md text-label-md hover:text-primary mt-4">Hapus Semua
+                    <button class="text-text-muted font-label-md text-label-md hover:text-primary mt-4" onclick="clearAllFilters()">Hapus Semua
                         Filter</button>
                 </aside>
-                <!-- Main Results List -->
-                <div class="lg:col-span-3 space-y-6">
-                    <!-- Doctor Card 1 -->
-                    <div
-                        class="bg-white p-6 rounded-2xl border border-surface-subtle shadow-sm hover:shadow-md transition-shadow flex flex-col md:flex-row gap-6 items-start">
-                        <img alt="Dr. Budi Santoso" class="w-32 h-32 object-cover rounded-xl bg-surface-container"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_AWbt_4z_8rVnfnVWEyoi9c3xwPgQrsVXioYys9-OkJWdCIm5VwItAXo7e4oRdF9ktyRtx_rdM_620CZv_UZp4R4IiemJsy4LfXzrbjYHLuNv0HbaHlbV0Z4a7-oD9wYHuReMAhsNMqMt-XGp5oLs4G7oSKCT3R2IbD6jmsXwPjL-joIYamMGuPBUfn1IPJi8M70rDCYlv5HBbN5z6o96TJaRTlyQZMo9gS8vO58_kzkImc8lKIZc_oZoQ7ly9sqmxppBV4y8KfY" />
-                        <div class="flex-grow">
-                            <h3 class="font-headline-md text-headline-md text-primary mb-1">Dr. Budi Santoso, Sp.M</h3>
-                            <p class="text-text-muted mb-2">Spesialis Mata (Oftalmologi)</p>
-                            <div class="flex items-center gap-2 text-sm text-text-muted mb-4">
-                                <span
-                                    class="material-symbols-outlined text-[18px] text-health-green">check_circle</span>
-                                <span>Tersedia Hari Ini (09:00 - 14:00)</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <span class="px-3 py-1 bg-surface-container text-xs rounded-full">Katarak</span>
-                                <span class="px-3 py-1 bg-surface-container text-xs rounded-full">Glaukoma</span>
-                            </div>
-                        </div>
-                        <div class="flex flex-col gap-3 w-full md:w-auto mt-4 md:mt-0">
-                            <button
-                                class="px-6 py-2 rounded-full border border-jakarta-blue text-jakarta-blue font-label-md hover:bg-surface-container-low transition-colors w-full text-center">Lihat
-                                Profil</button>
-                            <button
-                                class="px-6 py-2 rounded-full bg-health-green text-white font-label-md hover:opacity-90 transition-colors w-full text-center shadow-md">Buat
-                                Janji Temu</button>
-                        </div>
-                    </div>
-                    <!-- Doctor Card 2 -->
-                    <div
-                        class="bg-white p-6 rounded-2xl border border-surface-subtle shadow-sm hover:shadow-md transition-shadow flex flex-col md:flex-row gap-6 items-start">
-                        <div
-                            class="w-32 h-32 rounded-xl bg-surface-container flex items-center justify-center text-4xl text-primary">
-                            👩‍⚕️</div>
-                        <div class="flex-grow">
-                            <h3 class="font-headline-md text-headline-md text-primary mb-1">Dr. Siti Aminah, Sp.M(K)
-                            </h3>
-                            <p class="text-text-muted mb-2">Konsultan Retina (Oftalmologi)</p>
-                            <div class="flex items-center gap-2 text-sm text-text-muted mb-4">
-                                <span
-                                    class="material-symbols-outlined text-[18px] text-text-muted">event_available</span>
-                                <span>Tersedia Besok (10:00 - 15:00)</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <span class="px-3 py-1 bg-surface-container text-xs rounded-full">Retina</span>
-                                <span class="px-3 py-1 bg-surface-container text-xs rounded-full">Operasi Laser</span>
-                            </div>
-                        </div>
-                        <div class="flex flex-col gap-3 w-full md:w-auto mt-4 md:mt-0">
-                            <button
-                                class="px-6 py-2 rounded-full border border-jakarta-blue text-jakarta-blue font-label-md hover:bg-surface-container-low transition-colors w-full text-center">Lihat
-                                Profil</button>
-                            <button
-                                class="px-6 py-2 rounded-full bg-health-green text-white font-label-md hover:opacity-90 transition-colors w-full text-center shadow-md">Buat
-                                Janji Temu</button>
-                        </div>
-                    </div>
+                <!-- Main Results List (Dynamic) -->
+                <div class="lg:col-span-3 space-y-6" id="doctor-results-list">
+                    <!-- Doctor cards injected by JS -->
                 </div>
             </div>
         </section>
@@ -413,62 +468,214 @@
             </div>
         </div>
     </main>
+    <!-- Doctor Profile Modal -->
+    <div class="modal-overlay" id="doctor-profile-modal">
+        <div class="modal-backdrop" onclick="closeDoctorProfile()"></div>
+        <div class="modal-content" id="doctor-profile-content">
+            <!-- Populated by JS -->
+        </div>
+    </div>
+
     <!-- Footer -->
     <div id="footer-container"></div>
     <script>
-        const regionData = {
-            'Kepala': {
-                icon: 'psychology',
-                services: [
-                    { name: 'Mata (Oftalmologi)', icon: 'visibility', conditions: ['Katarak', 'Glaukoma', 'Infeksi Mata', 'Retina', 'Mata Kering'] },
-                    { name: 'Otak & Saraf (Neurologi)', icon: 'neurology', conditions: ['Stroke', 'Epilepsi', 'Sakit Kepala Migrain', 'Parkinson'] },
-                    { name: 'Gigi & Mulut', icon: 'dentistry', conditions: ['Gigi Berlubang', 'Gusi Bengkak', 'Cabut Gigi', 'Karang Gigi'] },
-                    { name: 'THT-KL', icon: 'hearing', conditions: ['Radang Tenggorokan', 'Infeksi Telinga', 'Sinusitis', 'Amandel'] }
-                ]
-            },
-            'Leher': {
-                icon: 'styler',
-                services: [
-                    { name: 'Tiroid & Endokrin', icon: 'vital_signs', conditions: ['Hipertiroid', 'Hipotiroid', 'Benjolan Leher'] },
-                    { name: 'Bedah Leher', icon: 'medical_services', conditions: ['Tumor Leher', 'Cedera Leher'] },
-                    { name: 'Fisioterapi Leher', icon: 'exercise', conditions: ['Saraf Kejepit Leher', 'Kaku Leher'] }
-                ]
-            },
-            'Dada & Paru': {
-                icon: 'cardiology',
-                services: [
-                    { name: 'Jantung (Kardiologi)', icon: 'ecg', conditions: ['Serangan Jantung', 'Gagal Jantung', 'Aritmia'] },
-                    { name: 'Paru (Pulmonologi)', icon: 'larynx', conditions: ['Asma', 'TBC', 'Pneumonia', 'PPOK'] },
-                    { name: 'Bedah Toraks', icon: 'surgical', conditions: ['Kanker Paru', 'Bedah Jantung'] }
-                ]
-            },
-            'Perut & Organ Dalam': {
-                icon: 'stomach',
-                services: [
-                    { name: 'Penyakit Dalam', icon: 'body_system', conditions: ['Diabetes', 'Hipertensi', 'Demam Berdarah'] },
-                    { name: 'Pencernaan (Gastro)', icon: 'fluid_med', conditions: ['Asam Lambung (GERD)', 'Diare', 'Batu Empedu'] },
-                    { name: 'Urologi', icon: 'kidneys', conditions: ['Batu Ginjal', 'Infeksi Saluran Kemih', 'Prostat'] },
-                    { name: 'Kandungan (Obgyn)', icon: 'pregnant_woman', conditions: ['Kehamilan', 'Miom', 'Kista Ovarium'] }
-                ]
-            },
-            'Tangan & Otot': {
-                icon: 'muscle',
-                services: [
-                    { name: 'Ortopedi (Tulang)', icon: 'bone', conditions: ['Patah Tulang', 'Radang Sendi', 'Keseleo'] },
-                    { name: 'Rehabilitasi Medik', icon: 'physical_therapy', conditions: ['Pemulihan Stroke', 'Cedera Olahraga'] },
-                    { name: 'Bedah Saraf Tepi', icon: 'neurology', conditions: ['Carpal Tunnel Syndrome'] }
-                ]
-            },
-            'Kaki & Sendi': {
-                icon: 'directions_walk',
-                services: [
-                    { name: 'Ortopedi & Traumatologi', icon: 'bone', conditions: ['Patah Tulang Kaki', 'Nyeri Lutut', 'Pengapuran Sendi'] },
-                    { name: 'Bedah Vaskular', icon: 'blood_pressure', conditions: ['Varises', 'Kaki Diabetik'] },
-                    { name: 'Podiatri', icon: 'footprint', conditions: ['Cantengan', 'Kelainan Telapak Kaki'] }
-                ]
-            }
+        // ========================================
+        // DATA LAYER: Fetch from penyakit.json & dokter.json
+        // ========================================
+        let penyakitData = [];
+        let dokterData = [];
+        let regionMap = {}; // id -> area object
+
+        // Material Symbols icon mapping for sub-areas (since JSON uses FA icons)
+        const iconMap = {
+            'mata': 'visibility',
+            'telinga': 'hearing',
+            'hidung': 'air',
+            'mulut-dan-gigi': 'dentistry',
+            'otak': 'neurology',
+            'tenggorokan': 'mic',
+            'tiroid': 'vital_signs',
+            'bahu': 'sports_martial_arts',
+            'siku': 'sports_tennis',
+            'pergelangan-tangan': 'front_hand',
+            'jari-tangan': 'pan_tool',
+            'jantung': 'ecg',
+            'paru-paru': 'pulmonology',
+            'kulit-dada': 'dermatology',
+            'lambung': 'gastroenterology',
+            'usus': 'fluid_med',
+            'hati': 'hepatology',
+            'ginjal': 'nephrology',
+            'pinggul': 'directions_walk',
+            'lutut': 'sports_soccer',
+            'betis': 'sprint',
+            'telapak-kaki': 'footprint',
+            'kulit-kaki': 'dermatology',
+            'organ-reproduksi-wanita': 'pregnant_woman',
+            'darah-dan-imun': 'bloodtype',
+            'kondisi-kritis-dan-nyeri': 'emergency',
+            'kelainan-struktural': 'radiology'
         };
 
+        // Main region icon mapping
+        const regionIconMap = {
+            'kepala': 'psychology',
+            'leher': 'styler',
+            'tangan': 'front_hand',
+            'dada': 'cardiology',
+            'perut': 'gastroenterology',
+            'kaki': 'directions_walk',
+            'panggul-reproduksi': 'pregnant_woman',
+            'seluruh-tubuh': 'accessibility_new'
+        };
+
+        async function loadPenyakitData() {
+            try {
+                const [penyakitRes, dokterRes] = await Promise.all([
+                    fetch('assets/data/penyakit.json'),
+                    fetch('assets/data/dokter.json')
+                ]);
+                penyakitData = await penyakitRes.json();
+                dokterData = await dokterRes.json();
+
+                // Build region map
+                penyakitData.forEach(area => {
+                    regionMap[area.id] = area;
+                });
+
+                // Initialize the panel with default region
+                updatePanel('kepala');
+            } catch (error) {
+                console.error('Error loading data:', error);
+                serviceList.innerHTML = `
+                    <div class="text-center text-text-muted py-8">
+                        <span class="material-symbols-outlined text-4xl mb-2 block">error</span>
+                        <p>Gagal memuat data.</p>
+                    </div>`;
+            }
+        }
+
+        // ========================================
+        // HELPER: Get today's day name in Indonesian
+        // ========================================
+        function getHariIni() {
+            const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+            return days[new Date().getDay()];
+        }
+
+        // ========================================
+        // HELPER: Generate URL slug from doctor name
+        // ========================================
+        function generateSlug(nama) {
+            return nama
+                .toLowerCase()
+                .replace(/[.,]/g, '')
+                .replace(/\s+/g, '-')
+                .replace(/[^a-z0-9\-]/g, '')
+                .replace(/-+/g, '-')
+                .replace(/^-|-$/g, '');
+        }
+
+        // ========================================
+        // HELPER: Get doctor's schedule for today
+        // ========================================
+        function getJadwalHariIni(dokter) {
+            const hariIni = getHariIni();
+            const jadwalHari = dokter.jadwal.find(j => j.hari === hariIni);
+            if (!jadwalHari) return null;
+            if (jadwalHari.pagi || jadwalHari.sore) {
+                let slots = [];
+                if (jadwalHari.pagi) slots.push(jadwalHari.pagi);
+                if (jadwalHari.sore) slots.push(jadwalHari.sore);
+                return slots.join(', ');
+            }
+            return null;
+        }
+
+        // ========================================
+        // HELPER: Get next available day for doctor
+        // ========================================
+        function getJadwalBerikutnya(dokter) {
+            const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+            const todayIdx = new Date().getDay();
+            for (let i = 1; i <= 7; i++) {
+                const nextIdx = (todayIdx + i) % 7;
+                const nextDay = days[nextIdx];
+                const jadwal = dokter.jadwal.find(j => j.hari === nextDay);
+                if (jadwal && (jadwal.pagi || jadwal.sore)) {
+                    let slots = [];
+                    if (jadwal.pagi) slots.push(jadwal.pagi);
+                    if (jadwal.sore) slots.push(jadwal.sore);
+                    return { hari: nextDay, jam: slots.join(', ') };
+                }
+            }
+            return null;
+        }
+
+
+        // ========================================
+        // RENDER: Build doctor card HTML
+        // ========================================
+        function renderDoctorCard(dokter, penyakitId) {
+            const jadwalHariIni = getJadwalHariIni(dokter);
+            const jadwalBerikutnya = !jadwalHariIni ? getJadwalBerikutnya(dokter) : null;
+
+            let availabilityHTML = '';
+            if (jadwalHariIni) {
+                availabilityHTML = `
+                    <div class="flex items-center gap-2 text-sm text-text-muted mb-4">
+                        <span class="material-symbols-outlined text-[18px] text-health-green">check_circle</span>
+                        <span>Tersedia Hari Ini (${jadwalHariIni})</span>
+                    </div>`;
+            } else if (jadwalBerikutnya) {
+                availabilityHTML = `
+                    <div class="flex items-center gap-2 text-sm text-text-muted mb-4">
+                        <span class="material-symbols-outlined text-[18px] text-text-muted">event_available</span>
+                        <span>Tersedia ${jadwalBerikutnya.hari} (${jadwalBerikutnya.jam})</span>
+                    </div>`;
+            } else {
+                availabilityHTML = `
+                    <div class="flex items-center gap-2 text-sm text-text-muted mb-4">
+                        <span class="material-symbols-outlined text-[18px] text-text-muted">event_busy</span>
+                        <span>Jadwal belum tersedia</span>
+                    </div>`;
+            }
+
+            // Show keahlian tags (max 3)
+            const keahlianTags = (dokter.keahlian || []).slice(0, 3).map(k => {
+                const label = k.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+                const isMatch = penyakitId && k === penyakitId;
+                return `<span class="px-3 py-1 ${isMatch ? 'bg-health-green/15 text-health-green border border-health-green/30' : 'bg-surface-container text-on-surface-variant'} text-xs rounded-full">${label}</span>`;
+            }).join('');
+
+            // Determine avatar
+            const isFemale = dokter.foto && dokter.foto.includes('female');
+            const avatarEmoji = isFemale ? '👩‍⚕️' : '👨‍⚕️';
+
+            return `
+                <div class="bg-white p-6 rounded-2xl border border-surface-subtle shadow-sm hover:shadow-md transition-shadow flex flex-col md:flex-row gap-6 items-start"
+                     style="animation: fadeSlideIn 0.4s ease both;">
+                    <div class="w-32 h-32 rounded-xl bg-surface-container flex items-center justify-center text-4xl text-primary flex-shrink-0">
+                        ${avatarEmoji}
+                    </div>
+                    <div class="flex-grow">
+                        <h3 class="font-headline-md text-headline-md text-primary mb-1">${dokter.nama}</h3>
+                        <p class="text-text-muted mb-2">${dokter.spesialisasi}</p>
+                        ${availabilityHTML}
+                        <div class="flex items-center gap-2 flex-wrap">
+                            ${keahlianTags}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-3 w-full md:w-auto mt-4 md:mt-0 flex-shrink-0">
+                        <a href="caridokter/profil.html?slug=${generateSlug(dokter.nama)}" class="px-6 py-2 rounded-full border border-jakarta-blue text-jakarta-blue font-label-md hover:bg-surface-container-low transition-colors w-full text-center inline-block">Lihat Profil</a>
+                        <button class="px-6 py-2 rounded-full bg-health-green text-white font-label-md hover:opacity-90 transition-colors w-full text-center shadow-md">Buat Janji Temu</button>
+                    </div>
+                </div>`;
+        }
+
+        // ========================================
+        // DOM REFERENCES
+        // ========================================
         const paths = document.querySelectorAll('.interactive-silhouette path');
         const regionTitle = document.getElementById('active-region-name');
         const subRegionTitle = document.getElementById('active-sub-region-name');
@@ -478,36 +685,89 @@
         const viewAllBtn = document.getElementById('view-all-btn');
         const resultsSection = document.getElementById('results-section');
         const resultsQuery = document.getElementById('results-query');
+        const btnSeluruhTubuh = document.getElementById('btn-seluruh-tubuh');
 
-        let currentRegion = 'Kepala'; // Default state
+        let currentRegionId = 'kepala';
+        let currentSubAreaId = null;
+        let currentView = 'subAreas'; // 'subAreas' | 'penyakit' | 'detail'
 
-        // Initialize
-        updatePanel(currentRegion);
-
+        // ========================================
+        // SVG CLICK HANDLERS
+        // ========================================
         paths.forEach(path => {
             path.addEventListener('click', () => {
                 paths.forEach(p => p.classList.remove('active'));
                 path.classList.add('active');
 
-                currentRegion = path.getAttribute('data-region');
-                updatePanel(currentRegion);
+                // Deactivate "seluruh tubuh" button
+                btnSeluruhTubuh.classList.remove('bg-jakarta-blue', 'text-white');
+                btnSeluruhTubuh.classList.add('bg-jakarta-blue/10', 'text-jakarta-blue');
 
-                // Hide results if we click a new main body part
+                currentRegionId = path.getAttribute('data-region');
+                currentSubAreaId = null;
+                currentView = 'subAreas';
+                updatePanel(currentRegionId);
                 resultsSection.classList.add('hidden');
             });
         });
 
-        backBtn.addEventListener('click', () => {
-            updatePanel(currentRegion);
+        // Seluruh Tubuh button
+        btnSeluruhTubuh.addEventListener('click', () => {
+            paths.forEach(p => p.classList.remove('active'));
+            btnSeluruhTubuh.classList.add('bg-jakarta-blue', 'text-white');
+            btnSeluruhTubuh.classList.remove('bg-jakarta-blue/10', 'text-jakarta-blue');
+
+            currentRegionId = 'seluruh-tubuh';
+            currentSubAreaId = null;
+            currentView = 'subAreas';
+            updatePanel('seluruh-tubuh');
             resultsSection.classList.add('hidden');
         });
 
-        function updatePanel(region) {
-            const data = regionData[region];
-            if (!data) return;
+        // Back button
+        backBtn.addEventListener('click', () => {
+            if (currentView === 'detail') {
+                // Go back to penyakit list of current subArea
+                currentView = 'penyakit';
+                showSubAreaPenyakit(currentRegionId, currentSubAreaId);
+            } else if (currentView === 'penyakit') {
+                // Go back to subAreas list
+                currentView = 'subAreas';
+                currentSubAreaId = null;
+                updatePanel(currentRegionId);
+            }
+            resultsSection.classList.add('hidden');
+        });
 
-            // Reset headers for main view
-            regionTitle.innerText = region;
+        // View All Doctors button
+        viewAllBtn.addEventListener('click', () => {
+            const area = regionMap[currentRegionId];
+            if (!area) return;
+
+            // Collect all unique poliklinik from all diseases in this region
+            const polikliniks = [];
+            area.subArea.forEach(sub => {
+                if (sub.penyakit) {
+                    sub.penyakit.forEach(p => {
+                        if (!polikliniks.includes(p.poliklinik)) polikliniks.push(p.poliklinik);
+                    });
+                }
+            });
+
+            showResults({ polikliniks: polikliniks, label: 'Semua Dokter - ' + area.nama });
+        });
+
+        // ========================================
+        // PANEL UPDATE: Show Sub-Areas
+        // ========================================
+        function updatePanel(regionId) {
+            const area = regionMap[regionId];
+            if (!area) return;
+
+            currentView = 'subAreas';
+
+            // Update header
+            regionTitle.innerText = area.nama;
             subRegionTitle.innerText = '';
             subRegionTitle.classList.add('hidden');
             breadcrumbSeparator.classList.add('hidden');
@@ -517,30 +777,44 @@
             serviceList.style.opacity = '0';
 
             setTimeout(() => {
-                serviceList.innerHTML = data.services.map((s, index) => `
-                    <div class="p-4 rounded-xl border border-surface-subtle bg-white hover:bg-surface-container-low transition-colors cursor-pointer flex items-center justify-between group animate-in fade-in slide-in-from-right-4 duration-300" 
-                         onclick="showConditions('${region}', ${index})">
-                        <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 rounded-full bg-jakarta-blue/10 flex items-center justify-center">
-                                <span class="material-symbols-outlined text-jakarta-blue text-sm">${s.icon}</span>
+                serviceList.innerHTML = area.subArea.map((sub, index) => {
+                    const icon = iconMap[sub.id] || 'medical_services';
+                    return `
+                    <div class="p-3 rounded-xl border border-surface-subtle bg-white hover:bg-surface-container-low transition-all cursor-pointer flex items-center justify-between group"
+                         onclick="selectSubArea('${regionId}', '${sub.id}')" style="animation: fadeSlideIn 0.3s ease ${index * 0.05}s both;">
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-full bg-jakarta-blue/10 flex items-center justify-center flex-shrink-0">
+                                <span class="material-symbols-outlined text-jakarta-blue text-[16px]">${icon}</span>
                             </div>
-                            <span class="font-label-lg text-label-lg">${s.name}</span>
+                            <span class="font-label-md text-label-md">${sub.nama}</span>
                         </div>
                         <span class="material-symbols-outlined text-text-muted group-hover:translate-x-1 transition-transform">chevron_right</span>
-                    </div>
-                `).join('');
+                    </div>`;
+                }).join('');
 
                 serviceList.style.opacity = '1';
             }, 150);
         }
 
-        // Make globally available for onclick handlers
-        window.showConditions = function (region, serviceIndex) {
-            const data = regionData[region];
-            const service = data.services[serviceIndex];
+        // ========================================
+        // SUB-AREA CLICK: Show Disease List
+        // ========================================
+        window.selectSubArea = function(regionId, subAreaId) {
+            currentSubAreaId = subAreaId;
+            currentView = 'penyakit';
+            showSubAreaPenyakit(regionId, subAreaId);
+        };
 
-            // Update Headers for nested view
-            subRegionTitle.innerText = service.name;
+        function showSubAreaPenyakit(regionId, subAreaId) {
+            const area = regionMap[regionId];
+            if (!area) return;
+
+            const subArea = area.subArea.find(s => s.id === subAreaId);
+            if (!subArea) return;
+
+            // Update header breadcrumb
+            regionTitle.innerText = area.nama;
+            subRegionTitle.innerText = subArea.nama;
             subRegionTitle.classList.remove('hidden');
             breadcrumbSeparator.classList.remove('hidden');
             backBtn.classList.remove('hidden');
@@ -549,23 +823,362 @@
             serviceList.style.opacity = '0';
 
             setTimeout(() => {
-                serviceList.innerHTML = service.conditions.map(condition => `
-                    <div class="p-4 rounded-xl border border-surface-subtle bg-white hover:border-jakarta-blue hover:shadow-sm transition-all cursor-pointer flex items-center justify-between group animate-in fade-in slide-in-from-right-4 duration-300"
-                         onclick="showResults('${condition}')">
-                        <span class="font-label-lg text-label-lg text-primary">${condition}</span>
-                        <span class="material-symbols-outlined text-jakarta-blue opacity-0 group-hover:opacity-100 transition-opacity">search</span>
-                    </div>
-                `).join('');
+                if (!subArea.penyakit || subArea.penyakit.length === 0) {
+                    serviceList.innerHTML = `
+                        <div class="text-center text-text-muted py-8">
+                            <span class="material-symbols-outlined text-3xl mb-2 block text-surface-dim">search_off</span>
+                            <p class="text-sm">Belum ada data penyakit untuk area ini.</p>
+                        </div>`;
+                } else {
+                    serviceList.innerHTML = subArea.penyakit.map((p, index) => `
+                        <div class="p-3 rounded-xl border border-surface-subtle bg-white hover:border-jakarta-blue hover:shadow-sm transition-all cursor-pointer flex items-center justify-between group"
+                             onclick="showDiseaseDetail('${regionId}', '${subAreaId}', '${p.id}')" style="animation: fadeSlideIn 0.3s ease ${index * 0.05}s both;">
+                            <span class="font-label-md text-label-md text-primary">${p.nama}</span>
+                            <span class="material-symbols-outlined text-jakarta-blue opacity-0 group-hover:opacity-100 transition-opacity">arrow_forward</span>
+                        </div>
+                    `).join('');
+                }
+
+                serviceList.style.opacity = '1';
+            }, 150);
+        }
+
+        // ========================================
+        // DISEASE DETAIL VIEW
+        // ========================================
+        window.showDiseaseDetail = function(regionId, subAreaId, penyakitId) {
+            const area = regionMap[regionId];
+            if (!area) return;
+
+            const subArea = area.subArea.find(s => s.id === subAreaId);
+            if (!subArea) return;
+
+            const penyakit = subArea.penyakit.find(p => p.id === penyakitId);
+            if (!penyakit) return;
+
+            currentView = 'detail';
+
+            // Update header
+            subRegionTitle.innerText = penyakit.nama;
+            backBtn.classList.remove('hidden');
+            viewAllBtn.classList.add('hidden');
+
+            serviceList.style.opacity = '0';
+
+            setTimeout(() => {
+                serviceList.innerHTML = `
+                    <div style="animation: fadeSlideIn 0.3s ease both;">
+                        <!-- Description -->
+                        <p class="text-sm text-text-muted mb-4 leading-relaxed">${penyakit.deskripsi}</p>
+
+                        <!-- Gejala -->
+                        <div class="mb-4">
+                            <h4 class="font-label-md text-label-md text-primary mb-2 flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-[16px] text-health-green">symptoms</span>
+                                Gejala Umum
+                            </h4>
+                            <div class="flex flex-wrap gap-1.5">
+                                ${penyakit.gejala.map(g => `
+                                    <span class="px-2.5 py-1 bg-surface-container text-[11px] rounded-full text-on-surface-variant">${g}</span>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <!-- Poliklinik -->
+                        <div class="p-3 rounded-xl bg-jakarta-blue/5 border border-jakarta-blue/15">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="material-symbols-outlined text-[16px] text-jakarta-blue">local_hospital</span>
+                                <span class="font-label-md text-label-md text-jakarta-blue">Poliklinik Tujuan</span>
+                            </div>
+                            <span class="text-sm font-semibold text-primary">${penyakit.poliklinik}</span>
+                        </div>
+
+                        <!-- Action Button -->
+                        <button class="w-full mt-4 py-3 bg-health-green text-white rounded-xl font-label-md text-label-md hover:brightness-110 transition-all flex items-center justify-center gap-2 shadow-md"
+                                onclick="showResults({ poliklinik: '${penyakit.poliklinik}', penyakitId: '${penyakit.id}', label: '${penyakit.nama}' })">
+                            <span class="material-symbols-outlined text-[18px]">person_search</span>
+                            Cari Dokter di ${penyakit.poliklinik}
+                        </button>
+                    </div>`;
 
                 serviceList.style.opacity = '1';
             }, 150);
         };
 
-        window.showResults = function (query) {
-            resultsQuery.innerText = query;
+        // ========================================
+        // SHOW RESULTS: Main entry point
+        // ========================================
+        let currentSearchContext = {}; // Store search params for re-filtering
+        const doctorResultsList = document.getElementById('doctor-results-list');
+        const resultsCount = document.getElementById('results-count');
+        const filterHariContainer = document.getElementById('filter-hari');
+
+        // Build day filter checkboxes
+        const hariList = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+        if (filterHariContainer) {
+            filterHariContainer.innerHTML = hariList.map(hari => `
+                <label class="flex items-center gap-2 cursor-pointer">
+                    <input class="rounded text-jakarta-blue focus:ring-jakarta-blue" type="checkbox" value="${hari}" onchange="applyFilters()" />
+                    <span>${hari}</span>
+                </label>
+            `).join('');
+        }
+
+        window.showResults = function (params) {
+            // Normalize params: can be object or string (legacy)
+            if (typeof params === 'string') {
+                params = { label: params };
+            }
+
+            currentSearchContext = params;
+
+            // Reset sidebar filters
+            clearSidebarFilters();
+
+            // Do the initial filtering
+            const doctors = getFilteredDoctors(params);
+            renderDoctorResults(doctors, params);
+
+            resultsQuery.innerText = params.label || params.poliklinik || params.spesialisasi || '';
             resultsSection.classList.remove('hidden');
             resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        };
+
+        function getFilteredDoctors(params) {
+            let results = dokterData;
+
+            // Primary filter from search context
+            if (params.poliklinik) {
+                results = results.filter(d => d.poliklinik.includes(params.poliklinik));
+            }
+            if (params.polikliniks && params.polikliniks.length > 0) {
+                results = results.filter(d =>
+                    d.poliklinik.some(poli => params.polikliniks.includes(poli))
+                );
+            }
+            if (params.penyakitId) {
+                results = results.filter(d => d.keahlian && d.keahlian.includes(params.penyakitId));
+            }
+            if (params.spesialisasi) {
+                results = results.filter(d =>
+                    d.spesialisasi.toLowerCase().includes(params.spesialisasi.toLowerCase())
+                );
+            }
+            if (params.initial) {
+                results = results.filter(d => {
+                    const namaClean = d.nama.replace(/^(dr\.|drg\.)\s*/i, '');
+                    return namaClean.charAt(0).toUpperCase() === params.initial.toUpperCase();
+                });
+            }
+            if (params.nama) {
+                const query = params.nama.toLowerCase();
+                results = results.filter(d => d.nama.toLowerCase().includes(query));
+            }
+
+            return results;
         }
+
+        function applyFilters() {
+            let doctors = getFilteredDoctors(currentSearchContext);
+
+            // Apply day filter
+            const selectedDays = Array.from(filterHariContainer.querySelectorAll('input:checked')).map(cb => cb.value);
+            if (selectedDays.length > 0) {
+                doctors = doctors.filter(d => {
+                    return selectedDays.some(day => {
+                        const jadwal = d.jadwal.find(j => j.hari === day);
+                        return jadwal && (jadwal.pagi || jadwal.sore);
+                    });
+                });
+            }
+
+            // Apply gender filter
+            const genderContainer = document.getElementById('filter-gender');
+            const selectedGenders = Array.from(genderContainer.querySelectorAll('input:checked')).map(cb => cb.value);
+            if (selectedGenders.length > 0) {
+                doctors = doctors.filter(d => {
+                    const isFemale = d.foto && d.foto.includes('female');
+                    const gender = isFemale ? 'female' : 'male';
+                    return selectedGenders.includes(gender);
+                });
+            }
+
+            renderDoctorResults(doctors, currentSearchContext);
+        }
+
+        window.applyFilters = applyFilters;
+
+        function clearSidebarFilters() {
+            if (filterHariContainer) {
+                filterHariContainer.querySelectorAll('input').forEach(cb => cb.checked = false);
+            }
+            const genderContainer = document.getElementById('filter-gender');
+            if (genderContainer) {
+                genderContainer.querySelectorAll('input').forEach(cb => cb.checked = false);
+            }
+        }
+
+        window.clearAllFilters = function() {
+            clearSidebarFilters();
+            applyFilters();
+        };
+
+        function renderDoctorResults(doctors, params) {
+            resultsCount.innerText = doctors.length;
+
+            if (doctors.length === 0) {
+                doctorResultsList.innerHTML = `
+                    <div class="text-center py-16 bg-white rounded-2xl border border-surface-subtle" style="animation: fadeSlideIn 0.3s ease both;">
+                        <span class="material-symbols-outlined text-6xl text-surface-dim mb-4 block">search_off</span>
+                        <h3 class="font-headline-md text-headline-md text-primary mb-2">Tidak Ada Dokter Ditemukan</h3>
+                        <p class="text-text-muted font-body-md max-w-md mx-auto">Maaf, tidak ada dokter yang sesuai dengan kriteria pencarian Anda. Coba ubah filter atau cari dengan kriteria lain.</p>
+                    </div>`;
+                return;
+            }
+
+            doctorResultsList.innerHTML = doctors.map((dokter, index) => {
+                const card = renderDoctorCard(dokter, params.penyakitId);
+                // Add staggered animation delay
+                return card.replace('animation: fadeSlideIn 0.4s ease both;', `animation: fadeSlideIn 0.4s ease ${index * 0.08}s both;`);
+            }).join('');
+        }
+
+        // ========================================
+        // A-Z & SPESIALISASI TABS
+        // ========================================
+
+        // Generate A-Z buttons
+        const azContainer = document.getElementById('az-buttons');
+        if (azContainer) {
+            const alphabet = Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i));
+            azContainer.innerHTML = alphabet.map(char => `
+                <button class="w-12 h-12 rounded-xl border border-surface-subtle bg-white hover:bg-jakarta-blue hover:text-white font-headline-md text-primary transition-all shadow-sm flex items-center justify-center"
+                    onclick="showResults({ initial: '${char}', label: 'Dokter dengan Inisial ${char}' })">${char}</button>
+            `).join('');
+        }
+
+        // A-Z search input
+        const azSearchInput = document.querySelector('#section-az input[type=text]');
+        if (azSearchInput) {
+            let debounceTimer;
+            azSearchInput.addEventListener('input', function() {
+                clearTimeout(debounceTimer);
+                const query = this.value.trim();
+                debounceTimer = setTimeout(() => {
+                    if (query.length >= 2) {
+                        showResults({ nama: query, label: 'Pencarian "' + query + '"' });
+                    }
+                }, 300);
+            });
+        }
+
+        // Generate Spesialisasi list
+        const spesialisasiContainer = document.getElementById('spesialisasi-list');
+        if (spesialisasiContainer) {
+            const specialties = [
+                { name: 'Spesialis Anak', icon: 'child_care', keyword: 'Anak' },
+                { name: 'Spesialis Kandungan', icon: 'pregnant_woman', keyword: 'Kebidanan' },
+                { name: 'Spesialis Penyakit Dalam', icon: 'body_system', keyword: 'Penyakit Dalam' },
+                { name: 'Spesialis Bedah', icon: 'surgical', keyword: 'Bedah' },
+                { name: 'Spesialis Mata', icon: 'visibility', keyword: 'Mata' },
+                { name: 'Spesialis THT', icon: 'hearing', keyword: 'THT' },
+                { name: 'Spesialis Jantung', icon: 'cardiology', keyword: 'Jantung' },
+                { name: 'Spesialis Saraf', icon: 'neurology', keyword: 'Saraf' },
+                { name: 'Spesialis Paru', icon: 'pulmonology', keyword: 'Paru' },
+                { name: 'Spesialis Kulit & Kelamin', icon: 'dermatology', keyword: 'Kulit' },
+                { name: 'Spesialis Radiologi', icon: 'radiology', keyword: 'Radiologi' },
+                { name: 'Spesialis Anestesi', icon: 'masks', keyword: 'Anestesi' }
+            ];
+
+            spesialisasiContainer.innerHTML = specialties.map(spec => `
+                <button class="flex items-center gap-4 p-4 rounded-xl border border-surface-subtle bg-white hover:border-jakarta-blue hover:shadow-md transition-all text-left group"
+                    onclick="showResults({ spesialisasi: '${spec.keyword}', label: '${spec.name}' })">
+                    <div class="w-12 h-12 flex-shrink-0 rounded-full bg-jakarta-blue/10 flex items-center justify-center group-hover:bg-jakarta-blue transition-colors">
+                        <span class="material-symbols-outlined text-jakarta-blue group-hover:text-white transition-colors">${spec.icon}</span>
+                    </div>
+                    <span class="font-label-lg text-label-lg text-primary flex-grow">${spec.name}</span>
+                </button>
+            `).join('');
+        }
+
+        // ========================================
+        // TAB SWITCHING
+        // ========================================
+        window.switchTab = function (tabId) {
+            const targetSection = document.getElementById('section-' + tabId);
+            const isCurrentlyActive = !targetSection.classList.contains('hidden');
+
+            // Hide all sections
+            document.getElementById('section-az').classList.add('hidden');
+            document.getElementById('section-gejala').classList.add('hidden');
+            document.getElementById('section-spesialisasi').classList.add('hidden');
+
+            // Reset all tab buttons
+            const tabs = ['btn-az', 'btn-gejala', 'btn-spesialisasi'];
+            tabs.forEach(id => {
+                const btn = document.getElementById(id);
+                btn.className = "tab-btn flex flex-col items-center justify-center gap-2 p-6 rounded-2xl border border-surface-subtle bg-white hover:shadow-lg transition-all group cursor-pointer";
+                
+                const title = btn.querySelector('.title-color');
+                title.classList.remove('text-white');
+                title.classList.add('text-primary');
+                
+                const icon = btn.querySelector('.icon-color');
+                icon.classList.remove('text-white');
+                icon.classList.add('text-jakarta-blue');
+                icon.style.fontVariationSettings = "'FILL' 0";
+            });
+
+            if (isCurrentlyActive) {
+                return;
+            }
+
+            resultsSection.classList.add('hidden');
+
+            targetSection.classList.remove('hidden');
+
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.className = "tab-btn flex flex-col items-center justify-center gap-2 p-6 rounded-2xl border-2 border-jakarta-blue bg-jakarta-blue text-white shadow-xl cursor-pointer";
+            
+            const activeTitle = activeBtn.querySelector('.title-color');
+            activeTitle.classList.add('text-white');
+            activeTitle.classList.remove('text-primary');
+            
+            const activeIcon = activeBtn.querySelector('.icon-color');
+            activeIcon.classList.add('text-white');
+            activeIcon.classList.remove('text-jakarta-blue');
+            activeIcon.style.fontVariationSettings = "'FILL' 1";
+        };
+
+        // ========================================
+        // DOCTOR PROFILE MODAL
+        // ========================================
+        const doctorModal = document.getElementById('doctor-profile-modal');
+        const doctorProfileContent = document.getElementById('doctor-profile-content');
+
+        window.openDoctorProfile = function(dokterId) {
+            const dokter = dokterData.find(d => d.id === dokterId);
+            if (!dokter) return;
+            // Navigate to the dedicated profile page
+            window.location.href = 'caridokter/profil.html?slug=' + generateSlug(dokter.nama);
+        };
+
+        window.closeDoctorProfile = function() {
+            doctorModal.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && doctorModal.classList.contains('active')) {
+                closeDoctorProfile();
+            }
+        });
+
+        // ========================================
+        // INITIALIZE
+        // ========================================
+        loadPenyakitData();
     </script>
 
     <script src="components/navbar.js"></script>

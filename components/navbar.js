@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
     const src = document.currentScript ? document.currentScript.getAttribute('src') : '';
     const depth = (src.match(/\.\.\//g) || []).length;
     const base = '../'.repeat(depth);
@@ -13,6 +13,7 @@
     }
 
     const layananPages = ['layanan', 'poliklinik', 'igd', 'rawat-inap', 'laboratorium', 'peta'];
+    const caridokterPages = ['caridokter', 'profil'];
 
     const html = `
     <div class="w-full bg-emergency-red text-white py-2 flex justify-center items-center gap-4" style="padding-left:24px;padding-right:24px;position:relative;z-index:60;">
@@ -26,7 +27,7 @@
             <a href="${base}index.html" class="font-headline-md text-headline-md text-jakarta-blue font-bold hover:opacity-80 transition-opacity" style="text-decoration:none;">RSUD Tugu Koja</a>
             <nav class="hidden md:flex items-center" style="gap:32px;">
                 <a class="${cls('index')}" href="${base}index.html" style="text-decoration:none;">Beranda</a>
-                <a class="${cls('caridokter')}" href="${base}caridokter.html" style="text-decoration:none;">Cari Dokter</a>
+                <a class="${cls(caridokterPages)}" href="${base}caridokter.html" style="text-decoration:none;">Cari Dokter</a>
                 <a class="${cls(layananPages)}" href="${base}layanan.html" style="text-decoration:none;">Layanan</a>
                 <a class="${cls('berita')}" href="${base}berita.html" style="text-decoration:none;">Berita</a>
                 <a class="${cls('tentangkami')}" href="${base}tentangkami.html" style="text-decoration:none;">Tentang Kami</a>
