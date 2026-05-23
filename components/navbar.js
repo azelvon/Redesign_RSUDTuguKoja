@@ -186,7 +186,7 @@
 <!-- Fixed wrapper: Emergency Bar + Navbar Header -->
 <div id="navbar-fixed-wrapper">
     <!-- Emergency Top Bar -->
-    <div class="w-full bg-emergency-red text-white shadow-md relative z-50">
+    <div id="emergency-bar" class="w-full bg-emergency-red text-white shadow-md relative z-50">
         <div class="max-w-container-max mx-auto px-gutter py-1.5 flex justify-center items-center gap-4">
             <span class="material-symbols-outlined text-[16px]" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24;">emergency_home</span>
             <span class="font-label-md text-[13px] tracking-wide font-medium">Emergency: 112</span>
@@ -270,14 +270,15 @@
         const toggleBtn = document.getElementById('menu-toggle-btn');
         const toggleIcon = document.getElementById('menu-toggle-icon');
         const spacer    = document.getElementById('navbar-spacer');
+        const emergencyBar = document.getElementById('emergency-bar');
         
         if (!header || !mobileNav || !toggleBtn || !fixedWrapper || !spacer) return;
 
-        // Dynamic spacer calculation
+        // Dynamic spacer calculation (only push down by emergency bar height)
+        // so the floating navbar overlays the hero image
         function updateSpacer() {
-            // Need slight delay to let CSS transitions finish for accurate height
             setTimeout(() => {
-                spacer.style.height = (fixedWrapper.offsetHeight + 10) + 'px';
+                spacer.style.height = (emergencyBar ? emergencyBar.offsetHeight : 0) + 'px';
             }, 50);
         }
         
