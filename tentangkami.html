@@ -1,202 +1,365 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="utf-8"><meta content="width=device-width,initial-scale=1" name="viewport">
 <title>Tentang Kami - RSUD Tugu Koja</title>
+<meta name="description" content="Profil, visi misi, sejarah, dan informasi kelembagaan RSUD Tugu Koja Jakarta Utara.">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Atkinson+Hyperlegible+Next:wght@400;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <script id="tailwind-config">
-tailwind.config={darkMode:"class",theme:{extend:{"colors":{"jakarta-blue":"#224266","health-green":"#34918C","emergency-red":"#E63946","primary":"#052c4f","primary-container":"#224266","primary-fixed":"#d2e4ff","primary-fixed-dim":"#aac9f4","on-primary":"#ffffff","on-primary-container":"#90afd9","secondary":"#006a66","secondary-container":"#97efe9","surface":"#f7f9fb","surface-container-lowest":"#ffffff","surface-container-low":"#f2f4f6","surface-container":"#eceef0","surface-container-high":"#e6e8ea","surface-subtle":"#F1F5F9","surface-variant":"#e0e3e5","on-surface":"#191c1e","on-surface-variant":"#43474e","outline":"#73777f","outline-variant":"#c3c6cf","background":"#f7f9fb","text-muted":"#64748B"},"spacing":{"gutter":"24px","container-max":"1280px","margin-mobile":"16px","margin-desktop":"48px"},"fontFamily":{"label-lg":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"headline-xl":["Plus Jakarta Sans"],"body-md":["Atkinson Hyperlegible Next"],"body-lg":["Atkinson Hyperlegible Next"]},"fontSize":{"label-lg":["16px",{"lineHeight":"24px","fontWeight":"600"}],"label-md":["14px",{"lineHeight":"20px","fontWeight":"600"}],"headline-md":["24px",{"lineHeight":"32px","fontWeight":"600"}],"headline-lg":["32px",{"lineHeight":"40px","fontWeight":"700"}],"headline-xl":["40px",{"lineHeight":"52px","fontWeight":"700"}],"body-md":["18px",{"lineHeight":"28px","fontWeight":"400"}],"body-lg":["20px",{"lineHeight":"32px","fontWeight":"400"}]}}}}
+tailwind.config={darkMode:"class",theme:{extend:{"colors":{"jakarta-blue":"#224266","health-green":"#34918C","emergency-red":"#E63946","primary":"#052c4f","primary-container":"#224266","primary-fixed":"#d2e4ff","primary-fixed-dim":"#aac9f4","on-primary":"#ffffff","on-primary-container":"#90afd9","secondary":"#006a66","secondary-container":"#97efe9","secondary-fixed":"#9af2ec","on-secondary":"#ffffff","on-secondary-fixed":"#00201e","on-secondary-container":"#006f6a","on-secondary-fixed-variant":"#00504d","surface":"#f7f9fb","surface-container-lowest":"#ffffff","surface-container-low":"#f2f4f6","surface-container":"#eceef0","surface-container-high":"#e6e8ea","surface-container-highest":"#e0e3e5","surface-subtle":"#F1F5F9","surface-variant":"#e0e3e5","on-surface":"#191c1e","on-surface-variant":"#43474e","outline":"#73777f","outline-variant":"#c3c6cf","background":"#f7f9fb","on-background":"#191c1e","text-main":"#1E293B","text-muted":"#64748B","error":"#ba1a1a","surface-tint":"#426086","surface-bright":"#f7f9fb","surface-dim":"#d8dadc","inverse-surface":"#2d3133","inverse-on-surface":"#eff1f3","inverse-primary":"#aac9f4","tertiary":"#5d000e","tertiary-container":"#870019","tertiary-fixed":"#ffdad8","tertiary-fixed-dim":"#ffb3b1","on-tertiary":"#ffffff","on-tertiary-fixed":"#410007","on-tertiary-container":"#ff8b8a","on-tertiary-fixed-variant":"#92001c","error-container":"#ffdad6","on-error":"#ffffff","on-error-container":"#93000a","on-primary-fixed":"#001c38","on-primary-fixed-variant":"#29486d","secondary-fixed-dim":"#7dd5cf"},"spacing":{"gutter":"24px","container-max":"1280px","margin-mobile":"16px","margin-desktop":"48px"},"fontFamily":{"label-lg":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"headline-xl":["Plus Jakarta Sans"],"body-md":["Atkinson Hyperlegible Next"],"body-lg":["Atkinson Hyperlegible Next"]},"fontSize":{"label-lg":["16px",{"lineHeight":"24px","fontWeight":"600"}],"label-md":["14px",{"lineHeight":"20px","fontWeight":"600"}],"headline-md":["24px",{"lineHeight":"32px","fontWeight":"600"}],"headline-lg":["32px",{"lineHeight":"40px","fontWeight":"700"}],"headline-xl":["40px",{"lineHeight":"52px","fontWeight":"700"}],"body-md":["18px",{"lineHeight":"28px","fontWeight":"400"}],"body-lg":["20px",{"lineHeight":"32px","fontWeight":"400"}]}}}}
 </script>
 <style>
 .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
-.stat-card{transition:all 0.3s;}.stat-card:hover{transform:translateY(-4px);}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
-.fade-up{animation:fadeUp 0.6s ease forwards;}
+body { font-family: 'Atkinson Hyperlegible Next', sans-serif; background-color: #f7f9fb; }
+
+/* Counter animation */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* Stat card hover */
+.stat-card {
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+}
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px -8px rgba(34, 66, 102, 0.12);
+}
+
+/* Timeline dot pulse */
+.timeline-dot {
+    position: relative;
+}
+.timeline-dot::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.15;
+}
+
+/* Mission card */
+.mission-card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.mission-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px -6px rgba(34, 66, 102, 0.1);
+}
+
+/* Info pill */
+.info-pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: white;
+    border: 1px solid #F1F5F9;
+    border-radius: 12px;
+    transition: box-shadow 0.2s ease;
+}
+.info-pill:hover {
+    box-shadow: 0 4px 12px -4px rgba(34, 66, 102, 0.08);
+}
 </style>
 </head>
-<body class="bg-background text-on-surface font-body-md">
+
+<body class="text-on-surface">
 <div id="navbar-container"></div>
+
 <main>
-<!-- Hero -->
-<section class="relative h-[60vh] min-h-[400px] w-full overflow-hidden flex items-center">
-<div class="absolute inset-0 z-0">
-<img alt="RSUD Tugu Koja" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0ui1evh3r6omMESkVeXM-W4Uc6s_rM9mnUZ1wuazC-8FyvFjxSLkU51vz6b4sHW6oXYkWBoEgJPkondOWQJfaS54CF3GYP_mBM1HCrWm_4DRx10yiG1Xgu6iCpBS_SPvpArSO3cWujei8nyHOPanxKeWaQy5l9KW999vJ_NqGbrl4xoBTqyQ--q5Wi4cY6nasOHIQGrPCyfVRqpy8_KMR17kcvJUqcIewLxno8__Y9cOJQGwzx4ABW4y458">
-<div class="absolute inset-0 bg-gradient-to-r from-jakarta-blue/85 via-jakarta-blue/50 to-transparent"></div>
-</div>
-<div class="relative z-10 max-w-container-max mx-auto px-gutter w-full">
-<div class="max-w-2xl">
-<span class="text-secondary-container font-label-lg tracking-widest uppercase mb-3 block">Tentang Kami</span>
-<h1 class="font-headline-xl text-headline-xl text-white mb-4 leading-tight">Rumah Sehat untuk<br><span class="text-health-green">Seluruh Jakarta</span></h1>
-<p class="font-body-lg text-body-lg text-white/90 max-w-xl">RSUD Tugu Koja adalah rumah sakit umum daerah milik Pemerintah Provinsi DKI Jakarta yang berkomitmen memberikan pelayanan kesehatan prima, profesional, dan humanis.</p>
-</div>
-</div>
-</section>
-<!-- Stats -->
-<section class="relative -mt-16 z-20 max-w-container-max mx-auto px-gutter mb-20">
-<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-<div class="stat-card bg-white rounded-2xl p-8 shadow-lg text-center border border-surface-subtle">
-<div class="text-4xl font-bold text-jakarta-blue mb-1">15+</div>
-<div class="text-on-surface-variant font-label-md">Spesialisasi</div>
-</div>
-<div class="stat-card bg-white rounded-2xl p-8 shadow-lg text-center border border-surface-subtle">
-<div class="text-4xl font-bold text-health-green mb-1">200+</div>
-<div class="text-on-surface-variant font-label-md">Tenaga Medis</div>
-</div>
-<div class="stat-card bg-white rounded-2xl p-8 shadow-lg text-center border border-surface-subtle">
-<div class="text-4xl font-bold text-jakarta-blue mb-1">300+</div>
-<div class="text-on-surface-variant font-label-md">Kapasitas Tempat Tidur</div>
-</div>
-<div class="stat-card bg-white rounded-2xl p-8 shadow-lg text-center border border-surface-subtle">
-<div class="text-4xl font-bold text-health-green mb-1">24/7</div>
-<div class="text-on-surface-variant font-label-md">Layanan IGD</div>
-</div>
-</div>
-</section>
-<!-- Visi Misi -->
-<section class="py-20 bg-surface-container-low border-y border-surface-subtle">
-<div class="max-w-container-max mx-auto px-gutter">
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-<div>
-<span class="text-health-green font-label-lg tracking-widest uppercase mb-3 block">Visi & Misi</span>
-<h2 class="font-headline-lg text-headline-lg text-jakarta-blue mb-6">Mewujudkan Pelayanan<br>Kesehatan Terbaik</h2>
-<div class="bg-jakarta-blue rounded-2xl p-8 text-white mb-8">
-<h3 class="font-headline-md text-headline-md mb-3">Visi</h3>
-<p class="font-body-md text-body-md text-white/90">Menjadi Rumah Sakit Umum Daerah pilihan utama masyarakat Jakarta dengan pelayanan kesehatan yang berkualitas, inovatif, dan berorientasi pada kepuasan pasien.</p>
-</div>
-<div class="space-y-4">
-<div class="flex items-start gap-4">
-<div class="w-10 h-10 bg-health-green/10 rounded-xl flex items-center justify-center flex-shrink-0 mt-1"><span class="material-symbols-outlined text-health-green">check_circle</span></div>
-<div><h4 class="font-label-lg text-label-lg text-jakarta-blue mb-1">Pelayanan Prima</h4><p class="text-on-surface-variant font-body-md">Memberikan layanan medis yang cepat, tepat, dan penuh empati kepada setiap pasien.</p></div>
-</div>
-<div class="flex items-start gap-4">
-<div class="w-10 h-10 bg-health-green/10 rounded-xl flex items-center justify-center flex-shrink-0 mt-1"><span class="material-symbols-outlined text-health-green">check_circle</span></div>
-<div><h4 class="font-label-lg text-label-lg text-jakarta-blue mb-1">Inovasi Berkelanjutan</h4><p class="text-on-surface-variant font-body-md">Mengadopsi teknologi kesehatan terkini untuk meningkatkan kualitas diagnosis dan pengobatan.</p></div>
-</div>
-<div class="flex items-start gap-4">
-<div class="w-10 h-10 bg-health-green/10 rounded-xl flex items-center justify-center flex-shrink-0 mt-1"><span class="material-symbols-outlined text-health-green">check_circle</span></div>
-<div><h4 class="font-label-lg text-label-lg text-jakarta-blue mb-1">SDM Profesional</h4><p class="text-on-surface-variant font-body-md">Mengembangkan sumber daya manusia yang kompeten, berdedikasi, dan berkarakter humanis.</p></div>
-</div>
-</div>
-</div>
-<div>
-<img alt="Visi Misi RSUD Tugu Koja" class="w-full rounded-3xl shadow-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqhLMZHbLXM64L8I6BGmGZOMGVAP1mn7Ub2tP3onWfDN-CEbPE_ZXKPDylcPzuV0d1SaS5K4GDxTHMxheYbjdqYgxdcwkPPvv17oZ1Ne62s_B9meYA-Rj8869TjomPZQnInsFm-4HpSW9cbptmVC-DjoX9EgSd4NPVfjLHtBCaGsZ8bR_n_6BExYFAb8fiBdETWcxkj7NAmXCQCKKPhnRPUDajOfp0xuGN9QNuev5SifD1an01EwShG8ka3Bx2ccZpffQnAPckczQ">
-</div>
-</div>
-</div>
-</section>
-<!-- Sejarah -->
-<section class="py-20 max-w-container-max mx-auto px-gutter">
-<div class="text-center mb-16">
-<span class="text-health-green font-label-lg tracking-widest uppercase mb-3 block">Perjalanan Kami</span>
-<h2 class="font-headline-lg text-headline-lg text-jakarta-blue">Sejarah RSUD Tugu Koja</h2>
-</div>
-<div class="relative">
-<div class="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-surface-subtle hidden md:block"></div>
-<div class="space-y-12">
-<div class="grid md:grid-cols-2 gap-8 items-center">
-<div class="md:text-right">
-<div class="inline-block bg-jakarta-blue text-white px-4 py-1 rounded-full font-label-md mb-3">1970</div>
-<h3 class="font-headline-md text-headline-md text-jakarta-blue mb-2">Berdiri sebagai Puskesmas</h3>
-<p class="text-on-surface-variant">Dimulai sebagai pusat kesehatan masyarakat sederhana untuk melayani warga Koja dan sekitarnya.</p>
-</div>
-<div class="hidden md:block"></div>
-</div>
-<div class="grid md:grid-cols-2 gap-8 items-center">
-<div class="hidden md:block"></div>
-<div>
-<div class="inline-block bg-health-green text-white px-4 py-1 rounded-full font-label-md mb-3">1995</div>
-<h3 class="font-headline-md text-headline-md text-jakarta-blue mb-2">Peningkatan menjadi RSUD</h3>
-<p class="text-on-surface-variant">Resmi ditingkatkan statusnya menjadi Rumah Sakit Umum Daerah oleh Pemprov DKI Jakarta.</p>
-</div>
-</div>
-<div class="grid md:grid-cols-2 gap-8 items-center">
-<div class="md:text-right">
-<div class="inline-block bg-jakarta-blue text-white px-4 py-1 rounded-full font-label-md mb-3">2015</div>
-<h3 class="font-headline-md text-headline-md text-jakarta-blue mb-2">Akreditasi Paripurna</h3>
-<p class="text-on-surface-variant">Meraih akreditasi tertinggi dari Komisi Akreditasi Rumah Sakit (KARS) dengan predikat Paripurna.</p>
-</div>
-<div class="hidden md:block"></div>
-</div>
-<div class="grid md:grid-cols-2 gap-8 items-center">
-<div class="hidden md:block"></div>
-<div>
-<div class="inline-block bg-health-green text-white px-4 py-1 rounded-full font-label-md mb-3">2024</div>
-<h3 class="font-headline-md text-headline-md text-jakarta-blue mb-2">Transformasi Digital</h3>
-<p class="text-on-surface-variant">Meluncurkan sistem pendaftaran online, rekam medis digital, dan layanan telemedicine terintegrasi.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Akreditasi -->
-<section class="py-20 bg-jakarta-blue">
-<div class="max-w-container-max mx-auto px-gutter text-center">
-<span class="text-health-green font-label-lg tracking-widest uppercase mb-3 block">Pengakuan & Sertifikasi</span>
-<h2 class="font-headline-lg text-headline-lg text-white mb-12">Akreditasi & Penghargaan</h2>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-white border border-white/20 hover:bg-white/20 transition-colors">
-<span class="material-symbols-outlined text-5xl text-secondary-container mb-4" style="font-variation-settings:'FILL' 1;">verified</span>
-<h3 class="font-headline-md text-headline-md mb-2">Akreditasi KARS Paripurna</h3>
-<p class="text-white/80 font-body-md">Sertifikasi tertinggi dari Komisi Akreditasi Rumah Sakit Indonesia.</p>
-</div>
-<div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-white border border-white/20 hover:bg-white/20 transition-colors">
-<span class="material-symbols-outlined text-5xl text-secondary-container mb-4" style="font-variation-settings:'FILL' 1;">emoji_events</span>
-<h3 class="font-headline-md text-headline-md mb-2">RS Terbaik DKI Jakarta</h3>
-<p class="text-white/80 font-body-md">Penghargaan Rumah Sakit Umum Daerah dengan Rating Terbaik se-DKI Jakarta.</p>
-</div>
-<div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-white border border-white/20 hover:bg-white/20 transition-colors">
-<span class="material-symbols-outlined text-5xl text-secondary-container mb-4" style="font-variation-settings:'FILL' 1;">health_and_safety</span>
-<h3 class="font-headline-md text-headline-md mb-2">ISO 9001:2015</h3>
-<p class="text-white/80 font-body-md">Sertifikasi sistem manajemen mutu internasional untuk layanan prima berkelanjutan.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- Tim -->
-<section class="py-20 max-w-container-max mx-auto px-gutter">
-<div class="text-center mb-16">
-<span class="text-health-green font-label-lg tracking-widest uppercase mb-3 block">Tim Kepemimpinan</span>
-<h2 class="font-headline-lg text-headline-lg text-jakarta-blue">Pimpinan RSUD Tugu Koja</h2>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-surface-subtle hover:shadow-lg transition-shadow text-center p-8">
-<div class="w-24 h-24 bg-jakarta-blue/10 rounded-full flex items-center justify-center mx-auto mb-6"><span class="material-symbols-outlined text-5xl text-jakarta-blue">person</span></div>
-<h3 class="font-headline-md text-headline-md text-jakarta-blue mb-1">dr. Ahmad Fauzi, Sp.PD</h3>
-<p class="text-health-green font-label-md mb-3">Direktur Utama</p>
-<p class="text-on-surface-variant text-sm">Spesialis Penyakit Dalam dengan pengalaman lebih dari 20 tahun di bidang manajemen rumah sakit.</p>
-</div>
-<div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-surface-subtle hover:shadow-lg transition-shadow text-center p-8">
-<div class="w-24 h-24 bg-jakarta-blue/10 rounded-full flex items-center justify-center mx-auto mb-6"><span class="material-symbols-outlined text-5xl text-jakarta-blue">person</span></div>
-<h3 class="font-headline-md text-headline-md text-jakarta-blue mb-1">dr. Sari Dewi, M.Kes</h3>
-<p class="text-health-green font-label-md mb-3">Direktur Pelayanan</p>
-<p class="text-on-surface-variant text-sm">Berpengalaman dalam pengembangan standar pelayanan medis dan peningkatan mutu rumah sakit.</p>
-</div>
-<div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-surface-subtle hover:shadow-lg transition-shadow text-center p-8">
-<div class="w-24 h-24 bg-jakarta-blue/10 rounded-full flex items-center justify-center mx-auto mb-6"><span class="material-symbols-outlined text-5xl text-jakarta-blue">person</span></div>
-<h3 class="font-headline-md text-headline-md text-jakarta-blue mb-1">Ir. Budi Santoso, MM</h3>
-<p class="text-health-green font-label-md mb-3">Direktur Umum & Keuangan</p>
-<p class="text-on-surface-variant text-sm">Ahli manajemen keuangan dan administrasi rumah sakit pemerintah daerah.</p>
-</div>
-</div>
-</section>
-<!-- Kontak CTA -->
-<section class="py-20 bg-surface-container-low border-t border-surface-subtle">
-<div class="max-w-container-max mx-auto px-gutter text-center">
-<h2 class="font-headline-lg text-headline-lg text-jakarta-blue mb-4">Ada Pertanyaan?</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-xl mx-auto">Hubungi kami atau kunjungi RSUD Tugu Koja untuk informasi lebih lanjut tentang layanan kesehatan kami.</p>
-<div class="flex flex-col sm:flex-row gap-4 justify-center">
-<a href="tel:02143938478" class="px-8 py-4 bg-jakarta-blue text-white rounded-full font-label-lg hover:opacity-80 transition-opacity flex items-center gap-2 justify-center"><span class="material-symbols-outlined">call</span>(021) 4393 8478</a>
-<a href="layanan/peta.html" class="px-8 py-4 border-2 border-jakarta-blue text-jakarta-blue rounded-full font-label-lg hover:bg-jakarta-blue hover:text-white transition-colors flex items-center gap-2 justify-center"><span class="material-symbols-outlined">map</span>Lihat Peta Lokasi</a>
-</div>
-</div>
-</section>
+    <!-- ═══════════════════════════════════════════════════════════
+         HERO SECTION — Consistent with other pages
+         HCI: Konsistensi — same hero pattern
+    ═══════════════════════════════════════════════════════════ -->
+    <section class="relative h-[340px] md:h-[400px] w-full overflow-hidden flex items-end">
+        <div class="absolute inset-0 z-0">
+            <img
+                alt="RSUD Tugu Koja"
+                class="w-full h-full object-cover"
+                src="assets/images/hero/RS%20Tugu%20Koja.jpg"
+            >
+            <div class="absolute inset-0 bg-gradient-to-t from-jakarta-blue/90 via-jakarta-blue/50 to-jakarta-blue/30"></div>
+        </div>
+        <div class="relative z-10 max-w-container-max mx-auto px-gutter w-full pb-12">
+            <nav class="mb-4" aria-label="Breadcrumb">
+                <ol class="flex items-center gap-2 text-sm text-white/60 font-label-md">
+                    <li><a href="index.html" class="hover:text-white transition-colors" style="text-decoration:none;">Beranda</a></li>
+                    <li><span class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+                    <li class="text-white font-semibold">Tentang Kami</li>
+                </ol>
+            </nav>
+            <h1 class="font-headline-xl text-headline-xl text-white mb-2" style="text-shadow: 0 2px 8px rgba(0,0,0,0.15);">Tentang Kami</h1>
+            <p class="font-body-md text-[16px] text-white/80 max-w-xl">
+                Mengenal lebih dekat RSUD Tugu Koja — rumah sakit umum daerah yang melayani masyarakat Jakarta Utara.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SECTION: Profil RS
+         HCI: Kemudahan Dipelajari, Familiaritas
+    ═══════════════════════════════════════════════════════════ -->
+    <section class="py-16 lg:py-20">
+        <div class="max-w-container-max mx-auto px-gutter">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-center">
+                <div class="lg:col-span-3">
+                    <span class="text-health-green font-label-lg text-[13px] tracking-widest uppercase mb-4 block">Profil Rumah Sakit</span>
+                    <h2 class="font-headline-lg text-headline-lg text-jakarta-blue mb-6 leading-tight">
+                        RSUD Tugu Koja
+                    </h2>
+                    <p class="font-body-md text-[16px] text-on-surface-variant mb-8 leading-relaxed">
+                        RSUD Tugu Koja adalah rumah sakit umum daerah milik Pemerintah Provinsi DKI Jakarta yang
+                        berlokasi di Jakarta Utara. Rumah sakit ini berkomitmen memberikan pelayanan kesehatan
+                        yang berkualitas, profesional, dan berorientasi pada kepuasan pasien.
+                    </p>
+                    <!-- Info pills — HCI: Kenyamanan Pengguna — key info scannable -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div class="info-pill">
+                            <span class="material-symbols-outlined text-health-green text-[22px]" style="font-variation-settings:'FILL' 1;">location_on</span>
+                            <span class="text-on-surface-variant text-[14px]">Jl. Walang Permai No.39, Tugu Utara, Koja</span>
+                        </div>
+                        <div class="info-pill">
+                            <span class="material-symbols-outlined text-health-green text-[22px]" style="font-variation-settings:'FILL' 1;">call</span>
+                            <a href="tel:02143938478" class="text-jakarta-blue text-[14px] font-semibold hover:underline">(021) 4393 8478</a>
+                        </div>
+                        <div class="info-pill">
+                            <span class="material-symbols-outlined text-health-green text-[22px]" style="font-variation-settings:'FILL' 1;">verified</span>
+                            <span class="text-on-surface-variant text-[14px]">Terakreditasi KARS Paripurna</span>
+                        </div>
+                        <div class="info-pill">
+                            <span class="material-symbols-outlined text-emergency-red text-[22px]" style="font-variation-settings:'FILL' 1;">emergency</span>
+                            <span class="text-on-surface-variant text-[14px]">IGD 24 Jam Siaga</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-2">
+                    <img
+                        alt="Gedung RSUD Tugu Koja"
+                        class="w-full rounded-2xl shadow-lg"
+                        src="assets/images/hero/RS%20Tugu%20Koja.jpg"
+                    >
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SECTION: Statistik
+         HCI: Kemampuan Diingat — animated counters
+    ═══════════════════════════════════════════════════════════ -->
+    <section class="relative overflow-hidden" style="background: linear-gradient(135deg, #224266 0%, #1a3554 100%);">
+        <div class="absolute inset-0 opacity-5">
+            <div style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 32px 32px; width:100%; height:100%;"></div>
+        </div>
+        <div class="max-w-container-max mx-auto px-gutter py-16 relative z-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="stat-card bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center border border-white/10">
+                    <div class="text-4xl font-bold text-white mb-1 counter" data-target="15" data-suffix="+">0</div>
+                    <div class="text-white/60 font-label-md text-[13px]">Spesialisasi</div>
+                </div>
+                <div class="stat-card bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center border border-white/10">
+                    <div class="text-4xl font-bold mb-1 counter" data-target="29" style="color:#9af2ec;">0</div>
+                    <div class="text-white/60 font-label-md text-[13px]">Dokter Spesialis</div>
+                </div>
+                <div class="stat-card bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center border border-white/10">
+                    <div class="text-4xl font-bold text-white mb-1 counter" data-target="100" data-suffix="+">0</div>
+                    <div class="text-white/60 font-label-md text-[13px]">Kapasitas Tempat Tidur</div>
+                </div>
+                <div class="stat-card bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center border border-white/10">
+                    <div class="text-4xl font-bold mb-1" style="color:#ffb3b1;">24/7</div>
+                    <div class="text-white/60 font-label-md text-[13px]">Layanan IGD</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SECTION: Visi & Misi
+         HCI: Familiaritas, Kemampuan Pembelajaran
+    ═══════════════════════════════════════════════════════════ -->
+    <section class="py-16 lg:py-20">
+        <div class="max-w-container-max mx-auto px-gutter">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+                <!-- Visi -->
+                <div>
+                    <span class="text-health-green font-label-lg text-[13px] tracking-widest uppercase mb-4 block">Visi & Misi</span>
+                    <h2 class="font-headline-lg text-headline-lg text-jakarta-blue mb-8">
+                        Rumah Sakit yang Terpercaya dan Terdepan
+                    </h2>
+                    <!-- Visi card -->
+                    <div class="rounded-2xl p-8 mb-8 relative overflow-hidden" style="background: linear-gradient(135deg, #224266 0%, #34918C 100%);">
+                        <div class="absolute top-4 right-4 opacity-10">
+                            <span class="material-symbols-outlined text-[80px] text-white">visibility</span>
+                        </div>
+                        <h3 class="text-white/60 font-label-lg text-[13px] tracking-widest uppercase mb-3">Visi</h3>
+                        <p class="font-body-lg text-[20px] text-white leading-relaxed">
+                            Menjadi Rumah Sakit yang Terpercaya dan Terdepan di DKI Jakarta.
+                        </p>
+                    </div>
+                    <!-- Misi cards -->
+                    <h3 class="font-headline-md text-[18px] text-jakarta-blue mb-4">Misi</h3>
+                    <div class="space-y-3">
+                        <div class="mission-card bg-white rounded-xl p-5 border border-surface-subtle">
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 bg-health-green/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <span class="material-symbols-outlined text-health-green text-[18px]" style="font-variation-settings:'FILL' 1;">favorite</span>
+                                </div>
+                                <p class="text-on-surface-variant text-[15px] leading-relaxed">Memberikan pelayanan kesehatan prima yang berorientasi pada keselamatan dan kepuasan pasien.</p>
+                            </div>
+                        </div>
+                        <div class="mission-card bg-white rounded-xl p-5 border border-surface-subtle">
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 bg-health-green/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <span class="material-symbols-outlined text-health-green text-[18px]" style="font-variation-settings:'FILL' 1;">school</span>
+                                </div>
+                                <p class="text-on-surface-variant text-[15px] leading-relaxed">Mengembangkan sumber daya manusia yang kompeten, profesional, dan berkarakter humanis.</p>
+                            </div>
+                        </div>
+                        <div class="mission-card bg-white rounded-xl p-5 border border-surface-subtle">
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 bg-health-green/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <span class="material-symbols-outlined text-health-green text-[18px]" style="font-variation-settings:'FILL' 1;">biotech</span>
+                                </div>
+                                <p class="text-on-surface-variant text-[15px] leading-relaxed">Mengadopsi teknologi kesehatan terkini dan menerapkan tata kelola rumah sakit yang baik.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sejarah -->
+                <div>
+                    <span class="text-health-green font-label-lg text-[13px] tracking-widest uppercase mb-4 block">Perjalanan Kami</span>
+                    <h2 class="font-headline-lg text-headline-lg text-jakarta-blue mb-8">Sejarah Singkat</h2>
+
+                    <div class="relative pl-10 space-y-10">
+                        <!-- Timeline line -->
+                        <div class="absolute left-[15px] top-2 bottom-2 w-[2px] bg-gradient-to-b from-jakarta-blue via-health-green to-jakarta-blue/20 rounded-full"></div>
+
+                        <!-- Milestone 1 -->
+                        <div class="relative reveal">
+                            <div class="timeline-dot absolute -left-[25px] w-[12px] h-[12px] bg-jakarta-blue rounded-full text-jakarta-blue"></div>
+                            <div class="bg-white rounded-xl p-5 border border-surface-subtle shadow-sm">
+                                <span class="inline-block bg-jakarta-blue text-white px-3 py-0.5 rounded-full text-[11px] font-bold mb-2">1970-an</span>
+                                <h4 class="font-label-lg text-[15px] text-jakarta-blue mb-1">Berdiri sebagai Puskesmas</h4>
+                                <p class="text-on-surface-variant text-[14px] leading-relaxed">Dimulai sebagai pusat kesehatan masyarakat untuk melayani warga Koja dan sekitarnya.</p>
+                            </div>
+                        </div>
+
+                        <!-- Milestone 2 -->
+                        <div class="relative reveal">
+                            <div class="timeline-dot absolute -left-[25px] w-[12px] h-[12px] bg-health-green rounded-full text-health-green"></div>
+                            <div class="bg-white rounded-xl p-5 border border-surface-subtle shadow-sm">
+                                <span class="inline-block bg-health-green text-white px-3 py-0.5 rounded-full text-[11px] font-bold mb-2">1990-an</span>
+                                <h4 class="font-label-lg text-[15px] text-jakarta-blue mb-1">Peningkatan Status RSUD</h4>
+                                <p class="text-on-surface-variant text-[14px] leading-relaxed">Resmi ditingkatkan statusnya menjadi Rumah Sakit Umum Daerah oleh Pemprov DKI Jakarta.</p>
+                            </div>
+                        </div>
+
+                        <!-- Milestone 3 -->
+                        <div class="relative reveal">
+                            <div class="timeline-dot absolute -left-[25px] w-[12px] h-[12px] bg-jakarta-blue rounded-full text-jakarta-blue"></div>
+                            <div class="bg-white rounded-xl p-5 border border-surface-subtle shadow-sm">
+                                <span class="inline-block bg-jakarta-blue text-white px-3 py-0.5 rounded-full text-[11px] font-bold mb-2">2015</span>
+                                <h4 class="font-label-lg text-[15px] text-jakarta-blue mb-1">Akreditasi Paripurna</h4>
+                                <p class="text-on-surface-variant text-[14px] leading-relaxed">Meraih akreditasi tertinggi KARS dengan predikat Paripurna.</p>
+                            </div>
+                        </div>
+
+                        <!-- Milestone 4 -->
+                        <div class="relative reveal">
+                            <div class="timeline-dot absolute -left-[25px] w-[12px] h-[12px] bg-health-green rounded-full text-health-green"></div>
+                            <div class="bg-white rounded-xl p-5 border border-surface-subtle shadow-sm">
+                                <span class="inline-block bg-health-green text-white px-3 py-0.5 rounded-full text-[11px] font-bold mb-2">2025–2026</span>
+                                <h4 class="font-label-lg text-[15px] text-jakarta-blue mb-1">Best Rating RSUD DKI Jakarta</h4>
+                                <p class="text-on-surface-variant text-[14px] leading-relaxed">Meraih predikat Best Rating Rumah Sakit Umum Daerah se-DKI Jakarta.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SECTION: Hubungi Kami CTA
+         HCI: Fleksibilitas — multiple contact methods
+    ═══════════════════════════════════════════════════════════ -->
+    <section class="relative overflow-hidden" style="background: linear-gradient(135deg, #f2f4f6 0%, #e6e8ea 100%);">
+        <div class="max-w-container-max mx-auto px-gutter py-16 lg:py-20 text-center relative z-10">
+            <span class="material-symbols-outlined text-[48px] text-jakarta-blue/20 mb-4" style="font-variation-settings:'FILL' 1;">support_agent</span>
+            <h2 class="font-headline-lg text-headline-lg text-jakarta-blue mb-3">Hubungi Kami</h2>
+            <p class="font-body-md text-[16px] text-on-surface-variant mb-8 max-w-lg mx-auto">
+                Untuk informasi lebih lanjut tentang layanan kami, silakan hubungi atau kunjungi RSUD Tugu Koja.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="tel:02143938478" class="px-8 py-4 bg-jakarta-blue text-white rounded-full font-label-lg hover:shadow-lg transition-all flex items-center gap-2 justify-center" style="text-decoration:none;">
+                    <span class="material-symbols-outlined text-[20px]">call</span>(021) 4393 8478
+                </a>
+                <a href="layanan/peta.html" class="px-8 py-4 border-2 border-jakarta-blue text-jakarta-blue rounded-full font-label-lg hover:bg-jakarta-blue hover:text-white transition-colors flex items-center gap-2 justify-center" style="text-decoration:none;">
+                    <span class="material-symbols-outlined text-[20px]">map</span>Lihat Peta Lokasi
+                </a>
+            </div>
+        </div>
+    </section>
 </main>
-<!-- Footer -->
+
 <div id="footer-container"></div>
 
-    <script src="components/navbar.js"></script>
-    <script src="components/footer.js"></script>
+<script>
+    // ── Counter animation ─────────────────────────────────────
+    function animateCounters() {
+        document.querySelectorAll('.counter').forEach(el => {
+            const target = parseInt(el.dataset.target);
+            const suffix = el.dataset.suffix || '';
+            if (isNaN(target)) return;
+
+            let current = 0;
+            const step = Math.max(1, Math.ceil(target / 40));
+            const interval = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(interval);
+                }
+                el.textContent = current + suffix;
+            }, 30);
+        });
+    }
+
+    // ── Reveal on scroll (Intersection Observer) ──────────────
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ── Counter trigger on scroll ─────────────────────────────
+    let counterFired = false;
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !counterFired) {
+                counterFired = true;
+                animateCounters();
+            }
+        });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+</script>
+
+<script src="components/navbar.js"></script>
+<script src="components/footer.js"></script>
 </body>
 </html>

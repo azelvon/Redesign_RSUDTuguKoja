@@ -1,0 +1,83 @@
+[
+  {
+    "id": "berita-001",
+    "judul": "Best Rating Rumah Sakit Umum Daerah Provinsi DKI Jakarta 2026",
+    "kategori": "Penghargaan",
+    "tanggal": "2026-04-02",
+    "ringkasan": "RSUD Tugu Koja meraih predikat Best Rating RSUD/RSKD se-Provinsi DKI Jakarta tahun 2026. Apresiasi tertinggi atas komitmen dalam pemenuhan kebutuhan layanan kesehatan masyarakat.",
+    "gambar": "assets/images/berita/1.png",
+    "penulis": "Humas RSUD Tugu Koja"
+  },
+  {
+    "id": "berita-002",
+    "judul": "Best Rating Rumah Sakit Provinsi DKI Jakarta 2026",
+    "kategori": "Penghargaan",
+    "tanggal": "2026-04-02",
+    "ringkasan": "Penghargaan ini menjadi motivasi bagi seluruh jajaran RSUD Tugu Koja untuk terus memberikan yang terbaik demi keselamatan dan kepuasan pelanggan.",
+    "gambar": "assets/images/berita/2.png",
+    "penulis": "Humas RSUD Tugu Koja"
+  },
+  {
+    "id": "berita-003",
+    "judul": "Penganugerahan Keterbukaan Informasi Publik Tahun 2025",
+    "kategori": "Penghargaan",
+    "tanggal": "2026-01-02",
+    "ringkasan": "RSUD Tugu Koja mendapat pengakuan atas budaya transparansi dan pelayanan publik yang berkualitas dari Komisi Informasi Provinsi DKI Jakarta.",
+    "gambar": "assets/images/berita/3.png",
+    "penulis": "Humas RSUD Tugu Koja"
+  },
+  {
+    "id": "berita-004",
+    "judul": "Penghargaan Inovasi Tingkat Nasional",
+    "kategori": "Penghargaan",
+    "tanggal": "2026-01-02",
+    "ringkasan": "RSUD Tugu Koja mengikuti kompetensi nasional TKMPN di Batam dan meraih pengakuan atas inovasi layanan kesehatan.",
+    "gambar": "assets/images/berita/4.png",
+    "penulis": "Humas RSUD Tugu Koja"
+  },
+  {
+    "id": "berita-005",
+    "judul": "Implementasi Budaya Kerja BerAKHLAK dan Zona Integritas",
+    "kategori": "Kelembagaan",
+    "tanggal": "2025-12-31",
+    "ringkasan": "Budaya Kerja Berdaya, Integritas Terjaga, Pelayanan Publik Berjaya — menuju Jakarta Kota Global Mendunia.",
+    "gambar": "assets/images/berita/5.png",
+    "penulis": "Humas RSUD Tugu Koja"
+  },
+  {
+    "id": "berita-006",
+    "judul": "Alur Layanan Rawat Jalan di RSUD Tugu Koja 2025",
+    "kategori": "Info Layanan",
+    "tanggal": "2025-03-24",
+    "ringkasan": "Informasi terbaru mengenai alur pendaftaran dan pelayanan rawat jalan bagi pasien BPJS maupun umum di RSUD Tugu Koja.",
+    "gambar": "assets/images/berita/6.png",
+    "penulis": "Humas RSUD Tugu Koja"
+  },
+  {
+    "id": "berita-007",
+    "judul": "Pencanangan Zona Integritas RSUD Tugu Koja",
+    "kategori": "Kelembagaan",
+    "tanggal": "2025-03-17",
+    "ringkasan": "RSUD Tugu Koja mencanangkan Zona Integritas menuju Wilayah Bebas dari Korupsi (WBK) dan Wilayah Birokrasi Bersih Melayani (WBBM).",
+    "gambar": "assets/images/berita/7.png",
+    "penulis": "Humas RSUD Tugu Koja"
+  },
+  {
+    "id": "berita-008",
+    "judul": "Jadwal Imunisasi Anak di RSUD Tugu Koja",
+    "kategori": "Info Kesehatan",
+    "tanggal": "2024-01-19",
+    "ringkasan": "Informasi lengkap jadwal dan jenis imunisasi anak yang tersedia di RSUD Tugu Koja beserta persyaratan yang perlu disiapkan.",
+    "gambar": "assets/images/berita/8.png",
+    "penulis": "Humas RSUD Tugu Koja"
+  },
+  {
+    "id": "berita-009",
+    "judul": "Pelatihan Penanganan Gawat Darurat untuk Kader Kesehatan",
+    "kategori": "Kegiatan",
+    "tanggal": "2024-05-10",
+    "ringkasan": "Meningkatkan kesiapsiagaan masyarakat dalam menangani kondisi darurat medis sebelum dirujuk ke rumah sakit.",
+    "gambar": "assets/images/berita/9.png",
+    "penulis": "Humas RSUD Tugu Koja"
+  }
+]
