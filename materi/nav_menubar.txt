@@ -1,0 +1,912 @@
+© Politeknik Statistika STIS
+Develop system menus
+(Mengembangkan Menu Sistem)
+Pertemuan 8
+POLITEKNIK STATISTIKA STIS
+For Better Official Statistics
+© Politeknik Statistika STIS
+Introduction
+•
+Sistem memiliki banyak informasi dan fungsi
+•
+Sistem harus memberi tahu pengguna tentang fungsi dan 
+informasi yang tersedia
+•
+Hal ini dilakukan dengan menampilkan daftar pilihan
+•
+Daftar pilihan tersebut disebut menu
+© Politeknik Statistika STIS
+Menu Topics
+• The structures of menus.
+• The content of menus.
+• Formatting and writing menus.
+• Kinds of Graphical Menus.
+© Politeknik Statistika STIS
+Structures of menus
+© Politeknik Statistika STIS
+Structures of Menus
+•
+Menu dapat berupa kotak dialog kecil hingga struktur hierarki yang 
+kompleks
+•
+Menu dapat memiliki banyak cabang dan tingkat kedalaman
+•
+Struktur menu menentukan tingkat kontrol pengguna dalam
+menjalankan tugas
+Common types of menustructures:
+1.
+Menu tunggal (single menus)
+2.
+Menu linear sekuensial (sequential linear menus)
+3.
+Menu simultan (simultaneous menu)
+4.
+Menu hierarkis atau sekuensial (hierarchical or sequential menus)
+5.
+Menu terhubung (connected menus)
+6.
+Menu penangkap kejadian (event-trapping menus)
+© Politeknik Statistika STIS
+1. Single Menus
+• Bentuk menu yang paling 
+sederhana
+• Satu layar atau jendela ditampilkan
+untuk meminta input atau tindakan
+pengguna
+• Pengguna hanya memilih dari satu
+menu 
+• Tidak ada menu lanjutan yang 
+memerlukan pilihan tambahan
+© Politeknik Statistika STIS
+Cycle for the Single Menu
+Menu tunggal melibatkan siklus berulang (iteratif)
+•
+Tampilan menu ditampilkan kepada pengguna
+•
+Sistem menerima pilihan pengguna
+•
+Sistem memeriksa apakah input valid
+•
+Jika valid, parameter diatur atau prosedur dijalankan
+sesuai input
+•
+Jika tidak valid, pesan kesalahan ditampilkan dan 
+pengguna diminta memilih kembali
+© Politeknik Statistika STIS
+8
+Contoh Penerapan Siklus untuk Menu Tunggal
+Aplikasi: Mesin ATM sederhana
+Menu tunggal:
+Tampilan layar menanyakan pilihan pengguna:
+•
+Cek Saldo
+•
+Tarik Tunai
+•
+Setor Tunai
+•
+Keluar
+Siklusnya:
+1.Menu ditampilkan:
+Layar ATM menampilkan pilihan di atas.
+2.Pengguna memasukkan pilihan:
+Misalnya pengguna memasukkan angka 2 (Tarik Tunai).
+© Politeknik Statistika STIS
+9
+3.Pemeriksaan kesalahan:
+Program mengecek apakah input valid, yaitu angka antara 1–4.
+•Jika valid, lanjut ke langkah berikutnya.
+•Jika tidak valid (misalnya input 5 atau huruf), program menampilkan
+pesan kesalahan, seperti "Pilihan tidak valid, silakan coba lagi," 
+kemudian kembali ke langkah 1.
+Eksekusi tindakan:
+Jika input valid, program menjalankan prosedur sesuai pilihan:
+•Jika 2, lanjut ke proses tarik tunai.
+•Jika 4, keluar dari program.
+5.Kembali ke langkah 1 atau selesai:
+Setelah tindakan selesai (misalnya tarik tunai selesai), program 
+menampilkan menu lagi untuk pilihan baru, sehingga siklus berulang.
+© Politeknik Statistika STIS
+2. Sequential Linear Menus
+• Menu linear sekuensial ditampilkan dalam serangkaian
+layar dengan satu jalur saja
+• Menu muncul dalam urutan yang telah ditentukan
+• Digunakan untuk menentukan parameter atau
+memasukkan data
+• Panjang jalur menu dapat pendek atau panjang
+tergantung informasi yang dikumpulkan
+• Semua menu penting dan harus diisi atau dijawab oleh 
+pengguna
+© Politeknik Statistika STIS
+Sequential Linear Menus
+© Politeknik Statistika STIS
+Administering a  
+Questionnaire
+© Politeknik Statistika STIS
+The Shortcomings
+Kekurangan
+•
+Urutan menu yang panjang dapat terasa membosankan
+•
+Pengguna mungkin lupa jawaban pada pertanyaan sebelumnya
+•
+Pengguna mungkin ingin kembali ke menu sebelumnya untuk
+mengubah atau melihat jawaban
+•
+Pengguna mungkin ingin mengisi menu dalam urutan yang 
+berbeda dari yang ditentukan sistem
+© Politeknik Statistika STIS
+14
+Aplikasi Pengajuan Paspor – Penerapan Menu Linier Berurutan
+Deskripsi:
+Pengguna harus mengikuti urutan langkah-langkah yang telah ditentukan
+untuk menyelesaikan proses pengajuan paspor. Setiap layar (menu) harus
+diisi sebelum melanjutkan ke langkah berikutnya. Pengguna tidak bisa
+melompati atau memilih urutan sendiri.
+Urutan Menu Linier:
+1.Menu 1 – Informasi Pribadi
+•Nama lengkap
+•Tempat & tanggal lahir
+•Jenis kelamin
+•Kewarganegaraan
+2.Menu 2 – Alamat dan Kontak
+•Alamat tempat tinggal
+•Nomor telepon
+•Email
+© Politeknik Statistika STIS
+15
+Menu 3 – Informasi Dokumen Pendukung
+•Nomor KTP
+•Nomor KK
+•Upload scan dokumen
+Menu 4 – Tujuan Pengajuan Paspor
+•Untuk perjalanan wisata, kerja, studi, dll
+Menu 5 – Pemilihan Kantor Imigrasi dan Jadwal Kedatangan
+•Pilih lokasi kantor imigrasi
+•Pilih tanggal dan jam kedatangan
+Menu 6 – Tinjau & Konfirmasi
+•Menampilkan semua data yang telah diisi
+•Konfirmasi kebenaran data
+•Submit pengajuan
+© Politeknik Statistika STIS
+16
+Catatan tentang keterbatasan
+• Jika pengguna ingin mengubah data di menu 
+ke-2 saat sudah berada di menu ke-5, mereka
+harus menekan tombol “Kembali” beberapa kali.
+• Pengguna tidak bisa langsung melompat dari
+menu 1 ke menu 4.
+• Proses menjadi membosankan jika langkah-
+langkah terlalu banyak atau isian terlalu
+panjang.
+© Politeknik Statistika STIS
+3. Simultaneous Menus
+•
+Semua pilihan menu tersedia secara bersamaan, bukan pada 
+layar terpisah
+•
+Menu dapat diselesaikan sesuai urutan yang diinginkan
+pengguna
+•
+Pilihan dapat dilewati dan diisi kembali nanti
+•
+Semua alternatif terlihat sehingga memudahkan mengingat, 
+membandingkan, dan mengubah jawaban
+© Politeknik Statistika STIS
+Simultaneous Menus
+© Politeknik Statistika STIS
+Example: setting parameters of a  
+terminal emulation program
+© Politeknik Statistika STIS
+The Shortcomings
+•
+Pada menu dengan banyak pilihan, tampilan layar dapat
+menjadi penuh dan berantakan
+•
+Paging atau scrolling mungkin tetap diperlukan untuk melihat
+semua pilihan
+•
+Hubungan dan ketergantungan antar menu harus ditampilkan
+dengan jelas
+•
+Hubungan tersebut biasanya lebih mudah ditampilkan pada 
+menu linear atau hierarkis
+•
+Jika hubungan menu tidak jelas, pengguna pemula dapat
+merasa bingung
+© Politeknik Statistika STIS
+4. Hierarchical or Sequential Menus
+•
+Struktur hierarkis cocok digunakan ketika terdapat banyak
+hubungan antar pilihan menu
+•
+Beberapa pilihan menu hanya tersedia berdasarkan pilihan
+sebelumnya
+•
+Pada struktur top-down, urutan dan percabangan menu telah
+ditentukan sebelumnya
+•
+Alur navigasi umumnya berjalan satu arah
+•
+Struktur hierarkis memiliki karakteristik depth dan breadth
+Depth: jumlah tingkat menu yang harus dilalui untuk mencapai
+tujuan
+Breadth: jumlah pilihan yang tersedia pada setiap tingkat menu
+© Politeknik Statistika STIS
+Hierarchical or Sequential Menus
+© Politeknik Statistika STIS
+The Shortcomings
+•
+Pengguna dapat memilih jalur yang salah jika tidak
+memahami struktur menu
+•
+Pengguna mungkin perlu kembali ke menu sebelumnya atau
+menu utama
+•
+Hierarki menu harus sesuai dengan harapan pengguna
+•
+Ketidakpastian pilihan harus diminimalkan
+•
+Navigasi kembali ke atas struktur menu harus mudah
+dilakukan untuk mendukung eksplorasi menu
+© Politeknik Statistika STIS
+Isu dalam membuat struktur menu bertingkat
+•
+Menentukan jumlah item pada setiap menu (breadth)
+•
+Menentukan jumlah tingkat menu (depth)
+Secara umum:
+•
+Semakin banyak pilihan dalam satu menu (breadth besar), 
+semakin sedikit tingkat kedalamannya (depth kecil)
+•
+Semakin sedikit pilihan dalam satu menu (breadth kecil), semakin
+banyak tingkat kedalamannya (depth besar)
+© Politeknik Statistika STIS
+25
+© Politeknik Statistika STIS
+26
+© Politeknik Statistika STIS
+Several Studies Resutls
+•
+Beberapa penelitian menyimpulkan bahwa breadth lebih baik
+daripada depth dalam hal kecepatan dan pengurangan
+kesalahan
+•
+Menu dengan 2–3 tingkat dan 4–8 pilihan menghasilkan
+performa yang lebih cepat dan akurat
+•
+Penelitian lain menemukan bahwa menu satu tingkat paling 
+mudah dipelajari
+•
+Beberapa studi menunjukkan menu dapat memuat hingga 64 
+item jika disusun dalam kelompok logis
+•
+Menu bertingkat sangat dalam dengan hanya dua pilihan pada 
+tiap tingkat dianggap paling tidak efektif
+© Politeknik Statistika STIS
+5. Connected Menus
+•
+Connected menu adalah jaringan menu yang saling terhubung
+•
+Perpindahan antar menu tidak terbatas pada struktur hierarki
+•
+Pengguna dapat berpindah ke sebagian besar atau semua menu 
+dalam jaringan
+•
+Connected menu dapat bersifat:
+Siklikal: perpindahan dua arah antar menu dimungkinkan
+Asiklikal: perpindahan hanya satu arah
+•
+Tingkat konektivitas menunjukkan seberapa banyak menu saling
+terhubung melalui berbagai jalur
+•
+Pada menu hierarkis, fitur kembali ke menu sebelumnya atau ke menu 
+utama juga merupakan bentuk connected menu yang terbatas
+© Politeknik Statistika STIS
+Connected Menus
+29
+© Politeknik Statistika STIS
+The Shortcomings
+•
+Keuntungan utama connected menu adalah memberikan kontrol
+penuh kepada pengguna dalam navigasi
+•
+Kekurangannya adalah struktur menjadi lebih kompleks
+•
+Navigasinya dapat membingungkan bagi pengguna yang belum
+berpengalaman
+© Politeknik Statistika STIS
+31
+© Politeknik Statistika STIS
+32
+© Politeknik Statistika STIS
+6. Event-Trapping Menus
+•
+Menyediakan kontrol terhadap status dan parameter sistem di 
+latar belakang (background) sementara pengguna sedang
+mengerjakan tugas utama (foreground task).
+•
+Menu ini merupakan sekumpulan menu simultan yang 
+diterapkan di atas menu hierarkis.
+•
+Dalam sistem grafis, misalnya, terdapat menu simultan, menu 
+bar, dan hierarki secara bersamaan — yaitu menu bar beserta
+pull-down menu-nya.
+© Politeknik Statistika STIS
+Serve one of three functions
+• Menu dapat langsung mengubah parameter pada 
+lingkungan saat ini (misalnya membuat teks
+menjadi bold)
+• Menu dapat menjalankan fungsi tertentu tanpa
+meninggalkan lingkungan saat ini (misalnya
+pemeriksaan ejaan/spell check)
+• Menu juga dapat keluar dari lingkungan saat ini dan 
+memindahkan pengguna ke lingkungan baru
+(misalnya Exit)
+© Politeknik Statistika STIS
+35
+© Politeknik Statistika STIS
+Pull-down menu in a computer assisted 
+instruction application
+© Politeknik Statistika STIS
+Content of menus
+© Politeknik Statistika STIS
+1. Menu Context
+•
+Memberikan informasi agar pengguna tetap memahami posisi
+navigasinya
+•
+Sangat penting pada sistem menu yang kompleks atau hierarkis
+•
+Feedback membantu pengguna mengetahui:
+•
+posisi mereka dalam proses,
+•
+pilihan yang telah dibuat,
+•
+dan sisa langkah navigasi yang harus ditempuh
+•
+Feedback navigasi dapat diberikan melalui hubungan verbal, spasial, 
+atau keduanya
+© Politeknik Statistika STIS
+Verbal Linkage
+• Melibatkan penampilan daftar pilihan yang telah dipilih pengguna pada 
+menu sebelumnya
+• Membantu pengguna memahami jalur navigasi yang membawa ke posisi
+saat ini
+• Menu yang ditampilkan harus sesuai dengan pilihan pengguna
+sebelumnya
+• Judul menu harus mencerminkan opsi yang dipilih sebelumnya
+• Isi menu harus sesuai dengan judulnya
+Contoh: “News: New York Times: World News: India: Today” menunjukkan
+jalur menuju kumpulan berita saat ini
+© Politeknik Statistika STIS
+Verbal linkage by titles of menu frame
+© Politeknik Statistika STIS
+Spatial Linkage
+• Dapat dilakukan menggunakan metode grafis
+• Setiap menu baru ditampilkan saling bertumpuk dengan
+menu sebelumnya
+• Urutan pilihan dapat terlihat dalam satu tampilan
+• Pengguna lebih mudah memahami progres dan jarak
+navigasi yang telah ditempuh
+© Politeknik Statistika STIS
+Spatial linkage by interposition and  
+occlusion
+© Politeknik Statistika STIS
+2. Stem Information (Title)
+Stem berfungsi sebagai label untuk kumpulan pilihan saat ini
+Stem dapat berupa awal pertanyaan, misalnya “Would you like to 
+...?”
+Stem juga dapat berupa label dari pilihan pada menu sebelumnya
+Contoh: setelah pengguna memilih “baud rate”, stem menjadi “Select 
+baud rate:”
+Stem dapat menampilkan hanya pilihan saat ini atau seluruh jalur
+pilihan sebelumnya
+Contoh jalur: “History | U.S. | Civil War | Economic | Impact on?”
+© Politeknik Statistika STIS
+Research in Stem Information
+•
+Informasi pada stem harus membantu pengguna pemula
+memahami alasan pemilihan dan dampaknya
+•
+Stem yang terlalu umum dapat membingungkan pengguna
+•
+Contoh kurang jelas: “Select one of the following:”
+•
+Contoh lebih jelas: “Set the type font to one of following for 
+printing document:”
+•
+Judul atau stem yang bermakna membantu pengguna
+memahami informasi berikutnya dengan lebih baik
+•
+Penelitian psikologi kognitif menunjukkan bahwa judul dan 
+gambar yang bermakna meningkatkan pemahaman
+pengguna
+© Politeknik Statistika STIS
+Formatting and Writing of 
+menus
+© Politeknik Statistika STIS
+Formatting of Menus
+•
+Tujuan menu yang dirancang dengan baik adalah
+menyampaikan informasi seefisien mungkin
+•
+Tampilan dan kejelasan layar adalah hal pertama yang dinilai
+pengguna
+•
+Pengguna biasanya bertanya:
+“Apa arti tampilan ini?”
+“Apa yang harus saya lakukan?”
+•
+Tidak semua pengguna akan memahami sistem hanya karena
+sudah lama menggunakannya
+•
+Pengguna berpengalaman juga dapat mempertanyakan:
+•
+penggunaan istilah yang tidak sesuai fungsi,
+•
+susunan layar,
+•
+atau kesalahan yang terus berulang
+© Politeknik Statistika STIS
+1. Amount of Information per Screen
+•
+Sebagian besar pedoman menyarankan hanya menampilkan
+informasi yang benar-benar dibutuhkan pengguna
+•
+Informasi yang tidak relevan membuat layar menjadi penuh dan 
+membingungkan
+•
+Tampilan yang terlalu padat menyulitkan pengguna menemukan
+pilihan yang diinginkan
+•
+Tantangan utamanya adalah menentukan informasi yang relevan
+dan yang tidak diperlukan bagi pengguna
+© Politeknik Statistika STIS
+Desainer harus menghadapi berbagai
+trade-off dalam perancangan menu
+•
+Jumlah informasi
+waktu membaca atau memindai layar
+•
+Fokus perhatian pengguna
+banyaknya elemen menu
+•
+Tingkat pengalaman pengguna
+kebutuhan penjelasan atau
+bantuan
+© Politeknik Statistika STIS
+Amount of Information 
+vs.  Scan/Reading Time
+•
+Semakin banyak informasi yang ditampilkan, semakin sulit
+dan lama pengguna mencari informasi penting
+•
+Penelitian menunjukkan pencarian kata menjadi lebih lambat
+ketika informasi di sekitarnya bertambah banyak
+•
+Kepadatan teks juga memengaruhi keterbacaan layar
+•
+Disarankan penggunaan teks tidak melebihi 30% dari ruang
+karakter yang tersedia pada layar
+•
+Tampilan yang terlalu padat dapat menurunkan kenyamanan
+dan efisiensi pengguna
+© Politeknik Statistika STIS
+Level of Experience vs. Need for  
+Explanation
+• Semakin tidak familiar pengguna dengan sistem, semakin detail 
+penjelasan menu yang diperlukan
+• Menu untuk pengguna pemula harus kaya informasi (information rich)
+• Performa mungkin lebih lambat, tetapi biasanya bukan masalah bagi
+pengguna pemula atau kasual
+• Menu untuk pengguna berpengalaman dapat dibuat lebih ringkas
+(information lean)
+• Istilah pada menu hanya berfungsi sebagai petunjuk untuk mengingat
+pilihan yang tersedia
+• Pengguna berpengalaman sudah memiliki pengetahuan yang cukup
+sehingga tidak memerlukan banyak penjelasan dari sistem
+© Politeknik Statistika STIS
+Amount of Information per Screen vs.  
+Number of Screens
+• Semakin sedikit informasi pada satu layar, semakin banyak layar yang 
+diperlukan
+• Jika semua informasi tidak muat, menu biasanya dibagi menjadi beberapa
+layar
+• Hal ini meningkatkan kompleksitas kognitif sistem
+• Performa pengguna pemula maupun berpengalaman dapat menurun karena
+langkah tambahan untuk membuka layar lain
+• Layar yang lebih besar atau penggunaan beberapa layar dapat membantu
+• Namun, hal tersebut dapat kembali menimbulkan masalah waktu membaca
+dan pencarian informasi pada layar yang terlalu penuh
+© Politeknik Statistika STIS
+2. Focusing Attention on the Menu
+•
+Salah satu proses dasar dalam persepsi adalah membedakan figure 
+dan ground
+•
+Figure adalah objek yang menjadi fokus perhatian
+•
+Ground adalah latar belakang yang tidak menjadi perhatian utama
+•
+Penelitian persepsi visual menunjukkan bahwa pembedaan figure-
+ground adalah aspek pertama dan paling mendasar yang dipersepsi
+pengguna
+•
+Figure-ground yang kuat dapat langsung mengarahkan perhatian
+pengguna pada area tertentu
+•
+Jika pembedaan lemah, perhatian pengguna lebih dipengaruhi oleh 
+kebutuhan atau tujuan saat itu
+© Politeknik Statistika STIS
+Example
+•
+Bagian atas: pembedaan
+figure-ground yang baik
+•
+Bagian tengah: pembedaan
+sedang dengan figure di 
+atas figure lain
+•
+Bagian bawah: pembedaan
+buruk dengan figure di atas
+latar yang mengganggu
+© Politeknik Statistika STIS
+Figure-ground Ambiguity
+•
+Sistem yang menggunakan metafora desktop yang terlalu penuh
+dapat mengalami ambiguitas figure-ground, sehingga pengguna
+kesulitan membedakan objek utama dengan latar belakang. 
+•
+Namun, pembedaan figure-ground dapat diperjelas melalui
+penggunaan elemen grafis yang tepat seperti border, 
+highlighting, overlapping, graying out, warna, dan perangkat
+visual lainnya.
+© Politeknik Statistika STIS
+3. Perceptual Grouping
+•
+Perceptual grouping membantu pengguna memahami objek dan 
+hubungannya dengan objek lain
+•
+Jarak antar pilihan menu memengaruhi pencarian visual
+•
+Penelitian Parkinson, Sisson, dan Snowberry (1985) membandingkan menu 
+dengan dan tanpa jarak antar kelompok kategori
+•
+Menu dengan tambahan jarak dapat dicari 25% lebih cepat
+•
+Pengelompokan visual membantu pengguna mengenali struktur dan 
+organisasi daftar
+•
+Pengguna lebih mudah menemukan awal dan akhir kelompok saat mencari
+item tertentu
+© Politeknik Statistika STIS
+Perceptual Grouping by Icons
+• Panel atas menampilkan nama 12 
+file
+• Panel bawah menambahkan ikon 
+yang menunjukkan jenis file
+• Ikon membantu pengguna
+mengenali tipe file dengan lebih
+cepat
+• Waktu pencarian file diperkirakan
+lebih cepat pada panel dengan
+ikon
+• Hal ini terjadi meskipun kedua
+tampilan sama-sama
+mengelompokkan file berdasarkan
+tipe
+© Politeknik Statistika STIS
+3. Menu Context
+•
+Desain layar membantu membentuk konteks dalam memahami
+dan menafsirkan informasi
+•
+Terdapat dua jenis konteks menu:
+Konteks sensorik: dibentuk oleh latar belakang dan informasi
+yang ditampilkan pada layar
+Konteks nonsensorik: dibentuk oleh pengalaman
+sebelumnya, tugas, dan tujuan pengguna
+•
+Konteks memengaruhi cara pengguna memahami item dalam
+menu
+•
+Contoh pada pencarian bibliografi:
+konteks sensorik menunjukkan hasil pencarian berupa 10 sitasi
+buku,
+konteks nonsensorik adalah pengguna sedang mencari buku
+tertentu yang belum ditemukan melalui pencarian penulis
+© Politeknik Statistika STIS
+Sensory Context
+•
+Konteks yang bergantung pada mekanisme nonsensorik sering kali 
+sulit diprediksi
+•
+Karena itu, setiap layar sebaiknya menampilkan pilihan terakhir
+pengguna
+•
+Hal ini membantu pengguna memahami posisi dan keadaan sistem
+saat ini
+•
+Pendekatan ini mendukung proses interpretasi bertahap terhadap
+item menu
+Contoh konteks pada database hierarkis karyawan:
+✓West Coast
+✓West Coast Sales Division
+✓West Coast Sales Division Manager
+✓West Coast Sales Division Manager of Government Services
+© Politeknik Statistika STIS
+4. Ordering of Menu Items
+1. Frekuensi penggunaan
+Pilihan yang paling sering digunakan sebaiknya ditempatkan di awal
+Pilihan yang jarang digunakan ditempatkan di akhir
+Frekuensi dapat ditentukan melalui analisis tugas atau data 
+penggunaan nyata
+2. Urutan alami (Natural ordering)
+Gunakan urutan alami jika item memiliki susunan tertentu
+Contoh: bab buku, hari dalam seminggu, atau bulan dalam setahun
+3. Urutan numerik (Numeric ordering)
+Digunakan untuk pilihan yang berkaitan dengan angka
+Contoh: ukuran huruf, baud rate, atau jumlah piksel
+© Politeknik Statistika STIS
+Ordering of Menu Items
+Jumlah pilihan sedikit
+Untuk kelompok dengan sekitar tujuh pilihan atau kurang, gunakan
+urutan berdasarkan:
+•
+urutan penggunaan,
+•
+frekuensi penggunaan,
+•
+atau tingkat kepentingan
+Urutan alfabet
+Untuk jumlah pilihan yang banyak, urutan alfabet lebih disarankan
+Urutan alfabet juga cocok untuk daftar kecil yang tidak memiliki pola
+frekuensi atau urutan yang jelas
+© Politeknik Statistika STIS
+Ordering of Menu Items
+Pisahkan pilihan yang bersifat merusak
+•
+Pilihan seperti delete atau clear harus ditempatkan jauh dari pilihan
+yang sering digunakan
+•
+Tujuannya untuk mengurangi risiko salah pilih secara tidak sengaja
+Konsistensi antar menu
+•
+Pilihan yang muncul di beberapa menu harus berada pada posisi
+yang konsisten
+•
+Jika panjang menu berbeda-beda, pertahankan posisi relatif item 
+(misalnya Exit selalu di bagian bawah)
+•
+Jika panjang menu tetap, tempatkan pilihan pada posisi fisik yang 
+sama di setiap menu
+© Politeknik Statistika STIS
+5. Orientation of the List
+Pilihan atau alternatif menu sebaiknya disusun dalam satu kolom
+jika memungkinkan
+•
+Gunakan orientasi pembacaan dari atas ke bawah
+•
+Deskripsi pilihan dibuat rata kiri
+Jika orientasi horizontal harus digunakan, susun pilihan dari kiri ke
+kanan
+© Politeknik Statistika STIS
+6. Selection Support Menus
+•
+Gunakan Folded menus jika sejumlah kecil fungsi digunakan 90% 
+atau lebih dari waktu penggunaan
+•
+Gunakan Split menus jika sekelompok kecil item digunakan antara
+31%–89% dan item lainnya digunakan lebih jarang
+•
+Gunakan traditional menus jika tidak ada kelompok item kecil
+yang digunakan 30% atau lebih
+•
+Hindari mengubah urutan menu secara dinamis (do not reorder 
+menus)
+© Politeknik Statistika STIS
+Selection Support Menus
+© Politeknik Statistika STIS
+7. Menu Choice Descriptions
+Bermakna (Meaningful)
+Deskripsi menu harus menggunakan kata yang familiar dan ditulis lengkap
+Kata kunci di awal (Keyword first)
+Pada deskripsi yang terdiri dari beberapa kata, kata yang paling penting dan 
+unik sebaiknya ditempatkan di awal
+Berorientasi tugas (Task-oriented wording)
+Gunakan kalimat yang berfokus pada tugas dibandingkan data
+Biasanya diawali dengan kata kerja, misalnya Manage Customer Information
+Contoh yang kurang jelas adalah hanya menggunakan kata Customers karena
+tindakan terhadap pelanggan tidak dijelaskan
+© Politeknik Statistika STIS
+Menu Choice Descriptions
+Parallel construction
+Jika pilihan menu berupa frasa, gunakan struktur kata yang konsisten untuk
+pilihan yang berkaitan
+Contoh struktur paralel:
+• Print a File
+• Execute a Program
+• Eject a Disk
+Contoh struktur tidak paralel:
+• Print
+• Execute a Program
+• Disk Eject
+© Politeknik Statistika STIS
+8. Intent Indicators
+Cascade indicator
+Gunakan simbol segitiga atau panah ke kanan untuk menunjukkan
+bahwa pilihan akan membuka submenu
+To a window indicator
+Gunakan tanda elipsis (…) setelah pilihan yang akan membuka jendela
+tambahan untuk memasukkan informasi
+Direct action items
+Pilihan yang langsung menjalankan aksi tidak memerlukan indikator
+khusus
+© Politeknik Statistika STIS
+9. Keyboard Shortcuts
+• When a person is using a keyboard, it is inefficientto
+continually take mouseactions.
+• Keyboard shortcuts allow actions to be taken using the  
+keyboard as well as the mouse.
+• In a study, keyboard shortcuts have been found to be 
+significantly faster and more accurate than mouseclicks,  and 
+preferred by nearly all users (Jorgensen et al.,  2002).
+• Shortcuts include keyboard equivalents and keyboard  
+accelerators.
+© Politeknik Statistika STIS
+Keyboard Equivalents
+• To facilitate keyboard selection of a menu choice,  each menu item 
+should be assigned a keyboard  equivalent mnemonic.
+• The mnemonic should be the first character of the  menu item’s
+description.
+If duplication exists in first characters, use another  character in the 
+duplicated item’sdescription.
+Preferably choose the first succeeding consonant.
+• Designate the mnemonic character by underliningit.
+• Use industry-standard keyboard accessequivalents  when theyexist.
+© Politeknik Statistika STIS
+Standard Keyboard Equivalents
+© Politeknik Statistika STIS
+Keyboard Accelerators
+•
+Untuk item yang sering digunakan, sediakan keyboard accelerator 
+agar pemilihan lebih cepat
+•
+Accelerator dapat berupa satu tombol fungsi atau kombinasi tombol
+•
+Sebaiknya tidak lebih dari dua tombol ditekan secara bersamaan
+•
+Gunakan tanda plus (+) untuk menunjukkan kombinasi tombol
+•
+Pisahkan accelerator dari deskripsi menu dengan tiga spasi
+•
+Jangan gunakan accelerator untuk:
+•
+menu yang memiliki submenu bertingkat (cascaded menus),
+•
+pop-up menus
+•
+Gunakan keyboard accelerator standar industri jika tersedia
+© Politeknik Statistika STIS
+Standard Keyboard Accelerators
+© Politeknik Statistika STIS
+10. Unavailable Choices
+• Pilihan menu yang tidak tersedia harus dibuat berbeda secara
+visual, misalnya dengan efek redup atau abu-abu (grayed out)
+• Item yang tidak aktif tidak boleh mengganggu perhatian pengguna
+terhadap item aktif
+• Item menu tidak boleh ditambahkan atau dihapus secara otomatis
+tanpa tindakan eksplisit dari pengguna
+© Politeknik Statistika STIS
+11. Mark Toggles or Settings
+Tujuan
+•
+Menunjukkan apakah suatu item atau fitur aktif atau tidak aktif
+dalam jangka waktu tertentu
+•
+Memberikan pengingat kepada pengguna mengenai status aktif
+atau tidak aktif suatu fitur
+Panduan
+•
+Tempatkan indikator tepat di sebelah kiri opsi menu
+•
+Jika beberapa pilihan non-eksklusif dapat dipilih bersamaan, 
+sediakan satu opsi untuk membatalkan semua pilihan dan 
+mengembalikan kondisi ke keadaan normal
+© Politeknik Statistika STIS
+Mark Toggles or Settings: Example
+Item “Regular” menyediakan
+satu pilihan yang 
+membatalkan semua item 
+yang dipilih dan 
+mengembalikan keadaan ke
+kondisi normal.
+© Politeknik Statistika STIS
+12. Toggled Menu Items
+Tujuan
+• Digunakan untuk menunjukkan dua perintah yang saling berlawanan dan 
+sering digunakan
+• Digunakan ketika item menu yang ditampilkan dapat dengan jelas
+menunjukkan kondisi kebalikan yang sedang aktif
+Panduan
+• Gunakan deskripsi tindakan yang jelas dan ditulis lengkap
+• Awali dengan kata kerja yang menggambarkan hasil perintah secara tegas
+• Gunakan huruf campuran (mixed-case), dengan huruf awal setiap kata 
+ditulis kapital
+© Politeknik Statistika STIS
+Kinds of graphical menus
+© Politeknik Statistika STIS
+Menu Bar
+• Proper usage:
+To identify and provide access to common and 
+frequently used application actions that take place  in a 
+wide variety of different windows.
+A menu bar choice by itself should not initiate an  
+action.
+© Politeknik Statistika STIS
+Pull-Down Menu
+• Proper usage:
+To initiate frequently used application actions that  take 
+place on a wide variety of different windows.
+A small number of items.
+Items best represented textually.
+© Politeknik Statistika STIS
+Cascading Menus
+• Proper usage:
+To reduce the number of choices presented
+together for selection (reduce menu breadth).
+When a menu specifies many alternatives and the alternatives
+can be grouped in meaningful related
+sets on a lower-level
+menu.
+To simplify amenu.
+Avoid using for frequent, repetitivecommands.
+© Politeknik Statistika STIS
+Pop-Up Menus
+• Use to present alternatives or choices within the
+context of the task.
+© Politeknik Statistika STIS
+Tear-off Menu
+• A tear-off menu is a pull-down menu that can be  positioned 
+anywhere on the screen for constant referral.  As such, it 
+possesses all the characteristics of a pull- down.
+• It may also be called a pushpin, detachable, or roll-up  menu.
+• Its purpose is to present alternatives or choices to the  screen 
+user that are needed infrequently at some times  and heavily at 
+other times.
+• Tear-off menus are most useful for expert users.
+© Politeknik Statistika STIS
+Tear-off Menu: Example
+© Politeknik Statistika STIS
+Iconic Menus
+• Use to remind users of the functions,  commands, attributes, 
+or application choices  available.
+• Create icons that
+Help enhance recognition and hasten option  
+selection.
+Are concrete andmeaningful.
+Clearly represent choices.
+© Politeknik Statistika STIS
+Iconic Menus
+© Politeknik Statistika STIS
+Menu Proper Usage Summary
+© Politeknik Statistika STIS
+Example
+• In this poor menu bar, all alternatives are presented creating a very
+crowded series of choices in a difficult-to-scanhorizontal array.
+• No groupings are provided and an alphabetic ordercauses  
+intermixing of what appear to be differentfunctions.
+• While menu breadth is preferred to excessive menu depth, toomany  
+choices are presented here.
+© Politeknik Statistika STIS
+Modified Menu 1
+© Politeknik Statistika STIS
+Modified Menu 2
+© Politeknik Statistika STIS
+What is the problem with this menu?
+© Politeknik Statistika STIS
+For Better Official Statistics
+Terima kasih

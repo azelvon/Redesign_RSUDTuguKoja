@@ -1,15 +1,16 @@
 /**
  * navbar.js — RSUD Tugu Koja Global Navbar Component
  * 
- * HCI Principles Applied:
- *  - Estetika Modern: Glassmorphism floating pill design (tidak membosankan)
- *  - Konsistensi: Uniform navigation across all pages
- *  - Kesesuaian Harapan: Logo click = home (web convention)
- *  - Visibilitas: Active page indicator berupa solid pill yang kontras
- *  - Kemampuan Pembelajaran: Clean 4-item menu, clear labels
- *  - Keterkontrolan: Escape key closes mobile menu
- *  - Umpan Balik: Hover pills, morphing icons, scroll elevation
- *  - Ketahanan: Emergency strip always fixed at top
+ * HCI Principles Applied (Pertemuan 7 & 7.b):
+ *  - Breadth > Depth: 4 item, 1 level, no submenu (7.b hal 26)
+ *  - Task-Oriented Wording: "Cari Dokter" uses verb-first (7.b hal 47)
+ *  - Menu Order by Frequency: Layanan first (7.b hal 42)
+ *  - Keyboard Shortcuts: accesskey + underline mnemonic (7.b hal 49-52)
+ *  - Figure-Ground: Hybrid glassmorphism → solid on scroll (7.b hal 35)
+ *  - Menu Context: Active page pill indicator (7.b hal 38)
+ *  - Small Displays: Less is more, touch-friendly (7.a hal 16)
+ *  - Direct Action Items: No cascading indicators needed (7.b hal 47)
+ *  - Phrasing: Consistent, concise labels in Bahasa (7.a hal 22)
  */
 (function NavbarComponent() {
     'use strict';
@@ -46,22 +47,22 @@
         left: 0;
         right: 0;
         z-index: 1000;
-        pointer-events: none; /* Let clicks pass through empty spaces */
+        pointer-events: none;
     }
-    
-    /* Make children clickable */
     #navbar-fixed-wrapper > * {
         pointer-events: auto;
     }
 
-    /* ── Floating Glassmorphism Header ────────────────────── */
+    /* ── Floating Glassmorphism Header (Hybrid) ──────────── */
+    /* Fix 3: Figure-Ground — semi-transparent over hero,    */
+    /*         transitions to solid white on scroll           */
     #navbar-header {
         margin: 12px 16px;
         border-radius: 24px;
-        background: rgba(255, 255, 255, 0.85);
+        background: rgba(255, 255, 255, 0.88);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
-        border: 1px solid rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.75);
         box-shadow: 0 4px 24px -4px rgba(34, 66, 102, 0.08);
         transition: all 0.38s cubic-bezier(0.22, 1, 0.36, 1);
         display: flex;
@@ -74,10 +75,13 @@
         }
     }
     
+    /* Scrolled state → solid white, strong figure-ground */
     #navbar-header.scrolled {
-        background: rgba(255, 255, 255, 0.95);
-        box-shadow: 0 12px 36px -8px rgba(34, 66, 102, 0.15);
-        border-color: rgba(255,255,255,1);
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        box-shadow: 0 4px 20px rgba(34, 66, 102, 0.12);
+        border-color: rgba(255, 255, 255, 1);
     }
 
     /* ── Navbar inner layout ──────────────────────────────── */
@@ -98,6 +102,8 @@
         border-radius: 9999px;
         border: 1px solid rgba(0,0,0,0.03);
     }
+
+    /* Fix 4: Text contrast — subtle halo ensures readability */
     .nav-link {
         color: #43474e;
         padding: 10px 20px;
@@ -106,6 +112,7 @@
         font-weight: 500;
         position: relative;
         overflow: hidden;
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
     }
     .nav-link:hover:not(.nav-link--active) {
         background: rgba(52, 145, 140, 0.1);
@@ -115,6 +122,20 @@
         background: #224266;
         color: #ffffff !important;
         box-shadow: 0 4px 12px rgba(34, 66, 102, 0.25);
+        text-shadow: none;
+    }
+
+    /* Fix 1: Keyboard Shortcuts — underline mnemonic char    */
+    /* Per materi 7.b hal 49: "Designate the mnemonic         */
+    /* character by underlining it"                            */
+    .nav-mnemonic {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        text-decoration-thickness: 1.5px;
+        text-decoration-color: rgba(52, 145, 140, 0.5);
+    }
+    .nav-link--active .nav-mnemonic {
+        text-decoration-color: rgba(255, 255, 255, 0.5);
     }
 
     /* ── Mobile menu: slide-down animation ────────────────── */
@@ -176,7 +197,7 @@
         transform: scale(1.04) rotate(-1deg);
     }
 
-    /* ── Spacer to prevent content hiding behind fixed navbar ── */
+    /* ── Spacer ───────────────────────────────────────────── */
     #navbar-spacer {
         display: block;
         width: 100%;
@@ -195,7 +216,7 @@
         </div>
     </div>
 
-    <!-- Main Header — Glassmorphism Floating Pill -->
+    <!-- Main Header — Glassmorphism Floating Pill (Hybrid) -->
     <header id="navbar-header">
         <div class="navbar-inner">
             <!-- Logo -->
@@ -208,11 +229,13 @@
             </a>
 
             <!-- Desktop Navigation -->
+            <!-- Fix 2: Menu order by frequency (Layanan first) -->
+            <!-- Fix 1: accesskey shortcuts (Alt+L, Alt+C, Alt+B, Alt+T) -->
             <nav class="hidden md:flex nav-links-container" aria-label="Navigasi Utama">
-                <a class="${navLinkClass(caridokterPages)}" href="${base}caridokter.html">Cari Dokter</a>
-                <a class="${navLinkClass(layananPages)}"  href="${base}layanan.html">Layanan</a>
-                <a class="${navLinkClass('berita')}"      href="${base}berita.html">Berita</a>
-                <a class="${navLinkClass('tentangkami')}" href="${base}tentangkami.html">Tentang Kami</a>
+                <a class="${navLinkClass(layananPages)}"  href="${base}layanan.html" accesskey="l"><span class="nav-mnemonic">L</span>ayanan</a>
+                <a class="${navLinkClass(caridokterPages)}" href="${base}caridokter.html" accesskey="c"><span class="nav-mnemonic">C</span>ari Dokter</a>
+                <a class="${navLinkClass('berita')}"      href="${base}berita.html" accesskey="b"><span class="nav-mnemonic">B</span>erita</a>
+                <a class="${navLinkClass('tentangkami')}" href="${base}tentangkami.html" accesskey="t"><span class="nav-mnemonic">T</span>entang Kami</a>
             </nav>
 
             <!-- Mobile Menu Toggle -->
@@ -228,16 +251,16 @@
             </button>
         </div>
 
-        <!-- Mobile Navigation Drawer -->
+        <!-- Mobile Navigation Drawer (same order as desktop) -->
         <div id="mobile-nav" class="md:hidden" role="navigation" aria-label="Navigasi Mobile">
             <div class="border-t border-surface-subtle/50 mx-4 pt-2"></div>
-            <a class="mobile-nav-link font-label-lg text-label-lg ${caridokterPages.includes(page) ? 'mobile-active' : ''}"
-               href="${base}caridokter.html">
-                <span class="material-symbols-outlined text-[20px]" style="color:#34918C;">person_search</span> Cari Dokter
-            </a>
             <a class="mobile-nav-link font-label-lg text-label-lg ${layananPages.includes(page) ? 'mobile-active' : ''}"
                href="${base}layanan.html">
                 <span class="material-symbols-outlined text-[20px]" style="color:#34918C;">medical_services</span> Layanan
+            </a>
+            <a class="mobile-nav-link font-label-lg text-label-lg ${caridokterPages.includes(page) ? 'mobile-active' : ''}"
+               href="${base}caridokter.html">
+                <span class="material-symbols-outlined text-[20px]" style="color:#34918C;">person_search</span> Cari Dokter
             </a>
             <a class="mobile-nav-link font-label-lg text-label-lg ${page === 'berita' ? 'mobile-active' : ''}"
                href="${base}berita.html">
@@ -274,22 +297,20 @@
         
         if (!header || !mobileNav || !toggleBtn || !fixedWrapper || !spacer) return;
 
-        // Dynamic spacer calculation (only push down by emergency bar height)
-        // so the floating navbar overlays the hero image
+        // Dynamic spacer (only emergency bar height — navbar floats over hero)
         function updateSpacer() {
             setTimeout(() => {
                 spacer.style.height = (emergencyBar ? emergencyBar.offsetHeight : 0) + 'px';
             }, 50);
         }
         
-        // Initial call + attach to events
         updateSpacer();
         window.addEventListener('resize', updateSpacer);
         document.addEventListener('readystatechange', () => {
             if (document.readyState === 'complete') updateSpacer();
         });
 
-        // Scroll Elevation
+        // Scroll Elevation — hybrid: glassmorphism → solid
         const scrollHandler = () => {
             header.classList.toggle('scrolled', window.scrollY > 20);
         };
@@ -304,7 +325,7 @@
             toggleBtn.setAttribute('aria-expanded', String(menuOpen));
             toggleIcon.textContent = menuOpen ? 'close' : 'menu';
             toggleBtn.classList.toggle('menu-is-open', menuOpen);
-            updateSpacer(); // Recalculate spacer when menu opens/closes
+            updateSpacer();
         };
 
         toggleBtn.addEventListener('click', toggleMenu);
