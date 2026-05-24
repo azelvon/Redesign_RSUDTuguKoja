@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 
 <html lang="id">
   <head>
@@ -19,6 +19,7 @@
       rel="stylesheet"
     />
     <style>
+
       .material-symbols-outlined {
         font-variation-settings:
           "FILL" 0,
@@ -31,6 +32,16 @@
         background: rgba(255, 255, 255, 0.8);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
+      }
+
+      /* Hide scrollbar for Chrome, Safari and Opera */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      /* Hide scrollbar for IE, Edge and Firefox */
+      .no-scrollbar {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
       }
     </style>
     <script id="tailwind-config">
@@ -153,44 +164,50 @@
   </head>
 
   <body class="bg-surface text-on-surface">
-    <div id="navbar-container"></div>
+    <div id="navbar-container" style="height: 36px;"></div>
     <main>
       <!-- Hero Section -->
-      <section
-        class="relative h-[60vh] min-h-[400px] w-full overflow-hidden flex items-center"
-      >
+      <section class="relative h-[340px] md:h-[400px] w-full overflow-hidden flex items-end">
         <div class="absolute inset-0 z-0">
           <img
             alt="RSUD Tugu Koja Hospital Building"
             class="w-full h-full object-cover"
-            src="https://lh3.googleusercontent.com/aida/ADBb0ui1evh3r6omMESkVeXM-W4Uc6s_rM9mnUZ1wuazC-8FyvFjxSLkU51vz6b4sHW6oXYkWBoEgJPkondOWQJfaS54CF3GYP_mBM1HCrWm_4DRx10yiG1Xgu6iCpBS_SPvpArSO3cWujei8nyHOPanxKeWaQy5l9KW999vJ_NqGbrl4xoBTqyQ--q5Wi4cY6nasOHIQGrPCyfVRqpy8_KMR17kcvJUqcIewLxno8__Y9cOJQGwzx4ABW4y458"
+            src="assets/images/hero/RS%20Tugu%20Koja.jpg"
           />
-          <div
-            class="absolute inset-0 bg-gradient-to-r from-jakarta-blue/80 via-jakarta-blue/40 to-transparent"
-          ></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-jakarta-blue/90 via-jakarta-blue/50 to-jakarta-blue/30"></div>
         </div>
-        <div class="relative z-10 max-w-container-max mx-auto px-gutter w-full">
+        <div class="relative z-10 max-w-container-max mx-auto px-gutter w-full pb-12">
+          <!-- Breadcrumb inside hero -->
+          <nav class="mb-4" aria-label="Breadcrumb">
+            <ol class="flex items-center gap-2 text-sm text-white/60 font-label-md">
+              <li><a href="index.html" class="hover:text-white transition-colors" style="text-decoration:none;">Beranda</a></li>
+              <li><span class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+              <li class="text-white font-semibold">Fasilitas</li>
+            </ol>
+          </nav>
           <div class="max-w-2xl">
-            <h1 class="font-headline-xl text-headline-xl text-white mb-4">
+            <h1 class="font-headline-xl text-headline-xl text-white mb-2" style="text-shadow: 0 2px 8px rgba(0,0,0,0.15);">
               Fasilitas &amp; Sarana Medis Modern
             </h1>
-            <p class="font-body-lg text-body-lg text-white/90 mb-8">
+            <p class="font-body-md text-[16px] text-white/80 mb-6">
               Menghadirkan teknologi kesehatan terkini dan kenyamanan terbaik
               bagi kesembuhan dan kesejahteraan keluarga Jakarta.
             </p>
             <div class="flex gap-4">
-              <button
-                class="bg-white text-jakarta-blue px-8 py-3 rounded-full font-label-lg text-label-lg hover:scale-105 transition-transform"
-              >
-                Lihat Detail Layanan
-              </button>
-              <a href="layanan/peta.html"
-                ><button
-                  class="border-2 border-white text-white px-8 py-3 rounded-full font-label-lg text-label-lg hover:bg-white/10 transition-colors"
+              <a href="kamarinap.html" style="text-decoration:none;">
+                <button
+                  class="bg-white text-jakarta-blue px-6 py-2.5 rounded-full font-label-md text-[14px] hover:scale-105 transition-transform shadow-sm"
+                >
+                  Ketersediaan Kamar Inap
+                </button>
+              </a>
+              <a href="layanan/peta.html" style="text-decoration:none;">
+                <button
+                  class="border border-white/80 text-white px-6 py-2.5 rounded-full font-label-md text-[14px] hover:bg-white/10 transition-colors"
                 >
                   Tur Virtual
-                </button></a
-              >
+                </button>
+              </a>
             </div>
           </div>
         </div>
@@ -237,37 +254,36 @@
               >
             </div>
           </div>
-          <!-- Poliklinik -->
+          <!-- Instalasi Tumbuh Kembang -->
           <div
             class="md:col-span-8 bg-surface-container-low border border-surface-subtle rounded-xl p-8 flex flex-col md:flex-row gap-8 items-center group"
           >
             <div class="flex-1 order-2 md:order-1">
               <span
                 class="material-symbols-outlined text-health-green text-5xl mb-4"
-                >stethoscope</span
+                >child_care</span
               >
               <h3
                 class="font-headline-md text-headline-md text-jakarta-blue mb-4"
               >
-                Poliklinik Rawat Jalan
+                Instalasi Tumbuh Kembang
               </h3>
               <p class="font-body-md text-body-md text-on-surface-variant mb-6">
-                Tersedia lebih dari 15 spesialisasi medis mulai dari Penyakit
-                Dalam hingga Bedah Mulut dengan sistem antrean online yang
-                modern.
+                Layanan komprehensif untuk deteksi dini, intervensi, dan terapi anak.
+                Ditangani oleh tim ahli tumbuh kembang dan terapis profesional di lingkungan yang ramah anak.
               </p>
               <div class="grid grid-cols-2 gap-4">
                 <div class="flex items-center gap-2">
                   <span class="material-symbols-outlined text-health-green"
                     >check_circle</span
                   >
-                  <span class="text-label-md">15+ Spesialis</span>
+                  <span class="text-label-md">Terapi Terpadu</span>
                 </div>
                 <div class="flex items-center gap-2">
                   <span class="material-symbols-outlined text-health-green"
                     >check_circle</span
                   >
-                  <span class="text-label-md">Antrean Digital</span>
+                  <span class="text-label-md">Ruang Bermain Inklusif</span>
                 </div>
               </div>
             </div>
@@ -276,8 +292,8 @@
             >
               <img
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                data-alt="A clean, minimalist hospital outpatient clinic waiting area with modern seating and bright, natural lighting. The scene reflects a professional and calming atmosphere typical of high-quality Jakarta healthcare facilities, emphasizing comfort and cleanliness."
-                src="https://lh3.googleusercontent.com/aida/ADBb0uifRF_nVx5MCwo8GwcRxymhHIiXlPE3kn4pgbl5WdZiRaIbhnuvyVUtNau6qYarvmC4VE67eu_m5TU9sug2eJlPp3lBiTDtFiZ9IVpibCZtyEge733iUFE1Lnjwp_f8AqeU9L9qO-ZY5teHBZqal6GsI1h0xUgZPydiS3xDpAHuPLxBevyCgRdiocILbjM2ohWzmkQB_sgPRfybqKyagzhkd4tWRGzbW_QKe6dHAKgUuaqrkTcxl6RxzlU"
+                data-alt="A clean, bright, and colorful child development therapy room in a modern hospital. Equipped with safe educational toys and soft mats."
+                src="assets/images/layanan/tumbuh_kembang.png"
               />
             </div>
           </div>
@@ -311,36 +327,48 @@
               </ul>
             </div>
             <div
-              class="hidden lg:block w-48 h-48 bg-jakarta-blue/5 rounded-full flex items-center justify-center"
+              class="hidden lg:flex w-48 h-48 bg-jakarta-blue/5 rounded-full items-center justify-center flex-shrink-0"
             >
-              <span class="material-symbols-outlined text-jakarta-blue text-7xl"
+              <span class="material-symbols-outlined text-jakarta-blue text-[80px]"
                 >bed</span
               >
             </div>
           </div>
-          <!-- MCU -->
+          <!-- Spesialis -->
           <div
-            class="md:col-span-5 bg-health-green rounded-xl p-8 text-white flex flex-col justify-between group overflow-hidden relative"
+            class="md:col-span-5 bg-health-green rounded-xl p-6 md:p-8 text-white flex flex-col justify-center group overflow-hidden relative"
           >
-            <div class="relative z-10">
-              <h3 class="font-headline-md text-headline-md mb-2">
-                Medical Check Up
-              </h3>
-              <p class="font-body-md text-body-md text-white/90">
-                Pencegahan lebih baik daripada pengobatan. Pilih paket
-                pemeriksaan yang sesuai dengan kebutuhan Anda.
-              </p>
+            <div class="relative z-10 flex flex-col h-full justify-center">
+              <div>
+                <!-- Top Row: Icon and Button -->
+                <div class="flex justify-between items-start w-full mb-6">
+                  <div class="bg-white/20 w-10 h-10 rounded-lg flex items-center justify-center backdrop-blur-sm border border-white/30 shrink-0">
+                      <span class="material-symbols-outlined text-xl text-white">groups</span>
+                  </div>
+                  <a href="caridokter.html"
+                    class="bg-white text-health-green px-4 py-2 rounded-full text-[11px] md:text-xs font-bold active:scale-95 transition-all shadow-md hover:shadow-lg hover:bg-surface flex items-center gap-1 group-hover:pr-3"
+                  >
+                    <span>Cari Jadwal</span>
+                    <span class="material-symbols-outlined text-[14px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+                  </a>
+                </div>
+                
+                <div class="flex items-baseline gap-2 mb-2 mt-2">
+                    <span class="text-2xl md:text-3xl font-extrabold text-white">Lebih dari 15 Poliklinik</span>
+                </div>
+                <h3 class="text-lg font-bold mb-2">
+                    Spesialis & Subspesialis
+                </h3>
+                <p class="text-sm text-white/90 leading-relaxed">
+                    Didukung tenaga medis spesialis berpengalaman untuk pelayanan kesehatan Anda.
+                </p>
+              </div>
             </div>
-            <button
-              class="bg-white text-health-green px-6 py-2 rounded-full font-label-md text-label-md w-fit relative z-10 mt-6 active:scale-95 transition-transform"
-            >
-              Pesan Paket MCU
-            </button>
             <div
-              class="absolute -right-4 -bottom-4 text-white/10 group-hover:rotate-12 transition-transform"
+              class="absolute -right-8 -bottom-10 text-white/10 group-hover:scale-110 transition-transform duration-700 ease-out"
             >
-              <span class="material-symbols-outlined text-[120px]"
-                >monitor_heart</span
+              <span class="material-symbols-outlined text-[180px]"
+                >stethoscope</span
               >
             </div>
           </div>
@@ -542,18 +570,7 @@
         </div>
       </section>
     </main>
-    <!-- SideNavBar (FAB Style) -->
-    <aside class="fixed right-8 bottom-8 z-40 flex items-center justify-center">
-      <a
-        class="bg-jakarta-blue dark:bg-primary-container text-white p-4 rounded-full shadow-md hover:shadow-lg hover:scale-105 transform transition-all active:scale-95 flex items-center gap-3"
-        href="#"
-      >
-        <span class="material-symbols-outlined text-white">calendar_month</span>
-        <span class="font-label-md text-label-md font-bold pr-2"
-          >Daftar Online</span
-        >
-      </a>
-    </aside>
+
     <!-- Footer -->
     <div id="footer-container"></div>
     <script>
@@ -588,6 +605,44 @@
         );
         observer.observe(el);
       });
+
+      // Drag to scroll functionality
+      const slider = document.getElementById("public-scroll");
+      let isDown = false;
+      let startX;
+      let scrollLeft;
+
+      if (slider) {
+        slider.classList.add("cursor-grab");
+
+        slider.addEventListener("mousedown", (e) => {
+          isDown = true;
+          slider.classList.remove("cursor-grab", "snap-x", "scroll-smooth");
+          slider.classList.add("cursor-grabbing");
+          startX = e.pageX - slider.offsetLeft;
+          scrollLeft = slider.scrollLeft;
+        });
+
+        slider.addEventListener("mouseleave", () => {
+          isDown = false;
+          slider.classList.add("cursor-grab", "snap-x", "scroll-smooth");
+          slider.classList.remove("cursor-grabbing");
+        });
+
+        slider.addEventListener("mouseup", () => {
+          isDown = false;
+          slider.classList.add("cursor-grab", "snap-x", "scroll-smooth");
+          slider.classList.remove("cursor-grabbing");
+        });
+
+        slider.addEventListener("mousemove", (e) => {
+          if (!isDown) return;
+          e.preventDefault();
+          const x = e.pageX - slider.offsetLeft;
+          const walk = (x - startX) * 2; // Kecepatan geser
+          slider.scrollLeft = scrollLeft - walk;
+        });
+      }
     </script>
 
     <script src="components/navbar.js"></script>

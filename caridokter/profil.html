@@ -113,6 +113,7 @@
         }
     </script>
     <style>
+
         @keyframes fadeUp {
             from {
                 opacity: 0;
@@ -185,7 +186,7 @@
 </head>
 
 <body class="bg-surface text-on-background font-body-md overflow-x-hidden">
-    <div id="navbar-container"></div>
+    <div id="navbar-container" style="height: 36px;"></div>
 
     <!-- Loading State -->
     <div id="loading-state" class="max-w-container-max mx-auto px-margin-desktop py-8 min-h-screen">
@@ -221,24 +222,31 @@
 
     <!-- Profile Content (hidden until loaded) -->
     <main id="profile-content" class="hidden">
-        <!-- Breadcrumb -->
-        <div class="max-w-container-max mx-auto px-margin-desktop pt-8">
-            <nav class="flex items-center gap-2 mb-8 text-text-muted font-label-md text-label-md fade-up">
-                <a class="hover:text-primary transition-colors" href="../index.html">Beranda</a>
-                <span class="material-symbols-outlined text-[16px]">chevron_right</span>
-                <a class="hover:text-primary transition-colors" href="../caridokter.html">Cari Dokter</a>
-                <span class="material-symbols-outlined text-[16px]">chevron_right</span>
-                <span class="text-primary font-bold" id="breadcrumb-name">Profil Dokter</span>
-            </nav>
-        </div>
 
         <!-- Hero Section -->
-        <div class="bg-gradient-to-br from-jakarta-blue via-primary-container to-primary hero-pattern fade-up">
-            <div class="max-w-container-max mx-auto px-margin-desktop py-12 md:py-16">
+        <div class="relative bg-gradient-to-br from-jakarta-blue via-primary-container to-primary hero-pattern fade-up overflow-hidden">
+            <!-- Dekorasi Latar -->
+            <div class="absolute inset-0 pointer-events-none z-0">
+                <!-- Abstract Skewed Lines -->
+                <div class="absolute right-0 top-0 w-32 md:w-64 h-full bg-white/5 skew-x-[30deg] translate-x-8"></div>
+                <div class="absolute right-32 md:right-64 top-0 w-16 h-full bg-health-green/10 skew-x-[30deg] translate-x-8"></div>
+                <div class="absolute right-48 md:right-80 top-0 w-4 h-full bg-white/10 skew-x-[30deg] translate-x-8"></div>
+
+                <div class="absolute -top-24 -right-12 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-10 w-72 h-72 bg-health-green/20 rounded-full blur-3xl"></div>
+                <svg class="absolute -top-10 right-10 text-white/5 w-80 h-80 transform rotate-12" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 3H5c-1.1 0-1.99.9-1.99 2L3 19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8 11V9H9v5H4v-2h5V7h2v5h5v2h-5v5h-2v-5z"/>
+                </svg>
+                <div class="absolute top-20 left-20 text-white/5 w-32 h-32">
+                    <span class="material-symbols-outlined text-[120px]" style="font-variation-settings: 'FILL' 1;">ecg_heart</span>
+                </div>
+            </div>
+
+            <div class="max-w-container-max mx-auto px-margin-desktop pt-32 pb-12 md:pt-40 md:pb-16 relative z-10">
                 <div class="flex flex-col md:flex-row items-center md:items-end gap-8">
                     <!-- Avatar -->
-                    <div class="w-36 h-36 md:w-44 md:h-44 rounded-3xl bg-white/95 border-4 border-white/30 shadow-2xl flex items-center justify-center text-7xl flex-shrink-0 backdrop-blur-sm" id="hero-avatar">
-                        👨‍⚕️
+                    <div class="w-36 h-36 md:w-44 md:h-44 rounded-3xl bg-white/95 border-4 border-white/30 shadow-2xl flex items-center justify-center flex-shrink-0 backdrop-blur-sm overflow-hidden" id="hero-avatar-container">
+                        <img id="hero-avatar" class="w-full h-full object-cover" src="" alt="Doctor Avatar">
                     </div>
                     <!-- Info -->
                     <div class="text-center md:text-left pb-2 flex-grow">
@@ -250,13 +258,7 @@
                         <p class="text-white/80 text-lg mb-4" id="hero-spesialisasi"></p>
                         <div class="flex flex-wrap gap-2 justify-center md:justify-start" id="hero-poliklinik"></div>
                     </div>
-                    <!-- Quick Action -->
-                    <div class="flex-shrink-0 pb-2">
-                        <button class="px-8 py-4 bg-health-green text-white rounded-2xl font-label-lg text-label-lg hover:brightness-110 transition-all flex items-center gap-3 shadow-xl hover:shadow-2xl hover:-translate-y-0.5 transform">
-                            <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
-                            Buat Janji Temu
-                        </button>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -267,6 +269,15 @@
                 
                 <!-- Left Column: Main Info -->
                 <div class="lg:col-span-2 space-y-8">
+
+                    <!-- Breadcrumb -->
+                    <nav class="flex items-center gap-2 text-text-muted font-label-md text-label-md fade-up">
+                        <a class="hover:text-primary transition-colors" href="../index.html">Beranda</a>
+                        <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+                        <a class="hover:text-primary transition-colors" href="../caridokter.html">Cari Dokter</a>
+                        <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+                        <span class="text-primary font-bold" id="breadcrumb-name">Profil Dokter</span>
+                    </nav>
 
                     <!-- Tentang Dokter -->
                     <div class="bg-white rounded-3xl p-8 shadow-sm border border-surface-subtle fade-up fade-up-delay-1" id="section-tentang">
@@ -374,10 +385,7 @@
                         <p class="text-white/80 text-sm mb-5 leading-relaxed">
                             Daftarkan diri Anda untuk janji temu dengan dokter ini melalui portal pendaftaran online kami.
                         </p>
-                        <button class="w-full py-3.5 bg-white text-jakarta-blue rounded-xl font-label-lg text-label-lg hover:bg-white/90 transition-all flex items-center justify-center gap-2 shadow-md">
-                            <span class="material-symbols-outlined text-[18px]">calendar_month</span>
-                            Buat Janji Temu
-                        </button>
+
                         <a href="tel:02143938478" class="w-full mt-3 py-3.5 bg-white/15 text-white rounded-xl font-label-lg text-label-lg hover:bg-white/25 transition-all flex items-center justify-center gap-2 border border-white/20">
                             <span class="material-symbols-outlined text-[18px]">call</span>
                             Hubungi (021) 4393 8478
@@ -461,11 +469,12 @@
             document.title = `${dokter.nama} - Profil Dokter | RSUD Tugu Koja`;
 
             const isFemale = dokter.foto && dokter.foto.includes('female');
-            const avatarEmoji = isFemale ? '👩‍⚕️' : '👨‍⚕️';
+            const avatarImg = isFemale ? '../assets/images/dokter/dokter_wanita.png' : '../assets/images/dokter/dokter_pria.png';
             const genderLabel = isFemale ? 'Perempuan' : 'Laki-laki';
 
             // Hero
-            document.getElementById('hero-avatar').textContent = avatarEmoji;
+            document.getElementById('hero-avatar').src = avatarImg;
+            document.getElementById('hero-avatar').alt = `Foto ${dokter.nama}`;
             document.getElementById('hero-name').textContent = dokter.nama;
             document.getElementById('hero-spesialisasi').textContent = dokter.spesialisasi;
             document.getElementById('breadcrumb-name').textContent = dokter.nama;

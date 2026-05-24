@@ -32,6 +32,7 @@
         }
     </script>
     <style>
+
         .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
         .custom-scrollbar::-webkit-scrollbar { width: 4px; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
@@ -78,10 +79,27 @@
         }
     </style>
 </head>
-<body class="bg-background text-on-surface font-body-md min-h-screen overflow-hidden">
-    <div id="navbar-container"></div>
+<body class="bg-background text-on-surface font-body-md h-screen overflow-hidden flex flex-col">
+    <!-- Decorative Header -->
+    <div class="h-14 md:h-16 w-full bg-gradient-to-r from-jakarta-blue to-primary flex items-center px-4 md:px-8 relative overflow-hidden flex-shrink-0 shadow-md z-30">
+        <!-- Abstract Decorations -->
+        <div class="absolute right-0 top-0 w-32 md:w-64 h-full bg-white/10 skew-x-[30deg] translate-x-4 pointer-events-none"></div>
+        <div class="absolute right-20 top-0 w-16 h-full bg-health-green/20 skew-x-[30deg] translate-x-4 pointer-events-none"></div>
+        
+        <div class="relative z-10 flex items-center gap-4 opacity-100">
+            <!-- Back Button -->
+            <a href="../layanan.html" class="flex items-center justify-center w-9 h-9 rounded-full bg-white/10 hover:bg-white/25 text-white transition-colors border border-white/20 shadow-sm" aria-label="Kembali ke Layanan">
+                <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+            </a>
+            
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-white text-[18px] md:text-[22px]">explore</span>
+                <span class="text-[12px] md:text-[14px] font-bold tracking-widest text-white uppercase">Peta Navigasi RSUD</span>
+            </div>
+        </div>
+    </div>
 
-    <div class="flex" style="height: calc(100vh - 96px);">
+    <div class="flex flex-1 w-full overflow-hidden relative">
         <!-- SideNavBar -->
         <aside class="h-full w-72 hidden md:flex flex-col bg-surface-container-lowest border-r border-surface-subtle shadow-sm z-40 relative">
             <div class="p-6 border-b border-surface-subtle">
@@ -967,6 +985,5 @@
             loadData();
         };
     </script>
-    <script src="../components/navbar.js"></script>
 </body>
 </html>

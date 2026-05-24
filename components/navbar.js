@@ -84,6 +84,14 @@
         border-color: rgba(255, 255, 255, 1);
     }
 
+    /* Hide state on scroll down */
+    #navbar-header.nav-hidden {
+        transform: translateY(-150%);
+        opacity: 0;
+        pointer-events: none;
+    }
+
+
     /* ── Navbar inner layout ──────────────────────────────── */
     .navbar-inner {
         display: flex;
@@ -310,9 +318,31 @@
             if (document.readyState === 'complete') updateSpacer();
         });
 
-        // Scroll Elevation — hybrid: glassmorphism → solid
+        // Scroll Elevation & Hide-on-Scroll Logic
+        let lastScrollY = window.scrollY;
+        
         const scrollHandler = () => {
-            header.classList.toggle('scrolled', window.scrollY > 20);
+            const currentScrollY = window.scrollY;
+            
+            // 1. Toggle glassmorphism/solid state
+            header.classList.toggle('scrolled', currentScrollY > 20);
+
+            // 2. Hide on scroll down / Show on scroll up
+            // Threshold of 60px to avoid hiding right at the very top
+            if (currentScrollY > 60 && !menuOpen) {
+                if (currentScrollY > lastScrollY) {
+                    // Scrolling down -> Hide navbar header only
+                    header.classList.add('nav-hidden');
+                } else {
+                    // Scrolling up -> Show navbar header
+                    header.classList.remove('nav-hidden');
+                }
+            } else {
+                // Always show at the top or if mobile menu is open
+                header.classList.remove('nav-hidden');
+            }
+
+            lastScrollY = currentScrollY;
         };
         window.addEventListener('scroll', scrollHandler, { passive: true });
         scrollHandler();

@@ -107,6 +107,14 @@
     </script>
 <style>
         body {
+            animation: globalFadeIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        @keyframes globalFadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        body {
             background-color: #f7f9fb;
             font-family: 'Atkinson Hyperlegible Next', sans-serif;
         }
@@ -121,7 +129,7 @@
     </style>
 </head>
 <body class="text-on-surface">
-    <div id="navbar-container"></div>
+    <div id="navbar-container" style="height: 36px;"></div>
     <main class="pt-8 pb-24 max-w-container-max mx-auto px-margin-desktop">
     <div class="flex flex-col lg:flex-row gap-gutter">
     <!-- Konten Utama -->

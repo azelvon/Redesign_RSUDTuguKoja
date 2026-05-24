@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Ketersediaan Kamar Inap - RSUD Tugu Koja</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Atkinson+Hyperlegible+Next:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "jakarta-blue": "#224266",
+              "health-green": "#34918C",
+              "emergency-red": "#E63946",
+              primary: "#052c4f",
+              surface: "#f7f9fb",
+              "surface-subtle": "#F1F5F9",
+              "surface-container-lowest": "#ffffff",
+              "text-muted": "#64748B",
+              "on-surface": "#191c1e",
+              "on-surface-variant": "#43474e",
+              outline: "#73777f"
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              "2xl": "1rem",
+              full: "9999px",
+            },
+            spacing: {
+              gutter: "24px",
+              "container-max": "1280px",
+            },
+            fontFamily: {
+              "label-md": ["Plus Jakarta Sans"],
+              "label-lg": ["Plus Jakarta Sans"],
+              "headline-md": ["Plus Jakarta Sans"],
+              "headline-lg": ["Plus Jakarta Sans"],
+              "headline-xl": ["Plus Jakarta Sans"],
+              "body-md": ["Atkinson Hyperlegible Next"],
+            },
+            fontSize: {
+              "label-md": ["14px", { lineHeight: "20px", fontWeight: "600" }],
+              "label-lg": ["16px", { lineHeight: "24px", fontWeight: "600" }],
+              "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+              "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "700" }],
+              "headline-xl": ["40px", { lineHeight: "52px", letterSpacing: "-0.02em", fontWeight: "700" }],
+              "body-md": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+        body {
+            animation: globalFadeIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        @keyframes globalFadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+      .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+      .room-card { transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease; }
+      .room-card:hover { transform: translateY(-4px); box-shadow: 0 16px 32px -8px rgba(34,66,102,0.15); }
+      
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(16px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in { animation: fadeInUp 0.5s ease-out forwards; }
+    </style>
+  </head>
+
+  <body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+    <div id="navbar-container" style="height: 36px;"></div>
+
+    <!-- Hero Section -->
+    <section class="relative h-[340px] md:h-[400px] w-full overflow-hidden flex items-end">
+      <div class="absolute inset-0 z-0">
+        <img
+          alt="RSUD Tugu Koja Building"
+          class="w-full h-full object-cover"
+          src="assets/images/hero/RS%20Tugu%20Koja.jpg"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-jakarta-blue/90 via-jakarta-blue/50 to-jakarta-blue/30"></div>
+      </div>
+      <div class="relative z-10 max-w-container-max mx-auto px-gutter w-full pb-12">
+        <nav class="mb-4" aria-label="Breadcrumb">
+          <ol class="flex items-center gap-2 text-sm text-white/60 font-label-md">
+            <li><a href="index.html" class="hover:text-white transition-colors" style="text-decoration:none;">Beranda</a></li>
+            <li><span class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+            <li><a href="layanan.html" class="hover:text-white transition-colors" style="text-decoration:none;">Fasilitas</a></li>
+            <li><span class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+            <li class="text-white font-semibold">Kamar Inap</li>
+          </ol>
+        </nav>
+        <div class="max-w-2xl">
+          <h1 class="font-headline-xl text-headline-xl text-white mb-2" style="text-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+            Ketersediaan Kamar Inap
+          </h1>
+          <p class="font-body-md text-[16px] text-white/80 mb-0">
+            Informasi terkini mengenai kapasitas dan ketersediaan tempat tidur rawat inap di RSUD Tugu Koja. Data diperbarui secara berkala.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-container-max mx-auto px-gutter py-16 min-h-screen">
+      
+      <!-- Emergency Alert -->
+      <div id="emergency-alert-container" class="hidden mb-10"></div>
+
+      <!-- Header -->
+      <div class="mb-8">
+        <h2 class="font-headline-md text-[24px] md:text-[28px] text-jakarta-blue mb-2">Anda atau keluarga butuh perawatan apa?</h2>
+        <p class="font-body-md text-[16px] text-text-muted">Klik untuk lihat ketersediaan dan detail ruangan</p>
+      </div>
+
+      <!-- Loading State -->
+      <div id="loading-state" class="flex flex-col items-center justify-center py-20 text-text-muted">
+        <span class="material-symbols-outlined text-5xl animate-spin mb-4">hourglass_empty</span>
+        <p>Memuat data ketersediaan kamar...</p>
+      </div>
+
+      <!-- Error State -->
+      <div id="error-state" class="hidden flex flex-col items-center justify-center py-20 text-emergency-red">
+        <span class="material-symbols-outlined text-5xl mb-4">error</span>
+        <p>Gagal memuat data. Silakan coba lagi nanti.</p>
+      </div>
+
+      <!-- Accordion List -->
+      <div id="accordion-container" class="flex flex-col gap-4 hidden">
+        <!-- Cards will be injected here by JS -->
+      </div>
+
+    </main>
+
+    <div id="footer-container"></div>
+
+    <!-- Script for Navigation & Footer -->
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+
+    <!-- Script for Fetching Bed Data -->
+    <script>
+      let bedData = [];
+
+      const categoriesInfo = [
+        { id: 'darurat', title: 'Darurat / gawat darurat', subtitle: 'IGD, ICU, perawatan kritis', icon: 'emergency', iconBg: 'bg-blue-50', iconColor: 'text-blue-600' },
+        { id: 'umum', title: 'Rawat inap umum', subtitle: 'Kelas 1, 2, 3 — semua penyakit umum', icon: 'bed', iconBg: 'bg-green-50', iconColor: 'text-green-600' },
+        { id: 'melahirkan', title: 'Melahirkan & kebidanan', subtitle: 'Persalinan normal, caesar, nifas, NICU bayi', icon: 'stroller', iconBg: 'bg-pink-50', iconColor: 'text-pink-600' },
+        { id: 'operasi', title: 'Operasi / pasca bedah', subtitle: 'Ruang pemulihan, rawat inap pasca operasi', icon: 'content_cut', iconBg: 'bg-teal-50', iconColor: 'text-teal-600' },
+        { id: 'anak', title: 'Anak & pediatri', subtitle: 'Ruang anak, ruang bermain, perawatan intensif anak', icon: 'child_care', iconBg: 'bg-orange-50', iconColor: 'text-orange-600' }
+      ];
+
+      function getCategory(roomName) {
+        const name = roomName.toUpperCase();
+        if (name.includes('BERSALIN') || name.includes('VK') || name.includes('NIFAS') || name.includes('KEBIDANAN')) return 'melahirkan';
+        if (name.includes('PICU') || name.includes('NICU') || name.includes('PERINA') || name.includes('ANAK') || name.includes('PEDIATRI')) return 'anak';
+        if (name.includes('ICU') || name.includes('IGD') || name.includes('HCU') || name.includes('DARURAT')) return 'darurat';
+        if (name.includes('OPERASI') || name.includes('BEDAH') || name.includes('OK')) return 'operasi';
+        return 'umum';
+      }
+
+      function renderCards(data) {
+        const container = document.getElementById('accordion-container');
+        const alertContainer = document.getElementById('emergency-alert-container');
+        container.innerHTML = '';
+        container.classList.remove('hidden');
+        
+        // Cek ruang darurat penuh
+        const fullEmergencyRooms = bedData.filter(r => r.tersedia === 0 && (r.ruang.includes('ICU') || r.ruang.includes('NICU') || r.ruang.includes('PICU') || r.ruang.includes('IGD')));
+        
+        if (fullEmergencyRooms.length > 0) {
+            const roomNames = fullEmergencyRooms.map(r => r.ruang).join(', ');
+            alertContainer.innerHTML = `
+                <div class="bg-emergency-red/10 border border-emergency-red rounded-xl p-4 flex flex-col md:flex-row items-center md:items-start gap-4 shadow-sm">
+                    <div class="bg-emergency-red text-white p-2 rounded-full flex-shrink-0 flex items-center justify-center mt-1">
+                        <span class="material-symbols-outlined text-xl">warning</span>
+                    </div>
+                    <div class="flex-grow text-center md:text-left">
+                        <h3 class="text-emergency-red font-headline-md text-[18px] mb-1">Perhatian: Ruangan Darurat Penuh</h3>
+                        <p class="text-on-surface-variant font-body-md text-[15px]">
+                            Saat ini ruangan <strong>${roomNames}</strong> sedang penuh. Jika Anda membutuhkan penanganan darurat, silakan segera hubungi Call Center Kegawatdaruratan di 
+                            <a href="tel:119" class="text-emergency-red font-bold underline hover:brightness-75 transition-all">119</a> atau <a href="tel:02143938478" class="text-emergency-red font-bold underline hover:brightness-75 transition-all">(021) 43938478</a>.
+                        </p>
+                    </div>
+                </div>
+            `;
+            alertContainer.classList.remove('hidden');
+        } else {
+            alertContainer.classList.add('hidden');
+            alertContainer.innerHTML = '';
+        }
+
+        // Group data
+        const grouped = {
+            darurat: [], umum: [], melahirkan: [], operasi: [], anak: []
+        };
+
+        data.forEach(room => {
+            grouped[getCategory(room.ruang)].push(room);
+        });
+
+        categoriesInfo.forEach((catInfo, index) => {
+            const rooms = grouped[catInfo.id];
+            const totalTersedia = rooms.reduce((sum, r) => sum + r.tersedia, 0);
+            
+            let pillClass = '';
+            if (totalTersedia >= 5) pillClass = 'bg-[#ecfccb] text-[#3f6212] border border-[#d9f99d]'; // green pill
+            else if (totalTersedia > 0) pillClass = 'bg-[#fef0c7] text-[#b54708] border border-[#fec84b]'; // orange pill
+            else pillClass = 'bg-emergency-red/10 text-emergency-red border border-emergency-red/20';
+
+            const card = document.createElement('div');
+            card.className = `bg-surface-container-lowest border border-surface-subtle rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow animate-fade-in`;
+            card.style.animationDelay = `${index * 0.1}s`;
+            
+            let roomGridHtml = '';
+            if (rooms.length > 0) {
+                roomGridHtml = `
+                    <div class="flex flex-col px-4 md:px-6 pb-2">
+                        ${rooms.map(room => {
+                            const isAvailable = room.tersedia > 0;
+                            let statusColor = 'text-emergency-red';
+                            if (room.tersedia >= 3) statusColor = 'text-health-green';
+                            else if (room.tersedia > 0) statusColor = 'text-amber-600'; // orange for low availability
+
+                            // For rooms with 0 capacity but 0 tersedia (like IGD if we had it), or fully booked
+                            const statusText = room.kapasitas > 0 
+                                ? `${room.tersedia} dari ${room.kapasitas}`
+                                : (isAvailable ? 'Tersedia' : 'Penuh');
+
+                            return `
+                                <div class="flex items-center justify-between py-4 border-b border-surface-subtle last:border-0">
+                                    <div class="flex items-center gap-2 pr-4">
+                                        <h4 class="font-label-lg text-[14px] text-jakarta-blue font-bold m-0 leading-snug">${room.ruang}</h4>
+                                    </div>
+                                    <div class="text-[13px] font-label-md ${statusColor} whitespace-nowrap">
+                                        ${statusText}
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                `;
+            } else {
+                roomGridHtml = `
+                    <div class="p-6 pt-4 bg-surface/30 border-t border-surface-subtle text-center text-text-muted mx-2 pb-6">
+                        <span class="material-symbols-outlined text-4xl mb-2 opacity-50">search_off</span>
+                        <p>Tidak ada ruangan terdata untuk kategori ini saat ini.</p>
+                    </div>
+                `;
+            }
+
+            card.innerHTML = `
+                <div class="p-4 md:p-6 cursor-pointer flex items-center justify-between group accordion-header bg-white">
+                    <div class="flex items-center gap-4 md:gap-5">
+                        <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl ${catInfo.iconBg} flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+                            <span class="material-symbols-outlined text-[24px] ${catInfo.iconColor}">${catInfo.icon}</span>
+                        </div>
+                        <div>
+                            <h3 class="font-headline-md text-[16px] text-jakarta-blue mb-1">${catInfo.title}</h3>
+                            <p class="font-body-md text-[13px] text-text-muted m-0">${catInfo.subtitle}</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 flex-shrink-0">
+                        <div class="hidden sm:flex items-center justify-center px-3 py-1 rounded-full font-label-md font-bold text-[12px] md:text-[13px] ${pillClass}">
+                            ${totalTersedia} tersedia
+                        </div>
+                        <div class="w-8 h-8 rounded-full border border-surface-subtle flex items-center justify-center text-text-muted group-hover:bg-surface-container transition-colors accordion-icon">
+                            <span class="material-symbols-outlined text-[20px]">arrow_downward</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-content hidden">
+                    <div class="sm:hidden px-6 pb-2 pt-2">
+                        <div class="inline-flex items-center justify-center px-3 py-1 rounded-full font-label-md font-bold text-[11px] ${pillClass}">
+                            ${totalTersedia} tersedia
+                        </div>
+                    </div>
+                    ${roomGridHtml}
+                </div>
+            `;
+
+            const header = card.querySelector('.accordion-header');
+            const content = card.querySelector('.accordion-content');
+            const icon = card.querySelector('.accordion-icon span');
+            
+            header.addEventListener('click', () => {
+                const isHidden = content.classList.contains('hidden');
+                if (isHidden) {
+                    content.classList.remove('hidden');
+                    icon.textContent = 'arrow_upward';
+                } else {
+                    content.classList.add('hidden');
+                    icon.textContent = 'arrow_downward';
+                }
+            });
+
+            container.appendChild(card);
+        });
+      }
+
+      async function fetchBedData() {
+        try {
+          const response = await fetch('assets/data/bed.json');
+          if (!response.ok) throw new Error('Network response was not ok');
+          bedData = await response.json();
+          
+          document.getElementById('loading-state').classList.add('hidden');
+          renderCards(bedData);
+        } catch (error) {
+          console.error("Error fetching bed data:", error);
+          document.getElementById('loading-state').classList.add('hidden');
+          document.getElementById('error-state').classList.remove('hidden');
+        }
+      }
+
+      // Initialize
+      document.addEventListener('DOMContentLoaded', fetchBedData);
+    </script>
+  </body>
+</html>

@@ -2,9 +2,9 @@
   {
     "ruang": "PICU",
     "kapasitas": 2,
-    "terisi": 0,
+    "terisi": 2,
     "booking": 0,
-    "tersedia": 2
+    "tersedia": 0
   },
   {
     "ruang": "RUANG ISOLASI - PERINA",
