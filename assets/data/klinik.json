@@ -3,6 +3,7 @@
     "id": "klinik-gizi",
     "nama": "Klinik Gizi",
     "tipe": "klinik",
+    "location": "Lantai 1",
     "icon": "fa-apple-whole",
     "deskripsi": "Klinik yang menyediakan layanan konsultasi gizi dan diet untuk pasien dengan berbagai kondisi kesehatan, termasuk diabetes, hipertensi, obesitas, dan gangguan makan.",
     "layanan": [
@@ -25,6 +26,7 @@
     "id": "klinik-mcu",
     "nama": "Klinik MCU",
     "tipe": "klinik",
+    "location": "Lantai 1",
     "icon": "fa-clipboard-check",
     "deskripsi": "Klinik Medical Check Up yang menyediakan layanan pemeriksaan kesehatan menyeluruh untuk deteksi dini penyakit dan evaluasi kondisi kesehatan secara berkala.",
     "layanan": [
@@ -47,6 +49,7 @@
     "id": "klinik-geriatri",
     "nama": "Klinik Geriatri",
     "tipe": "klinik",
+    "location": "Lantai 1",
     "icon": "fa-person-cane",
     "deskripsi": "Klinik khusus yang menangani kesehatan pasien lanjut usia (lansia) dengan pendekatan komprehensif, meliputi penanganan penyakit degeneratif dan peningkatan kualitas hidup.",
     "layanan": [
@@ -69,6 +72,7 @@
     "id": "klinik-sehati",
     "nama": "Klinik Sehati",
     "tipe": "klinik",
+    "location": "Lantai 1",
     "icon": "fa-heart",
     "deskripsi": "Klinik Sehati (Sehat Jiwa dan Hati) menyediakan layanan kesehatan jiwa dan konseling psikologis untuk membantu pasien mengatasi masalah kesehatan mental.",
     "layanan": [
@@ -91,6 +95,7 @@
     "id": "layanan-fisioterapi",
     "nama": "Layanan Fisioterapi",
     "tipe": "layanan",
+    "location": "Lantai 2",
     "icon": "fa-dumbbell",
     "deskripsi": "Layanan fisioterapi yang menyediakan terapi fisik untuk pemulihan fungsi gerak tubuh pasca cedera, operasi, atau kondisi neurologis.",
     "layanan": [

@@ -136,32 +136,45 @@
   </style>
 </head>
 
-<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col">
+<body class="bg-surface text-on-background font-body-md overflow-x-hidden">
+    <div id="navbar-container" style="height: 36px;"></div>
 
-  <div id="navbar-container" style="height: 36px;"></div>
+  <main class="flex-grow w-full">
 
-  <main class="flex-grow max-w-container-max mx-auto w-full breathing-margin py-8">
+    <!-- Hero Section -->
+    <section class="relative h-[340px] md:h-[400px] w-full overflow-hidden flex items-end mb-12">
+      <div class="absolute inset-0 z-0">
+        <img
+          alt="RSUD Tugu Koja Hospital Building"
+          class="w-full h-full object-cover"
+          src="assets/images/hero/RS%20Tugu%20Koja.jpg"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-jakarta-blue/90 via-jakarta-blue/50 to-jakarta-blue/30"></div>
+      </div>
+      <div class="relative z-10 max-w-container-max mx-auto px-gutter w-full pb-12">
+        <nav class="mb-4" aria-label="Breadcrumb">
+          <ol class="flex items-center gap-2 text-sm text-white/60 font-label-md">
+            <li><a href="index.html" class="hover:text-white transition-colors" style="text-decoration:none;">Beranda</a></li>
+            <li><span class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+            <li><a href="standar pelayanan.html" class="hover:text-white transition-colors" style="text-decoration:none;">Standar Pelayanan</a></li>
+            <li><span class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+            <li class="text-white font-semibold">SOP</li>
+          </ol>
+        </nav>
+        <div class="max-w-2xl">
+          <h1 class="font-headline-xl text-headline-xl text-white mb-2" style="text-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+            Standar Operasional Prosedur
+          </h1>
+          <p class="font-body-md text-[16px] text-white/80 mb-6">
+            Dokumentasi resmi tata laksana pelayanan kesehatan di RSUD Tugu Koja untuk menjamin kualitas, keamanan pasien, dan efisiensi operasional.
+          </p>
+        </div>
+      </div>
+    </section>
 
-    <!-- Breadcrumb -->
-    <nav class="flex items-center gap-2 mb-8 text-on-surface-variant font-label-md">
-      <a class="hover:text-jakarta-blue" href="index.html">Beranda</a>
-      <span class="material-symbols-outlined text-[16px]">chevron_right</span>
-      <a class="hover:text-jakarta-blue" href="standar pelayanan.html">Standar Pelayanan</a>
-      <span class="material-symbols-outlined text-[16px]">chevron_right</span>
-      <span class="text-jakarta-blue font-bold">SOP</span>
-    </nav>
-
-    <!-- Page Header -->
-    <div class="mb-12">
-      <h1 class="font-headline-xl text-headline-xl text-jakarta-blue mb-4">Standar Operasional Prosedur</h1>
-      <p class="text-body-lg font-body-lg text-on-surface-variant max-w-3xl">
-        Dokumentasi resmi tata laksana pelayanan kesehatan di RSUD Tugu Koja untuk menjamin kualitas, keamanan pasien,
-        dan efisiensi operasional sesuai standar akreditasi nasional.
-      </p>
-    </div>
-
-    <!-- SOP Content -->
-    <div class="w-full">
+    <div class="max-w-container-max mx-auto w-full breathing-margin py-8">
+      <!-- SOP Content -->
+      <div class="w-full">
 
       <!-- Main SOP List -->
       <div class="bg-white rounded-xl border border-outline-variant overflow-hidden shadow-sm">
@@ -395,47 +408,8 @@
               </a>
             </div>
           </div>
-
         </div>
       </div>
-
-      <!-- Featured Section (Asymmetric Layout) -->
-      <section class="mt-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div class="relative aspect-video rounded-3xl overflow-hidden shadow-2xl">
-          <img
-            alt="Hospital Staff reviewing SOP"
-            class="w-full h-full object-cover"
-            data-alt="A team of diverse medical professionals in a bright, modern hospital corridor reviewing high-tech digital tablets. The environment is clean and sterile with soft Jakarta Blue architectural accents and warm ambient lighting. The mood is professional and focused, reflecting a culture of quality and precision in healthcare standards. High-end photography style with shallow depth of field."
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6TskTVSZctd7vhISJqzMxrNnycove_COHJ6BndU2nwS42uBtIgMCLGggwd2lW1k6_4hzaD9re5OjfryE5R5kIUryYqgsQEINfsIdd-SczpDINqgTI3RhHjRcwmx3jWXgg-GztM_pVEUq4i-IzZWL9xs90Cg6JLdNEx75FMU6oYkH2_qWSJs1h4aJm3oKpg5aXdt20ivkWJ3ZyBtQ1OGWb1gUnGSaiZJG0JVXs05Uy5Fvh0M1qp7oVPagXRlHk5-jnpKlwu44jKdI"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-jakarta-blue/80 to-transparent flex items-end p-8">
-            <p class="text-on-primary font-bold text-headline-md leading-tight">Berkomitmen pada Standar Pelayanan Terbaik</p>
-          </div>
-        </div>
-        <div class="space-y-6">
-          <div class="inline-block px-4 py-1 bg-secondary-container text-on-secondary-container rounded-full text-label-md font-bold">PEMBERITAHUAN</div>
-          <h2 class="text-headline-lg font-headline-lg text-jakarta-blue">Pembaruan Berkala SOP 2024</h2>
-          <p class="text-body-lg text-on-surface-variant">
-            Kami secara rutin memperbarui Standar Operasional Prosedur untuk mengintegrasikan teknologi medis terbaru
-            dan protokol kesehatan internasional. Pastikan Anda selalu merujuk pada versi digital terbaru.
-          </p>
-          <ul class="space-y-4">
-            <li class="flex items-start gap-3">
-              <span class="material-symbols-outlined text-health-green">check_circle</span>
-              <span class="text-body-md">Terverifikasi oleh Komite Mutu RSUD Tugu Koja</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="material-symbols-outlined text-health-green">check_circle</span>
-              <span class="text-body-md">Sesuai dengan Akreditasi STARKES Kemenkes RI</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="material-symbols-outlined text-health-green">check_circle</span>
-              <span class="text-body-md">Tersedia dalam format digital dan cetak terkendali</span>
-            </li>
-          </ul>
-        </div>
-      </section>
-
     </div>
   </main>
 

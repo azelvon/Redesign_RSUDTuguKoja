@@ -53,6 +53,13 @@
         pointer-events: auto;
     }
 
+    /* ── Emergency bar persistence ─────────────────────────── */
+    #emergency-bar {
+        position: sticky;
+        top: 0;
+        z-index: 1001;
+    }
+
     /* ── Floating Glassmorphism Header (Hybrid) ──────────── */
     /* Fix 3: Figure-Ground — semi-transparent over hero,    */
     /*         transitions to solid white on scroll           */

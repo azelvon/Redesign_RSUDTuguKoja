@@ -130,57 +130,78 @@
 </head>
 <body class="text-on-surface">
     <div id="navbar-container" style="height: 36px;"></div>
-    <main class="pt-8 pb-24 max-w-container-max mx-auto px-margin-desktop">
-    <div class="flex flex-col lg:flex-row gap-gutter">
-    <!-- Konten Utama -->
-    <section class="flex-1">
-        <!-- Hasil Info & Tabs -->
-        <div class="mb-8">
-            <nav class="text-sm font-body-md text-on-surface-variant mb-4" aria-label="Breadcrumb">
-                <ol class="inline-flex items-center gap-2">
-                    <li>
-                        <a href="index.html" class="text-on-surface-variant hover:text-primary transition-colors">Home</a>
-                    </li>
-                    <li class="text-on-surface-variant">&gt;</li>
-                    <li class="font-semibold text-primary">Pencarian</li>
-                </ol>
-            </nav>
-            <h1 class="font-headline-lg text-headline-lg text-primary mb-2">Pencarian</h1>
-            <p class="font-body-lg text-body-lg text-on-surface-variant mb-6">Telusuri dokter, layanan, dan berita dengan kata kunci. Hasil akan muncul secara real-time di bawah.</p>
+    <main>
+      <!-- Hero Section -->
+      <section class="relative h-[320px] md:h-[420px] w-full overflow-hidden flex items-end">
+        <div class="absolute inset-0 z-0">
+          <img
+            alt="RSUD Tugu Koja Search Hero"
+            class="w-full h-full object-cover"
+            src="assets/images/hero/RS%20Tugu%20Koja.jpg"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-jakarta-blue/95 via-jakarta-blue/70 to-jakarta-blue/20"></div>
+        </div>
+        <div class="relative z-10 max-w-container-max mx-auto px-gutter w-full pb-12">
+          <nav class="mb-4" aria-label="Breadcrumb">
+            <ol class="flex items-center gap-2 text-sm text-white/70 font-label-md">
+              <li><a href="index.html" class="hover:text-white transition-colors" style="text-decoration:none;">Beranda</a></li>
+              <li><span class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+              <li class="text-white font-semibold">Pencarian</li>
+            </ol>
+          </nav>
+          <div class="max-w-2xl">
+            <h1 class="font-headline-xl text-headline-xl text-white mb-3" style="text-shadow: 0 16px 32px rgba(0,0,0,0.16);">
+              Temukan Dokter, Layanan, dan Berita RSUD Tugu Koja
+            </h1>
+            <p class="font-body-md text-[16px] text-white/80 mb-6 max-w-xl">
+              Gunakan kata kunci untuk mencari informasi yang Anda butuhkan secara cepat dan mudah di seluruh layanan rumah sakit.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="py-16 max-w-container-max mx-auto px-margin-desktop">
+        <div class="flex flex-col lg:flex-row gap-gutter">
+          <!-- Konten Utama -->
+          <section class="flex-1">
+            <!-- Hasil Info & Tabs -->
             <div class="mb-8">
-            <label for="searchInput" class="sr-only">Cari</label>
-            <div class="relative max-w-2xl">
-                <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
-                <input id="searchInput" type="search" placeholder="Cari dokter, layanan, atau berita..." class="w-full rounded-3xl border border-surface-subtle bg-white py-4 pl-12 pr-4 text-body-lg text-body-lg text-on-surface shadow-sm focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none" />
+              <h2 class="font-headline-lg text-headline-lg text-primary mb-2">Hasil Pencarian</h2>
+              <p class="font-body-lg text-body-lg text-on-surface-variant mb-6">Telusuri dokter, layanan, dan berita dengan kata kunci. Hasil akan muncul secara real-time di bawah.</p>
+              <div class="mb-8">
+                <label for="searchInput" class="sr-only">Cari</label>
+                <div class="relative max-w-2xl">
+                  <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+                  <input id="searchInput" type="search" placeholder="Cari dokter, layanan, atau berita..." class="w-full rounded-3xl border border-surface-subtle bg-white py-4 pl-12 pr-4 text-body-lg text-body-lg text-on-surface shadow-sm focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none" />
+                </div>
+              </div>
+              <div class="flex border-b border-surface-variant gap-8 overflow-x-auto pb-px">
+                <button type="button" class="category-tab pb-4 px-2 border-b-2 border-primary text-primary font-label-lg text-label-lg whitespace-nowrap" data-category="all" aria-pressed="true" onclick="updateCategoryTab('all')">Semua</button>
+                <button type="button" class="category-tab pb-4 px-2 border-b-2 border-transparent text-on-surface-variant font-label-lg text-label-lg hover:text-primary transition-colors whitespace-nowrap" data-category="dokter" aria-pressed="false" onclick="updateCategoryTab('dokter')">Dokter</button>
+                <button type="button" class="category-tab pb-4 px-2 border-b-2 border-transparent text-on-surface-variant font-label-lg text-label-lg hover:text-primary transition-colors whitespace-nowrap" data-category="layanan" aria-pressed="false" onclick="updateCategoryTab('layanan')">Layanan</button>
+                <button type="button" class="category-tab pb-4 px-2 border-b-2 border-transparent text-on-surface-variant font-label-lg text-label-lg hover:text-primary transition-colors whitespace-nowrap" data-category="berita" aria-pressed="false" onclick="updateCategoryTab('berita')">Berita &amp; Artikel</button>
+              </div>
             </div>
+            <!-- Daftar Hasil -->
+            <div class="space-y-6">
+              <div id="search-summary" class="rounded-3xl bg-surface-container-lowest border border-surface-subtle p-6">
+                <p class="font-body-lg text-body-lg text-on-surface-variant mb-2">Ketik kata kunci untuk menampilkan hasil pencarian dari dokter, layanan, dan berita.</p>
+                <p class="font-label-lg text-label-lg text-primary">Menampilkan <span id="search-count" class="font-bold">0</span> hasil untuk <span id="search-query" class="italic text-jakarta-blue">semua data</span></p>
+              </div>
+              <div id="search-results" class="space-y-6"></div>
+              <div id="search-empty" class="hidden rounded-3xl bg-surface-container-lowest border border-surface-subtle p-10 text-center">
+                <p class="font-headline-md text-headline-md text-primary mb-3">Tidak ada hasil ditemukan</p>
+                <p class="font-body-md text-body-md text-on-surface-variant">Coba gunakan kata kunci lain atau periksa kembali filter pencarian.</p>
+              </div>
             </div>
-            <div class="flex border-b border-surface-variant gap-8 overflow-x-auto pb-px">
-            <button type="button" class="category-tab pb-4 px-2 border-b-2 border-primary text-primary font-label-lg text-label-lg whitespace-nowrap" data-category="all" aria-pressed="true" onclick="updateCategoryTab('all')">Semua</button>
-            <button type="button" class="category-tab pb-4 px-2 border-b-2 border-transparent text-on-surface-variant font-label-lg text-label-lg hover:text-primary transition-colors whitespace-nowrap" data-category="dokter" aria-pressed="false" onclick="updateCategoryTab('dokter')">Dokter</button>
-            <button type="button" class="category-tab pb-4 px-2 border-b-2 border-transparent text-on-surface-variant font-label-lg text-label-lg hover:text-primary transition-colors whitespace-nowrap" data-category="layanan" aria-pressed="false" onclick="updateCategoryTab('layanan')">Layanan</button>
-            <button type="button" class="category-tab pb-4 px-2 border-b-2 border-transparent text-on-surface-variant font-label-lg text-label-lg hover:text-primary transition-colors whitespace-nowrap" data-category="berita" aria-pressed="false" onclick="updateCategoryTab('berita')">Berita &amp; Artikel</button>
-            </div>
+          </section>
         </div>
-        <!-- Daftar Hasil -->
-        <div class="space-y-6">
-        <div id="search-summary" class="rounded-3xl bg-surface-container-lowest border border-surface-subtle p-6">
-            <p class="font-body-lg text-body-lg text-on-surface-variant mb-2">Ketik kata kunci untuk menampilkan hasil pencarian dari dokter, layanan, dan berita.</p>
-            <p class="font-label-lg text-label-lg text-primary">Menampilkan <span id="search-count" class="font-bold">0</span> hasil untuk <span id="search-query" class="italic text-jakarta-blue">semua data</span></p>
-        </div>
-        <div id="search-results" class="space-y-6"></div>
-        <div id="search-empty" class="hidden rounded-3xl bg-surface-container-lowest border border-surface-subtle p-10 text-center">
-            <p class="font-headline-md text-headline-md text-primary mb-3">Tidak ada hasil ditemukan</p>
-            <p class="font-body-md text-body-md text-on-surface-variant">Coba gunakan kata kunci lain atau periksa kembali filter pencarian.</p>
-        </div>
-        </div>
-    </section>
-    </div>
-</main>
-<div id="footer-container"></div>
+      </section>
+    </main>
+    <div id="footer-container"></div>
 <script>
         const dataSources = {
             dokter: './assets/data/dokter.json',
-            layanan: './assets/data/layanan.json',
+            layanan: './assets/data/klinik.json',
             berita: './assets/data/berita.json'
         };
 
@@ -190,8 +211,122 @@
         const searchResults = document.getElementById('search-results');
         const searchEmpty = document.getElementById('search-empty');
 
+        // Mapping by layanan id -> human friendly floor label
+        const floorMap = {
+            'klinik-gizi': 'Lantai 1',
+            'klinik-mcu': 'Lantai 1',
+            'klinik-geriatri': 'Lantai 1',
+            'klinik-sehati': 'Lantai 1',
+            'layanan-fisioterapi': 'Lantai 2'
+        };
+
+        // Static layanan pages to include in search (title, description, page path)
+        const staticLayanan = [
+            { id: 'layanan-farmasi', nama: 'Farmasi', tipe: 'Layanan', deskripsi: 'Layanan penebusan resep obat yang terintegrasi dengan sistem rekam medis.'},
+            { id: 'layanan-rawat-inap', nama: 'Rawat Inap', tipe: 'Layanan', deskripsi: 'Kamar perawatan yang dirancang untuk kenyamanan pemulihan pasien. Tersedia kelas VVIP, VIP, hingga Kelas Standar.' },
+            { id: 'layanan-laboratorium', nama: 'Laboratorium', tipe: 'Layanan', deskripsi: 'Layanan tes darah, urine, dan patologi klinik dengan hasil yang cepat dan akurat.'},
+            { id: 'layanan-igd', nama: 'IGD 24 Jam', tipe: 'Layanan', deskripsi: 'Penanganan darurat medis tercepat dengan tim ahli trauma dan peralatan pendukung hidup lanjutan.'},
+            { id: 'layanan-poliklinik', nama: 'Poliklinik', tipe: 'Layanan', deskripsi: 'Daftar poliklinik dan jadwal praktik.'},
+            { id: 'layanan-peta', nama: 'Peta Rumah Sakit', tipe: 'Layanan', deskripsi: 'Peta lokasi dan denah lantai rumah sakit.'},
+            { id: 'layanan-radiologi', nama: 'Radiologi', tipe: 'Layanan', deskripsi: 'Dilengkapi CT Scan 64 Slices, Digital X-Ray, dan USG 4D terbaru.'},
+            { id: 'layanan-rehabilitasi', nama: 'Rehabilitasi', tipe: 'Layanan', deskripsi: 'Layanan rehabilitasi fisik dan kognitif untuk pasien yang membutuhkan pemulihan fungsi.' },
+            { id: 'layanan-tumbuhkembang', nama: 'Tumbuh Kembang', tipe: 'Layanan', deskripsi: 'Layanan komprehensif untuk deteksi dini, intervensi, dan terapi anak. Ditangani oleh tim ahli tumbuh kembang dan terapis profesional di lingkungan yang ramah anak.' },
+        ];
+
         function normalize(text) {
             return (text || '').toString().toLowerCase();
+        }
+
+        function formatSchedule(scheduleData) {
+            if (!Array.isArray(scheduleData)) return normalize(scheduleData);
+            return scheduleData
+                .map(day => [day.hari, day.pagi || '', day.sore || ''].filter(Boolean).join(' '))
+                .join(' ');
+        }
+
+        function normalizeDoctorItem(item) {
+            const location = item.location || (Array.isArray(item.poliklinik) ? item.poliklinik.join(', ') : '');
+            const schedule = item.schedule || formatSchedule(item.jadwal);
+            const keywords = [
+                ...(item.keywords || []),
+                ...(item.keahlian || []),
+                ...(item.pendidikan || []),
+                ...(item.poliklinik || [])
+            ].map(normalize);
+
+            let imagePath = item.image || item.foto || '';
+            if (imagePath.includes('default-female.png')) {
+                imagePath = 'assets/images/dokter/dokter_wanita.png';
+            } else if (imagePath.includes('default-male.png')) {
+                imagePath = 'assets/images/dokter/dokter_pria.png';
+            } else if (imagePath.startsWith('assets/img/dokter/')) {
+                imagePath = imagePath.replace('assets/img/dokter/', 'assets/images/dokter/');
+            }
+            if (!imagePath) {
+                imagePath = 'assets/images/dokter/dokter_pria.png';
+            }
+
+            return {
+                ...item,
+                type: 'dokter',
+                name: item.name || item.nama || '',
+                title: item.title || item.spesialisasi || '',
+                excerpt: item.excerpt || item.deskripsi || '',
+                location,
+                schedule,
+                status: item.status || 'Tersedia',
+                image: imagePath,
+                keywords
+            };
+        }
+
+        function normalizeLayananItem(item) {
+            const keywords = [
+                ...(item.keywords || []),
+                ...(item.layanan || []),
+                item.tipe ? [item.tipe] : [],
+                item.category ? [item.category] : []
+            ].flat().map(normalize);
+
+            // Prefer explicit location fields; fall back to tipe/category only if nothing else.
+            let location = item.location || item.lokasi || item.floor || '';
+            // If location is still empty, fall back to category/tipe
+            if (!location) location = item.tipe || item.category || '';
+            // If location is generic like 'layanan' or 'klinik', try a known floor map by id
+            if (location && ['layanan', 'klinik'].includes(location.toString().toLowerCase())) {
+                const mapped = floorMap[item.id];
+                if (mapped) location = mapped;
+            }
+
+            return {
+                ...item,
+                type: 'layanan',
+                title: item.title || item.nama || '',
+                description: item.description || item.deskripsi || '',
+                location,
+                category: item.category || item.tipe || '',
+                icon: item.icon || 'medical_services',
+                keywords
+            };
+        }
+
+        function normalizeBeritaItem(item) {
+            const keywords = [
+                ...(item.keywords || []),
+                item.penulis ? [item.penulis] : [],
+                item.kategori ? [item.kategori] : []
+            ].flat().map(normalize);
+
+            return {
+                ...item,
+                type: 'berita',
+                title: item.title || item.judul || '',
+                summary: item.summary || item.ringkasan || '',
+                category: item.category || item.kategori || '',
+                date: item.date || item.tanggal || '',
+                url: item.url || '#',
+                keywords
+            };
         }
 
         async function fetchJson(path) {
@@ -220,7 +355,7 @@
                     if (r2.ok) {
                         const all = JSON.parse((await r2.text()).replace(/^\uFEFF/, ''));
                         if (path.includes('dokter')) return all.dokter || [];
-                        if (path.includes('layanan')) return all.layanan || [];
+                        if (path.includes('layanan') || path.includes('klinik')) return all.layanan || [];
                         if (path.includes('berita')) return all.berita || [];
                     }
                 } catch (e) { /* ignore */ }
@@ -230,17 +365,22 @@
         }
 
         function buildSearchText(item) {
-            if (item.type === 'dokter') {
-                return normalize([item.name, item.title, item.excerpt, item.location, item.schedule, ...item.keywords].join(' '));
-            }
-            if (item.type === 'layanan') {
-                return normalize([item.title, item.description, item.location, ...item.keywords].join(' '));
-            }
-            return normalize([item.title, item.summary, item.category, ...item.keywords].join(' '));
+            return normalize([
+                item.name || '',
+                item.title || '',
+                item.excerpt || item.description || '',
+                item.location || '',
+                item.schedule || '',
+                item.category || '',
+                item.date || '',
+                item.summary || '',
+                ...(item.keywords || [])
+            ].join(' '));
         }
 
         function renderDoctor(item) {
             return `
+                <a href="${getItemUrl(item)}" class="search-card-link block">
                 <div class="bg-surface-container-lowest border border-surface-subtle p-6 rounded-xl flex flex-col md:flex-row gap-6 hover:shadow-lg transition-all group">
                     <div class="w-full md:w-48 h-48 rounded-xl overflow-hidden bg-surface-container">
                         <img class="w-full h-full object-cover" src="${item.image}" alt="Foto ${item.name}" />
@@ -274,14 +414,16 @@
                         </div>
                     </div>
                 </div>
+                </a>
             `;
         }
 
         function renderLayanan(item) {
-            return `
+            const iconName = item.icon && item.icon.startsWith('fa-') ? 'medical_services' : item.icon || 'medical_services';
+            const cardHtml = `
                 <div class="bg-surface-container-lowest border border-surface-subtle p-6 rounded-xl flex flex-col md:flex-row gap-6 hover:shadow-lg transition-all group">
                     <div class="w-full md:w-16 h-16 flex items-center justify-center bg-primary-container rounded-xl shrink-0">
-                        <span class="material-symbols-outlined text-on-primary-container text-4xl">${item.icon}</span>
+                        <span class="material-symbols-outlined text-on-primary-container text-4xl">${iconName}</span>
                     </div>
                     <div class="flex-1 flex flex-col justify-between">
                         <div>
@@ -289,18 +431,24 @@
                             <p class="font-body-md text-body-md text-on-surface-variant line-clamp-3">${item.description}</p>
                         </div>
                         <div class="mt-6 flex flex-wrap gap-4 text-on-surface-variant font-body-md text-body-md">
+                            ${item.location ? `
                             <div class="flex items-center gap-2">
                                 <span class="material-symbols-outlined text-jakarta-blue">location_on</span>
                                 ${item.location}
                             </div>
+                            ` : ''}
                         </div>
                     </div>
                 </div>
             `;
+
+            // Layanan cards are intentionally non-clickable
+            return cardHtml;
         }
 
         function renderBerita(item) {
             return `
+                <a href="${getItemUrl(item)}" class="search-card-link block">
                 <div class="bg-surface-container-lowest border border-surface-subtle p-6 rounded-xl hover:shadow-lg transition-all">
                     <div class="flex flex-col md:flex-row justify-between items-start mb-4 gap-4">
                         <div class="flex-1">
@@ -310,12 +458,40 @@
                         <span class="px-3 py-1 bg-surface-container-high rounded-full text-label-md font-label-md text-on-surface-variant">${item.category}</span>
                     </div>
                     <p class="font-body-md text-body-md text-on-surface-variant mb-4 line-clamp-3">${item.summary}</p>
-                    <a class="inline-flex items-center gap-2 text-primary font-label-lg text-label-lg group" href="${item.url}">
+                    <span class="inline-flex items-center gap-2 text-primary font-label-lg text-label-lg group">
                         Baca Selengkapnya
                         <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
-                    </a>
+                    </span>
                 </div>
+                </a>
             `;
+        }
+
+        function getItemUrl(item) {
+            if (!item) return '#';
+            if (item.url) return item.url;
+            if (item.type === 'dokter') {
+                // profile page expects a `slug` query param — generate from name if not provided
+                const slug = item.slug || (item.name ? slugify(item.name) : (item.id || ''));
+                return `caridokter/profil.html?slug=${encodeURIComponent(slug)}`;
+            }
+            if (item.type === 'layanan') {
+                // prefer explicit page if provided, otherwise optimistic path
+                return item.page || `layanan/${(item.id || '').replace(/[^a-z0-9_\-]/gi,'')}.html`;
+            }
+            if (item.type === 'berita') {
+                return `berita.html?id=${encodeURIComponent(item.id || item.title || '')}`;
+            }
+            return '#';
+        }
+
+        function slugify(text) {
+            return (text || '').toString().toLowerCase()
+                .replace(/[.,]/g, '')
+                .replace(/\s+/g, '-')
+                .replace(/[^a-z0-9\-]/g, '')
+                .replace(/-+/g, '-')
+                .replace(/^-|-$/g, '');
         }
 
         function renderItem(item) {
@@ -374,9 +550,10 @@
                 fetchJson(dataSources.berita)
             ]);
             window.searchData = [
-                ...dokterData.map(item => ({ ...item, type: 'dokter' })),
-                ...layananData.map(item => ({ ...item, type: 'layanan' })),
-                ...beritaData.map(item => ({ ...item, type: 'berita' }))
+                ...dokterData.map(normalizeDoctorItem),
+                ...layananData.map(normalizeLayananItem),
+                ...beritaData.map(normalizeBeritaItem),
+                ...staticLayanan.map(normalizeLayananItem)
             ].map(item => ({ ...item, searchText: buildSearchText(item) }));
             const urlQuery = new URLSearchParams(window.location.search).get('q')?.trim();
             if (urlQuery) searchInput.value = urlQuery;
