@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Detail Klinik - RSUD Tugu Koja</title>
+    <meta name="description" content="Lihat detail layanan klinik di RSUD Tugu Koja." />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Atkinson+Hyperlegible+Next:wght@400;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#f7f9fb",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-subtle": "#F1F5F9",
+                        "surface-dim": "#d8dadc",
+                        "jakarta-blue": "#224266",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#052c4f",
+                        "health-green": "#34918C",
+                        "text-muted": "#64748B",
+                        "on-surface": "#191c1e",
+                        "surface-container": "#eceef0",
+                        "on-surface-variant": "#43474e",
+                        "emergency-red": "#E63946"
+                    },
+                    "fontFamily": {
+                        "label-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Atkinson Hyperlegible Next"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-md": ["Atkinson Hyperlegible Next"],
+                        "headline-lg": ["Plus Jakarta Sans"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-up { animation: fadeUp 0.5s ease both; }
+        .fade-up-delay-1 { animation-delay: 0.1s; }
+        .fade-up-delay-2 { animation-delay: 0.2s; }
+        .fade-up-delay-3 { animation-delay: 0.3s; }
+        
+        .schedule-table td, .schedule-table th {
+            padding: 12px 16px; text-align: center; font-size: 14px;
+        }
+        .schedule-table th { font-weight: 600; color: #43474e; }
+        .schedule-badge {
+            display: inline-block; padding: 4px 12px; border-radius: 8px; font-size: 13px; font-weight: 600;
+        }
+        .schedule-badge.available { background: #e8f5e9; color: #2e7d32; }
+        .schedule-badge.unavailable { color: #bdbdbd; }
+        .schedule-table tbody tr { transition: background 0.2s ease; }
+        .schedule-table tbody tr:hover { background: #f8fafc; }
+
+        .hero-pattern {
+            background-image: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.08) 0%, transparent 50%),
+                              radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 0%, transparent 40%);
+        }
+
+        .skeleton {
+            background: linear-gradient(90deg, #e0e3e5 25%, #eceef0 50%, #e0e3e5 75%);
+            background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 8px;
+        }
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</head>
+
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+    <div id="navbar-container" style="height: 36px;"></div>
+
+    <!-- Loading State -->
+    <div id="loading-state" class="max-w-7xl mx-auto px-6 py-8 min-h-screen">
+        <div class="skeleton h-6 w-64 mb-8"></div>
+        <div class="skeleton h-[280px] w-full rounded-3xl mb-8"></div>
+    </div>
+
+    <!-- Error State -->
+    <div id="error-state" class="max-w-7xl mx-auto px-6 py-8 min-h-screen hidden">
+        <div class="flex flex-col items-center justify-center py-32">
+            <span class="material-symbols-outlined text-7xl text-surface-dim mb-4">search_off</span>
+            <h1 class="font-headline-lg text-[32px] font-bold text-primary mb-2">Klinik Tidak Ditemukan</h1>
+            <p class="text-text-muted mb-8 text-center max-w-md">
+                Maaf, data klinik yang Anda cari tidak tersedia.
+            </p>
+            <a href="caridokter.html"
+               class="px-8 py-3 bg-jakarta-blue text-white rounded-xl font-label-lg hover:brightness-110 flex items-center gap-2">
+                <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                Kembali ke Cari Dokter
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="klinik-content" class="hidden">
+        <!-- Hero Section -->
+        <div class="relative bg-gradient-to-br from-jakarta-blue via-[#1a365d] to-[#12284c] hero-pattern fade-up overflow-hidden">
+            <!-- Decorative SVG background -->
+            <div class="absolute inset-0 pointer-events-none z-0">
+                <div class="absolute right-0 top-0 w-64 h-full bg-white/5 skew-x-[30deg] translate-x-8"></div>
+                <div class="absolute -top-24 -right-12 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
+                <div class="absolute top-10 right-20 text-white/5 w-64 h-64">
+                    <span id="hero-bg-icon" class="material-symbols-outlined text-[200px]" style="font-variation-settings: 'FILL' 1;">medical_services</span>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-6 pt-32 pb-12 md:pt-40 md:pb-16 relative z-10">
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
+                    <!-- Icon -->
+                    <div class="w-28 h-28 md:w-36 md:h-36 rounded-3xl bg-white/10 border-4 border-white/20 shadow-2xl flex items-center justify-center flex-shrink-0 backdrop-blur-md">
+                        <span id="hero-icon" class="material-symbols-outlined text-white text-[64px]" style="font-variation-settings: 'FILL' 1;">medical_services</span>
+                    </div>
+                    <!-- Info -->
+                    <div class="text-center md:text-left flex-grow">
+                        <div class="flex items-center gap-2 justify-center md:justify-start mb-3">
+                            <span class="material-symbols-outlined text-health-green text-sm" style="font-variation-settings: 'FILL' 1;">local_hospital</span>
+                            <span id="hero-tipe" class="text-health-green text-xs font-bold uppercase tracking-wider">Klinik Spesialis</span>
+                        </div>
+                        <h1 class="font-headline-lg text-[32px] md:text-[42px] leading-tight text-white font-bold mb-3" id="hero-name"></h1>
+                        <div class="flex items-center justify-center md:justify-start gap-2 text-white/80 text-sm">
+                            <span class="material-symbols-outlined text-[18px]">location_on</span>
+                            <span id="hero-location"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 py-10">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Left Column -->
+                <div class="lg:col-span-2 space-y-8">
+                    <!-- Breadcrumb -->
+                    <nav class="flex items-center gap-2 text-text-muted font-label-md text-sm fade-up">
+                        <a class="hover:text-primary transition-colors" href="index.html">Beranda</a>
+                        <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+                        <a class="hover:text-primary transition-colors" href="caridokter.html">Fasilitas</a>
+                        <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+                        <span class="text-primary font-bold" id="breadcrumb-name">Detail Klinik</span>
+                    </nav>
+
+                    <!-- Deskripsi -->
+                    <div class="bg-white rounded-3xl p-8 shadow-sm border border-surface-subtle fade-up fade-up-delay-1">
+                        <h2 class="font-headline-md text-[20px] text-primary mb-4 flex items-center gap-3 font-bold">
+                            <div class="w-10 h-10 rounded-xl bg-jakarta-blue/10 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-jakarta-blue text-[20px]">info</span>
+                            </div>
+                            Tentang Klinik
+                        </h2>
+                        <p class="text-on-surface-variant leading-relaxed text-[16px]" id="deskripsi-text"></p>
+                    </div>
+
+                    <!-- Jadwal Praktik -->
+                    <div class="bg-white rounded-3xl p-8 shadow-sm border border-surface-subtle fade-up fade-up-delay-2">
+                        <h2 class="font-headline-md text-[20px] text-primary mb-6 flex items-center gap-3 font-bold">
+                            <div class="w-10 h-10 rounded-xl bg-jakarta-blue/10 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-jakarta-blue text-[20px]" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+                            </div>
+                            Jadwal Operasional Klinik
+                        </h2>
+                        <div class="rounded-2xl border border-surface-subtle overflow-hidden">
+                            <table class="w-full schedule-table">
+                                <thead class="bg-surface-container-low">
+                                    <tr>
+                                        <th class="text-left">Hari</th>
+                                        <th>Pagi</th>
+                                        <th>Sore</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-surface-subtle" id="schedule-tbody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="space-y-8">
+                    <!-- Layanan List -->
+                    <div class="bg-white rounded-3xl p-6 shadow-sm border border-surface-subtle fade-up fade-up-delay-2">
+                        <h3 class="font-label-lg text-lg text-primary mb-4 flex items-center gap-2 font-bold">
+                            <span class="material-symbols-outlined text-[18px] text-health-green" style="font-variation-settings: 'FILL' 1;">verified</span>
+                            Fasilitas & Layanan
+                        </h3>
+                        <ul class="space-y-3" id="layanan-list"></ul>
+                    </div>
+
+                    <!-- CTA Action -->
+                    <div class="bg-gradient-to-br from-health-green to-[#206864] rounded-3xl p-6 shadow-lg text-white fade-up fade-up-delay-3">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="material-symbols-outlined text-[28px] text-white/90" style="font-variation-settings: 'FILL' 1;">stethoscope</span>
+                            <h3 class="font-label-lg text-lg font-bold">Cari Dokter Spesialis</h3>
+                        </div>
+                        <p class="text-white/80 text-sm mb-5 leading-relaxed">
+                            Temukan dan jadwalkan konsultasi dengan dokter spesialis kami di klinik ini.
+                        </p>
+                        <a href="caridokter.html" id="btn-cari-dokter" class="w-full mt-3 py-3.5 bg-white text-health-green rounded-xl font-bold hover:bg-white/90 transition-all flex items-center justify-center gap-2 shadow-sm">
+                            Cari Dokter Sekarang
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <script>
+        // Icon mapping helper
+        function getMaterialIcon(faIcon) {
+            const iconMap = {
+                'fa-apple-whole': 'nutrition',
+                'fa-clipboard-check': 'assignment_turned_in',
+                'fa-person-cane': 'elderly',
+                'fa-heart': 'favorite',
+                'fa-dumbbell': 'fitness_center'
+            };
+            return iconMap[faIcon] || 'medical_services';
+        }
+
+        async function init() {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id');
+
+            if (!id) {
+                document.getElementById('loading-state').classList.add('hidden');
+                document.getElementById('error-state').classList.remove('hidden');
+                return;
+            }
+
+            try {
+                const response = await fetch('assets/data/klinik.json');
+                const data = await response.json();
+                const klinik = data.find(k => k.id === id);
+
+                if (!klinik) {
+                    document.getElementById('loading-state').classList.add('hidden');
+                    document.getElementById('error-state').classList.remove('hidden');
+                    return;
+                }
+
+                // Render Data
+                document.title = `${klinik.nama} - RSUD Tugu Koja`;
+                
+                const iconName = getMaterialIcon(klinik.icon);
+                document.getElementById('hero-icon').innerText = iconName;
+                document.getElementById('hero-bg-icon').innerText = iconName;
+                
+                document.getElementById('hero-name').innerText = klinik.nama;
+                document.getElementById('hero-tipe').innerText = klinik.tipe;
+                document.getElementById('hero-location').innerText = klinik.location;
+                
+                document.getElementById('breadcrumb-name').innerText = klinik.nama;
+                document.getElementById('deskripsi-text').innerText = klinik.deskripsi;
+
+                // Layanan
+                if (klinik.layanan && klinik.layanan.length > 0) {
+                    document.getElementById('layanan-list').innerHTML = klinik.layanan.map(l => 
+                        `<li class="flex items-start gap-3 p-3 rounded-xl bg-surface-container-lowest border border-surface-subtle">
+                            <span class="material-symbols-outlined text-[18px] text-jakarta-blue mt-0.5 flex-shrink-0">check_circle</span>
+                            <span class="text-sm text-on-surface-variant leading-relaxed">${l}</span>
+                        </li>`
+                    ).join('');
+                } else {
+                     document.getElementById('layanan-list').innerHTML = `<li class="text-sm text-text-muted">Tidak ada layanan spesifik.</li>`;
+                }
+
+                // Jadwal
+                const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+                const hariIni = days[new Date().getDay()];
+
+                document.getElementById('schedule-tbody').innerHTML = klinik.jadwal.map(j => {
+                    const pagiHTML = j.pagi ? `<span class="schedule-badge available">${j.pagi}</span>` : `<span class="schedule-badge unavailable">—</span>`;
+                    const soreHTML = j.sore ? `<span class="schedule-badge available">${j.sore}</span>` : `<span class="schedule-badge unavailable">—</span>`;
+                    const isToday = j.hari === hariIni;
+                    
+                    return `<tr class="${isToday ? 'bg-health-green/5' : ''}">
+                        <td class="font-semibold text-left ${isToday ? 'text-health-green' : 'text-on-surface'}">
+                            ${j.hari}${isToday ? ' <span class="text-[10px] bg-health-green text-white px-2 py-0.5 rounded-full ml-1.5">Hari Ini</span>' : ''}
+                        </td>
+                        <td>${pagiHTML}</td>
+                        <td>${soreHTML}</td>
+                    </tr>`;
+                }).join('');
+
+                // Update CTA link based on klinik name (e.g. redirect to caridokter with spesialisasi filter)
+                // For simplicity, just send them back to caridokter
+                // document.getElementById('btn-cari-dokter').href = `caridokter.html?search=${encodeURIComponent(klinik.nama)}`;
+
+                // Show
+                document.getElementById('loading-state').classList.add('hidden');
+                document.getElementById('klinik-content').classList.remove('hidden');
+
+            } catch (err) {
+                console.error(err);
+                document.getElementById('loading-state').classList.add('hidden');
+                document.getElementById('error-state').classList.remove('hidden');
+            }
+        }
+
+        init();
+    </script>
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+</body>
+</html>
