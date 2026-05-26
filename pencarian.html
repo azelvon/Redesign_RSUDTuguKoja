@@ -442,8 +442,7 @@
                 </div>
             `;
 
-            // Layanan cards are intentionally non-clickable
-            return cardHtml;
+            return `<a href="${getItemUrl(item)}" class="search-card-link block">${cardHtml}</a>`;
         }
 
         function renderBerita(item) {
@@ -469,6 +468,11 @@
 
         function getItemUrl(item) {
             if (!item) return '#';
+            // Force berita items to the berita listing page
+            if (item.type === 'berita') {
+                return 'berita.html';
+            }
+            // Allow explicit item URL for non-berita items
             if (item.url) return item.url;
             if (item.type === 'dokter') {
                 // profile page expects a `slug` query param — generate from name if not provided
@@ -476,11 +480,7 @@
                 return `caridokter/profil.html?slug=${encodeURIComponent(slug)}`;
             }
             if (item.type === 'layanan') {
-                // prefer explicit page if provided, otherwise optimistic path
-                return item.page || `layanan/${(item.id || '').replace(/[^a-z0-9_\-]/gi,'')}.html`;
-            }
-            if (item.type === 'berita') {
-                return `berita.html?id=${encodeURIComponent(item.id || item.title || '')}`;
+                return 'layanan/peta.html';
             }
             return '#';
         }
