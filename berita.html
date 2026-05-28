@@ -215,7 +215,7 @@
         // ── Render featured article (first article) ──────────────
         function renderFeatured(article) {
             return `
-            <article class="featured-card bg-white rounded-2xl overflow-hidden border border-surface-subtle animate-fade-in">
+            <article class="featured-card bg-white rounded-2xl overflow-hidden border border-surface-subtle animate-fade-in cursor-pointer" onclick="window.location.href='berita-detail.html?id=${article.id}'">
                 <div class="grid grid-cols-1 lg:grid-cols-2">
                     <div class="relative h-64 lg:h-full min-h-[280px] overflow-hidden">
                         <img
@@ -252,7 +252,7 @@
         // ── Render a single article card ─────────────────────────
         function renderCard(article, index) {
             return `
-            <article class="news-card bg-white rounded-2xl overflow-hidden border border-surface-subtle animate-fade-in" style="animation-delay: ${index * 0.06}s">
+            <article class="news-card bg-white rounded-2xl overflow-hidden border border-surface-subtle animate-fade-in cursor-pointer" style="animation-delay: ${index * 0.06}s" onclick="window.location.href='berita-detail.html?id=${article.id}'">
                 <div class="relative h-48 overflow-hidden">
                     <img
                         alt="${article.judul}"
