@@ -29,7 +29,7 @@
   }
 
   // Page groups for multi-page active states
-  const layananPages = ["layanan", "poliklinik", "igd", "rawat-inap", "laboratorium", "peta"];
+  const layananPages = ["layanan", "poliklinik", "igd", "rawat-inap", "laboratorium", "radiologi", "farmasi", "peta"];
   const caridokterPages = ["caridokter", "profil"];
 
   // ── HTML Template ────────────────────────────────────────────
@@ -329,8 +329,8 @@
                                 <div class="absolute top-0 left-full pl-2 opacity-0 invisible group-hover/pm:opacity-100 group-hover/pm:visible transition-all duration-300 z-50">
                                     <div class="w-56 bg-white rounded-2xl shadow-xl border border-surface-subtle p-2 relative flex flex-col gap-1">
                                         <a href="${base}layanan/laboratorium.html" class="p-3 rounded-xl hover:bg-surface-container text-[13px] text-on-surface-variant hover:text-health-green font-medium transition-colors">Laboratorium</a>
-                                        <a href="${base}layanan.html" class="p-3 rounded-xl hover:bg-surface-container text-[13px] text-on-surface-variant hover:text-health-green font-medium transition-colors">Radiologi</a>
-                                        <a href="${base}layanan.html" class="p-3 rounded-xl hover:bg-surface-container text-[13px] text-on-surface-variant hover:text-health-green font-medium transition-colors">Farmasi</a>
+                                        <a href="${base}layanan/radiologi.html" class="p-3 rounded-xl hover:bg-surface-container text-[13px] text-on-surface-variant hover:text-health-green font-medium transition-colors">Radiologi</a>
+                                        <a href="${base}layanan/farmasi.html" class="p-3 rounded-xl hover:bg-surface-container text-[13px] text-on-surface-variant hover:text-health-green font-medium transition-colors">Farmasi</a>
                                     </div>
                                 </div>
                             </div>
