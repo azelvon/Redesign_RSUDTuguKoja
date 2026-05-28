@@ -286,29 +286,29 @@
                                         </div>
                                         <div class="grid grid-cols-3 gap-x-6 gap-y-3">
                                             <div class="space-y-2">
-                                                <a href="${base}caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Kandungan & Kebidanan</a>
-                                                <a href="${base}caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Anak</a>
-                                                <a href="${base}caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Penyakit Dalam</a>
-                                                <a href="${base}caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Bedah Umum</a>
-                                                <a href="${base}caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Mata</a>
-                                                <a href="${base}caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli THT-KL</a>
+                                                <a href="${base}layanan/poli-kandungan.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Kandungan & Kebidanan</a>
+                                                <a href="${base}layanan/poli-anak.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Anak</a>
+                                                <a href="${base}layanan/poli-penyakit-dalam.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Penyakit Dalam</a>
+                                                <a href="${base}layanan/poli-bedah-umum.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Bedah Umum</a>
+                                                <a href="${base}layanan/poli-mata.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Mata</a>
+                                                <a href="${base}layanan/poli-tht-kl.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli THT-KL</a>
                                             </div>
                                             <div class="space-y-2">
-                                                <a href="${base}caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Saraf</a>
-                                                <a href="${base}caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Paru</a>
-                                                <a href="${base}caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Jantung & Pembuluh</a>
-                                                <a href="${base}caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Kulit & Kelamin</a>
-                                                <a href="${base}caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Fisik & Rehab</a>
-                                                <a href="${base}caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Konservasi Gigi</a>
+                                                <a href="${base}layanan/poli-saraf.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Saraf</a>
+                                                <a href="${base}layanan/poli-paru.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Paru</a>
+                                                <a href="${base}layanan/poli-jantung.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Jantung & Pembuluh</a>
+                                                <a href="${base}layanan/poli-kulit-kelamin.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Kulit & Kelamin</a>
+                                                <a href="${base}layanan/poli-fisik-rehab.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Fisik & Rehab</a>
+                                                <a href="${base}layanan/poli-konservasi-gigi.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Konservasi Gigi</a>
                                             </div>
                                             <div class="space-y-2">
-                                                <a href="${base}caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Gigi Umum</a>
-                                                <a href="${base}caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Akupunktur</a>
+                                                <a href="${base}layanan/poli-gigi-umum.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Gigi Umum</a>
+                                                <a href="${base}layanan/poli-akupunktur.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Akupunktur</a>
                                                 <div class="h-px bg-surface-subtle my-2"></div>
-                                                <a href="${base}klinik-detail.html?id=klinik-gizi" class="block text-[13px] font-bold text-jakarta-blue hover:text-health-green transition-colors">Klinik Gizi</a>
-                                                <a href="${base}klinik-detail.html?id=klinik-mcu" class="block text-[13px] font-bold text-jakarta-blue hover:text-health-green transition-colors">Klinik MCU</a>
-                                                <a href="${base}klinik-detail.html?id=klinik-geriatri" class="block text-[13px] font-bold text-jakarta-blue hover:text-health-green transition-colors">Klinik Geriatri</a>
-                                                <a href="${base}klinik-detail.html?id=klinik-sehati" class="block text-[13px] font-bold text-jakarta-blue hover:text-health-green transition-colors">Klinik Sehati</a>
+                                                <a href="${base}layanan/klinik-gizi.html" class="block text-[13px] font-bold text-jakarta-blue hover:text-health-green transition-colors">Klinik Gizi</a>
+                                                <a href="${base}layanan/klinik-mcu.html" class="block text-[13px] font-bold text-jakarta-blue hover:text-health-green transition-colors">Klinik MCU</a>
+                                                <a href="${base}layanan/klinik-geriatri.html" class="block text-[13px] font-bold text-jakarta-blue hover:text-health-green transition-colors">Klinik Geriatri</a>
+                                                <a href="${base}layanan/klinik-sehati.html" class="block text-[13px] font-bold text-jakarta-blue hover:text-health-green transition-colors">Klinik Sehati</a>
                                             </div>
                                         </div>
                                     </div>
@@ -387,25 +387,25 @@
                         <span class="material-symbols-outlined sub-arrow transition-transform text-[18px]">keyboard_arrow_down</span>
                     </button>
                     <div id="mobile-rawat-jalan" class="hidden pl-3 border-l-2 border-surface-subtle space-y-1 my-1">
-                        <a href="${base}caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Kandungan & Kebidanan</a>
-                        <a href="${base}caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Anak</a>
-                        <a href="${base}caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Penyakit Dalam</a>
-                        <a href="${base}caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Bedah Umum</a>
-                        <a href="${base}caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Mata</a>
-                        <a href="${base}caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli THT-KL</a>
-                        <a href="${base}caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Saraf</a>
-                        <a href="${base}caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Paru</a>
-                        <a href="${base}caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Jantung & Pembuluh Darah</a>
-                        <a href="${base}caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Kulit & Kelamin</a>
-                        <a href="${base}caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Kedokteran Fisik & Rehab</a>
-                        <a href="${base}caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Konservasi Gigi</a>
-                        <a href="${base}caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Gigi Umum</a>
-                        <a href="${base}caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Akupunktur</a>
+                        <a href="${base}layanan/poli-kandungan.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Kandungan & Kebidanan</a>
+                        <a href="${base}layanan/poli-anak.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Anak</a>
+                        <a href="${base}layanan/poli-penyakit-dalam.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Penyakit Dalam</a>
+                        <a href="${base}layanan/poli-bedah-umum.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Bedah Umum</a>
+                        <a href="${base}layanan/poli-mata.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Mata</a>
+                        <a href="${base}layanan/poli-tht-kl.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli THT-KL</a>
+                        <a href="${base}layanan/poli-saraf.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Saraf</a>
+                        <a href="${base}layanan/poli-paru.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Paru</a>
+                        <a href="${base}layanan/poli-jantung.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Jantung & Pembuluh Darah</a>
+                        <a href="${base}layanan/poli-kulit-kelamin.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Kulit & Kelamin</a>
+                        <a href="${base}layanan/poli-fisik-rehab.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Kedokteran Fisik & Rehab</a>
+                        <a href="${base}layanan/poli-konservasi-gigi.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Konservasi Gigi</a>
+                        <a href="${base}layanan/poli-gigi-umum.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Gigi Umum</a>
+                        <a href="${base}layanan/poli-akupunktur.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Akupunktur</a>
                         <div class="h-px bg-surface-subtle my-1"></div>
-                        <a href="${base}klinik-detail.html?id=klinik-gizi" class="block py-1.5 text-[13px] font-medium text-jakarta-blue">Klinik Gizi</a>
-                        <a href="${base}klinik-detail.html?id=klinik-mcu" class="block py-1.5 text-[13px] font-medium text-jakarta-blue">Klinik MCU</a>
-                        <a href="${base}klinik-detail.html?id=klinik-geriatri" class="block py-1.5 text-[13px] font-medium text-jakarta-blue">Klinik Geriatri</a>
-                        <a href="${base}klinik-detail.html?id=klinik-sehati" class="block py-1.5 text-[13px] font-medium text-jakarta-blue">Klinik Sehati</a>
+                        <a href="${base}layanan/klinik-gizi.html" class="block py-1.5 text-[13px] font-medium text-jakarta-blue">Klinik Gizi</a>
+                        <a href="${base}layanan/klinik-mcu.html" class="block py-1.5 text-[13px] font-medium text-jakarta-blue">Klinik MCU</a>
+                        <a href="${base}layanan/klinik-geriatri.html" class="block py-1.5 text-[13px] font-medium text-jakarta-blue">Klinik Geriatri</a>
+                        <a href="${base}layanan/klinik-sehati.html" class="block py-1.5 text-[13px] font-medium text-jakarta-blue">Klinik Sehati</a>
                     </div>
                     <a href="${base}layanan/laboratorium.html" class="block py-2 text-[14px] text-on-surface-variant hover:text-health-green font-medium">Penunjang Medis</a>
                 </div>
