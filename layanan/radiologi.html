@@ -1,756 +1,1105 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-
-<head>
+  <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Radiologi - RSUD Tugu Koja</title>
-    <meta name="description"
-        content="Instalasi Radiologi RSUD Tugu Koja menyediakan layanan pencitraan medis modern seperti Rontgen Digital, USG, CT Scan, dan Panoramik untuk mendukung diagnosis yang akurat." />
+    <meta
+      name="description"
+      content="Instalasi Radiologi RSUD Tugu Koja menyediakan layanan pencitraan medis modern seperti Rontgen Digital, USG, CT Scan, dan Panoramik untuk mendukung diagnosis yang akurat."
+    />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Atkinson+Hyperlegible+Next:wght@400;700&amp;display=swap"
-        rel="stylesheet" />
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Atkinson+Hyperlegible+Next:wght@400;700&amp;display=swap"
+      rel="stylesheet"
+    />
     <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
     <script src="../assets/js/tailwind-config.js"></script>
     <style>
-        body {
-            animation: globalFadeIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      body {
+        animation: globalFadeIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      }
+
+      @keyframes globalFadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
         }
 
-        @keyframes globalFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(12px);
-            }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+
+      /* Service card hover */
+      .service-card {
+        transition:
+          transform 0.3s cubic-bezier(0.22, 0.68, 0, 1.2),
+          box-shadow 0.3s ease,
+          border-color 0.3s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-6px);
+        box-shadow:
+          0 16px 32px rgba(34, 66, 102, 0.1),
+          0 2px 8px rgba(52, 145, 140, 0.08);
+      }
+
+      .service-card:hover .service-icon {
+        background-color: #224266;
+        color: #ffffff;
+      }
+
+      .service-icon {
+        transition:
+          background-color 0.3s ease,
+          color 0.3s ease,
+          transform 0.3s ease;
+      }
+
+      .service-card:hover .service-icon {
+        transform: scale(1.08);
+      }
+
+      /* FAQ accordion */
+      .faq-item {
+        transition: all 0.3s ease;
+      }
+
+      .faq-item:hover {
+        border-color: #34918c;
+      }
+
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition:
+          max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+          padding 0.3s ease,
+          opacity 0.3s ease;
+        opacity: 0;
+      }
+
+      .faq-answer.open {
+        opacity: 1;
+      }
+
+      .faq-toggle {
+        transition: transform 0.3s ease;
+      }
+
+      .faq-toggle.rotated {
+        transform: rotate(180deg);
+      }
+
+      /* Requirement step number */
+      .step-number {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+      }
+
+      /* Placeholder image styling */
+      .placeholder-img {
+        background: linear-gradient(
+          135deg,
+          #e2e8f0 0%,
+          #f1f5f9 50%,
+          #e2e8f0 100%
+        );
+        background-size: 200% 200%;
+        animation: placeholderShimmer 3s ease-in-out infinite;
+      }
+
+      @keyframes placeholderShimmer {
+        0%,
+        100% {
+          background-position: 0% 50%;
         }
 
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        50% {
+          background-position: 100% 50%;
         }
+      }
 
-        /* Service card hover */
-        .service-card {
-            transition: transform 0.3s cubic-bezier(.22, .68, 0, 1.2), box-shadow 0.3s ease, border-color 0.3s ease;
-        }
+      /* Scroll reveal */
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      }
 
-        .service-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 32px rgba(34, 66, 102, 0.10), 0 2px 8px rgba(52, 145, 140, 0.08);
-        }
-
-        .service-card:hover .service-icon {
-            background-color: #224266;
-            color: #ffffff;
-        }
-
-        .service-icon {
-            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-        }
-
-        .service-card:hover .service-icon {
-            transform: scale(1.08);
-        }
-
-        /* FAQ accordion */
-        .faq-item {
-            transition: all 0.3s ease;
-        }
-
-        .faq-item:hover {
-            border-color: #34918C;
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1), padding 0.3s ease, opacity 0.3s ease;
-            opacity: 0;
-        }
-
-        .faq-answer.open {
-            opacity: 1;
-        }
-
-        .faq-toggle {
-            transition: transform 0.3s ease;
-        }
-
-        .faq-toggle.rotated {
-            transform: rotate(180deg);
-        }
-
-        /* Requirement step number */
-        .step-number {
-            width: 36px;
-            height: 36px;
-            min-width: 36px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 700;
-            font-size: 14px;
-        }
-
-        /* Placeholder image styling */
-        .placeholder-img {
-            background: linear-gradient(135deg, #e2e8f0 0%, #f1f5f9 50%, #e2e8f0 100%);
-            background-size: 200% 200%;
-            animation: placeholderShimmer 3s ease-in-out infinite;
-        }
-
-        @keyframes placeholderShimmer {
-            0%, 100% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-        }
-
-        /* Scroll reveal */
-        .reveal {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
     </style>
-</head>
+  </head>
 
-<body class="bg-surface text-on-surface font-body-md">
-    <div id="navbar-container" style="height: 36px;"></div>
+  <body class="bg-surface text-on-surface font-body-md">
+    <div id="navbar-container" style="height: 36px"></div>
 
     <main>
-        <!-- Hero Section -->
-        <section class="relative h-[280px] md:h-[360px] w-full overflow-hidden flex items-end">
-            <div class="absolute inset-0 z-0">
-                <!-- Placeholder Hero Image -->
-                <div class="placeholder-img w-full h-full flex items-center justify-center">
-                    <div class="text-center text-text-muted">
-                        <span class="material-symbols-outlined text-[64px] opacity-30">radiology</span>
-                        <p class="text-sm mt-2 opacity-40 font-label-md">Gambar hero radiologi</p>
-                    </div>
-                </div>
-                <div class="absolute inset-0 bg-gradient-to-t from-jakarta-blue/90 via-jakarta-blue/50 to-jakarta-blue/20">
-                </div>
-            </div>
-            <div class="relative z-10 max-w-container-max mx-auto px-gutter w-full pb-12">
-                <!-- Breadcrumb -->
-                <nav class="mb-4" aria-label="Breadcrumb">
-                    <ol class="flex items-center gap-2 text-sm text-white/70 font-label-md">
-                        <li><a href="../index.html" class="hover:text-white transition-colors"
-                                style="text-decoration:none;">Beranda</a></li>
-                        <li><span class="material-symbols-outlined text-[14px]">chevron_right</span></li>
-                        <li><a href="../layanan.html" class="hover:text-white transition-colors"
-                                style="text-decoration:none;">Layanan</a></li>
-                        <li><span class="material-symbols-outlined text-[14px]">chevron_right</span></li>
-                        <li class="text-white font-semibold">Radiologi</li>
-                    </ol>
-                </nav>
-                <div class="max-w-2xl">
-                    <h1 class="font-headline-xl text-headline-xl text-white mb-2"
-                        style="text-shadow: 0 2px 8px rgba(0,0,0,0.15);">
-                        Instalasi Radiologi
-                    </h1>
-                    <p class="font-body-md text-[16px] text-white/80">
-                        Layanan pencitraan medis modern untuk diagnosis yang akurat dan tepat waktu.
-                    </p>
-                </div>
-            </div>
-        </section>
+      <!-- Hero Section -->
+      <section
+        class="relative h-[280px] md:h-[360px] w-full overflow-hidden flex items-end"
+      >
+        <div class="absolute inset-0 z-0">
+          <!-- Placeholder Hero Image -->
+          <img
+            alt="RSUD Tugu Koja Hospital Building"
+            class="w-full h-full object-cover"
+            src="../assets/images/hero/RS%20Tugu%20Koja.jpg"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-jakarta-blue/90 via-jakarta-blue/50 to-jakarta-blue/20"
+          ></div>
+        </div>
+        <div
+          class="relative z-10 max-w-container-max mx-auto px-gutter w-full pb-12"
+        >
+          <!-- Breadcrumb -->
+          <nav class="mb-4" aria-label="Breadcrumb">
+            <ol
+              class="flex items-center gap-2 text-sm text-white/70 font-label-md"
+            >
+              <li>
+                <a
+                  href="../index.html"
+                  class="hover:text-white transition-colors"
+                  style="text-decoration: none"
+                  >Beranda</a
+                >
+              </li>
+              <li>
+                <span class="material-symbols-outlined text-[14px]"
+                  >chevron_right</span
+                >
+              </li>
+              <li>
+                <a
+                  href="../layanan.html"
+                  class="hover:text-white transition-colors"
+                  style="text-decoration: none"
+                  >Layanan</a
+                >
+              </li>
+              <li>
+                <span class="material-symbols-outlined text-[14px]"
+                  >chevron_right</span
+                >
+              </li>
+              <li class="text-white font-semibold">Radiologi</li>
+            </ol>
+          </nav>
+          <div class="max-w-2xl">
+            <h1
+              class="font-headline-xl text-headline-xl text-white mb-2"
+              style="text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15)"
+            >
+              Instalasi Radiologi
+            </h1>
+            <p class="font-body-md text-[16px] text-white/80">
+              Layanan pencitraan medis modern untuk diagnosis yang akurat dan
+              tepat waktu.
+            </p>
+          </div>
+        </div>
+      </section>
 
-        <!-- ============================== -->
-        <!-- PENJELASAN UMUM               -->
-        <!-- ============================== -->
-        <section class="py-16 md:py-20 max-w-container-max mx-auto px-gutter">
-            <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 items-start">
-                <!-- Text Content -->
-                <div class="lg:col-span-3 reveal">
-                    <span
-                        class="inline-block py-1.5 px-4 rounded-full bg-jakarta-blue/10 text-jakarta-blue font-bold text-xs uppercase tracking-widest mb-5">Tentang
-                        Radiologi</span>
-                    <h2 class="font-headline-lg text-headline-lg text-jakarta-blue mb-5">
-                        Penjelasan Umum
-                    </h2>
-                    <div class="space-y-4 text-on-surface-variant font-body-md text-body-md leading-relaxed">
-                        <p>
-                            Instalasi Radiologi RSUD Tugu Koja merupakan unit pelayanan penunjang medis yang
-                            menyediakan layanan pencitraan diagnostik (diagnostic imaging) untuk membantu dokter
-                            dalam menegakkan diagnosis penyakit secara akurat. Unit ini dilengkapi dengan peralatan
-                            radiologi modern dan dioperasikan oleh tenaga radiografer yang profesional serta
-                            bersertifikasi.
-                        </p>
-                        <p>
-                            Layanan radiologi tersedia untuk pasien rawat jalan, rawat inap, maupun pasien gawat
-                            darurat. Hasil pemeriksaan radiologi dibaca oleh dokter spesialis radiologi (Sp.Rad)
-                            dan disampaikan kepada dokter pengirim untuk mendukung penanganan medis yang optimal.
-                        </p>
-                        <p>
-                            Instalasi Radiologi RSUD Tugu Koja berkomitmen untuk memberikan layanan pencitraan
-                            yang aman dengan menerapkan prinsip proteksi radiasi sesuai standar keselamatan yang
-                            berlaku, sehingga pasien dapat menjalani pemeriksaan dengan rasa aman dan nyaman.
-                        </p>
-                    </div>
-
-                    <!-- Quick Info Cards -->
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
-                        <div class="bg-surface-container-low rounded-xl p-4 border border-surface-subtle">
-                            <div class="flex items-center gap-3 mb-2">
-                                <div
-                                    class="w-9 h-9 rounded-lg bg-jakarta-blue/10 flex items-center justify-center text-jakarta-blue">
-                                    <span class="material-symbols-outlined text-[20px]">schedule</span>
-                                </div>
-                                <span class="font-label-md text-label-md text-jakarta-blue">Jam Operasional</span>
-                            </div>
-                            <p class="text-sm text-on-surface-variant">Senin – Sabtu<br />08.00 – 21.00 WIB</p>
-                        </div>
-                        <div class="bg-surface-container-low rounded-xl p-4 border border-surface-subtle">
-                            <div class="flex items-center gap-3 mb-2">
-                                <div
-                                    class="w-9 h-9 rounded-lg bg-health-green/10 flex items-center justify-center text-health-green">
-                                    <span class="material-symbols-outlined text-[20px]">emergency</span>
-                                </div>
-                                <span class="font-label-md text-label-md text-health-green">IGD / Cito</span>
-                            </div>
-                            <p class="text-sm text-on-surface-variant">Tersedia 24 Jam<br />untuk kasus darurat</p>
-                        </div>
-                        <div class="bg-surface-container-low rounded-xl p-4 border border-surface-subtle">
-                            <div class="flex items-center gap-3 mb-2">
-                                <div
-                                    class="w-9 h-9 rounded-lg bg-jakarta-blue/10 flex items-center justify-center text-jakarta-blue">
-                                    <span class="material-symbols-outlined text-[20px]">location_on</span>
-                                </div>
-                                <span class="font-label-md text-label-md text-jakarta-blue">Lokasi</span>
-                            </div>
-                            <p class="text-sm text-on-surface-variant">Gedung Utama<br />Lantai 1</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Placeholder Image -->
-                <div class="lg:col-span-2 reveal" style="transition-delay: 0.15s;">
-                    <div
-                        class="placeholder-img w-full h-[320px] md:h-[400px] rounded-2xl flex flex-col items-center justify-center border-2 border-dashed border-slate-300">
-                        <span class="material-symbols-outlined text-[56px] text-slate-400">radiology</span>
-                        <p class="text-sm text-slate-400 mt-3 font-label-md">Placeholder gambar radiologi</p>
-                        <p class="text-xs text-slate-300 mt-1">Ganti dengan gambar sesungguhnya</p>
-                    </div>
-                    <!-- Additional small placeholder -->
-                    <div
-                        class="placeholder-img w-full h-[180px] rounded-2xl flex flex-col items-center justify-center border-2 border-dashed border-slate-300 mt-4">
-                        <span class="material-symbols-outlined text-[40px] text-slate-400">image</span>
-                        <p class="text-xs text-slate-300 mt-2 font-label-md">Gambar tambahan</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============================== -->
-        <!-- DAFTAR LAYANAN                -->
-        <!-- ============================== -->
-        <section class="bg-surface-container-low py-16 md:py-20 border-y border-surface-subtle">
-            <div class="max-w-container-max mx-auto px-gutter">
-                <div class="text-center mb-14 reveal">
-                    <span
-                        class="inline-block py-1.5 px-4 rounded-full bg-health-green/10 text-health-green font-bold text-xs uppercase tracking-widest mb-4">Layanan
-                        Tersedia</span>
-                    <h2 class="font-headline-lg text-headline-lg text-jakarta-blue mb-3">
-                        Jenis Pemeriksaan Radiologi
-                    </h2>
-                    <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">
-                        Berbagai modalitas pencitraan medis yang tersedia di RSUD Tugu Koja untuk mendukung
-                        kebutuhan diagnostik Anda.
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal" style="transition-delay: 0.1s;">
-                    <!-- Service 1: Rontgen/X-Ray Digital -->
-                    <div
-                        class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default">
-                        <div
-                            class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5">
-                            <span class="material-symbols-outlined text-[28px]">radiology</span>
-                        </div>
-                        <h4 class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold">Rontgen (X-Ray)
-                            Digital</h4>
-                        <p class="text-on-surface-variant text-sm leading-relaxed">
-                            Pemeriksaan pencitraan menggunakan sinar-X digital untuk melihat struktur tulang,
-                            dada (thorax), abdomen, dan bagian tubuh lainnya dengan hasil yang cepat dan detail.
-                        </p>
-                    </div>
-
-                    <!-- Service 2: USG -->
-                    <div
-                        class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default">
-                        <div
-                            class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5">
-                            <span class="material-symbols-outlined text-[28px]">pregnancy</span>
-                        </div>
-                        <h4 class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold">USG
-                            (Ultrasonografi)</h4>
-                        <p class="text-on-surface-variant text-sm leading-relaxed">
-                            Pemeriksaan non-invasif menggunakan gelombang suara untuk melihat organ dalam,
-                            kehamilan (obstetri), abdomen, tiroid, dan jaringan lunak tanpa radiasi.
-                        </p>
-                    </div>
-
-                    <!-- Service 3: CT Scan -->
-                    <div
-                        class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default">
-                        <div
-                            class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5">
-                            <span class="material-symbols-outlined text-[28px]">scanner</span>
-                        </div>
-                        <h4 class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold">CT Scan</h4>
-                        <p class="text-on-surface-variant text-sm leading-relaxed">
-                            Pencitraan penampang tubuh menggunakan teknologi CT Scan multi-slice untuk diagnosis
-                            yang lebih detail pada kepala, thorax, abdomen, dan tulang belakang.
-                        </p>
-                    </div>
-
-                    <!-- Service 4: Panoramik (Dental X-Ray) -->
-                    <div
-                        class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default">
-                        <div
-                            class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5">
-                            <span class="material-symbols-outlined text-[28px]">dentistry</span>
-                        </div>
-                        <h4 class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold">Panoramik Gigi
-                        </h4>
-                        <p class="text-on-surface-variant text-sm leading-relaxed">
-                            Pencitraan khusus area rahang dan gigi secara menyeluruh (panoramic) untuk mendukung
-                            diagnosis dan perencanaan perawatan gigi dan mulut.
-                        </p>
-                    </div>
-
-                    <!-- Service 5: Fluoroskopi -->
-                    <div
-                        class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default">
-                        <div
-                            class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5">
-                            <span class="material-symbols-outlined text-[28px]">monitor_heart</span>
-                        </div>
-                        <h4 class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold">Fluoroskopi</h4>
-                        <p class="text-on-surface-variant text-sm leading-relaxed">
-                            Pencitraan real-time menggunakan sinar-X secara kontinu untuk melihat pergerakan
-                            organ, seperti saluran cerna (BNO-IVP) dan tindakan medis tertentu.
-                        </p>
-                    </div>
-
-                    <!-- Service 6: EKG -->
-                    <div
-                        class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default">
-                        <div
-                            class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5">
-                            <span class="material-symbols-outlined text-[28px]">ecg_heart</span>
-                        </div>
-                        <h4 class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold">EKG
-                            (Elektrokardiogram)</h4>
-                        <p class="text-on-surface-variant text-sm leading-relaxed">
-                            Pemeriksaan aktivitas kelistrikan jantung untuk mendeteksi gangguan irama jantung,
-                            serangan jantung, dan kondisi jantung lainnya.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============================== -->
-        <!-- PERSYARATAN                    -->
-        <!-- ============================== -->
-        <section class="py-16 md:py-20 max-w-container-max mx-auto px-gutter">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
-                <!-- Left: Requirements -->
-                <div class="reveal">
-                    <span
-                        class="inline-block py-1.5 px-4 rounded-full bg-jakarta-blue/10 text-jakarta-blue font-bold text-xs uppercase tracking-widest mb-5">Persyaratan</span>
-                    <h2 class="font-headline-lg text-headline-lg text-jakarta-blue mb-3">
-                        Syarat & Prosedur Pemeriksaan
-                    </h2>
-                    <p class="font-body-md text-body-md text-on-surface-variant mb-8">
-                        Berikut dokumen dan persiapan yang perlu Anda siapkan sebelum menjalani pemeriksaan di
-                        Instalasi Radiologi RSUD Tugu Koja.
-                    </p>
-
-                    <!-- Requirements List -->
-                    <div class="space-y-4">
-                        <!-- Req 1 -->
-                        <div class="flex gap-4 items-start bg-white rounded-xl p-5 border border-surface-subtle shadow-sm">
-                            <div class="step-number bg-jakarta-blue text-white">1</div>
-                            <div>
-                                <h4 class="font-label-md text-[15px] text-jakarta-blue font-semibold mb-1">Surat
-                                    Pengantar Dokter</h4>
-                                <p class="text-sm text-on-surface-variant leading-relaxed">
-                                    Membawa surat permintaan pemeriksaan radiologi dari dokter pengirim (dokter
-                                    poliklinik, IGD, atau dokter rawat inap).
-                                </p>
-                            </div>
-                        </div>
-                        <!-- Req 2 -->
-                        <div class="flex gap-4 items-start bg-white rounded-xl p-5 border border-surface-subtle shadow-sm">
-                            <div class="step-number bg-jakarta-blue text-white">2</div>
-                            <div>
-                                <h4 class="font-label-md text-[15px] text-jakarta-blue font-semibold mb-1">Kartu
-                                    Identitas (KTP/KIA)</h4>
-                                <p class="text-sm text-on-surface-variant leading-relaxed">
-                                    Membawa kartu identitas asli (KTP untuk dewasa, Kartu Identitas Anak untuk pasien
-                                    anak) untuk proses administrasi.
-                                </p>
-                            </div>
-                        </div>
-                        <!-- Req 3 -->
-                        <div class="flex gap-4 items-start bg-white rounded-xl p-5 border border-surface-subtle shadow-sm">
-                            <div class="step-number bg-jakarta-blue text-white">3</div>
-                            <div>
-                                <h4 class="font-label-md text-[15px] text-jakarta-blue font-semibold mb-1">Kartu
-                                    BPJS / Asuransi (jika ada)</h4>
-                                <p class="text-sm text-on-surface-variant leading-relaxed">
-                                    Bagi peserta BPJS atau asuransi, wajib membawa kartu kepesertaan yang masih aktif
-                                    beserta surat rujukan dari FKTP (untuk pasien BPJS).
-                                </p>
-                            </div>
-                        </div>
-                        <!-- Req 4 -->
-                        <div class="flex gap-4 items-start bg-white rounded-xl p-5 border border-surface-subtle shadow-sm">
-                            <div class="step-number bg-jakarta-blue text-white">4</div>
-                            <div>
-                                <h4 class="font-label-md text-[15px] text-jakarta-blue font-semibold mb-1">Kartu Berobat
-                                    / Rekam Medis</h4>
-                                <p class="text-sm text-on-surface-variant leading-relaxed">
-                                    Membawa kartu berobat RSUD Tugu Koja bagi pasien lama. Pasien baru akan dibuatkan
-                                    kartu rekam medis di bagian pendaftaran.
-                                </p>
-                            </div>
-                        </div>
-                        <!-- Req 5 -->
-                        <div class="flex gap-4 items-start bg-white rounded-xl p-5 border border-surface-subtle shadow-sm">
-                            <div class="step-number bg-health-green text-white">5</div>
-                            <div>
-                                <h4 class="font-label-md text-[15px] text-jakarta-blue font-semibold mb-1">Persiapan
-                                    Khusus (jika diperlukan)</h4>
-                                <p class="text-sm text-on-surface-variant leading-relaxed">
-                                    Untuk pemeriksaan tertentu (CT Scan dengan kontras, USG abdomen, BNO-IVP),
-                                    diperlukan persiapan khusus seperti puasa 6–8 jam. Informasi detail akan diberikan
-                                    oleh petugas saat pendaftaran.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right: Important Notes + Placeholder Image -->
-                <div class="reveal" style="transition-delay: 0.15s;">
-                    <!-- Placeholder image -->
-                    <div
-                        class="placeholder-img w-full h-[240px] rounded-2xl flex flex-col items-center justify-center border-2 border-dashed border-slate-300 mb-6">
-                        <span class="material-symbols-outlined text-[48px] text-slate-400">image</span>
-                        <p class="text-sm text-slate-400 mt-3 font-label-md">Placeholder gambar prosedur</p>
-                        <p class="text-xs text-slate-300 mt-1">Ganti dengan gambar sesungguhnya</p>
-                    </div>
-
-                    <!-- Important Notes -->
-                    <div class="bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm">
-                        <div class="flex items-center gap-3 mb-5">
-                            <div
-                                class="w-10 h-10 rounded-xl bg-emergency-red/10 flex items-center justify-center text-emergency-red">
-                                <span class="material-symbols-outlined text-[22px]"
-                                    style="font-variation-settings: 'FILL' 1;">warning</span>
-                            </div>
-                            <h4 class="font-headline-md text-[18px] text-jakarta-blue font-semibold">Hal Penting</h4>
-                        </div>
-                        <ul class="space-y-3">
-                            <li class="flex items-start gap-3 text-sm text-on-surface-variant">
-                                <span
-                                    class="material-symbols-outlined text-emergency-red text-[18px] mt-0.5 flex-shrink-0">priority_high</span>
-                                <span>Informasikan kepada petugas jika Anda <strong class="text-on-surface">sedang hamil
-                                        atau kemungkinan hamil</strong> sebelum dilakukan pemeriksaan sinar-X.</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-sm text-on-surface-variant">
-                                <span
-                                    class="material-symbols-outlined text-emergency-red text-[18px] mt-0.5 flex-shrink-0">priority_high</span>
-                                <span>Lepaskan semua <strong class="text-on-surface">perhiasan dan benda logam</strong>
-                                    dari area tubuh yang akan diperiksa.</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-sm text-on-surface-variant">
-                                <span
-                                    class="material-symbols-outlined text-jakarta-blue text-[18px] mt-0.5 flex-shrink-0">info</span>
-                                <span>Informasikan riwayat <strong class="text-on-surface">alergi obat atau zat
-                                        kontras</strong> kepada petugas jika ada.</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-sm text-on-surface-variant">
-                                <span
-                                    class="material-symbols-outlined text-jakarta-blue text-[18px] mt-0.5 flex-shrink-0">info</span>
-                                <span>Hasil pemeriksaan umumnya dapat diambil <strong class="text-on-surface">1–3 hari
-                                        kerja</strong> setelah pemeriksaan, kecuali untuk kasus darurat (cito).</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-sm text-on-surface-variant">
-                                <span
-                                    class="material-symbols-outlined text-jakarta-blue text-[18px] mt-0.5 flex-shrink-0">info</span>
-                                <span>Pasien anak harus <strong class="text-on-surface">didampingi oleh orang tua atau
-                                        wali</strong> selama proses pemeriksaan berlangsung.</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============================== -->
-        <!-- FAQ                            -->
-        <!-- ============================== -->
-        <section class="bg-surface-container-low py-16 md:py-20 border-y border-surface-subtle">
-            <div class="max-w-container-max mx-auto px-gutter">
-                <div class="max-w-3xl mx-auto">
-                    <div class="text-center mb-12 reveal">
-                        <span
-                            class="inline-block py-1.5 px-4 rounded-full bg-jakarta-blue/10 text-jakarta-blue font-bold text-xs uppercase tracking-widest mb-4">FAQ</span>
-                        <h2 class="font-headline-lg text-headline-lg text-jakarta-blue mb-3">
-                            Pertanyaan yang Sering Diajukan
-                        </h2>
-                        <p class="font-body-md text-body-md text-on-surface-variant">
-                            Temukan jawaban atas pertanyaan umum seputar layanan radiologi kami.
-                        </p>
-                    </div>
-
-                    <div class="space-y-3 reveal" style="transition-delay: 0.1s;" id="faq-container">
-                        <!-- FAQ 1 -->
-                        <div class="faq-item bg-white rounded-xl border border-surface-subtle shadow-sm overflow-hidden">
-                            <button
-                                class="faq-btn w-full flex items-center justify-between p-5 text-left focus:outline-none"
-                                onclick="toggleFaq(this)" aria-expanded="false">
-                                <span class="font-label-md text-[15px] text-jakarta-blue font-semibold pr-4">Apakah
-                                    pemeriksaan radiologi aman?</span>
-                                <span
-                                    class="faq-toggle material-symbols-outlined text-jakarta-blue text-[22px] flex-shrink-0">expand_more</span>
-                            </button>
-                            <div class="faq-answer px-5 pb-0">
-                                <p class="text-sm text-on-surface-variant leading-relaxed pb-5">
-                                    Ya, pemeriksaan radiologi di RSUD Tugu Koja dilakukan dengan menerapkan prinsip
-                                    proteksi radiasi sesuai standar keselamatan yang berlaku. Dosis radiasi yang
-                                    digunakan seminimal mungkin (prinsip ALARA — As Low As Reasonably Achievable).
-                                    Petugas radiografer kami bersertifikasi dan terlatih untuk memastikan keamanan
-                                    setiap pemeriksaan. Untuk pemeriksaan USG, tidak menggunakan radiasi sama sekali
-                                    karena berbasis gelombang suara.
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- FAQ 2 -->
-                        <div class="faq-item bg-white rounded-xl border border-surface-subtle shadow-sm overflow-hidden">
-                            <button
-                                class="faq-btn w-full flex items-center justify-between p-5 text-left focus:outline-none"
-                                onclick="toggleFaq(this)" aria-expanded="false">
-                                <span class="font-label-md text-[15px] text-jakarta-blue font-semibold pr-4">Berapa lama
-                                    waktu pemeriksaan radiologi?</span>
-                                <span
-                                    class="faq-toggle material-symbols-outlined text-jakarta-blue text-[22px] flex-shrink-0">expand_more</span>
-                            </button>
-                            <div class="faq-answer px-5 pb-0">
-                                <p class="text-sm text-on-surface-variant leading-relaxed pb-5">
-                                    Durasi pemeriksaan bervariasi tergantung jenis modalitas. Rontgen (X-Ray) umumnya
-                                    hanya membutuhkan waktu sekitar 5–15 menit. Pemeriksaan USG membutuhkan waktu
-                                    sekitar 15–30 menit. Sedangkan CT Scan dapat membutuhkan waktu 15–45 menit
-                                    tergantung area dan penggunaan zat kontras.
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- FAQ 3 -->
-                        <div class="faq-item bg-white rounded-xl border border-surface-subtle shadow-sm overflow-hidden">
-                            <button
-                                class="faq-btn w-full flex items-center justify-between p-5 text-left focus:outline-none"
-                                onclick="toggleFaq(this)" aria-expanded="false">
-                                <span class="font-label-md text-[15px] text-jakarta-blue font-semibold pr-4">Apakah
-                                    perlu puasa sebelum pemeriksaan?</span>
-                                <span
-                                    class="faq-toggle material-symbols-outlined text-jakarta-blue text-[22px] flex-shrink-0">expand_more</span>
-                            </button>
-                            <div class="faq-answer px-5 pb-0">
-                                <p class="text-sm text-on-surface-variant leading-relaxed pb-5">
-                                    Tidak semua pemeriksaan radiologi memerlukan puasa. Pemeriksaan rontgen biasa
-                                    dan panoramik gigi tidak memerlukan persiapan khusus. Namun, untuk pemeriksaan
-                                    <strong>USG abdomen</strong>, pasien dianjurkan puasa 6–8 jam sebelumnya. Untuk
-                                    <strong>CT Scan dengan kontras</strong>, diperlukan puasa 4–6 jam dan pemeriksaan
-                                    fungsi ginjal sebelumnya. Petugas akan memberikan informasi detail saat pendaftaran.
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- FAQ 4 -->
-                        <div class="faq-item bg-white rounded-xl border border-surface-subtle shadow-sm overflow-hidden">
-                            <button
-                                class="faq-btn w-full flex items-center justify-between p-5 text-left focus:outline-none"
-                                onclick="toggleFaq(this)" aria-expanded="false">
-                                <span class="font-label-md text-[15px] text-jakarta-blue font-semibold pr-4">Apakah
-                                    layanan radiologi ditanggung BPJS?</span>
-                                <span
-                                    class="faq-toggle material-symbols-outlined text-jakarta-blue text-[22px] flex-shrink-0">expand_more</span>
-                            </button>
-                            <div class="faq-answer px-5 pb-0">
-                                <p class="text-sm text-on-surface-variant leading-relaxed pb-5">
-                                    Ya, layanan pemeriksaan radiologi ditanggung oleh BPJS Kesehatan selama sesuai
-                                    dengan indikasi medis dan melalui prosedur rujukan yang benar. Pastikan Anda
-                                    membawa <strong>kartu BPJS yang aktif</strong>, <strong>surat rujukan dari
-                                        FKTP</strong> (Puskesmas/Klinik), dan <strong>KTP asli</strong>. Untuk pasien
-                                    umum, biaya pemeriksaan dapat dibayarkan langsung di kasir.
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- FAQ 5 -->
-                        <div class="faq-item bg-white rounded-xl border border-surface-subtle shadow-sm overflow-hidden">
-                            <button
-                                class="faq-btn w-full flex items-center justify-between p-5 text-left focus:outline-none"
-                                onclick="toggleFaq(this)" aria-expanded="false">
-                                <span class="font-label-md text-[15px] text-jakarta-blue font-semibold pr-4">Kapan
-                                    hasil pemeriksaan bisa diambil?</span>
-                                <span
-                                    class="faq-toggle material-symbols-outlined text-jakarta-blue text-[22px] flex-shrink-0">expand_more</span>
-                            </button>
-                            <div class="faq-answer px-5 pb-0">
-                                <p class="text-sm text-on-surface-variant leading-relaxed pb-5">
-                                    Untuk pemeriksaan <strong>Rontgen (X-Ray)</strong>, hasil biasanya tersedia pada
-                                    hari yang sama atau keesokan harinya. Untuk <strong>USG</strong>, hasil dibacakan
-                                    langsung oleh dokter spesialis radiologi. Untuk <strong>CT Scan</strong>, hasil
-                                    ekspertise membutuhkan waktu 1–3 hari kerja. Pada kasus <strong>darurat
-                                        (cito)</strong>, hasil akan diprioritaskan dan disampaikan segera kepada dokter
-                                    pengirim.
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- FAQ 6 -->
-                        <div class="faq-item bg-white rounded-xl border border-surface-subtle shadow-sm overflow-hidden">
-                            <button
-                                class="faq-btn w-full flex items-center justify-between p-5 text-left focus:outline-none"
-                                onclick="toggleFaq(this)" aria-expanded="false">
-                                <span class="font-label-md text-[15px] text-jakarta-blue font-semibold pr-4">Apakah
-                                    ibu hamil boleh melakukan pemeriksaan radiologi?</span>
-                                <span
-                                    class="faq-toggle material-symbols-outlined text-jakarta-blue text-[22px] flex-shrink-0">expand_more</span>
-                            </button>
-                            <div class="faq-answer px-5 pb-0">
-                                <p class="text-sm text-on-surface-variant leading-relaxed pb-5">
-                                    Pemeriksaan menggunakan sinar-X (rontgen, CT Scan, fluoroskopi) pada prinsipnya
-                                    <strong>dihindari untuk ibu hamil</strong>, kecuali dalam kondisi medis yang
-                                    mendesak dan atas pertimbangan dokter. Sebagai alternatif, pemeriksaan
-                                    <strong>USG</strong> merupakan pilihan yang aman karena tidak menggunakan radiasi.
-                                    Selalu informasikan status kehamilan Anda kepada petugas sebelum pemeriksaan.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============================== -->
-        <!-- CTA / CONTACT                 -->
-        <!-- ============================== -->
-        <section class="py-16 md:py-20 max-w-container-max mx-auto px-gutter">
+      <!-- ============================== -->
+      <!-- PENJELASAN UMUM               -->
+      <!-- ============================== -->
+      <section class="py-16 md:py-20 max-w-container-max mx-auto px-gutter">
+        <div
+          class="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 items-start"
+        >
+          <!-- Text Content -->
+          <div class="lg:col-span-3 reveal">
+            <h2
+              class="font-headline-lg text-headline-lg text-jakarta-blue mb-5"
+            >
+              Penjelasan Umum
+            </h2>
             <div
-                class="reveal bg-gradient-to-br from-jakarta-blue to-[#1a3550] rounded-3xl p-8 md:p-12 text-white text-center relative overflow-hidden">
-                <!-- Decorative elements -->
-                <div
-                    class="absolute top-0 right-0 w-72 h-72 bg-health-green/10 rounded-full blur-3xl -translate-y-1/3 translate-x-1/3">
-                </div>
-                <div
-                    class="absolute bottom-0 left-0 w-72 h-72 bg-white/5 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3">
-                </div>
-
-                <div class="relative z-10">
-                    <div
-                        class="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center mx-auto mb-6">
-                        <span class="material-symbols-outlined text-[32px] text-white">support_agent</span>
-                    </div>
-                    <h2 class="font-headline-lg text-headline-lg text-white mb-3">Ada Pertanyaan Lain?</h2>
-                    <p class="font-body-md text-body-md text-white/80 max-w-xl mx-auto mb-8">
-                        Hubungi kami untuk informasi lebih lanjut mengenai layanan Instalasi Radiologi
-                        atau untuk membuat janji pemeriksaan.
-                    </p>
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <a href="tel:0214401828"
-                            class="bg-white text-jakarta-blue px-8 py-3 rounded-full font-label-md text-[14px] hover:scale-105 transition-transform shadow-lg flex items-center gap-2"
-                            style="text-decoration:none;">
-                            <span class="material-symbols-outlined text-[18px]">call</span>
-                            (021) 440-1828
-                        </a>
-                        <a href="../index.html"
-                            class="border border-white/50 text-white px-8 py-3 rounded-full font-label-md text-[14px] hover:bg-white/10 transition-colors flex items-center gap-2"
-                            style="text-decoration:none;">
-                            <span class="material-symbols-outlined text-[18px]">arrow_back</span>
-                            Kembali ke Beranda
-                        </a>
-                    </div>
-                </div>
+              class="space-y-4 text-on-surface-variant font-body-md text-body-md leading-relaxed"
+            >
+              <p>
+                Instalasi Radiologi RSUD Tugu Koja merupakan unit pelayanan
+                penunjang medis yang menyediakan layanan pencitraan diagnostik
+                (diagnostic imaging) untuk membantu dokter dalam menegakkan
+                diagnosis penyakit secara akurat. Unit ini dilengkapi dengan
+                peralatan radiologi modern dan dioperasikan oleh tenaga
+                radiografer yang profesional serta bersertifikasi.
+              </p>
+              <p>
+                Layanan radiologi tersedia untuk pasien rawat jalan, rawat inap,
+                maupun pasien gawat darurat. Hasil pemeriksaan radiologi dibaca
+                oleh dokter spesialis radiologi (Sp.Rad) dan disampaikan kepada
+                dokter pengirim untuk mendukung penanganan medis yang optimal.
+              </p>
+              <p>
+                Instalasi Radiologi RSUD Tugu Koja berkomitmen untuk memberikan
+                layanan pencitraan yang aman dengan menerapkan prinsip proteksi
+                radiasi sesuai standar keselamatan yang berlaku, sehingga pasien
+                dapat menjalani pemeriksaan dengan rasa aman dan nyaman.
+              </p>
             </div>
-        </section>
+
+            <!-- Quick Info Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
+              <div
+                class="bg-surface-container-low rounded-xl p-4 border border-surface-subtle"
+              >
+                <div class="flex items-center gap-3 mb-2">
+                  <div
+                    class="w-9 h-9 rounded-lg bg-jakarta-blue/10 flex items-center justify-center text-jakarta-blue"
+                  >
+                    <span class="material-symbols-outlined text-[20px]"
+                      >schedule</span
+                    >
+                  </div>
+                  <span class="font-label-md text-label-md text-jakarta-blue"
+                    >Jam Operasional</span
+                  >
+                </div>
+                <p class="text-sm text-on-surface-variant">
+                  Senin – Sabtu<br />08.00 – 21.00 WIB
+                </p>
+              </div>
+              <div
+                class="bg-surface-container-low rounded-xl p-4 border border-surface-subtle"
+              >
+                <div class="flex items-center gap-3 mb-2">
+                  <div
+                    class="w-9 h-9 rounded-lg bg-health-green/10 flex items-center justify-center text-health-green"
+                  >
+                    <span class="material-symbols-outlined text-[20px]"
+                      >emergency</span
+                    >
+                  </div>
+                  <span class="font-label-md text-label-md text-health-green"
+                    >IGD / Cito</span
+                  >
+                </div>
+                <p class="text-sm text-on-surface-variant">
+                  Tersedia 24 Jam<br />untuk kasus darurat
+                </p>
+              </div>
+              <div
+                class="bg-surface-container-low rounded-xl p-4 border border-surface-subtle"
+              >
+                <div class="flex items-center gap-3 mb-2">
+                  <div
+                    class="w-9 h-9 rounded-lg bg-jakarta-blue/10 flex items-center justify-center text-jakarta-blue"
+                  >
+                    <span class="material-symbols-outlined text-[20px]"
+                      >location_on</span
+                    >
+                  </div>
+                  <span class="font-label-md text-label-md text-jakarta-blue"
+                    >Lokasi</span
+                  >
+                </div>
+                <p class="text-sm text-on-surface-variant">
+                  Gedung Utama<br />Lantai 1
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Placeholder Image -->
+          <div class="lg:col-span-2 reveal" style="transition-delay: 0.15s">
+            <div
+              class="placeholder-img w-full h-[320px] md:h-[400px] rounded-2xl flex flex-col items-center justify-center border-2 border-dashed border-slate-300"
+            >
+              <span class="material-symbols-outlined text-[56px] text-slate-400"
+                >radiology</span
+              >
+              <p class="text-sm text-slate-400 mt-3 font-label-md">
+                Placeholder gambar radiologi
+              </p>
+              <p class="text-xs text-slate-300 mt-1">
+                Ganti dengan gambar sesungguhnya
+              </p>
+            </div>
+            <!-- Additional small placeholder -->
+            <div
+              class="placeholder-img w-full h-[180px] rounded-2xl flex flex-col items-center justify-center border-2 border-dashed border-slate-300 mt-4"
+            >
+              <span class="material-symbols-outlined text-[40px] text-slate-400"
+                >image</span
+              >
+              <p class="text-xs text-slate-300 mt-2 font-label-md">
+                Gambar tambahan
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================== -->
+      <!-- DAFTAR LAYANAN                -->
+      <!-- ============================== -->
+      <section
+        class="bg-surface-container-low py-16 md:py-20 border-y border-surface-subtle"
+      >
+        <div class="max-w-container-max mx-auto px-gutter">
+          <div class="text-center mb-14 reveal">
+            <h2
+              class="font-headline-lg text-headline-lg text-jakarta-blue mb-3"
+            >
+              Jenis Pemeriksaan Radiologi
+            </h2>
+            <p
+              class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto"
+            >
+              Berbagai modalitas pencitraan medis yang tersedia di RSUD Tugu
+              Koja untuk mendukung kebutuhan diagnostik Anda.
+            </p>
+          </div>
+
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal"
+            style="transition-delay: 0.1s"
+          >
+            <!-- Service 1: Rontgen/X-Ray Digital -->
+            <div
+              class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default"
+            >
+              <div
+                class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5"
+              >
+                <span class="material-symbols-outlined text-[28px]"
+                  >radiology</span
+                >
+              </div>
+              <h4
+                class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold"
+              >
+                Rontgen (X-Ray) Digital
+              </h4>
+              <p class="text-on-surface-variant text-sm leading-relaxed">
+                Pemeriksaan pencitraan menggunakan sinar-X digital untuk melihat
+                struktur tulang, dada (thorax), abdomen, dan bagian tubuh
+                lainnya dengan hasil yang cepat dan detail.
+              </p>
+            </div>
+
+            <!-- Service 2: USG -->
+            <div
+              class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default"
+            >
+              <div
+                class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5"
+              >
+                <span class="material-symbols-outlined text-[28px]"
+                  >pregnancy</span
+                >
+              </div>
+              <h4
+                class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold"
+              >
+                USG (Ultrasonografi)
+              </h4>
+              <p class="text-on-surface-variant text-sm leading-relaxed">
+                Pemeriksaan non-invasif menggunakan gelombang suara untuk
+                melihat organ dalam, kehamilan (obstetri), abdomen, tiroid, dan
+                jaringan lunak tanpa radiasi.
+              </p>
+            </div>
+
+            <!-- Service 3: CT Scan -->
+            <div
+              class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default"
+            >
+              <div
+                class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5"
+              >
+                <span class="material-symbols-outlined text-[28px]"
+                  >scanner</span
+                >
+              </div>
+              <h4
+                class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold"
+              >
+                CT Scan
+              </h4>
+              <p class="text-on-surface-variant text-sm leading-relaxed">
+                Pencitraan penampang tubuh menggunakan teknologi CT Scan
+                multi-slice untuk diagnosis yang lebih detail pada kepala,
+                thorax, abdomen, dan tulang belakang.
+              </p>
+            </div>
+
+            <!-- Service 4: Panoramik (Dental X-Ray) -->
+            <div
+              class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default"
+            >
+              <div
+                class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5"
+              >
+                <span class="material-symbols-outlined text-[28px]"
+                  >dentistry</span
+                >
+              </div>
+              <h4
+                class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold"
+              >
+                Panoramik Gigi
+              </h4>
+              <p class="text-on-surface-variant text-sm leading-relaxed">
+                Pencitraan khusus area rahang dan gigi secara menyeluruh
+                (panoramic) untuk mendukung diagnosis dan perencanaan perawatan
+                gigi dan mulut.
+              </p>
+            </div>
+
+            <!-- Service 5: Fluoroskopi -->
+            <div
+              class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default"
+            >
+              <div
+                class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5"
+              >
+                <span class="material-symbols-outlined text-[28px]"
+                  >monitor_heart</span
+                >
+              </div>
+              <h4
+                class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold"
+              >
+                Fluoroskopi
+              </h4>
+              <p class="text-on-surface-variant text-sm leading-relaxed">
+                Pencitraan real-time menggunakan sinar-X secara kontinu untuk
+                melihat pergerakan organ, seperti saluran cerna (BNO-IVP) dan
+                tindakan medis tertentu.
+              </p>
+            </div>
+
+            <!-- Service 6: EKG -->
+            <div
+              class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default"
+            >
+              <div
+                class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5"
+              >
+                <span class="material-symbols-outlined text-[28px]"
+                  >ecg_heart</span
+                >
+              </div>
+              <h4
+                class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold"
+              >
+                EKG (Elektrokardiogram)
+              </h4>
+              <p class="text-on-surface-variant text-sm leading-relaxed">
+                Pemeriksaan aktivitas kelistrikan jantung untuk mendeteksi
+                gangguan irama jantung, serangan jantung, dan kondisi jantung
+                lainnya.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================== -->
+      <!-- PERSYARATAN                    -->
+      <!-- ============================== -->
+      <section class="py-16 md:py-20 max-w-container-max mx-auto px-gutter">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+          <!-- Left: Requirements -->
+          <div class="reveal">
+            <h2
+              class="font-headline-lg text-headline-lg text-jakarta-blue mb-3"
+            >
+              Syarat & Prosedur Pemeriksaan
+            </h2>
+            <p class="font-body-md text-body-md text-on-surface-variant mb-8">
+              Berikut dokumen dan persiapan yang perlu Anda siapkan sebelum
+              menjalani pemeriksaan di Instalasi Radiologi RSUD Tugu Koja.
+            </p>
+
+            <!-- Requirements List -->
+            <div class="space-y-4">
+              <!-- Req 1 -->
+              <div
+                class="flex gap-4 items-start bg-white rounded-xl p-5 border border-surface-subtle shadow-sm"
+              >
+                <div class="step-number bg-jakarta-blue text-white">1</div>
+                <div>
+                  <h4
+                    class="font-label-md text-[15px] text-jakarta-blue font-semibold mb-1"
+                  >
+                    Surat Pengantar Dokter
+                  </h4>
+                  <p class="text-sm text-on-surface-variant leading-relaxed">
+                    Membawa surat permintaan pemeriksaan radiologi dari dokter
+                    pengirim (dokter poliklinik, IGD, atau dokter rawat inap).
+                  </p>
+                </div>
+              </div>
+              <!-- Req 2 -->
+              <div
+                class="flex gap-4 items-start bg-white rounded-xl p-5 border border-surface-subtle shadow-sm"
+              >
+                <div class="step-number bg-jakarta-blue text-white">2</div>
+                <div>
+                  <h4
+                    class="font-label-md text-[15px] text-jakarta-blue font-semibold mb-1"
+                  >
+                    Kartu Identitas (KTP/KIA)
+                  </h4>
+                  <p class="text-sm text-on-surface-variant leading-relaxed">
+                    Membawa kartu identitas asli (KTP untuk dewasa, Kartu
+                    Identitas Anak untuk pasien anak) untuk proses administrasi.
+                  </p>
+                </div>
+              </div>
+              <!-- Req 3 -->
+              <div
+                class="flex gap-4 items-start bg-white rounded-xl p-5 border border-surface-subtle shadow-sm"
+              >
+                <div class="step-number bg-jakarta-blue text-white">3</div>
+                <div>
+                  <h4
+                    class="font-label-md text-[15px] text-jakarta-blue font-semibold mb-1"
+                  >
+                    Kartu BPJS / Asuransi (jika ada)
+                  </h4>
+                  <p class="text-sm text-on-surface-variant leading-relaxed">
+                    Bagi peserta BPJS atau asuransi, wajib membawa kartu
+                    kepesertaan yang masih aktif beserta surat rujukan dari FKTP
+                    (untuk pasien BPJS).
+                  </p>
+                </div>
+              </div>
+              <!-- Req 4 -->
+              <div
+                class="flex gap-4 items-start bg-white rounded-xl p-5 border border-surface-subtle shadow-sm"
+              >
+                <div class="step-number bg-jakarta-blue text-white">4</div>
+                <div>
+                  <h4
+                    class="font-label-md text-[15px] text-jakarta-blue font-semibold mb-1"
+                  >
+                    Kartu Berobat / Rekam Medis
+                  </h4>
+                  <p class="text-sm text-on-surface-variant leading-relaxed">
+                    Membawa kartu berobat RSUD Tugu Koja bagi pasien lama.
+                    Pasien baru akan dibuatkan kartu rekam medis di bagian
+                    pendaftaran.
+                  </p>
+                </div>
+              </div>
+              <!-- Req 5 -->
+              <div
+                class="flex gap-4 items-start bg-white rounded-xl p-5 border border-surface-subtle shadow-sm"
+              >
+                <div class="step-number bg-health-green text-white">5</div>
+                <div>
+                  <h4
+                    class="font-label-md text-[15px] text-jakarta-blue font-semibold mb-1"
+                  >
+                    Persiapan Khusus (jika diperlukan)
+                  </h4>
+                  <p class="text-sm text-on-surface-variant leading-relaxed">
+                    Untuk pemeriksaan tertentu (CT Scan dengan kontras, USG
+                    abdomen, BNO-IVP), diperlukan persiapan khusus seperti puasa
+                    6–8 jam. Informasi detail akan diberikan oleh petugas saat
+                    pendaftaran.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Important Notes + Placeholder Image -->
+          <div class="reveal" style="transition-delay: 0.15s">
+            <!-- Placeholder image -->
+            <div
+              class="placeholder-img w-full h-[240px] rounded-2xl flex flex-col items-center justify-center border-2 border-dashed border-slate-300 mb-6"
+            >
+              <span class="material-symbols-outlined text-[48px] text-slate-400"
+                >image</span
+              >
+              <p class="text-sm text-slate-400 mt-3 font-label-md">
+                Placeholder gambar prosedur
+              </p>
+              <p class="text-xs text-slate-300 mt-1">
+                Ganti dengan gambar sesungguhnya
+              </p>
+            </div>
+
+            <!-- Important Notes -->
+            <div
+              class="bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm"
+            >
+              <div class="flex items-center gap-3 mb-5">
+                <div
+                  class="w-10 h-10 rounded-xl bg-emergency-red/10 flex items-center justify-center text-emergency-red"
+                >
+                  <span
+                    class="material-symbols-outlined text-[22px]"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >warning</span
+                  >
+                </div>
+                <h4
+                  class="font-headline-md text-[18px] text-jakarta-blue font-semibold"
+                >
+                  Hal Penting
+                </h4>
+              </div>
+              <ul class="space-y-3">
+                <li
+                  class="flex items-start gap-3 text-sm text-on-surface-variant"
+                >
+                  <span
+                    class="material-symbols-outlined text-emergency-red text-[18px] mt-0.5 flex-shrink-0"
+                    >priority_high</span
+                  >
+                  <span
+                    >Informasikan kepada petugas jika Anda
+                    <strong class="text-on-surface"
+                      >sedang hamil atau kemungkinan hamil</strong
+                    >
+                    sebelum dilakukan pemeriksaan sinar-X.</span
+                  >
+                </li>
+                <li
+                  class="flex items-start gap-3 text-sm text-on-surface-variant"
+                >
+                  <span
+                    class="material-symbols-outlined text-emergency-red text-[18px] mt-0.5 flex-shrink-0"
+                    >priority_high</span
+                  >
+                  <span
+                    >Lepaskan semua
+                    <strong class="text-on-surface"
+                      >perhiasan dan benda logam</strong
+                    >
+                    dari area tubuh yang akan diperiksa.</span
+                  >
+                </li>
+                <li
+                  class="flex items-start gap-3 text-sm text-on-surface-variant"
+                >
+                  <span
+                    class="material-symbols-outlined text-jakarta-blue text-[18px] mt-0.5 flex-shrink-0"
+                    >info</span
+                  >
+                  <span
+                    >Informasikan riwayat
+                    <strong class="text-on-surface"
+                      >alergi obat atau zat kontras</strong
+                    >
+                    kepada petugas jika ada.</span
+                  >
+                </li>
+                <li
+                  class="flex items-start gap-3 text-sm text-on-surface-variant"
+                >
+                  <span
+                    class="material-symbols-outlined text-jakarta-blue text-[18px] mt-0.5 flex-shrink-0"
+                    >info</span
+                  >
+                  <span
+                    >Hasil pemeriksaan umumnya dapat diambil
+                    <strong class="text-on-surface">1–3 hari kerja</strong>
+                    setelah pemeriksaan, kecuali untuk kasus darurat
+                    (cito).</span
+                  >
+                </li>
+                <li
+                  class="flex items-start gap-3 text-sm text-on-surface-variant"
+                >
+                  <span
+                    class="material-symbols-outlined text-jakarta-blue text-[18px] mt-0.5 flex-shrink-0"
+                    >info</span
+                  >
+                  <span
+                    >Pasien anak harus
+                    <strong class="text-on-surface"
+                      >didampingi oleh orang tua atau wali</strong
+                    >
+                    selama proses pemeriksaan berlangsung.</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================== -->
+      <!-- FAQ                            -->
+      <!-- ============================== -->
+      <section
+        class="bg-surface-container-low py-16 md:py-20 border-y border-surface-subtle"
+      >
+        <div class="max-w-container-max mx-auto px-gutter">
+          <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-12 reveal">
+              <h2
+                class="font-headline-lg text-headline-lg text-jakarta-blue mb-3"
+              >
+                Pertanyaan yang Sering Diajukan
+              </h2>
+              <p class="font-body-md text-body-md text-on-surface-variant">
+                Temukan jawaban atas pertanyaan umum seputar layanan radiologi
+                kami.
+              </p>
+            </div>
+
+            <div
+              class="space-y-3 reveal"
+              style="transition-delay: 0.1s"
+              id="faq-container"
+            >
+              <!-- FAQ 1 -->
+              <div
+                class="faq-item bg-white rounded-xl border border-surface-subtle shadow-sm overflow-hidden"
+              >
+                <button
+                  class="faq-btn w-full flex items-center justify-between p-5 text-left focus:outline-none"
+                  onclick="toggleFaq(this)"
+                  aria-expanded="false"
+                >
+                  <span
+                    class="font-label-md text-[15px] text-jakarta-blue font-semibold pr-4"
+                    >Apakah pemeriksaan radiologi aman?</span
+                  >
+                  <span
+                    class="faq-toggle material-symbols-outlined text-jakarta-blue text-[22px] flex-shrink-0"
+                    >expand_more</span
+                  >
+                </button>
+                <div class="faq-answer px-5 pb-0">
+                  <p
+                    class="text-sm text-on-surface-variant leading-relaxed pb-5"
+                  >
+                    Ya, pemeriksaan radiologi di RSUD Tugu Koja dilakukan dengan
+                    menerapkan prinsip proteksi radiasi sesuai standar
+                    keselamatan yang berlaku. Dosis radiasi yang digunakan
+                    seminimal mungkin (prinsip ALARA — As Low As Reasonably
+                    Achievable). Petugas radiografer kami bersertifikasi dan
+                    terlatih untuk memastikan keamanan setiap pemeriksaan. Untuk
+                    pemeriksaan USG, tidak menggunakan radiasi sama sekali
+                    karena berbasis gelombang suara.
+                  </p>
+                </div>
+              </div>
+
+              <!-- FAQ 2 -->
+              <div
+                class="faq-item bg-white rounded-xl border border-surface-subtle shadow-sm overflow-hidden"
+              >
+                <button
+                  class="faq-btn w-full flex items-center justify-between p-5 text-left focus:outline-none"
+                  onclick="toggleFaq(this)"
+                  aria-expanded="false"
+                >
+                  <span
+                    class="font-label-md text-[15px] text-jakarta-blue font-semibold pr-4"
+                    >Berapa lama waktu pemeriksaan radiologi?</span
+                  >
+                  <span
+                    class="faq-toggle material-symbols-outlined text-jakarta-blue text-[22px] flex-shrink-0"
+                    >expand_more</span
+                  >
+                </button>
+                <div class="faq-answer px-5 pb-0">
+                  <p
+                    class="text-sm text-on-surface-variant leading-relaxed pb-5"
+                  >
+                    Durasi pemeriksaan bervariasi tergantung jenis modalitas.
+                    Rontgen (X-Ray) umumnya hanya membutuhkan waktu sekitar 5–15
+                    menit. Pemeriksaan USG membutuhkan waktu sekitar 15–30
+                    menit. Sedangkan CT Scan dapat membutuhkan waktu 15–45 menit
+                    tergantung area dan penggunaan zat kontras.
+                  </p>
+                </div>
+              </div>
+
+              <!-- FAQ 3 -->
+              <div
+                class="faq-item bg-white rounded-xl border border-surface-subtle shadow-sm overflow-hidden"
+              >
+                <button
+                  class="faq-btn w-full flex items-center justify-between p-5 text-left focus:outline-none"
+                  onclick="toggleFaq(this)"
+                  aria-expanded="false"
+                >
+                  <span
+                    class="font-label-md text-[15px] text-jakarta-blue font-semibold pr-4"
+                    >Apakah perlu puasa sebelum pemeriksaan?</span
+                  >
+                  <span
+                    class="faq-toggle material-symbols-outlined text-jakarta-blue text-[22px] flex-shrink-0"
+                    >expand_more</span
+                  >
+                </button>
+                <div class="faq-answer px-5 pb-0">
+                  <p
+                    class="text-sm text-on-surface-variant leading-relaxed pb-5"
+                  >
+                    Tidak semua pemeriksaan radiologi memerlukan puasa.
+                    Pemeriksaan rontgen biasa dan panoramik gigi tidak
+                    memerlukan persiapan khusus. Namun, untuk pemeriksaan
+                    <strong>USG abdomen</strong>, pasien dianjurkan puasa 6–8
+                    jam sebelumnya. Untuk
+                    <strong>CT Scan dengan kontras</strong>, diperlukan puasa
+                    4–6 jam dan pemeriksaan fungsi ginjal sebelumnya. Petugas
+                    akan memberikan informasi detail saat pendaftaran.
+                  </p>
+                </div>
+              </div>
+
+              <!-- FAQ 4 -->
+              <div
+                class="faq-item bg-white rounded-xl border border-surface-subtle shadow-sm overflow-hidden"
+              >
+                <button
+                  class="faq-btn w-full flex items-center justify-between p-5 text-left focus:outline-none"
+                  onclick="toggleFaq(this)"
+                  aria-expanded="false"
+                >
+                  <span
+                    class="font-label-md text-[15px] text-jakarta-blue font-semibold pr-4"
+                    >Apakah layanan radiologi ditanggung BPJS?</span
+                  >
+                  <span
+                    class="faq-toggle material-symbols-outlined text-jakarta-blue text-[22px] flex-shrink-0"
+                    >expand_more</span
+                  >
+                </button>
+                <div class="faq-answer px-5 pb-0">
+                  <p
+                    class="text-sm text-on-surface-variant leading-relaxed pb-5"
+                  >
+                    Ya, layanan pemeriksaan radiologi ditanggung oleh BPJS
+                    Kesehatan selama sesuai dengan indikasi medis dan melalui
+                    prosedur rujukan yang benar. Pastikan Anda membawa
+                    <strong>kartu BPJS yang aktif</strong>,
+                    <strong>surat rujukan dari FKTP</strong> (Puskesmas/Klinik),
+                    dan <strong>KTP asli</strong>. Untuk pasien umum, biaya
+                    pemeriksaan dapat dibayarkan langsung di kasir.
+                  </p>
+                </div>
+              </div>
+
+              <!-- FAQ 5 -->
+              <div
+                class="faq-item bg-white rounded-xl border border-surface-subtle shadow-sm overflow-hidden"
+              >
+                <button
+                  class="faq-btn w-full flex items-center justify-between p-5 text-left focus:outline-none"
+                  onclick="toggleFaq(this)"
+                  aria-expanded="false"
+                >
+                  <span
+                    class="font-label-md text-[15px] text-jakarta-blue font-semibold pr-4"
+                    >Kapan hasil pemeriksaan bisa diambil?</span
+                  >
+                  <span
+                    class="faq-toggle material-symbols-outlined text-jakarta-blue text-[22px] flex-shrink-0"
+                    >expand_more</span
+                  >
+                </button>
+                <div class="faq-answer px-5 pb-0">
+                  <p
+                    class="text-sm text-on-surface-variant leading-relaxed pb-5"
+                  >
+                    Untuk pemeriksaan <strong>Rontgen (X-Ray)</strong>, hasil
+                    biasanya tersedia pada hari yang sama atau keesokan harinya.
+                    Untuk <strong>USG</strong>, hasil dibacakan langsung oleh
+                    dokter spesialis radiologi. Untuk <strong>CT Scan</strong>,
+                    hasil ekspertise membutuhkan waktu 1–3 hari kerja. Pada
+                    kasus <strong>darurat (cito)</strong>, hasil akan
+                    diprioritaskan dan disampaikan segera kepada dokter
+                    pengirim.
+                  </p>
+                </div>
+              </div>
+
+              <!-- FAQ 6 -->
+              <div
+                class="faq-item bg-white rounded-xl border border-surface-subtle shadow-sm overflow-hidden"
+              >
+                <button
+                  class="faq-btn w-full flex items-center justify-between p-5 text-left focus:outline-none"
+                  onclick="toggleFaq(this)"
+                  aria-expanded="false"
+                >
+                  <span
+                    class="font-label-md text-[15px] text-jakarta-blue font-semibold pr-4"
+                    >Apakah ibu hamil boleh melakukan pemeriksaan
+                    radiologi?</span
+                  >
+                  <span
+                    class="faq-toggle material-symbols-outlined text-jakarta-blue text-[22px] flex-shrink-0"
+                    >expand_more</span
+                  >
+                </button>
+                <div class="faq-answer px-5 pb-0">
+                  <p
+                    class="text-sm text-on-surface-variant leading-relaxed pb-5"
+                  >
+                    Pemeriksaan menggunakan sinar-X (rontgen, CT Scan,
+                    fluoroskopi) pada prinsipnya
+                    <strong>dihindari untuk ibu hamil</strong>, kecuali dalam
+                    kondisi medis yang mendesak dan atas pertimbangan dokter.
+                    Sebagai alternatif, pemeriksaan
+                    <strong>USG</strong> merupakan pilihan yang aman karena
+                    tidak menggunakan radiasi. Selalu informasikan status
+                    kehamilan Anda kepada petugas sebelum pemeriksaan.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================== -->
+      <!-- CTA / CONTACT                 -->
+      <!-- ============================== -->
+      <section class="py-16 md:py-20 max-w-container-max mx-auto px-gutter">
+        <div
+          class="reveal bg-gradient-to-br from-jakarta-blue to-[#1a3550] rounded-3xl p-8 md:p-12 text-white text-center relative overflow-hidden"
+        >
+          <!-- Decorative elements -->
+          <div
+            class="absolute top-0 right-0 w-72 h-72 bg-health-green/10 rounded-full blur-3xl -translate-y-1/3 translate-x-1/3"
+          ></div>
+          <div
+            class="absolute bottom-0 left-0 w-72 h-72 bg-white/5 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3"
+          ></div>
+
+          <div class="relative z-10">
+            <div
+              class="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center mx-auto mb-6"
+            >
+              <span class="material-symbols-outlined text-[32px] text-white"
+                >support_agent</span
+              >
+            </div>
+            <h2 class="font-headline-lg text-headline-lg text-white mb-3">
+              Ada Pertanyaan Lain?
+            </h2>
+            <p
+              class="font-body-md text-body-md text-white/80 max-w-xl mx-auto mb-8"
+            >
+              Hubungi kami untuk informasi lebih lanjut mengenai layanan
+              Instalasi Radiologi atau untuk membuat janji pemeriksaan.
+            </p>
+            <div
+              class="flex flex-col sm:flex-row items-center justify-center gap-4"
+            >
+              <a
+                href="tel:0214401828"
+                class="bg-white text-jakarta-blue px-8 py-3 rounded-full font-label-md text-[14px] hover:scale-105 transition-transform shadow-lg flex items-center gap-2"
+                style="text-decoration: none"
+              >
+                <span class="material-symbols-outlined text-[18px]">call</span>
+                (021) 440-1828
+              </a>
+              <a
+                href="../index.html"
+                class="border border-white/50 text-white px-8 py-3 rounded-full font-label-md text-[14px] hover:bg-white/10 transition-colors flex items-center gap-2"
+                style="text-decoration: none"
+              >
+                <span class="material-symbols-outlined text-[18px]"
+                  >arrow_back</span
+                >
+                Kembali ke Beranda
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- Footer -->
     <div id="footer-container"></div>
 
     <script>
-        // ========================================
-        // FAQ ACCORDION
-        // ========================================
-        function toggleFaq(btn) {
-            const answer = btn.nextElementSibling;
-            const icon = btn.querySelector('.faq-toggle');
-            const isOpen = answer.classList.contains('open');
+      // ========================================
+      // FAQ ACCORDION
+      // ========================================
+      function toggleFaq(btn) {
+        const answer = btn.nextElementSibling;
+        const icon = btn.querySelector(".faq-toggle");
+        const isOpen = answer.classList.contains("open");
 
-            // Close all open FAQs first
-            document.querySelectorAll('.faq-answer.open').forEach(openAnswer => {
-                openAnswer.style.maxHeight = '0px';
-                openAnswer.style.paddingBottom = '0';
-                openAnswer.classList.remove('open');
-                openAnswer.previousElementSibling.querySelector('.faq-toggle').classList.remove('rotated');
-                openAnswer.previousElementSibling.setAttribute('aria-expanded', 'false');
-            });
-
-            // Toggle current
-            if (!isOpen) {
-                answer.classList.add('open');
-                answer.style.maxHeight = answer.scrollHeight + 'px';
-                icon.classList.add('rotated');
-                btn.setAttribute('aria-expanded', 'true');
-            }
-        }
-
-        // ========================================
-        // SCROLL REVEAL OBSERVER
-        // ========================================
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    revealObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.reveal').forEach(el => {
-            revealObserver.observe(el);
+        // Close all open FAQs first
+        document.querySelectorAll(".faq-answer.open").forEach((openAnswer) => {
+          openAnswer.style.maxHeight = "0px";
+          openAnswer.style.paddingBottom = "0";
+          openAnswer.classList.remove("open");
+          openAnswer.previousElementSibling
+            .querySelector(".faq-toggle")
+            .classList.remove("rotated");
+          openAnswer.previousElementSibling.setAttribute(
+            "aria-expanded",
+            "false",
+          );
         });
+
+        // Toggle current
+        if (!isOpen) {
+          answer.classList.add("open");
+          answer.style.maxHeight = answer.scrollHeight + "px";
+          icon.classList.add("rotated");
+          btn.setAttribute("aria-expanded", "true");
+        }
+      }
+
+      // ========================================
+      // SCROLL REVEAL OBSERVER
+      // ========================================
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+
+      document.querySelectorAll(".reveal").forEach((el) => {
+        revealObserver.observe(el);
+      });
     </script>
 
     <script src="../components/navbar.js"></script>
     <script src="../components/footer.js"></script>
-</body>
-
+  </body>
 </html>
