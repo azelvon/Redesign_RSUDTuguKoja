@@ -183,7 +183,7 @@
                     <span style="color:rgba(255,255,255,0.7);font-size:12px;font-weight:600;">Terakreditasi KARS Paripurna</span>
                 </div>
                 <div class="flex items-center gap-2 pt-1">
-                    <a href="https://www.instagram.com/rsudtugukoja/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+                    <a href="https://www.instagram.com/rsud_tugukoja/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
                         </svg>
@@ -216,8 +216,8 @@
                     <div class="contact-row">
                         <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24;">call</span>
                         <div class="flex flex-col gap-0.5">
-                            <a href="tel:02143938478" class="footer-link text-[13px]">(021) 4393 8478</a>
-                            <a href="tel:02143930530" class="footer-link text-[13px]">IGD: (021) 4393 0530</a>
+                            <a href="tel:02126061110" class="footer-link text-[13px]">(021) 2606 1110</a>
+                            <a href="https://wa.me/622126061110" target="_blank" rel="noopener noreferrer" class="footer-link text-[13px]">WA: 0811 808 5281</a>
                         </div>
                     </div>
                     <div class="contact-row">
@@ -249,7 +249,7 @@
                 </div>
                 <div class="footer-map-wrap">
                     <iframe
-                        src="google.com/maps/place/RSUD+Tugu+Koja/@-6.127324,106.9044779,17z/data=!4m14!1m7!3m6!1s0x2e6a1ff9504cd945:0xcd7356564c9971b1!2sRSUD+Tugu+Koja!8m2!3d-6.127324!4d106.9070528!16s%2Fg%2F1tgv9fms!3m5!1s0x2e6a1ff9504cd945:0xcd7356564c9971b1!8m2!3d-6.127324!4d106.9070528!16s%2Fg%2F1tgv9fms?hl=en-US&entry=ttu&g_ep=EgoyMDI2MDUyNS4wIKXMDSoASAFQAw%3D%3D"
+                        src="https://www.google.com/maps?q=RSUD+Tugu+Koja&output=embed"
                         allowfullscreen=""
                         loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"

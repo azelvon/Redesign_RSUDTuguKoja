@@ -34,36 +34,36 @@
 </head>
 <body class="bg-surface text-on-surface font-body-md">
     <div id="navbar-container" style="height: 36px;"></div>
-    <main>
-      <!-- Hero Section -->
-      <section class="relative h-[280px] md:h-[360px] w-full overflow-hidden flex items-end">
-        <div class="absolute inset-0 z-0">
-          <img
-            alt="RSUD Tugu Koja Search Hero"
-            class="w-full h-full object-cover"
-            src="assets/images/hero/RS%20Tugu%20Koja.jpg"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-jakarta-blue/90 via-jakarta-blue/50 to-jakarta-blue/20"></div>
-        </div>
-        <div class="relative z-10 max-w-container-max mx-auto px-gutter w-full pb-12">
-          <nav class="mb-4" aria-label="Breadcrumb">
-            <ol class="flex items-center gap-2 text-sm text-white/70 font-label-md">
-              <li><a href="index.html" class="hover:text-white transition-colors" style="text-decoration:none;">Beranda</a></li>
-              <li><span class="material-symbols-outlined text-[14px]">chevron_right</span></li>
-              <li class="text-white font-semibold">Pencarian</li>
-            </ol>
-          </nav>
-          <div class="max-w-2xl">
-            <h1 class="font-headline-xl text-headline-xl text-white mb-3" style="text-shadow: 0 16px 32px rgba(0,0,0,0.16);">
-              Temukan Dokter, Layanan, dan Berita RSUD Tugu Koja
-            </h1>
-            <p class="font-body-md text-[16px] text-white/80 mb-6 max-w-xl">
-              Gunakan kata kunci untuk mencari informasi yang Anda butuhkan secara cepat dan mudah di seluruh layanan rumah sakit.
-            </p>
-          </div>
-        </div>
-      </section>
-      <section class="py-16 max-w-container-max mx-auto px-margin-desktop">
+    <!-- ═══════════════════════════════════════════════════════
+         HERO SECTION — Consistent with berita.html & tentangkami.html
+         HCI: Konsistensi — same hero style across all pages
+    ═══════════════════════════════════════════════════════ -->
+    <section class="relative h-[280px] md:h-[360px] w-full overflow-hidden flex items-end">
+      <div class="absolute inset-0 z-0">
+        <img
+          alt="RSUD Tugu Koja"
+          class="w-full h-full object-cover"
+          src="assets/images/hero/RS%20Tugu%20Koja.jpg"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-jakarta-blue/90 via-jakarta-blue/50 to-jakarta-blue/20"></div>
+      </div>
+      <div class="relative z-10 max-w-container-max mx-auto px-gutter w-full pb-12">
+        <!-- Breadcrumb inside hero -->
+        <nav class="mb-4" aria-label="Breadcrumb">
+          <ol class="flex items-center gap-2 text-sm text-white/70 font-label-md">
+            <li><a href="index.html" class="hover:text-white transition-colors" style="text-decoration:none;">Beranda</a></li>
+            <li><span class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+            <li class="text-white font-semibold">Pencarian</li>
+          </ol>
+        </nav>
+        <h1 class="font-headline-xl text-headline-xl text-white mb-2" style="text-shadow: 0 2px 8px rgba(0,0,0,0.15);">Temukan Dokter, Layanan, dan Berita RSUD Tugu Koja</h1>
+        <p class="font-body-md text-[16px] text-white/80 max-w-xl">
+          Gunakan kata kunci untuk mencari informasi yang Anda butuhkan secara cepat dan mudah di seluruh layanan rumah sakit.
+        </p>
+      </div>
+    </section>
+    <main class="max-w-container-max mx-auto px-margin-desktop py-8 min-h-screen">
+      <section class="py-16">
         <div class="flex flex-col lg:flex-row gap-gutter">
           <!-- Konten Utama -->
           <section class="flex-1">
@@ -139,6 +139,10 @@
 
         function normalize(text) {
             return (text || '').toString().toLowerCase();
+        }
+
+        function escapeRegExp(text) {
+            return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         }
 
         function formatSchedule(scheduleData) {
@@ -314,7 +318,7 @@
                             </div>
                         </div>
                         <div class="mt-6">
-                            <button class="bg-primary text-on-primary font-label-lg text-label-lg px-8 py-3 rounded-lg hover:bg-jakarta-blue transition-all active:scale-95">Pilih Dokter</button>
+                            <button class="bg-primary text-white font-label-lg text-label-lg px-8 py-3 rounded-lg hover:bg-jakarta-blue transition-all active:scale-95">Pilih Dokter</button>
                         </div>
                     </div>
                 </div>
@@ -327,7 +331,7 @@
             const cardHtml = `
                 <div class="bg-surface-container-lowest border border-surface-subtle p-6 rounded-xl flex flex-col md:flex-row gap-6 hover:shadow-lg transition-all group">
                     <div class="w-full md:w-16 h-16 flex items-center justify-center bg-primary-container rounded-xl shrink-0">
-                        <span class="material-symbols-outlined text-on-primary-container text-4xl">${iconName}</span>
+                        <span class="material-symbols-outlined text-white text-4xl">${iconName}</span>
                     </div>
                     <div class="flex-1 flex flex-col justify-between">
                         <div>
@@ -412,11 +416,15 @@
         }
 
         function filterItems(query) {
-            const term = normalize(query);
+            const terms = normalize(query).split(/\W+/).filter(Boolean);
             const categories = getSelectedCategories();
             return (window.searchData || []).filter(item => {
                 if (!categories.includes(item.type)) return false;
-                return term === '' || item.searchText.includes(term);
+                if (terms.length === 0) return true;
+                return terms.every(term => {
+                    const regex = new RegExp(`\\b${escapeRegExp(term)}\\b`, 'i');
+                    return regex.test(item.searchText);
+                });
             });
         }
 

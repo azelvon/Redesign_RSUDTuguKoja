@@ -227,7 +227,7 @@
             <span class="material-symbols-outlined text-[16px]" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24;">emergency_home</span>
             <span class="font-label-md text-[13px] tracking-wide font-medium">Emergency: 112</span>
             <div class="hidden md:block w-px h-3.5 bg-white/40"></div>
-            <span class="hidden md:block font-label-md text-[13px] tracking-wide font-medium">IGD 24 Jam: (021) 4393 0530</span>
+            <span class="hidden md:block font-label-md text-[13px] tracking-wide font-medium">IGD 24 Jam: (021) 2606 1110</span>
         </div>
     </div>
 
@@ -332,7 +332,7 @@
                 if (document.body.classList.contains('peta-fullscreen')) {
                     spacer.style.height = fixedWrapper.offsetHeight + 'px';
                 } else {
-                    spacer.style.height = (emergencyBar ? emergencyBar.offsetHeight : 0) + 'px';
+                spacer.style.height = (emergencyBar ? emergencyBar.offsetHeight : 0) + 'px';
                 }
             }, 50);
         }
