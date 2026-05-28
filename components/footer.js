@@ -249,7 +249,7 @@
                 </div>
                 <div class="footer-map-wrap">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.938!2d106.89!3d-6.12!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6a1f5a5a5a5a5b%3A0x5a5a5a5a5a5a5a5a!2sRSUD%20Tugu%20Koja!5e0!3m2!1sid!2sid!4v1"
+                        src="google.com/maps/place/RSUD+Tugu+Koja/@-6.127324,106.9044779,17z/data=!4m14!1m7!3m6!1s0x2e6a1ff9504cd945:0xcd7356564c9971b1!2sRSUD+Tugu+Koja!8m2!3d-6.127324!4d106.9070528!16s%2Fg%2F1tgv9fms!3m5!1s0x2e6a1ff9504cd945:0xcd7356564c9971b1!8m2!3d-6.127324!4d106.9070528!16s%2Fg%2F1tgv9fms?hl=en-US&entry=ttu&g_ep=EgoyMDI2MDUyNS4wIKXMDSoASAFQAw%3D%3D"
                         allowfullscreen=""
                         loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"
