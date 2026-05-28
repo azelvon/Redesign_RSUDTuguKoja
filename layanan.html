@@ -1,10 +1,10 @@
-<!doctype html>
-
+﻿<!doctype html>
 <html lang="id">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Fasilitas - RSUD Tugu Koja</title>
+    <title>Layanan - RSUD Tugu Koja</title>
+    <meta name="description" content="Daftar lengkap layanan kesehatan RSUD Tugu Koja meliputi poliklinik spesialis, rawat inap, laboratorium, radiologi, dan farmasi." />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Atkinson+Hyperlegible+Next:wght@400;700&amp;display=swap"
@@ -14,12 +14,8 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
       rel="stylesheet"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-      rel="stylesheet"
-    />
+    <script src="assets/js/tailwind-config.js"></script>
     <style>
-
       .material-symbols-outlined {
         font-variation-settings:
           "FILL" 0,
@@ -28,23 +24,108 @@
           "opsz" 24;
       }
 
-      .glass-card {
-        background: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+      /* Card hover lift & glow */
+      .layanan-card {
+        transition: transform 0.35s cubic-bezier(.22,.68,0,1.2), box-shadow 0.35s ease;
+      }
+      .layanan-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(34,66,102,0.12), 0 4px 12px rgba(52,145,140,0.10);
+      }
+      .layanan-card:hover .card-img {
+        transform: scale(1.08);
+      }
+      .layanan-card:hover .card-overlay {
+        opacity: 1;
+      }
+      .layanan-card:hover .card-arrow {
+        opacity: 1;
+        transform: translateX(0);
       }
 
-      /* Hide scrollbar for Chrome, Safari and Opera */
-      .no-scrollbar::-webkit-scrollbar {
-        display: none;
+      .card-img {
+        transition: transform 0.5s cubic-bezier(.22,.68,0,1.2);
       }
-      /* Hide scrollbar for IE, Edge and Firefox */
-      .no-scrollbar {
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
+      .card-overlay {
+        opacity: 0;
+        transition: opacity 0.35s ease;
+      }
+      .card-arrow {
+        opacity: 0;
+        transform: translateX(-8px);
+        transition: all 0.3s ease 0.1s;
+      }
+
+      /* Pagination button styles */
+      .page-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.25s ease;
+        cursor: pointer;
+        border: 1.5px solid #e2e8f0;
+        color: #43474e;
+        background: white;
+      }
+      .page-btn:hover:not(.active):not(:disabled) {
+        background: #f2f4f6;
+        border-color: #34918C;
+        color: #34918C;
+      }
+      .page-btn.active {
+        background: linear-gradient(135deg, #224266, #1a3550);
+        color: white;
+        border-color: #224266;
+        box-shadow: 0 4px 12px rgba(34,66,102,0.3);
+      }
+      .page-btn:disabled {
+        opacity: 0.35;
+        cursor: not-allowed;
+      }
+      .page-btn-nav {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.25s ease;
+        cursor: pointer;
+        border: 1.5px solid #e2e8f0;
+        color: #224266;
+        background: white;
+      }
+      .page-btn-nav:hover:not(:disabled) {
+        background: #224266;
+        color: white;
+        border-color: #224266;
+      }
+      .page-btn-nav:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+
+      /* Fade in animation for cards */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .card-animate {
+        animation: fadeInUp 0.45s ease forwards;
       }
     </style>
-    <script src="assets/js/tailwind-config.js"></script>
   </head>
 
   <body class="bg-surface text-on-surface font-body-md">
@@ -66,830 +147,240 @@
             <ol class="flex items-center gap-2 text-sm text-white/70 font-label-md">
               <li><a href="index.html" class="hover:text-white transition-colors" style="text-decoration:none;">Beranda</a></li>
               <li><span class="material-symbols-outlined text-[14px]">chevron_right</span></li>
-              <li class="text-white font-semibold">Fasilitas</li>
+              <li class="text-white font-semibold">Layanan</li>
             </ol>
           </nav>
           <div class="max-w-2xl">
             <h1 class="font-headline-xl text-headline-xl text-white mb-2" style="text-shadow: 0 2px 8px rgba(0,0,0,0.15);">
-              Fasilitas &amp; Sarana Medis Modern
+              Layanan Kami
             </h1>
             <p class="font-body-md text-[16px] text-white/80 mb-6">
-              Menghadirkan teknologi kesehatan terkini dan kenyamanan terbaik
-              bagi kesembuhan dan kesejahteraan keluarga Jakarta.
+              Jelajahi berbagai layanan kesehatan lengkap yang tersedia di RSUD Tugu Koja,
+              dari poliklinik spesialis hingga fasilitas penunjang medis.
             </p>
-            <div class="flex gap-4">
-              <a href="kamarinap.html" style="text-decoration:none;">
-                <button
-                  class="bg-white text-jakarta-blue px-6 py-2.5 rounded-full font-label-md text-[14px] hover:scale-105 transition-transform shadow-sm"
-                >
-                  Ketersediaan Kamar Inap
-                </button>
-              </a>
-              <a href="layanan/peta.html" style="text-decoration:none;">
-                <button
-                  class="border border-white/80 text-white px-6 py-2.5 rounded-full font-label-md text-[14px] hover:bg-white/10 transition-colors"
-                >
-                  Tur Virtual
-                </button>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Layanan Unggulan (Bento Grid) -->
-      <section class="py-20 max-w-container-max mx-auto px-gutter">
-        <div class="mb-12">
-          <h2 class="font-headline-lg text-headline-lg text-jakarta-blue mb-2">
-            Layanan Unggulan
-          </h2>
-          <div class="w-20 h-1.5 bg-health-green rounded-full"></div>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[600px]">
-          <!-- IGD -->
-          <div
-            class="md:col-span-4 bg-jakarta-blue rounded-xl p-8 flex flex-col justify-between text-white relative overflow-hidden group"
-          >
-            <div class="relative z-10">
-              <div
-                class="bg-emergency-red w-16 h-16 rounded-lg flex items-center justify-center mb-6"
-              >
-                <span
-                  class="material-symbols-outlined text-4xl text-white"
-                  style="font-variation-settings: &quot;FILL&quot; 1"
-                  >emergency</span
-                >
-              </div>
-              <h3 class="font-headline-md text-headline-md mb-2">IGD 24 Jam</h3>
-              <p class="font-body-md text-body-md text-white/80">
-                Penanganan darurat medis tercepat dengan tim ahli trauma dan
-                peralatan pendukung hidup lanjutan.
-              </p>
-            </div>
-            <div class="mt-8 relative z-10">
-              <span class="font-label-md text-label-md underline cursor-pointer"
-                >Siaga 24/7 →</span
-              >
-            </div>
-            <div
-              class="absolute -right-8 -bottom-8 opacity-10 group-hover:scale-110 transition-transform"
-            >
-              <span class="material-symbols-outlined text-[160px]"
-                >medical_services</span
-              >
-            </div>
-          </div>
-          <!-- Instalasi Tumbuh Kembang -->
-          <div
-            class="md:col-span-8 bg-surface-container-low border border-surface-subtle rounded-xl p-8 flex flex-col md:flex-row gap-8 items-center group"
-          >
-            <div class="flex-1 order-2 md:order-1">
-              <span
-                class="material-symbols-outlined text-health-green text-5xl mb-4"
-                >child_care</span
-              >
-              <h3
-                class="font-headline-md text-headline-md text-jakarta-blue mb-4"
-              >
-                Instalasi Tumbuh Kembang
-              </h3>
-              <p class="font-body-md text-body-md text-on-surface-variant mb-6">
-                Layanan komprehensif untuk deteksi dini, intervensi, dan terapi anak.
-                Ditangani oleh tim ahli tumbuh kembang dan terapis profesional di lingkungan yang ramah anak.
-              </p>
-              <div class="grid grid-cols-2 gap-4">
-                <div class="flex items-center gap-2">
-                  <span class="material-symbols-outlined text-health-green"
-                    >check_circle</span
-                  >
-                  <span class="text-label-md">Terapi Terpadu</span>
-                </div>
-                <div class="flex items-center gap-2">
-                  <span class="material-symbols-outlined text-health-green"
-                    >check_circle</span
-                  >
-                  <span class="text-label-md">Ruang Bermain Inklusif</span>
-                </div>
-              </div>
-            </div>
-            <div
-              class="w-full md:w-1/2 h-64 rounded-lg overflow-hidden order-1 md:order-2"
-            >
-              <img
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                data-alt="A clean, bright, and colorful child development therapy room in a modern hospital. Equipped with safe educational toys and soft mats."
-                src="assets/images/layanan/tumbuh_kembang.png"
-              />
-            </div>
-          </div>
-          <!-- Rawat Inap -->
-          <div
-            class="md:col-span-7 bg-surface-container-lowest border border-surface-subtle rounded-xl p-8 flex gap-8 items-center"
-          >
-            <div class="flex-1">
-              <h3
-                class="font-headline-md text-headline-md text-jakarta-blue mb-2"
-              >
-                Rawat Inap
-              </h3>
-              <p class="font-body-md text-body-md text-on-surface-variant mb-6">
-                Kamar perawatan yang dirancang untuk kenyamanan pemulihan
-                pasien. Tersedia kelas VVIP, VIP, hingga Kelas Standar.
-              </p>
-              <ul class="space-y-2">
-                <li class="flex items-center gap-3 text-body-md">
-                  <span class="material-symbols-outlined text-jakarta-blue"
-                    >hotel</span
-                  >
-                  Fasilitas Bed Modern
-                </li>
-                <li class="flex items-center gap-3 text-body-md">
-                  <span class="material-symbols-outlined text-jakarta-blue"
-                    >restaurant</span
-                  >
-                  Nutrisi Pasien Terjaga
-                </li>
-              </ul>
-            </div>
-            <div
-              class="hidden lg:flex w-48 h-48 bg-jakarta-blue/5 rounded-full items-center justify-center flex-shrink-0"
-            >
-              <span class="material-symbols-outlined text-jakarta-blue text-[80px]"
-                >bed</span
-              >
-            </div>
-          </div>
-          <!-- Spesialis -->
-          <div
-            class="md:col-span-5 bg-health-green rounded-xl p-6 md:p-8 text-white flex flex-col justify-center group overflow-hidden relative"
-          >
-            <div class="relative z-10 flex flex-col h-full justify-center">
-              <div>
-                <!-- Top Row: Icon and Button -->
-                <div class="flex justify-between items-start w-full mb-6">
-                  <div class="bg-white/20 w-10 h-10 rounded-lg flex items-center justify-center backdrop-blur-sm border border-white/30 shrink-0">
-                      <span class="material-symbols-outlined text-xl text-white">groups</span>
-                  </div>
-                  <a href="caridokter.html"
-                    class="bg-white text-health-green px-4 py-2 rounded-full text-[11px] md:text-xs font-bold active:scale-95 transition-all shadow-md hover:shadow-lg hover:bg-surface flex items-center gap-1 group-hover:pr-3"
-                  >
-                    <span>Cari Jadwal</span>
-                    <span class="material-symbols-outlined text-[14px] transition-transform group-hover:translate-x-1">arrow_forward</span>
-                  </a>
-                </div>
-                
-                <div class="flex items-baseline gap-2 mb-2 mt-2">
-                    <span class="text-2xl md:text-3xl font-extrabold text-white">Lebih dari 15 Poliklinik</span>
-                </div>
-                <h3 class="text-lg font-bold mb-2">
-                    Spesialis & Subspesialis
-                </h3>
-                <p class="text-sm text-white/90 leading-relaxed">
-                    Didukung tenaga medis spesialis berpengalaman untuk pelayanan kesehatan Anda.
-                </p>
-              </div>
-            </div>
-            <div
-              class="absolute -right-8 -bottom-10 text-white/10 group-hover:scale-110 transition-transform duration-700 ease-out"
-            >
-              <span class="material-symbols-outlined text-[180px]"
-                >stethoscope</span
-              >
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Fasilitas Penunjang -->
-      <section
-        class="bg-surface-container-low py-20 border-y border-surface-subtle"
-      >
-        <div class="max-w-container-max mx-auto px-gutter">
-          <div class="text-center mb-16">
-            <h2
-              class="font-headline-lg text-headline-lg text-jakarta-blue mb-4"
-            >
-              Fasilitas Penunjang Medis
-            </h2>
-            <p
-              class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto"
-            >
-              Kami mengintegrasikan teknologi diagnosa mutakhir untuk akurasi
-              pengobatan yang maksimal bagi seluruh pasien.
-            </p>
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <!-- Card 1 -->
-            <div
-              class="bg-surface-container-lowest p-8 rounded-xl border border-surface-subtle shadow-sm hover:shadow-md transition-shadow"
-            >
-              <div class="text-jakarta-blue mb-4">
-                <span class="material-symbols-outlined text-4xl">biotech</span>
-              </div>
-              <h4
-                class="font-headline-md text-headline-md text-jakarta-blue mb-3"
-              >
-                Laboratorium
-              </h4>
-              <p class="font-body-md text-body-md text-on-surface-variant">
-                Layanan tes darah, urine, dan patologi klinik dengan hasil yang
-                cepat dan akurat.
-              </p>
-            </div>
-            <!-- Card 2 -->
-            <div
-              class="bg-surface-container-lowest p-8 rounded-xl border border-surface-subtle shadow-sm hover:shadow-md transition-shadow"
-            >
-              <div class="text-jakarta-blue mb-4">
-                <span class="material-symbols-outlined text-4xl"
-                  >radiology</span
-                >
-              </div>
-              <h4
-                class="font-headline-md text-headline-md text-jakarta-blue mb-3"
-              >
-                Radiologi
-              </h4>
-              <p class="font-body-md text-body-md text-on-surface-variant">
-                Dilengkapi CT Scan 64 Slices, Digital X-Ray, dan USG 4D terbaru.
-              </p>
-            </div>
-            <!-- Card 3 -->
-            <div
-              class="bg-surface-container-lowest p-8 rounded-xl border border-surface-subtle shadow-sm hover:shadow-md transition-shadow"
-            >
-              <div class="text-jakarta-blue mb-4">
-                <span class="material-symbols-outlined text-4xl"
-                  >medication</span
-                >
-              </div>
-              <h4
-                class="font-headline-md text-headline-md text-jakarta-blue mb-3"
-              >
-                Farmasi 24 Jam
-              </h4>
-              <p class="font-body-md text-body-md text-on-surface-variant">
-                Layanan penebusan resep obat yang terintegrasi dengan sistem
-                rekam medis.
-              </p>
-            </div>
-            <!-- Card 4 -->
-            <div
-              class="bg-surface-container-lowest p-8 rounded-xl border border-surface-subtle shadow-sm hover:shadow-md transition-shadow"
-            >
-              <div class="text-jakarta-blue mb-4">
-                <span class="material-symbols-outlined text-4xl"
-                  >physical_therapy</span
-                >
-              </div>
-              <h4
-                class="font-headline-md text-headline-md text-jakarta-blue mb-3"
-              >
-                Rehabilitasi
-              </h4>
-              <p class="font-body-md text-body-md text-on-surface-variant">
-                Layanan fisioterapi dan pemulihan fisik oleh terapis
-                berpengalaman.
-              </p>
-            </div>
           </div>
         </div>
       </section>
 
-      <!-- Klinik Section -->
-      <section class="max-w-container-max mx-auto px-gutter py-20 relative overflow-hidden">
-        <div class="bg-gradient-to-b from-white to-surface-container-lowest rounded-3xl p-8 md:p-12 shadow-sm border border-surface-subtle relative overflow-hidden">
-          <!-- Decorative Background -->
-          <div class="absolute top-0 right-0 w-96 h-96 bg-health-green/5 rounded-full blur-3xl -z-10 translate-x-1/3 -translate-y-1/3"></div>
-          <div class="absolute bottom-0 left-0 w-96 h-96 bg-jakarta-blue/5 rounded-full blur-3xl -z-10 -translate-x-1/3 translate-y-1/3"></div>
-          
-          <div class="mb-12 text-center relative z-10">
-            <span class="inline-block py-1 px-3 rounded-full bg-health-green/10 text-health-green font-bold text-xs uppercase tracking-widest mb-3">Fasilitas Kami</span>
-            <h2 class="font-headline-lg text-headline-lg text-jakarta-blue mb-4">
-              Klinik Terpopuler Pilihan
-            </h2>
-            <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">
-              Jelajahi berbagai pilihan klinik spesialis kami yang didukung oleh tenaga profesional dan teknologi medis terkini.
-            </p>
-          </div>
-          <div id="klinik-container" class="grid grid-cols-1 md:grid-cols-2 gap-4 relative z-10 max-w-5xl mx-auto">
-            <!-- Klinik items will be populated here by JavaScript -->
-          </div>
+      <!-- Layanan Cards Section -->
+      <section class="py-16 md:py-20 max-w-container-max mx-auto px-gutter">
+
+        <!-- Cards Grid -->
+        <div id="layanan-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 min-h-[520px]">
+          <!-- Cards populated by JS -->
         </div>
-      </section>
 
-      
-      <!-- Direktori Layanan -->
-      <section class="max-w-container-max mx-auto px-gutter py-10" id="direktori-layanan">
-        <div class="mb-10 text-center">
-          <span class="inline-block py-1 px-3 rounded-full bg-jakarta-blue/10 text-jakarta-blue font-bold text-xs uppercase tracking-widest mb-3">Direktori Lengkap</span>
-          <h2 class="font-headline-lg text-headline-lg text-primary mb-4">
-            Semua Layanan Kami
-          </h2>
-          <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">
-            Temukan layanan kesehatan yang Anda butuhkan dari daftar lengkap layanan medis dan penunjang kami.
-          </p>
-        </div>
-        
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-          <!-- Gawat Darurat -->
-          <a href="\layanan/igd.html" class="bg-white p-4 rounded-xl border border-surface-subtle shadow-sm hover:border-emergency-red hover:shadow-md transition-all group flex flex-col gap-3">
-            <div class="w-10 h-10 rounded-full bg-emergency-red/10 text-emergency-red flex items-center justify-center group-hover:bg-emergency-red group-hover:text-white transition-colors">
-              <span class="material-symbols-outlined text-[20px]">emergency</span>
-            </div>
-            <div>
-              <h4 class="font-label-md text-[14px] text-primary group-hover:text-emergency-red transition-colors">Gawat Darurat 24 Jam</h4>
-              <p class="text-[12px] text-text-muted mt-0.5">Layanan IGD 24 Jam</p>
-            </div>
-          </a>
-          
-          <!-- Rawat Inap -->
-          <a href="\layanan/rawat-inap.html" class="bg-white p-4 rounded-xl border border-surface-subtle shadow-sm hover:border-jakarta-blue hover:shadow-md transition-all group flex flex-col gap-3">
-            <div class="w-10 h-10 rounded-full bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center group-hover:bg-jakarta-blue group-hover:text-white transition-colors">
-              <span class="material-symbols-outlined text-[20px]">bed</span>
-            </div>
-            <div>
-              <h4 class="font-label-md text-[14px] text-primary group-hover:text-jakarta-blue transition-colors">Pelayanan Rawat Inap</h4>
-              <p class="text-[12px] text-text-muted mt-0.5">Umum, Intensif & Info Kamar</p>
-            </div>
-          </a>
-
-          <!-- Penunjang -->
-          <a href="\layanan/laboratorium.html" class="bg-white p-4 rounded-xl border border-surface-subtle shadow-sm hover:border-jakarta-blue hover:shadow-md transition-all group flex flex-col gap-3">
-            <div class="w-10 h-10 rounded-full bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center group-hover:bg-jakarta-blue group-hover:text-white transition-colors">
-              <span class="material-symbols-outlined text-[20px]">science</span>
-            </div>
-            <div>
-              <h4 class="font-label-md text-[14px] text-primary group-hover:text-jakarta-blue transition-colors">Laboratorium</h4>
-              <p class="text-[12px] text-text-muted mt-0.5">Penunjang Medis</p>
-            </div>
-          </a>
-          <a href="\layanan.html" class="bg-white p-4 rounded-xl border border-surface-subtle shadow-sm hover:border-jakarta-blue hover:shadow-md transition-all group flex flex-col gap-3">
-            <div class="w-10 h-10 rounded-full bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center group-hover:bg-jakarta-blue group-hover:text-white transition-colors">
-              <span class="material-symbols-outlined text-[20px]">radiology</span>
-            </div>
-            <div>
-              <h4 class="font-label-md text-[14px] text-primary group-hover:text-jakarta-blue transition-colors">Radiologi</h4>
-              <p class="text-[12px] text-text-muted mt-0.5">Penunjang Medis</p>
-            </div>
-          </a>
-          <a href="\layanan.html" class="bg-white p-4 rounded-xl border border-surface-subtle shadow-sm hover:border-jakarta-blue hover:shadow-md transition-all group flex flex-col gap-3">
-            <div class="w-10 h-10 rounded-full bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center group-hover:bg-jakarta-blue group-hover:text-white transition-colors">
-              <span class="material-symbols-outlined text-[20px]">medication</span>
-            </div>
-            <div>
-              <h4 class="font-label-md text-[14px] text-primary group-hover:text-jakarta-blue transition-colors">Farmasi</h4>
-              <p class="text-[12px] text-text-muted mt-0.5">Penunjang Medis</p>
-            </div>
-          </a>
-
-          <!-- Poliklinik (14 items from dokter.json) -->
-          <a href="\caridokter.html" class="bg-white p-4 rounded-xl border border-surface-subtle shadow-sm hover:border-health-green hover:shadow-md transition-all group flex flex-col gap-3">
-            <div class="w-10 h-10 rounded-full bg-health-green/10 text-health-green flex items-center justify-center group-hover:bg-health-green group-hover:text-white transition-colors">
-              <span class="material-symbols-outlined text-[20px]">pregnant_woman</span>
-            </div>
-            <div>
-              <h4 class="font-label-md text-[14px] text-primary group-hover:text-health-green transition-colors">Poli Kebidanan & Kandungan</h4>
-              <p class="text-[12px] text-text-muted mt-0.5">Rawat Jalan</p>
-            </div>
-          </a>
-          <a href="\caridokter.html" class="bg-white p-4 rounded-xl border border-surface-subtle shadow-sm hover:border-health-green hover:shadow-md transition-all group flex flex-col gap-3">
-            <div class="w-10 h-10 rounded-full bg-health-green/10 text-health-green flex items-center justify-center group-hover:bg-health-green group-hover:text-white transition-colors">
-              <span class="material-symbols-outlined text-[20px]">body_system</span>
-            </div>
-            <div>
-              <h4 class="font-label-md text-[14px] text-primary group-hover:text-health-green transition-colors">Poli Penyakit Dalam</h4>
-              <p class="text-[12px] text-text-muted mt-0.5">Rawat Jalan</p>
-            </div>
-          </a>
-          <a href="\caridokter.html" class="bg-white p-4 rounded-xl border border-surface-subtle shadow-sm hover:border-health-green hover:shadow-md transition-all group flex flex-col gap-3">
-            <div class="w-10 h-10 rounded-full bg-health-green/10 text-health-green flex items-center justify-center group-hover:bg-health-green group-hover:text-white transition-colors">
-              <span class="material-symbols-outlined text-[20px]">child_care</span>
-            </div>
-            <div>
-              <h4 class="font-label-md text-[14px] text-primary group-hover:text-health-green transition-colors">Poli Anak</h4>
-              <p class="text-[12px] text-text-muted mt-0.5">Rawat Jalan</p>
-            </div>
-          </a>
-          <a href="\caridokter.html" class="bg-white p-4 rounded-xl border border-surface-subtle shadow-sm hover:border-health-green hover:shadow-md transition-all group flex flex-col gap-3">
-            <div class="w-10 h-10 rounded-full bg-health-green/10 text-health-green flex items-center justify-center group-hover:bg-health-green group-hover:text-white transition-colors">
-              <span class="material-symbols-outlined text-[20px]">visibility</span>
-            </div>
-            <div>
-              <h4 class="font-label-md text-[14px] text-primary group-hover:text-health-green transition-colors">Poli Mata</h4>
-              <p class="text-[12px] text-text-muted mt-0.5">Rawat Jalan</p>
-            </div>
-          </a>
-          <a href="\caridokter.html" class="bg-white p-4 rounded-xl border border-surface-subtle shadow-sm hover:border-health-green hover:shadow-md transition-all group flex flex-col gap-3">
-            <div class="w-10 h-10 rounded-full bg-health-green/10 text-health-green flex items-center justify-center group-hover:bg-health-green group-hover:text-white transition-colors">
-              <span class="material-symbols-outlined text-[20px]">pulmonology</span>
-            </div>
-            <div>
-              <h4 class="font-label-md text-[14px] text-primary group-hover:text-health-green transition-colors">Poli Paru</h4>
-              <p class="text-[12px] text-text-muted mt-0.5">Rawat Jalan</p>
-            </div>
-          </a>
-          <a href="\caridokter.html" class="bg-white p-4 rounded-xl border border-surface-subtle shadow-sm hover:border-health-green hover:shadow-md transition-all group flex flex-col gap-3">
-            <div class="w-10 h-10 rounded-full bg-health-green/10 text-health-green flex items-center justify-center group-hover:bg-health-green group-hover:text-white transition-colors">
-              <span class="material-symbols-outlined text-[20px]">dermatology</span>
-            </div>
-            <div>
-              <h4 class="font-label-md text-[14px] text-primary group-hover:text-health-green transition-colors">Poli Kulit & Kelamin</h4>
-              <p class="text-[12px] text-text-muted mt-0.5">Rawat Jalan</p>
-            </div>
-          </a>
-          <a href="\caridokter.html" class="bg-white p-4 rounded-xl border border-surface-subtle shadow-sm hover:border-health-green hover:shadow-md transition-all group flex flex-col gap-3">
-            <div class="w-10 h-10 rounded-full bg-health-green/10 text-health-green flex items-center justify-center group-hover:bg-health-green group-hover:text-white transition-colors">
-              <span class="material-symbols-outlined text-[20px]">hearing</span>
-            </div>
-            <div>
-              <h4 class="font-label-md text-[14px] text-primary group-hover:text-health-green transition-colors">Poli THT-KL</h4>
-              <p class="text-[12px] text-text-muted mt-0.5">Rawat Jalan</p>
-            </div>
-          </a>
-          <a href="\caridokter.html" class="bg-white p-4 rounded-xl border border-surface-subtle shadow-sm hover:border-health-green hover:shadow-md transition-all group flex flex-col gap-3">
-            <div class="w-10 h-10 rounded-full bg-health-green/10 text-health-green flex items-center justify-center group-hover:bg-health-green group-hover:text-white transition-colors">
-              <span class="material-symbols-outlined text-[20px]">surgical</span>
-            </div>
-            <div>
-              <h4 class="font-label-md text-[14px] text-primary group-hover:text-health-green transition-colors">Poli Bedah Umum</h4>
-              <p class="text-[12px] text-text-muted mt-0.5">Rawat Jalan</p>
-            </div>
-          </a>
-          <a href="\caridokter.html" class="bg-white p-4 rounded-xl border border-surface-subtle shadow-sm hover:border-health-green hover:shadow-md transition-all group flex flex-col gap-3">
-            <div class="w-10 h-10 rounded-full bg-health-green/10 text-health-green flex items-center justify-center group-hover:bg-health-green group-hover:text-white transition-colors">
-              <span class="material-symbols-outlined text-[20px]">neurology</span>
-            </div>
-            <div>
-              <h4 class="font-label-md text-[14px] text-primary group-hover:text-health-green transition-colors">Poli Saraf</h4>
-              <p class="text-[12px] text-text-muted mt-0.5">Rawat Jalan</p>
-            </div>
-          </a>
-          <a href="\caridokter.html" class="bg-white p-4 rounded-xl border border-surface-subtle shadow-sm hover:border-health-green hover:shadow-md transition-all group flex flex-col gap-3">
-            <div class="w-10 h-10 rounded-full bg-health-green/10 text-health-green flex items-center justify-center group-hover:bg-health-green group-hover:text-white transition-colors">
-              <span class="material-symbols-outlined text-[20px]">cardiology</span>
-            </div>
-            <div>
-              <h4 class="font-label-md text-[14px] text-primary group-hover:text-health-green transition-colors">Poli Jantung & Pembuluh Darah</h4>
-              <p class="text-[12px] text-text-muted mt-0.5">Rawat Jalan</p>
-            </div>
-          </a>
-          <a href="\caridokter.html" class="bg-white p-4 rounded-xl border border-surface-subtle shadow-sm hover:border-health-green hover:shadow-md transition-all group flex flex-col gap-3">
-            <div class="w-10 h-10 rounded-full bg-health-green/10 text-health-green flex items-center justify-center group-hover:bg-health-green group-hover:text-white transition-colors">
-              <span class="material-symbols-outlined text-[20px]">physical_therapy</span>
-            </div>
-            <div>
-              <h4 class="font-label-md text-[14px] text-primary group-hover:text-health-green transition-colors">Poli Rehab Medik</h4>
-              <p class="text-[12px] text-text-muted mt-0.5">Rawat Jalan</p>
-            </div>
-          </a>
-          <a href="\caridokter.html" class="bg-white p-4 rounded-xl border border-surface-subtle shadow-sm hover:border-health-green hover:shadow-md transition-all group flex flex-col gap-3">
-            <div class="w-10 h-10 rounded-full bg-health-green/10 text-health-green flex items-center justify-center group-hover:bg-health-green group-hover:text-white transition-colors">
-              <span class="material-symbols-outlined text-[20px]">dentistry</span>
-            </div>
-            <div>
-              <h4 class="font-label-md text-[14px] text-primary group-hover:text-health-green transition-colors">Poli Konservasi Gigi</h4>
-              <p class="text-[12px] text-text-muted mt-0.5">Rawat Jalan</p>
-            </div>
-          </a>
-          <a href="\caridokter.html" class="bg-white p-4 rounded-xl border border-surface-subtle shadow-sm hover:border-health-green hover:shadow-md transition-all group flex flex-col gap-3">
-            <div class="w-10 h-10 rounded-full bg-health-green/10 text-health-green flex items-center justify-center group-hover:bg-health-green group-hover:text-white transition-colors">
-              <span class="material-symbols-outlined text-[20px]">dentistry</span>
-            </div>
-            <div>
-              <h4 class="font-label-md text-[14px] text-primary group-hover:text-health-green transition-colors">Poli Gigi Umum</h4>
-              <p class="text-[12px] text-text-muted mt-0.5">Rawat Jalan</p>
-            </div>
-          </a>
-          <a href="\caridokter.html" class="bg-white p-4 rounded-xl border border-surface-subtle shadow-sm hover:border-health-green hover:shadow-md transition-all group flex flex-col gap-3">
-            <div class="w-10 h-10 rounded-full bg-health-green/10 text-health-green flex items-center justify-center group-hover:bg-health-green group-hover:text-white transition-colors">
-              <span class="material-symbols-outlined text-[20px]">healing</span>
-            </div>
-            <div>
-              <h4 class="font-label-md text-[14px] text-primary group-hover:text-health-green transition-colors">Poli Akupunktur</h4>
-              <p class="text-[12px] text-text-muted mt-0.5">Rawat Jalan</p>
-            </div>
-          </a>
-
-          <!-- 5 Klinik Khusus -->
-          <a href="\klinik-detail.html?id=klinik-gizi" class="bg-white p-4 rounded-xl border border-surface-subtle shadow-sm hover:border-health-green hover:shadow-md transition-all group flex flex-col gap-3">
-            <div class="w-10 h-10 rounded-full bg-health-green/10 text-health-green flex items-center justify-center group-hover:bg-health-green group-hover:text-white transition-colors">
-              <span class="material-symbols-outlined text-[20px]">nutrition</span>
-            </div>
-            <div>
-              <h4 class="font-label-md text-[14px] text-primary group-hover:text-health-green transition-colors">Klinik Gizi</h4>
-              <p class="text-[12px] text-text-muted mt-0.5">Rawat Jalan</p>
-            </div>
-          </a>
-          <a href="\klinik-detail.html?id=klinik-mcu" class="bg-white p-4 rounded-xl border border-surface-subtle shadow-sm hover:border-health-green hover:shadow-md transition-all group flex flex-col gap-3">
-            <div class="w-10 h-10 rounded-full bg-health-green/10 text-health-green flex items-center justify-center group-hover:bg-health-green group-hover:text-white transition-colors">
-              <span class="material-symbols-outlined text-[20px]">assignment_turned_in</span>
-            </div>
-            <div>
-              <h4 class="font-label-md text-[14px] text-primary group-hover:text-health-green transition-colors">Klinik MCU</h4>
-              <p class="text-[12px] text-text-muted mt-0.5">Rawat Jalan</p>
-            </div>
-          </a>
-          <a href="\klinik-detail.html?id=klinik-geriatri" class="bg-white p-4 rounded-xl border border-surface-subtle shadow-sm hover:border-health-green hover:shadow-md transition-all group flex flex-col gap-3">
-            <div class="w-10 h-10 rounded-full bg-health-green/10 text-health-green flex items-center justify-center group-hover:bg-health-green group-hover:text-white transition-colors">
-              <span class="material-symbols-outlined text-[20px]">elderly</span>
-            </div>
-            <div>
-              <h4 class="font-label-md text-[14px] text-primary group-hover:text-health-green transition-colors">Klinik Geriatri</h4>
-              <p class="text-[12px] text-text-muted mt-0.5">Rawat Jalan</p>
-            </div>
-          </a>
-          <a href="\klinik-detail.html?id=klinik-sehati" class="bg-white p-4 rounded-xl border border-surface-subtle shadow-sm hover:border-health-green hover:shadow-md transition-all group flex flex-col gap-3">
-            <div class="w-10 h-10 rounded-full bg-health-green/10 text-health-green flex items-center justify-center group-hover:bg-health-green group-hover:text-white transition-colors">
-              <span class="material-symbols-outlined text-[20px]">favorite</span>
-            </div>
-            <div>
-              <h4 class="font-label-md text-[14px] text-primary group-hover:text-health-green transition-colors">Klinik Sehati</h4>
-              <p class="text-[12px] text-text-muted mt-0.5">Rawat Jalan</p>
-            </div>
-          </a>
-          <a href="\layanan.html" class="bg-white p-4 rounded-xl border border-surface-subtle shadow-sm hover:border-health-green hover:shadow-md transition-all group flex flex-col gap-3">
-            <div class="w-10 h-10 rounded-full bg-health-green/10 text-health-green flex items-center justify-center group-hover:bg-health-green group-hover:text-white transition-colors">
-              <span class="material-symbols-outlined text-[20px]">fitness_center</span>
-            </div>
-            <div>
-              <h4 class="font-label-md text-[14px] text-primary group-hover:text-health-green transition-colors">Layanan Fisioterapi</h4>
-              <p class="text-[12px] text-text-muted mt-0.5">Rawat Jalan</p>
-            </div>
-          </a>
-        </div>
-      </section>
-
-      <!-- Fasilitas Umum -->
-      <section class="py-20 max-w-container-max mx-auto px-gutter">
-        <div
-          class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4"
-        >
-          <div>
-            <h2
-              class="font-headline-lg text-headline-lg text-jakarta-blue mb-2"
-            >
-              Fasilitas Umum
-            </h2>
-            <p class="font-body-md text-body-md text-on-surface-variant">
-              Kenyamanan pendamping dan pengunjung adalah prioritas kami.
-            </p>
-          </div>
-          <div class="flex gap-2">
-            <button
-              class="p-2 border border-surface-subtle rounded-full text-jakarta-blue hover:bg-jakarta-blue hover:text-white transition-colors"
-              onclick="scrollPublic(-300)"
-            >
-              <span class="material-symbols-outlined">chevron_left</span>
-            </button>
-            <button
-              class="p-2 border border-surface-subtle rounded-full text-jakarta-blue hover:bg-jakarta-blue hover:text-white transition-colors"
-              onclick="scrollPublic(300)"
-            >
-              <span class="material-symbols-outlined">chevron_right</span>
-            </button>
-          </div>
-        </div>
-        <div
-          class="flex overflow-x-auto gap-6 pb-8 snap-x no-scrollbar scroll-smooth"
-          id="public-scroll"
-        >
-          <!-- Facility Item -->
-          <div class="min-w-[300px] snap-start">
-            <div class="h-48 rounded-xl mb-4 overflow-hidden">
-              <img
-                class="w-full h-full object-cover"
-                data-alt="A spacious and serene modern prayer room (Musholla) inside a hospital, featuring minimalist architectural design, soft warm lighting, and pristine white walls to create a peaceful atmosphere for spiritual reflection."
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlmq5tK6ZFA9Ys7ZNAOfPivH2JeWdZyPQq1W3BSn5BmlucrYQ2r8dXX85o1a6Ife9xlAinMJYye44usZOyYk9xy1cbpFc8f0U4VC2ju8IlLcH8vqJDfUoHIW8qmBzDOBQvpgdz4OTRbrTf8tbEkpmDJH4ebRXfOMyHaFCTVrMY1j4Fz-3rDbSfX-qZwo4ohedocPGkE2uZOdTMxsZMTMyKY6NYjPCCmtCHHKIwIKQ7DhbhCBtDqXuhl3wL6PBjcP9dOPBKKgEaGVQ"
-              />
-            </div>
-            <h5 class="font-label-lg text-label-lg text-jakarta-blue">
-              Musholla
-            </h5>
-            <p class="font-body-md text-body-md text-on-surface-variant">
-              Area ibadah yang luas dan bersih untuk ketenangan batin.
-            </p>
-          </div>
-          <!-- Facility Item -->
-          <div class="min-w-[300px] snap-start">
-            <div class="h-48 rounded-xl mb-4 overflow-hidden">
-              <img
-                class="w-full h-full object-cover"
-                data-alt="A wide and organized multi-level hospital parking area with clear directional signs and bright LED lighting, ensuring security and convenience for patients and visitors arriving by vehicle."
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYMIYq8rD_TaVcxtCCGD55Ki0-1pP-C6Q3bif9wQJmJkNxZa7UiSrGSqU1Q0UCG-ngwAys2PZVzvjwHPx6HA6ktzVcLz3u-HX76ZNZ5yrpOCkGWEjbHC2pjTZg6nQzyPyc-kbWUKP5bpk-WCrI3xro0HUTTaAWNVpyxhmHUINhi3gaquMqJ8WcgHTAAmKHLS-OTCxTrZi_ypo-hvw9yWgbxlo8L_xLAEL1FKKl823vJTwDp1Hu1zcJ74DQr689b8J-kFO7SRGFePc"
-              />
-            </div>
-            <h5 class="font-label-lg text-label-lg text-jakarta-blue">
-              Area Parkir Luas
-            </h5>
-            <p class="font-body-md text-body-md text-on-surface-variant">
-              Gedung parkir terpadu dengan sistem keamanan 24 jam.
-            </p>
-          </div>
-          <!-- Facility Item -->
-          <div class="min-w-[300px] snap-start">
-            <div class="h-48 rounded-xl mb-4 overflow-hidden">
-              <img
-                class="w-full h-full object-cover"
-                data-alt="A clean and modern hospital cafeteria featuring a healthy menu display, natural wood furniture, and large windows that let in soft daylight, promoting a sense of wellness and nutrition."
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKC_xGAnFsFLmgAOA3JqKS_nDZaDM_29zXWMsNP-I_zEO4sF7P4Sj94CEMpsLxWMgIFCEi9XDEIUDPm2w1kgtoLZsm1hmA8xThxO_imkWcpjJVxrfBrKDjZYsmMT1laBy6HuNC2HhLYDQgTipkeQOrwobJnc5G2-vcXJHYkcmQOxKUBfckNjRFWFfDhKNSLbYq4SNNl-7y_d5G8Uk01k26JKAKPk_xkessEgLDNrshdMMDPtw1fHvOdeWploCN8UORYl0cZU2LCnA"
-              />
-            </div>
-            <h5 class="font-label-lg text-label-lg text-jakarta-blue">
-              Kantin Sehat
-            </h5>
-            <p class="font-body-md text-body-md text-on-surface-variant">
-              Menyajikan makanan bergizi dengan standar kebersihan tinggi.
-            </p>
-          </div>
-          <!-- Facility Item -->
-          <div class="min-w-[300px] snap-start">
-            <div class="h-48 rounded-xl mb-4 overflow-hidden">
-              <img
-                class="w-full h-full object-cover"
-                data-alt="An expansive and comfortable hospital waiting lounge with ergonomic seating, indoor greenery, and large screens for appointment queue information, designed to reduce stress for patients and families."
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOMYEw5zAYoh1kNt9TWyRvHGfBQuE0wYoySfPN5FIP4F7CsdqH3mjz8RXb4ZWJuESLAR8ooC5gRP0n30ZBVAgXks_wKOBUSjS-pHXQQsE0AG0ad7nrjNajmnwvp4q6pBJgAIph5QgLU-XFnX0lvDPRVqLjpNPTWWg2Xq7jmj823BtV3jFVYxwsHs8R7Gu4FWTrB94cdmjPI8gqMsG1WhMxT4eXt16QPxOygNRf2ojh7Sx6-AKGmJlbikYz2s93ZpdGLsAzRABDEuk"
-              />
-            </div>
-            <h5 class="font-label-lg text-label-lg text-jakarta-blue">
-              Ruang Tunggu Nyaman
-            </h5>
-            <p class="font-body-md text-body-md text-on-surface-variant">
-              Dilengkapi dengan akses Wi-Fi gratis dan pengisi daya ponsel.
-            </p>
-          </div>
+        <!-- Pagination -->
+        <div class="flex items-center justify-center gap-2 mt-12" id="pagination-container">
+          <!-- Pagination populated by JS -->
         </div>
       </section>
     </main>
 
     <!-- Footer -->
     <div id="footer-container"></div>
+
     <script>
-      function scrollPublic(distance) {
-        document.getElementById("public-scroll").scrollBy({
-          left: distance,
-          behavior: "smooth",
-        });
-      }
-
-      // Simple intersection observer for reveal effects
-      const observerOptions = {
-        threshold: 0.1,
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("opacity-100", "translate-y-0");
-            entry.target.classList.remove("opacity-0", "translate-y-10");
-          }
-        });
-      }, observerOptions);
-
-      document.querySelectorAll("section > div").forEach((el) => {
-        el.classList.add(
-          "transition-all",
-          "duration-700",
-          "ease-out",
-          "opacity-0",
-          "translate-y-10",
-        );
-        observer.observe(el);
-      });
-
-      // Drag to scroll functionality
-      const slider = document.getElementById("public-scroll");
-      let isDown = false;
-      let startX;
-      let scrollLeft;
-
-      if (slider) {
-        slider.classList.add("cursor-grab");
-
-        slider.addEventListener("mousedown", (e) => {
-          isDown = true;
-          slider.classList.remove("cursor-grab", "snap-x", "scroll-smooth");
-          slider.classList.add("cursor-grabbing");
-          startX = e.pageX - slider.offsetLeft;
-          scrollLeft = slider.scrollLeft;
-        });
-
-        slider.addEventListener("mouseleave", () => {
-          isDown = false;
-          slider.classList.add("cursor-grab", "snap-x", "scroll-smooth");
-          slider.classList.remove("cursor-grabbing");
-        });
-
-        slider.addEventListener("mouseup", () => {
-          isDown = false;
-          slider.classList.add("cursor-grab", "snap-x", "scroll-smooth");
-          slider.classList.remove("cursor-grabbing");
-        });
-
-        slider.addEventListener("mousemove", (e) => {
-          if (!isDown) return;
-          e.preventDefault();
-          const x = e.pageX - slider.offsetLeft;
-          const walk = (x - startX) * 2; // Kecepatan geser
-          slider.scrollLeft = scrollLeft - walk;
-        });
-      }
+      // ========================================
+      // LAYANAN DATA
+      // ========================================
+      const layananData = [
+        {
+          nama: "Poli Kebidanan & Kandungan",
+          gambar: "assets/images/layanan/card_polikandungan.webp",
+          link: "caridokter.html"
+        },
+        {
+          nama: "Poli Penyakit Dalam",
+          gambar: "assets/images/layanan/poli_forall.webp",
+          link: "caridokter.html"
+        },
+        {
+          nama: "Poli Anak",
+          gambar: "assets/images/layanan/poli_forall.webp",
+          link: "caridokter.html"
+        },
+        {
+          nama: "Poli Mata",
+          gambar: "assets/images/layanan/card_polimata.webp",
+          link: "caridokter.html"
+        },
+        {
+          nama: "Poli Paru",
+          gambar: "assets/images/layanan/poli_forall.webp",
+          link: "caridokter.html"
+        },
+        {
+          nama: "Poli Kulit & Kelamin",
+          gambar: "assets/images/layanan/poli_forall.webp",
+          link: "caridokter.html"
+        },
+        {
+          nama: "Poli THT-KL",
+          gambar: "assets/images/layanan/poli_forall.webp",
+          link: "caridokter.html"
+        },
+        {
+          nama: "Poli Bedah Umum",
+          gambar: "assets/images/layanan/poli_forall.webp",
+          link: "caridokter.html"
+        },
+        {
+          nama: "Poli Saraf",
+          gambar: "assets/images/layanan/poli_forall.webp",
+          link: "caridokter.html"
+        },
+        {
+          nama: "Poli Jantung & Pembuluh Darah",
+          gambar: "assets/images/layanan/poli_forall.webp",
+          link: "caridokter.html"
+        },
+        {
+          nama: "Poli Rehab Medik",
+          gambar: "assets/images/layanan/poli_forall.webp",
+          link: "caridokter.html"
+        },
+        {
+          nama: "Poli Konservasi Gigi",
+          gambar: "assets/images/layanan/poli_forall.webp",
+          link: "caridokter.html"
+        },
+        {
+          nama: "Poli Gigi Umum",
+          gambar: "assets/images/layanan/poli_forall.webp",
+          link: "caridokter.html"
+        },
+        {
+          nama: "Poli Akupunktur",
+          gambar: "assets/images/layanan/poli_forall.webp",
+          link: "caridokter.html"
+        },
+        {
+          nama: "Klinik Gizi",
+          gambar: "assets/images/layanan/poli_forall.webp",
+          link: "klinik-detail.html?id=klinik-gizi"
+        },
+        {
+          nama: "Klinik MCU",
+          gambar: "assets/images/layanan/poli_forall.webp",
+          link: "klinik-detail.html?id=klinik-mcu"
+        },
+        {
+          nama: "Klinik Geriatri",
+          gambar: "assets/images/layanan/poli_forall.webp",
+          link: "klinik-detail.html?id=klinik-geriatri"
+        },
+        {
+          nama: "Klinik Sehati",
+          gambar: "assets/images/layanan/poli_forall.webp",
+          link: "klinik-detail.html?id=klinik-sehati"
+        },
+        {
+          nama: "Rawat Inap",
+          gambar: "assets/images/layanan/rawat inap.png",
+          link: "layanan/rawat-inap.html"
+        },
+        {
+          nama: "Laboratorium",
+          gambar: "assets/images/layanan/poli_forall.webp",
+          link: "layanan/laboratorium.html"
+        },
+        {
+          nama: "Radiologi",
+          gambar: "assets/images/layanan/poli_forall.webp",
+          link: "layanan/radiologi.html"
+        },
+        {
+          nama: "Farmasi",
+          gambar: "assets/images/layanan/poli_forall.webp",
+          link: "layanan.html"
+        }
+      ];
 
       // ========================================
-      // KLINIK SECTION
+      // PAGINATION LOGIC
       // ========================================
-      async function loadKlinik() {
-        try {
-          const response = await fetch('assets/data/klinik.json');
-          if (!response.ok) throw new Error('Network response was not ok');
-          const data = await response.json();
-          const container = document.getElementById('klinik-container');
-          
-          if (!container) return;
-          container.innerHTML = data.map(klinik => {
-            const hariIni = getHariIni();
-            const jadwalHariIni = klinik.jadwal.find(j => j.hari === hariIni);
-            let isOpenNow = false;
-            
-            if (jadwalHariIni && (jadwalHariIni.pagi || jadwalHariIni.sore)) {
-              let times = [];
-              if (jadwalHariIni.pagi) times.push(jadwalHariIni.pagi);
-              if (jadwalHariIni.sore) times.push(jadwalHariIni.sore);
+      const ITEMS_PER_PAGE = 6;
+      let currentPage = 1;
+      const totalPages = Math.ceil(layananData.length / ITEMS_PER_PAGE);
 
-              // Check current time
-              const now = new Date();
-              const currentHour = now.getHours();
-              const currentMin = now.getMinutes();
-              const currentTime = currentHour + currentMin / 60;
+      function renderCards(page) {
+        const grid = document.getElementById('layanan-grid');
+        const start = (page - 1) * ITEMS_PER_PAGE;
+        const end = start + ITEMS_PER_PAGE;
+        const pageData = layananData.slice(start, end);
 
-              times.forEach(t => {
-                const [start, end] = t.split('-');
-                if (start && end) {
-                  const startParts = start.split(':');
-                  const endParts = end.split(':');
-                  const startTime = parseInt(startParts[0]) + parseInt(startParts[1])/60;
-                  const endTime = parseInt(endParts[0]) + parseInt(endParts[1])/60;
-                  if (currentTime >= startTime && currentTime <= endTime) {
-                    isOpenNow = true;
-                  }
-                }
-              });
-            }
-
-            let jadwalHtml = '';
-            if (isOpenNow) {
-              jadwalHtml = `<span class="inline-flex items-center gap-1 text-health-green font-semibold bg-health-green/10 px-2 py-0.5 rounded text-[13px]"><span class="material-symbols-outlined text-[14px]">storefront</span> Buka</span>`;
-            } else {
-              jadwalHtml = `<span class="inline-flex items-center gap-1 text-emergency-red font-semibold bg-emergency-red/10 px-2 py-0.5 rounded text-[13px]"><span class="material-symbols-outlined text-[14px]">event_busy</span> Tutup</span>`;
-            }
-
-            return `
-            <a href="klinik-detail.html?id=${klinik.id}" class="flex items-center p-4 md:p-6 bg-white rounded-2xl border border-surface-subtle shadow-sm hover:shadow-md hover:border-health-green/50 transition-all duration-300 group">
-              <!-- Left Icon -->
-              <div class="w-16 h-16 rounded-xl bg-surface-container flex items-center justify-center text-jakarta-blue group-hover:bg-health-green/10 group-hover:text-health-green transition-colors flex-shrink-0">
-                <span class="material-symbols-outlined text-3xl">${getMaterialIcon(klinik.icon)}</span>
-              </div>
-              
-              <!-- Middle Content -->
-              <div class="ml-4 md:ml-6 flex-grow">
-                <h3 class="font-headline-md text-[18px] md:text-[20px] font-bold text-jakarta-blue group-hover:text-health-green transition-colors mb-1">${klinik.nama}</h3>
-                <div class="flex flex-wrap items-center gap-2 text-sm text-on-surface-variant">
-                  <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">location_on</span> ${klinik.location}</span>
-                  <span class="hidden md:inline text-surface-variant">•</span>
-                  ${jadwalHtml}
+        grid.innerHTML = pageData.map((item, index) => `
+          <a href="${item.link}" class="layanan-card block rounded-2xl overflow-hidden bg-white border border-surface-subtle shadow-sm card-animate" style="animation-delay: ${index * 0.08}s; text-decoration: none;">
+            <div class="relative h-52 md:h-56 overflow-hidden">
+              <img
+                src="${item.gambar}"
+                alt="${item.nama}"
+                class="card-img w-full h-full object-cover"
+                loading="lazy"
+              />
+              <!-- Hover overlay -->
+              <div class="card-overlay absolute inset-0 bg-gradient-to-t from-jakarta-blue/70 via-jakarta-blue/20 to-transparent flex items-end justify-between p-5">
+                <span class="text-white font-label-md text-sm">Lihat Detail</span>
+                <div class="card-arrow w-9 h-9 rounded-full bg-white/90 flex items-center justify-center">
+                  <span class="material-symbols-outlined text-jakarta-blue text-[18px]">arrow_forward</span>
                 </div>
               </div>
-              
-              <!-- Right Arrow -->
-              <div class="ml-4 w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-text-muted group-hover:bg-health-green group-hover:text-white transition-all transform group-hover:translate-x-1 flex-shrink-0">
-                <span class="material-symbols-outlined text-[18px]">arrow_forward_ios</span>
-              </div>
-            </a>
-          `}).join('');
-        } catch (error) {
-          console.error('Error loading klinik data:', error);
+            </div>
+            <div class="p-5">
+              <h3 class="font-headline-md text-[17px] md:text-[18px] text-jakarta-blue font-semibold leading-snug">${item.nama}</h3>
+            </div>
+          </a>
+        `).join('');
+
+        // Scroll to top of section smoothly
+        if (page !== 1 || document.scrollingElement.scrollTop > 400) {
+          document.getElementById('layanan-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }
 
-      function getHariIni() {
-        const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
-        return days[new Date().getDay()];
+      function renderPagination(page) {
+        const container = document.getElementById('pagination-container');
+        let html = '';
+
+        // Previous button
+        html += `<button class="page-btn-nav" onclick="goToPage(${page - 1})" ${page === 1 ? 'disabled' : ''} aria-label="Halaman Sebelumnya">
+          <span class="material-symbols-outlined text-[20px]">chevron_left</span>
+        </button>`;
+
+        // Page numbers
+        for (let i = 1; i <= totalPages; i++) {
+          if (totalPages <= 7 || Math.abs(i - page) <= 1 || i === 1 || i === totalPages) {
+            html += `<button class="page-btn ${i === page ? 'active' : ''}" onclick="goToPage(${i})" aria-label="Halaman ${i}">${i}</button>`;
+          } else if (
+            (i === page - 2 && page > 3) ||
+            (i === page + 2 && page < totalPages - 2)
+          ) {
+            html += `<span class="px-1 text-text-muted text-sm select-none">…</span>`;
+          }
+        }
+
+        // Next button
+        html += `<button class="page-btn-nav" onclick="goToPage(${page + 1})" ${page === totalPages ? 'disabled' : ''} aria-label="Halaman Berikutnya">
+          <span class="material-symbols-outlined text-[20px]">chevron_right</span>
+        </button>`;
+
+        container.innerHTML = html;
       }
 
-      function getMaterialIcon(faIcon) {
-        const iconMap = {
-          'fa-apple-whole': 'nutrition',
-          'fa-clipboard-check': 'assignment_turned_in',
-          'fa-person-cane': 'elderly',
-          'fa-heart': 'favorite',
-          'fa-dumbbell': 'fitness_center'
-        };
-        return iconMap[faIcon] || 'medical_services';
+      function goToPage(page) {
+        if (page < 1 || page > totalPages) return;
+        currentPage = page;
+        renderCards(page);
+        renderPagination(page);
       }
 
-      loadKlinik();
+      // Initial render
+      renderCards(1);
+      renderPagination(1);
     </script>
 
     <script src="components/navbar.js"></script>
     <script src="components/footer.js"></script>
   </body>
 </html>
-
