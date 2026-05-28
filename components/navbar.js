@@ -70,8 +70,8 @@
         transition: all 0.38s cubic-bezier(0.22, 1, 0.36, 1);
         display: flex;
         flex-direction: column;
-        width: calc(100% - 48px);
-        max-width: calc(1280px - 48px);
+        width: calc(100% - max(48px, 4vw));
+        max-width: calc(min(1280px, 98vw) - 48px);
     }
     
     /* Scrolled state */
@@ -82,7 +82,7 @@
         -webkit-backdrop-filter: blur(20px);
         box-shadow: 0 8px 32px rgba(34, 66, 102, 0.12);
         border-color: rgba(226, 232, 240, 1);
-        max-width: calc(1280px - 96px); /* Sedikit mengecil saat discroll agar manis */
+        max-width: calc(min(1280px, 98vw) - 96px); /* Sedikit mengecil saat discroll agar manis */
     }
 
     /* ── Navbar inner layout ──────────────────────────────── */
