@@ -7,55 +7,7 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Atkinson+Hyperlegible+Next:wght@400;700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-    <script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              "jakarta-blue": "#224266",
-              "health-green": "#34918C",
-              "emergency-red": "#E63946",
-              primary: "#052c4f",
-              surface: "#f7f9fb",
-              "surface-subtle": "#F1F5F9",
-              "surface-container-lowest": "#ffffff",
-              "text-muted": "#64748B",
-              "on-surface": "#191c1e",
-              "on-surface-variant": "#43474e",
-              outline: "#73777f"
-            },
-            borderRadius: {
-              DEFAULT: "0.25rem",
-              lg: "0.5rem",
-              xl: "0.75rem",
-              "2xl": "1rem",
-              full: "9999px",
-            },
-            spacing: {
-              gutter: "24px",
-              "container-max": "1280px",
-            },
-            fontFamily: {
-              "label-md": ["Plus Jakarta Sans"],
-              "label-lg": ["Plus Jakarta Sans"],
-              "headline-md": ["Plus Jakarta Sans"],
-              "headline-lg": ["Plus Jakarta Sans"],
-              "headline-xl": ["Plus Jakarta Sans"],
-              "body-md": ["Atkinson Hyperlegible Next"],
-            },
-            fontSize: {
-              "label-md": ["14px", { lineHeight: "20px", fontWeight: "600" }],
-              "label-lg": ["16px", { lineHeight: "24px", fontWeight: "600" }],
-              "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
-              "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "700" }],
-              "headline-xl": ["40px", { lineHeight: "52px", letterSpacing: "-0.02em", fontWeight: "700" }],
-              "body-md": ["18px", { lineHeight: "28px", fontWeight: "400" }],
-            },
-          },
-        },
-      };
-    </script>
+    <script src="assets/js/tailwind-config.js"></script>
     <style>
         body {
             animation: globalFadeIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -77,22 +29,22 @@
     </style>
   </head>
 
-  <body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+  <body class="bg-surface text-on-surface font-body-md">
     <div id="navbar-container" style="height: 36px;"></div>
 
     <!-- Hero Section -->
-    <section class="relative h-[340px] md:h-[400px] w-full overflow-hidden flex items-end">
+    <section class="relative h-[280px] md:h-[360px] w-full overflow-hidden flex items-end">
       <div class="absolute inset-0 z-0">
         <img
           alt="RSUD Tugu Koja Building"
           class="w-full h-full object-cover"
           src="assets/images/hero/RS%20Tugu%20Koja.jpg"
         />
-        <div class="absolute inset-0 bg-gradient-to-t from-jakarta-blue/90 via-jakarta-blue/50 to-jakarta-blue/30"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-jakarta-blue/90 via-jakarta-blue/50 to-jakarta-blue/20"></div>
       </div>
       <div class="relative z-10 max-w-container-max mx-auto px-gutter w-full pb-12">
         <nav class="mb-4" aria-label="Breadcrumb">
-          <ol class="flex items-center gap-2 text-sm text-white/60 font-label-md">
+          <ol class="flex items-center gap-2 text-sm text-white/70 font-label-md">
             <li><a href="index.html" class="hover:text-white transition-colors" style="text-decoration:none;">Beranda</a></li>
             <li><span class="material-symbols-outlined text-[14px]">chevron_right</span></li>
             <li><a href="layanan.html" class="hover:text-white transition-colors" style="text-decoration:none;">Fasilitas</a></li>
@@ -328,3 +280,4 @@
     </script>
   </body>
 </html>
+

@@ -1,0 +1,47 @@
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "jakarta-blue":            "#224266",
+        "health-green":            "#34918C",
+        "emergency-red":           "#E63946",
+        "surface":                 "#f7f9fb",
+        "surface-container-low":   "#f2f4f6",
+        "surface-container":       "#eceef0",
+        "surface-container-high":  "#e6e8ea",
+        "surface-container-lowest":"#ffffff",
+        "surface-subtle":          "#F1F5F9",
+        "on-surface":              "#191c1e",
+        "on-surface-variant":      "#43474e",
+        "on-background":           "#191c1e",
+        "text-muted":              "#64748B",
+        "outline-variant":         "#c3c6cf",
+        primary:                   "#052c4f",
+        "primary-container":       "#224266",
+      },
+      spacing: {
+        gutter:           "24px",
+        "margin-desktop": "48px",
+        "container-max":  "1280px",
+      },
+      fontFamily: {
+        "label-lg":   ["Plus Jakarta Sans", "sans-serif"],
+        "label-md":   ["Plus Jakarta Sans", "sans-serif"],
+        "headline-xl":["Plus Jakarta Sans", "sans-serif"],
+        "headline-lg":["Plus Jakarta Sans", "sans-serif"],
+        "headline-md":["Plus Jakarta Sans", "sans-serif"],
+        "body-md":    ["Atkinson Hyperlegible Next", "sans-serif"],
+        "body-lg":    ["Atkinson Hyperlegible Next", "sans-serif"],
+      },
+      fontSize: {
+        "label-lg":    ["16px", { lineHeight: "24px", fontWeight: "600" }],
+        "label-md":    ["14px", { lineHeight: "20px", fontWeight: "600" }],
+        "headline-xl": ["40px", { lineHeight: "52px", letterSpacing: "-0.02em", fontWeight: "700" }],
+        "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "700" }],
+        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+        "body-md":     ["16px", { lineHeight: "26px", fontWeight: "400" }],
+      },
+    },
+  },
+};

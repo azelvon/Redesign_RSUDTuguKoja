@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Buat Janji Temu - RSUD Tugu Koja</title>
+  <meta name="description" content="Daftar janji temu rawat jalan secara online di RSUD Tugu Koja. Pilih dokter dan jadwal praktek yang sesuai, lalu selesaikan pendaftaran melalui aplikasi JakSehat." />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Atkinson+Hyperlegible+Next:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+  <script src="assets/js/tailwind-config.js"></script>
+
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    /* ── Step indicator ──────────────────────────── */
+    .step-item { position: relative; }
+    .step-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: calc(50% + 24px);
+      right: calc(-50% + 24px);
+      height: 2px;
+      background: #e2e8f0;
+      z-index: 0;
+    }
+    .step-item.completed:not(:last-child)::after { background: #224266; }
+
+    /* ── Step panels ─────────────────────────────── */
+    .step-panel { display: none; animation: fadeSlideIn 0.35s ease; }
+    .step-panel.active { display: block; }
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Poli card ───────────────────────────────── */
+    .poli-card {
+      cursor: pointer;
+      border: 2px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 20px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+      transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+      background: white;
+    }
+    .poli-card:hover { border-color: #34918C; box-shadow: 0 4px 20px rgba(52,145,140,0.12); transform: translateY(-2px); }
+    .poli-card.selected { border-color: #224266; background: #f0f5ff; box-shadow: 0 4px 20px rgba(34,66,102,0.15); }
+    .poli-card.selected .poli-icon { background: #224266; color: white; }
+    .poli-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      background: #f0f5ff; color: #224266;
+      transition: all 0.22s ease;
+    }
+
+    /* ── Doctor card ─────────────────────────────── */
+    .dokter-card {
+      cursor: pointer;
+      border: 2px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+      background: white;
+    }
+    .dokter-card:hover { border-color: #34918C; box-shadow: 0 4px 20px rgba(52,145,140,0.1); transform: translateY(-1px); }
+    .dokter-card.selected { border-color: #224266; background: #f0f5ff; }
+    .dokter-card .dokter-avatar {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: linear-gradient(135deg, #224266, #34918C);
+      display: flex; align-items: center; justify-content: center;
+      color: white; flex-shrink: 0;
+    }
+
+    /* ── Calendar ────────────────────────────────── */
+    .cal-day {
+      width: 40px; height: 40px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 600; cursor: pointer;
+      transition: all 0.18s ease;
+    }
+    .cal-day.available { background: #f0f5ff; color: #224266; }
+    .cal-day.available:hover { background: #224266; color: white; }
+    .cal-day.selected { background: #224266; color: white; box-shadow: 0 4px 12px rgba(34,66,102,0.3); }
+    .cal-day.disabled { color: #c8c8c8; cursor: not-allowed; }
+    .cal-day.today-marker { outline: 2px solid #34918C; }
+
+    /* ── Slot button ─────────────────────────────── */
+    .slot-btn {
+      border: 2px solid #e2e8f0;
+      border-radius: 12px; padding: 12px 20px;
+      cursor: pointer; font-weight: 600; font-size: 14px;
+      display: flex; align-items: center; gap: 8px;
+      background: white; color: #43474e;
+      transition: all 0.18s ease;
+    }
+    .slot-btn:hover { border-color: #34918C; color: #34918C; }
+    .slot-btn.selected { border-color: #224266; background: #224266; color: white; }
+
+    /* ── Form input ──────────────────────────────── */
+    .form-input {
+      width: 100%; padding: 12px 16px;
+      border: 2px solid #e2e8f0; border-radius: 12px;
+      font-size: 16px; outline: none;
+      transition: border-color 0.18s ease;
+      font-family: 'Atkinson Hyperlegible Next', sans-serif;
+    }
+    .form-input:focus { border-color: #224266; }
+    .form-label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 14px; color: #43474e; }
+
+    /* ── Summary card ────────────────────────────── */
+    .summary-row { display: flex; align-items: flex-start; gap: 12px; padding: 14px 0; border-bottom: 1px solid #f1f5f9; }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-icon { width: 36px; height: 36px; border-radius: 10px; background: #f0f5ff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #224266; }
+
+    /* ── Progress bar ────────────────────────────── */
+    #progress-bar { transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+
+    /* ── JakSehat badge ──────────────────────────── */
+    .jaksehat-badge {
+      background: linear-gradient(135deg, #1a6b5e 0%, #0f4c3d 100%);
+      border-radius: 16px; padding: 20px 24px;
+      display: flex; align-items: center; gap: 16px; color: white;
+    }
+
+    /* ── Jenis bayar radio ───────────────────────── */
+    .bayar-option { display: flex; align-items: center; gap: 10px; padding: 14px 16px; border: 2px solid #e2e8f0; border-radius: 12px; cursor: pointer; transition: all 0.18s ease; }
+    .bayar-option:hover { border-color: #224266; }
+    .bayar-option.selected { border-color: #224266; background: #f0f5ff; }
+    .bayar-option input[type="radio"] { accent-color: #224266; width: 18px; height: 18px; }
+
+    /* ── Mobile responsive sidebar ───────────────── */
+    @media (max-width: 768px) {
+      .sidebar-summary { display: none; }
+    }
+  </style>
+</head>
+
+<body class="bg-surface text-on-surface font-body-md">
+  <div id="navbar-container" style="height:36px;"></div>
+
+  <!-- Hero Section -->
+  <section class="relative h-[280px] md:h-[360px] w-full overflow-hidden flex items-end">
+    <div class="absolute inset-0 z-0">
+      <img alt="RSUD Tugu Koja" class="w-full h-full object-cover" src="assets/images/hero/RS%20Tugu%20Koja.jpg">
+      <div class="absolute inset-0 bg-gradient-to-t from-jakarta-blue/90 via-jakarta-blue/50 to-jakarta-blue/20"></div>
+    </div>
+    <div class="relative z-10 max-w-container-max mx-auto px-gutter w-full pb-12">
+      <nav class="mb-4" aria-label="Breadcrumb">
+        <ol class="flex items-center gap-2 text-sm text-white/70 font-label-md">
+          <li><a href="index.html" class="hover:text-white transition-colors" style="text-decoration:none;">Beranda</a></li>
+          <li><span class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+          <li class="text-white font-semibold">Buat Janji Temu</li>
+        </ol>
+      </nav>
+      <h1 class="font-headline-xl text-headline-xl text-white mb-2" style="text-shadow: 0 2px 8px rgba(0,0,0,0.18);">Buat Janji Temu</h1>
+      <p class="font-body-md text-[16px] text-white/80 max-w-xl">
+        Pilih dokter dan jadwal yang sesuai, lalu selesaikan pendaftaran resmi melalui aplikasi JakSehat.
+      </p>
+    </div>
+  </section>
+
+  <main class="max-w-container-max mx-auto px-gutter py-10 min-h-screen">
+
+    <!-- Progress Bar -->
+    <div class="mb-8">
+      <div class="h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+        <div id="progress-bar" class="h-full bg-gradient-to-r from-jakarta-blue to-health-green rounded-full" style="width:25%"></div>
+      </div>
+
+      <!-- Step Indicators -->
+      <div class="grid grid-cols-3 mt-4 max-w-3xl mx-auto">
+        <div class="step-item active" id="step-ind-1">
+          <div class="flex flex-col items-center gap-1">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm z-10 relative transition-all duration-300 bg-jakarta-blue text-white" id="step-circle-1">1</div>
+            <span class="text-[11px] font-semibold text-jakarta-blue hidden sm:block">Pilih Poliklinik</span>
+          </div>
+        </div>
+        <div class="step-item" id="step-ind-2">
+          <div class="flex flex-col items-center gap-1">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm z-10 relative transition-all duration-300 bg-surface-container text-text-muted" id="step-circle-2">2</div>
+            <span class="text-[11px] font-semibold text-text-muted hidden sm:block">Pilih Dokter</span>
+          </div>
+        </div>
+        <div class="step-item" id="step-ind-3">
+          <div class="flex flex-col items-center gap-1">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm z-10 relative transition-all duration-300 bg-surface-container text-text-muted" id="step-circle-3">3</div>
+            <span class="text-[11px] font-semibold text-text-muted hidden sm:block">Jadwal & Pendaftaran</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Two-column layout: form + sidebar -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+      <!-- ════ FORM AREA ════ -->
+      <div class="lg:col-span-2">
+
+        <!-- ─── STEP 1: Pilih Poliklinik ─── -->
+        <div class="step-panel active bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-surface-subtle" id="panel-1">
+          <div class="mb-6">
+            <span class="inline-block px-3 py-1 rounded-full bg-health-green/10 text-health-green text-xs font-bold uppercase tracking-widest mb-2">Langkah 1 dari 4</span>
+            <h2 class="font-headline-md text-headline-md text-jakarta-blue">Pilih Poliklinik</h2>
+            <p class="text-text-muted text-sm mt-1">Pilih poliklinik atau spesialisasi yang sesuai dengan kebutuhan Anda.</p>
+          </div>
+
+          <!-- Search Poli -->
+          <div class="relative mb-5">
+            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-muted text-xl">search</span>
+            <input type="text" id="poli-search" placeholder="Cari poliklinik atau spesialisasi..." class="form-input pl-10 py-3 text-[15px]" oninput="filterPoli(this.value)">
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" id="poli-grid">
+            <!-- Injected by JS -->
+          </div>
+
+          <div class="flex justify-end mt-8">
+            <button onclick="goToStep(2)" id="btn-next-1" class="px-8 py-3 bg-jakarta-blue text-white rounded-xl font-label-lg hover:brightness-110 transition-all flex items-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed" disabled>
+              Lanjut — Pilih Dokter
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ─── STEP 2: Pilih Dokter ─── -->
+        <div class="step-panel bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-surface-subtle" id="panel-2">
+          <div class="mb-6">
+            <span class="inline-block px-3 py-1 rounded-full bg-health-green/10 text-health-green text-xs font-bold uppercase tracking-widest mb-2">Langkah 2 dari 4</span>
+            <h2 class="font-headline-md text-headline-md text-jakarta-blue">Pilih Dokter</h2>
+            <p class="text-text-muted text-sm mt-1">Dokter spesialis di poliklinik <span class="font-semibold text-jakarta-blue" id="selected-poli-label">—</span>.</p>
+          </div>
+
+          <!-- Search Dokter -->
+          <div class="relative mb-5">
+            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-muted text-xl">search</span>
+            <input type="text" id="dokter-search" placeholder="Cari nama dokter..." class="form-input pl-10 py-3 text-[15px]" oninput="filterDokter(this.value)">
+          </div>
+
+          <div class="space-y-3" id="dokter-list">
+            <!-- Injected by JS -->
+          </div>
+
+          <div class="flex justify-between mt-8">
+            <button onclick="goToStep(1)" class="px-6 py-3 border-2 border-surface-subtle text-on-surface-variant rounded-xl font-label-lg hover:border-jakarta-blue hover:text-jakarta-blue transition-all flex items-center gap-2">
+              <span class="material-symbols-outlined">arrow_back</span>
+              Kembali
+            </button>
+            <button onclick="goToStep(3)" id="btn-next-2" class="px-8 py-3 bg-jakarta-blue text-white rounded-xl font-label-lg hover:brightness-110 transition-all flex items-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed" disabled>
+              Lanjut — Pilih Jadwal
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ─── STEP 3: Jadwal & Pendaftaran JakSehat ─── -->
+        <div class="step-panel bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-surface-subtle" id="panel-3">
+          <div class="mb-6">
+            <span class="inline-block px-3 py-1 rounded-full bg-health-green/10 text-health-green text-xs font-bold uppercase tracking-widest mb-2">Langkah 3 dari 3</span>
+            <h2 class="font-headline-md text-headline-md text-jakarta-blue">Jadwal & Pendaftaran</h2>
+            <p class="text-text-muted text-sm mt-1">Pilih tanggal kunjungan dan sesi, lalu lanjutkan ke portal JakSehat.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Kalender -->
+            <div>
+              <h3 class="font-label-lg text-label-lg text-jakarta-blue mb-4 flex items-center gap-2">
+                <span class="material-symbols-outlined text-[20px]">calendar_month</span>
+                Pilih Tanggal
+              </h3>
+
+              <!-- Dokter info mini -->
+              <div class="flex items-center gap-3 mb-4 p-3 bg-surface-container-low rounded-xl border border-surface-subtle">
+                <div class="w-10 h-10 rounded-full bg-jakarta-blue/10 flex items-center justify-center">
+                  <span class="material-symbols-outlined text-jakarta-blue text-[18px]">person</span>
+                </div>
+                <div>
+                  <p class="font-semibold text-[13px] text-jakarta-blue" id="selected-dokter-mini">—</p>
+                  <p class="text-[12px] text-text-muted" id="selected-spesialis-mini">—</p>
+                </div>
+              </div>
+
+              <!-- Legend -->
+              <div class="flex gap-4 mb-3 text-[12px] text-text-muted">
+                <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-jakarta-blue/15 inline-block border border-jakarta-blue/30"></span> Tersedia</span>
+                <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-surface-container-high inline-block"></span> Tidak ada jadwal</span>
+              </div>
+
+              <!-- Calendar nav -->
+              <div class="flex items-center justify-between mb-3">
+                <button onclick="prevMonth()" class="p-2 rounded-full hover:bg-surface-container transition-colors text-jakarta-blue">
+                  <span class="material-symbols-outlined text-[20px]">chevron_left</span>
+                </button>
+                <span class="font-semibold text-[15px] text-jakarta-blue" id="cal-month-label"></span>
+                <button onclick="nextMonth()" class="p-2 rounded-full hover:bg-surface-container transition-colors text-jakarta-blue">
+                  <span class="material-symbols-outlined text-[20px]">chevron_right</span>
+                </button>
+              </div>
+
+              <!-- Calendar grid -->
+              <div class="grid grid-cols-7 gap-1 text-center mb-1">
+                <span class="text-[11px] font-bold text-text-muted py-1">Min</span>
+                <span class="text-[11px] font-bold text-text-muted py-1">Sen</span>
+                <span class="text-[11px] font-bold text-text-muted py-1">Sel</span>
+                <span class="text-[11px] font-bold text-text-muted py-1">Rab</span>
+                <span class="text-[11px] font-bold text-text-muted py-1">Kam</span>
+                <span class="text-[11px] font-bold text-text-muted py-1">Jum</span>
+                <span class="text-[11px] font-bold text-text-muted py-1">Sab</span>
+              </div>
+              <div class="grid grid-cols-7 gap-1" id="cal-grid"></div>
+
+              <!-- Slot waktu -->
+              <div class="mt-5" id="slot-section" style="display:none;">
+                <h4 class="font-label-md text-label-md text-jakarta-blue mb-3 flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-[18px]">schedule</span>
+                  Sesi Tersedia
+                </h4>
+                <div class="flex flex-wrap gap-3" id="slot-container"></div>
+              </div>
+            </div>
+
+            <!-- Bridge Info / JakSehat Redirect -->
+            <div id="bridge-section" style="opacity: 0.5; pointer-events: none; transition: opacity 0.3s ease;">
+              <h3 class="font-label-lg text-label-lg text-jakarta-blue mb-4 flex items-center gap-2">
+                <span class="material-symbols-outlined text-[20px]">check_circle</span>
+                Konfirmasi Jadwal
+              </h3>
+              
+              <!-- Selected Slot Summary -->
+              <div class="bg-surface-container-low rounded-xl p-5 mb-6 border border-surface-subtle min-h-[80px] flex items-center justify-center">
+                 <p class="text-text-muted text-sm text-center" id="slot-placeholder-text">Silakan pilih tanggal dan sesi di kalender terlebih dahulu.</p>
+                 <div id="slot-summary-content" class="w-full hidden text-center">
+                    <p class="text-[12px] text-text-muted font-semibold uppercase tracking-wider mb-1">Jadwal Terpilih</p>
+                    <p class="font-semibold text-[15px] text-on-surface" id="bridge-tanggal">—</p>
+                    <p class="text-[14px] text-jakarta-blue font-bold mt-1" id="bridge-slot">—</p>
+                 </div>
+              </div>
+
+              <!-- JakSehat info box -->
+              <div class="jaksehat-badge mb-6">
+                <div class="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center flex-shrink-0">
+                  <span class="material-symbols-outlined text-white text-[26px]" style="font-variation-settings:'FILL' 1;">health_and_safety</span>
+                </div>
+                <div>
+                  <p class="font-bold text-[15px] mb-0.5">Pendaftaran via JakSehat</p>
+                  <p class="text-white/80 text-[13px] leading-relaxed">
+                    Sesuai dengan integrasi rumah sakit DKI, pendaftaran resmi akan dilanjutkan melalui portal <strong>JakSehat</strong>.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Info reminder -->
+              <div class="flex items-start gap-3 p-4 bg-amber-50 border border-amber-200 rounded-xl mb-6">
+                <span class="material-symbols-outlined text-amber-600 text-[20px] flex-shrink-0 mt-0.5" style="font-variation-settings:'FILL' 1;">info</span>
+                <p class="text-[13px] text-amber-800">
+                  Harap datang <strong>15 menit lebih awal</strong> dari jadwal yang Anda pilih dengan membawa <strong>KTP asli</strong>.
+                </p>
+              </div>
+
+              <a href="https://jaksehat.jakarta.go.id/login" target="_blank" rel="noopener noreferrer" id="btn-jaksehat"
+                 class="w-full py-3.5 bg-gradient-to-r from-health-green to-[#1a7a75] text-white rounded-xl font-label-lg hover:brightness-110 transition-all flex items-center justify-center gap-2 shadow-lg shadow-health-green/30 disabled:opacity-50"
+                 style="text-decoration:none;">
+                <span class="material-symbols-outlined text-[20px]" style="font-variation-settings:'FILL' 1;">health_and_safety</span>
+                Buka Portal JakSehat
+                <span class="material-symbols-outlined">open_in_new</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="flex justify-start mt-8 pt-6 border-t border-surface-subtle">
+            <button onclick="goToStep(2)" class="px-6 py-3 border-2 border-surface-subtle text-on-surface-variant rounded-xl font-label-lg hover:border-jakarta-blue hover:text-jakarta-blue transition-all flex items-center gap-2">
+              <span class="material-symbols-outlined">arrow_back</span>
+              Kembali
+            </button>
+          </div>
+        </div>
+
+      </div><!-- end form area -->
+
+      <!-- ════ SIDEBAR SUMMARY ════ -->
+      <aside class="sidebar-summary space-y-4">
+        <!-- Booking summary sticky -->
+        <div class="bg-white rounded-2xl p-5 shadow-sm border border-surface-subtle sticky top-28">
+          <h3 class="font-label-lg text-label-lg text-jakarta-blue mb-4 flex items-center gap-2">
+            <span class="material-symbols-outlined text-[20px]">event_note</span>
+            Ringkasan
+          </h3>
+
+          <div class="space-y-3 text-[14px]" id="sidebar-summary-content">
+            <div class="flex items-center gap-2 text-text-muted">
+              <span class="material-symbols-outlined text-[16px]">radio_button_unchecked</span>
+              <span>Poliklinik belum dipilih</span>
+            </div>
+            <div class="flex items-center gap-2 text-text-muted">
+              <span class="material-symbols-outlined text-[16px]">radio_button_unchecked</span>
+              <span>Dokter belum dipilih</span>
+            </div>
+            <div class="flex items-center gap-2 text-text-muted">
+              <span class="material-symbols-outlined text-[16px]">radio_button_unchecked</span>
+              <span>Jadwal belum dipilih</span>
+            </div>
+          </div>
+
+          <div class="mt-5 pt-4 border-t border-surface-subtle">
+            <div class="flex items-center gap-2 text-[12px] text-text-muted">
+              <span class="material-symbols-outlined text-[16px]">info</span>
+              Pendaftaran resmi diselesaikan via JakSehat
+            </div>
+          </div>
+        </div>
+
+        <!-- Info box -->
+        <div class="bg-jakarta-blue/5 rounded-2xl p-5 border border-jakarta-blue/10">
+          <p class="font-semibold text-[13px] text-jakarta-blue mb-2 flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[16px]">help</span>
+            Butuh bantuan?
+          </p>
+          <p class="text-[13px] text-text-muted mb-3">Hubungi kami jika mengalami kesulitan dalam proses pendaftaran.</p>
+          <a href="tel:02143930530" class="text-[13px] font-semibold text-jakarta-blue hover:underline flex items-center gap-1">
+            <span class="material-symbols-outlined text-[16px]">call</span>
+            (021) 4393 0530
+          </a>
+        </div>
+      </aside>
+
+    </div><!-- end two-column -->
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script>
+    // ════════════════════════════════════════════════════
+    //  STATE
+    // ════════════════════════════════════════════════════
+    let dokterData   = [];
+    let currentStep  = 1;
+    let calYear, calMonth;
+
+    const state = {
+      poli:    null,   // string: nama poliklinik
+      dokter:  null,   // object: dokter terpilih
+      tanggal: null,   // Date object
+      slot:    null    // object: { sesi, waktu }
+    };
+
+    // Mapping poli ke icon Material Symbols
+    const poliIconMap = {
+      'Poli Kebidanan dan Kandungan':  'pregnant_woman',
+      'Poli Penyakit Dalam':          'gastroenterology',
+      'Poli Anak':                    'child_care',
+      'Poli Mata':                    'visibility',
+      'Poli Paru':                    'pulmonology',
+      'Klinik TB-RO':                 'vaccines',
+      'Poli Kulit dan Kelamin':       'dermatology',
+      'Poli Rehabilitasi Medik':      'physical_therapy',
+      'Poli THT':                     'hearing',
+      'Poli Bedah':                   'surgical',
+      'Poli Gigi dan Mulut':         'dentistry',
+      'Klinik Gigi Umum':             'dentistry',
+      'Poli Saraf':                   'neurology',
+      'Poli Jantung':                 'cardiology',
+      'Poli Anestesi':                'vaccines',
+      'Laboratorium Patologi Klinik': 'biotech',
+      'Poli Radiologi':               'radiology',
+      'Poli Akupunktur':              'spa',
+    };
+
+    const hariIndexMap = {
+      'Minggu': 0, 'Senin': 1, 'Selasa': 2,
+      'Rabu': 3, 'Kamis': 4, 'Jumat': 5, 'Sabtu': 6
+    };
+    const hariNameMap = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
+    const bulanNames = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+
+    // ════════════════════════════════════════════════════
+    //  INIT
+    // ════════════════════════════════════════════════════
+    async function init() {
+      try {
+        const res = await fetch('assets/data/dokter.json');
+        dokterData = await res.json();
+      } catch(e) {
+        dokterData = [];
+        console.error('Gagal load dokter.json', e);
+      }
+
+      const today = new Date();
+      calYear  = today.getFullYear();
+      calMonth = today.getMonth();
+
+      renderPoliGrid(dokterData);
+      checkURLParams();
+    }
+
+    // ════════════════════════════════════════════════════
+    //  URL PARAMS — jika datang dari caridokter.html?dokter=dr-001
+    // ════════════════════════════════════════════════════
+    function checkURLParams() {
+      const params = new URLSearchParams(window.location.search);
+      const dokterId = params.get('dokter');
+      if (dokterId) {
+        const found = dokterData.find(d => d.id === dokterId);
+        if (found) {
+          // Auto-select poli pertama dokter itu
+          const poliName = found.poliklinik[0];
+          selectPoli(poliName);
+          // Auto-select dokter
+          setTimeout(() => { goToStep(2); selectDokter(found); }, 80);
+        }
+      }
+    }
+
+    // ════════════════════════════════════════════════════
+    //  STEP NAVIGATION
+    // ════════════════════════════════════════════════════
+    function goToStep(step) {
+      // Validate before advancing
+      if (step > currentStep) {
+        if (currentStep === 1 && !state.poli)   return;
+        if (currentStep === 2 && !state.dokter)  return;
+      }
+
+      document.getElementById('panel-' + currentStep).classList.remove('active');
+      currentStep = step;
+      document.getElementById('panel-' + currentStep).classList.add('active');
+
+      // Update progress bar
+      const pct = (step / 3) * 100;
+      document.getElementById('progress-bar').style.width = pct + '%';
+
+      // Update step circles
+      for (let i = 1; i <= 3; i++) {
+        const circle = document.getElementById('step-circle-' + i);
+        if (i < step) {
+          circle.className = 'w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm z-10 relative transition-all duration-300 bg-health-green text-white';
+          circle.innerHTML = '<span class="material-symbols-outlined text-[18px]">check</span>';
+        } else if (i === step) {
+          circle.className = 'w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm z-10 relative transition-all duration-300 bg-jakarta-blue text-white';
+          circle.textContent = i;
+        } else {
+          circle.className = 'w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm z-10 relative transition-all duration-300 bg-surface-container text-text-muted';
+          circle.textContent = i;
+        }
+      }
+
+      if (step === 3) {
+        updateCalendar();
+        document.getElementById('selected-dokter-mini').textContent = state.dokter?.nama || '—';
+        document.getElementById('selected-spesialis-mini').textContent = state.dokter?.spesialisasi || '—';
+      }
+
+      // Scroll to top of form
+      window.scrollTo({ top: 200, behavior: 'smooth' });
+      updateSidebarSummary();
+    }
+
+    // ════════════════════════════════════════════════════
+    //  STEP 1 — POLI
+    // ════════════════════════════════════════════════════
+    function renderPoliGrid(data) {
+      const allPoli = [...new Set(data.flatMap(d => d.poliklinik))].sort();
+      const grid = document.getElementById('poli-grid');
+      grid.innerHTML = allPoli.map(p => `
+        <div class="poli-card ${state.poli === p ? 'selected' : ''}" onclick="selectPoli('${p.replace(/'/g,"\\'")}')">
+          <div class="poli-icon">
+            <span class="material-symbols-outlined text-[24px]" style="font-variation-settings:'FILL' 1;">${poliIconMap[p] || 'local_hospital'}</span>
+          </div>
+          <span class="text-[13px] font-semibold text-on-surface leading-tight">${p}</span>
+        </div>
+      `).join('');
+    }
+
+    function filterPoli(q) {
+      const lower = q.toLowerCase();
+      const filtered = dokterData.filter(d => d.poliklinik.some(p => p.toLowerCase().includes(lower)));
+      renderPoliGrid(filtered.length ? filtered : dokterData);
+    }
+
+    function selectPoli(name) {
+      state.poli = name;
+      state.dokter = null;
+      state.tanggal = null;
+      state.slot = null;
+      document.querySelectorAll('.poli-card').forEach(c => c.classList.remove('selected'));
+      document.querySelectorAll('.poli-card').forEach(c => {
+        if (c.querySelector('span:last-child')?.textContent === name) c.classList.add('selected');
+      });
+      document.getElementById('btn-next-1').disabled = false;
+      document.getElementById('selected-poli-label').textContent = name;
+      updateSidebarSummary();
+    }
+
+    // ════════════════════════════════════════════════════
+    //  STEP 2 — DOKTER
+    // ════════════════════════════════════════════════════
+    function renderDokterList(data) {
+      const list = document.getElementById('dokter-list');
+      const filtered = state.poli ? data.filter(d => d.poliklinik.includes(state.poli)) : data;
+      if (!filtered.length) {
+        list.innerHTML = '<p class="text-text-muted text-center py-8">Tidak ada dokter ditemukan.</p>';
+        return;
+      }
+
+      // Get available days summary
+      list.innerHTML = filtered.map(d => {
+        const hariAktif = d.jadwal.filter(j => j.pagi || j.sore).map(j => j.hari.slice(0,3));
+        const selected  = state.dokter?.id === d.id;
+        return `
+        <div class="dokter-card ${selected ? 'selected' : ''}" onclick="selectDokter(${JSON.stringify(d).replace(/"/g,'&quot;')})">
+          <div class="dokter-avatar">
+            <span class="material-symbols-outlined text-[28px]" style="font-variation-settings:'FILL' 1;">person</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="font-bold text-[15px] text-jakarta-blue">${d.nama}</p>
+            <p class="text-[13px] text-text-muted mb-2">${d.spesialisasi}</p>
+            <div class="flex flex-wrap gap-1">
+              ${hariAktif.map(h => `<span class="text-[11px] font-semibold px-2 py-0.5 bg-jakarta-blue/10 text-jakarta-blue rounded-full">${h}</span>`).join('')}
+            </div>
+          </div>
+          ${selected ? '<span class="material-symbols-outlined text-health-green text-[24px] flex-shrink-0" style="font-variation-settings:\'FILL\' 1;">check_circle</span>' : ''}
+        </div>`;
+      }).join('');
+    }
+
+    function filterDokter(q) {
+      const lower = q.toLowerCase();
+      const filtered = dokterData.filter(d =>
+        d.poliklinik.includes(state.poli) &&
+        (d.nama.toLowerCase().includes(lower) || d.spesialisasi.toLowerCase().includes(lower))
+      );
+      renderDokterList(filtered);
+    }
+
+    function selectDokter(d) {
+      state.dokter  = d;
+      state.tanggal = null;
+      state.slot    = null;
+      document.getElementById('btn-next-2').disabled = false;
+      document.getElementById('selected-poli-label').textContent = state.poli || '—';
+      renderDokterList(dokterData);
+      updateSidebarSummary();
+    }
+
+    // ════════════════════════════════════════════════════
+    //  STEP 3 — KALENDER
+    // ════════════════════════════════════════════════════
+    function getAvailableWeekdays() {
+      if (!state.dokter) return [];
+      return state.dokter.jadwal
+        .filter(j => j.pagi || j.sore)
+        .map(j => hariIndexMap[j.hari]);
+    }
+
+    function updateCalendar() {
+      const label = document.getElementById('cal-month-label');
+      label.textContent = `${bulanNames[calMonth]} ${calYear}`;
+
+      const grid      = document.getElementById('cal-grid');
+      const available = getAvailableWeekdays();
+      const today     = new Date(); today.setHours(0,0,0,0);
+
+      const firstDay   = new Date(calYear, calMonth, 1).getDay();
+      const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+
+      let html = '';
+      // Empty cells before first day
+      for (let i = 0; i < firstDay; i++) html += '<div></div>';
+
+      for (let d = 1; d <= daysInMonth; d++) {
+        const dt = new Date(calYear, calMonth, d);
+        dt.setHours(0,0,0,0);
+        const dow    = dt.getDay();
+        const isPast = dt < today;
+        const isAvail = available.includes(dow) && !isPast;
+        const isSel   = state.tanggal && dt.getTime() === state.tanggal.getTime();
+        const isTd    = dt.getTime() === today.getTime();
+
+        let cls = 'cal-day ';
+        if (isPast)    cls += 'disabled';
+        else if (isSel) cls += 'selected';
+        else if (isAvail) cls += 'available';
+        else             cls += 'disabled';
+        if (isTd) cls += ' today-marker';
+
+        html += isAvail
+          ? `<div class="${cls}" onclick="selectDate(${calYear},${calMonth},${d})">${d}</div>`
+          : `<div class="${cls}">${d}</div>`;
+      }
+      grid.innerHTML = html;
+    }
+
+    function prevMonth() {
+      calMonth--;
+      if (calMonth < 0) { calMonth = 11; calYear--; }
+      updateCalendar();
+    }
+    function nextMonth() {
+      calMonth++;
+      if (calMonth > 11) { calMonth = 0; calYear++; }
+      updateCalendar();
+    }
+
+    function selectDate(y, m, d) {
+      state.tanggal = new Date(y, m, d);
+      state.slot    = null;
+      updateCalendar();
+      renderSlots();
+      updateBridgeSection();
+      updateSidebarSummary();
+    }
+
+    function renderSlots() {
+      if (!state.tanggal || !state.dokter) return;
+      const dayName = hariNameMap[state.tanggal.getDay()];
+      const jadwal  = state.dokter.jadwal.find(j => j.hari === dayName);
+      const section = document.getElementById('slot-section');
+      const cont    = document.getElementById('slot-container');
+
+      if (!jadwal || (!jadwal.pagi && !jadwal.sore)) {
+        section.style.display = 'none'; return;
+      }
+      section.style.display = 'block';
+      const slots = [];
+      if (jadwal.pagi) slots.push({ sesi: 'Pagi', waktu: jadwal.pagi, icon: 'wb_sunny' });
+      if (jadwal.sore) slots.push({ sesi: 'Sore', waktu: jadwal.sore, icon: 'nightlight' });
+
+      cont.innerHTML = slots.map(s => `
+        <button class="slot-btn ${state.slot?.sesi === s.sesi ? 'selected' : ''}" onclick="selectSlot('${s.sesi}','${s.waktu}')">
+          <span class="material-symbols-outlined text-[18px]">${s.icon}</span>
+          <span>${s.sesi}</span>
+          <span class="text-[13px] font-normal opacity-75">${s.waktu}</span>
+        </button>
+      `).join('');
+    }
+
+    function selectSlot(sesi, waktu) {
+      state.slot = { sesi, waktu };
+      renderSlots();
+      updateBridgeSection();
+      updateSidebarSummary();
+    }
+
+    function updateBridgeSection() {
+      const bridge = document.getElementById('bridge-section');
+      const placeholder = document.getElementById('slot-placeholder-text');
+      const content = document.getElementById('slot-summary-content');
+      
+      if (state.tanggal && state.slot) {
+        bridge.style.opacity = '1';
+        bridge.style.pointerEvents = 'auto';
+        placeholder.classList.add('hidden');
+        content.classList.remove('hidden');
+        
+        const fmt = state.tanggal.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+        document.getElementById('bridge-tanggal').textContent = fmt;
+        document.getElementById('bridge-slot').textContent = `Sesi ${state.slot.sesi} (${state.slot.waktu})`;
+      } else {
+        bridge.style.opacity = '0.5';
+        bridge.style.pointerEvents = 'none';
+        placeholder.classList.remove('hidden');
+        content.classList.add('hidden');
+      }
+    }
+
+    function updateSidebarSummary() {
+      const fmt = (dt) => dt ? dt.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }) : null;
+      const items = [
+        { done: !!state.poli,    text: state.poli || 'Poliklinik belum dipilih',                   icon: 'local_hospital' },
+        { done: !!state.dokter,  text: state.dokter ? state.dokter.nama : 'Dokter belum dipilih',  icon: 'stethoscope'    },
+        { done: !!(state.tanggal && state.slot),
+          text: (state.tanggal && state.slot)
+                ? `${fmt(state.tanggal)} — ${state.slot.sesi}`
+                : 'Jadwal belum dipilih',
+          icon: 'calendar_month' }
+      ];
+      document.getElementById('sidebar-summary-content').innerHTML = items.map(it => `
+        <div class="flex items-start gap-2 ${it.done ? 'text-on-surface' : 'text-text-muted'}">
+          <span class="material-symbols-outlined text-[16px] mt-0.5 ${it.done ? 'text-health-green' : ''}" style="${it.done ? "font-variation-settings:'FILL' 1" : ''}">${it.done ? 'check_circle' : 'radio_button_unchecked'}</span>
+          <span class="text-[13px] leading-snug">${it.text}</span>
+        </div>
+      `).join('');
+    }
+
+    // ════════════════════════════════════════════════════
+    //  BOOT
+    // ════════════════════════════════════════════════════
+    document.addEventListener('DOMContentLoaded', () => {
+      init();
+      // When step 2 panel becomes active, render dokter
+      const obs = new MutationObserver(() => {
+        if (document.getElementById('panel-2').classList.contains('active')) {
+          renderDokterList(dokterData);
+        }
+      });
+      obs.observe(document.getElementById('panel-2'), { attributes: true, attributeFilter: ['class'] });
+    });
+  </script>
+
+  <script src="components/navbar.js"></script>
+  <script src="components/footer.js"></script>
+</body>
+</html>
+

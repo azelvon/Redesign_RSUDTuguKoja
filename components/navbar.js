@@ -60,84 +60,84 @@
         z-index: 1001;
     }
 
-    /* ── Floating Glassmorphism Header (Hybrid) ──────────── */
-    /* Fix 3: Figure-Ground — semi-transparent over hero,    */
-    /*         transitions to solid white on scroll           */
+    /* ── Floating pill navbar ──────────── */
     #navbar-header {
-        margin: 12px 16px;
-        border-radius: 24px;
-        background: rgba(255, 255, 255, 0.88);
+        margin: 16px auto 0 auto;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.90);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
-        border: 1px solid rgba(255, 255, 255, 0.75);
+        border: 1px solid rgba(226, 232, 240, 0.75);
         box-shadow: 0 4px 24px -4px rgba(34, 66, 102, 0.08);
         transition: all 0.38s cubic-bezier(0.22, 1, 0.36, 1);
         display: flex;
         flex-direction: column;
-    }
-    @media (min-width: 1240px) {
-        #navbar-header {
-            max-width: 1160px;
-            margin: 16px auto;
-        }
+        width: calc(100% - 48px);
+        max-width: calc(1280px - 48px);
     }
     
-    /* Scrolled state → solid white, strong figure-ground */
+    /* Scrolled state */
     #navbar-header.scrolled {
+        margin-top: 12px;
         background: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
-        box-shadow: 0 4px 20px rgba(34, 66, 102, 0.12);
-        border-color: rgba(255, 255, 255, 1);
+        box-shadow: 0 8px 32px rgba(34, 66, 102, 0.12);
+        border-color: rgba(226, 232, 240, 1);
+        max-width: calc(1280px - 96px); /* Sedikit mengecil saat discroll agar manis */
     }
-
-    /* Hide state on scroll down */
-    #navbar-header.nav-hidden {
-        transform: translateY(-150%);
-        opacity: 0;
-        pointer-events: none;
-    }
-
 
     /* ── Navbar inner layout ──────────────────────────────── */
     .navbar-inner {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 8px 12px 8px 24px;
+        padding: 12px 24px;
+        width: 100%;
+        max-width: 1280px;
+        margin: 0 auto;
+        box-sizing: border-box;
     }
 
-    /* ── Desktop nav links (Modern Pill Style) ────────────── */
+    /* ── Desktop nav links ────────────── */
     .nav-links-container {
         display: flex;
         align-items: center;
-        gap: 4px;
-        background: rgba(34, 66, 102, 0.03);
-        padding: 6px;
-        border-radius: 9999px;
-        border: 1px solid rgba(0,0,0,0.03);
+        gap: 24px;
     }
 
-    /* Fix 4: Text contrast — subtle halo ensures readability */
+    /* Text contrast & active styling with underline */
     .nav-link {
         color: #43474e;
-        padding: 10px 20px;
-        border-radius: 9999px;
+        padding: 8px 4px;
         transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
-        font-weight: 500;
+        font-weight: 600;
         position: relative;
-        overflow: hidden;
-        text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
     }
-    .nav-link:hover:not(.nav-link--active) {
-        background: rgba(52, 145, 140, 0.1);
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: #34918C;
+        border-radius: 2px;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+    .nav-link:hover {
         color: #34918C;
     }
+    .nav-link:hover::after {
+        transform: scaleX(1);
+    }
     .nav-link--active {
-        background: #224266;
-        color: #ffffff !important;
-        box-shadow: 0 4px 12px rgba(34, 66, 102, 0.25);
-        text-shadow: none;
+        color: #224266 !important;
+    }
+    .nav-link--active::after {
+        transform: scaleX(1);
+        background-color: #224266;
     }
 
     /* Fix 1: Keyboard Shortcuts — underline mnemonic char    */
@@ -150,7 +150,7 @@
         text-decoration-color: rgba(52, 145, 140, 0.5);
     }
     .nav-link--active .nav-mnemonic {
-        text-decoration-color: rgba(255, 255, 255, 0.5);
+        text-decoration-color: rgba(34, 66, 102, 0.5);
     }
 
     /* ── Mobile menu: slide-down animation ────────────────── */
@@ -252,6 +252,11 @@
                 <a class="${navLinkClass('berita')}"      href="${base}berita.html" accesskey="b"><span class="nav-mnemonic">B</span>erita</a>
                 <a class="${navLinkClass('tentangkami')}" href="${base}tentangkami.html" accesskey="t"><span class="nav-mnemonic">T</span>entang Kami</a>
             </nav>
+            <!-- CTA: Buat Janji -->
+            <a href="${base}appointment.html" class="hidden md:flex items-center gap-1.5 px-5 py-2.5 bg-health-green text-white rounded-xl font-label-lg text-label-lg hover:brightness-110 transition-all shadow-sm no-underline" style="color:white;font-size:14px;">
+                <span class="material-symbols-outlined text-[18px]" style="font-variation-settings:'FILL' 1;">event_available</span>
+                Buat Janji
+            </a>
 
             <!-- Mobile Menu Toggle -->
             <button
@@ -285,6 +290,15 @@
                href="${base}tentangkami.html">
                 <span class="material-symbols-outlined text-[20px]" style="color:#34918C;">info</span> Tentang Kami
             </a>
+            <!-- CTA Mobile -->
+            <div class="mx-4 mt-2 mb-3">
+                <a href="${base}appointment.html" style="text-decoration:none;">
+                    <div class="flex items-center justify-center gap-2 bg-health-green text-white px-4 py-3 rounded-xl font-label-lg" style="font-size:15px;color:white;">
+                        <span class="material-symbols-outlined text-[18px]" style="font-variation-settings:'FILL' 1;">event_available</span>
+                        Buat Janji Temu Online
+                    </div>
+                </a>
+            </div>
         </div>
     </header>
 </div>
@@ -312,10 +326,14 @@
         
         if (!header || !mobileNav || !toggleBtn || !fixedWrapper || !spacer) return;
 
-        // Dynamic spacer (only emergency bar height — navbar floats over hero)
+        // Dynamic spacer
         function updateSpacer() {
             setTimeout(() => {
-                spacer.style.height = (emergencyBar ? emergencyBar.offsetHeight : 0) + 'px';
+                if (document.body.classList.contains('peta-fullscreen')) {
+                    spacer.style.height = fixedWrapper.offsetHeight + 'px';
+                } else {
+                    spacer.style.height = (emergencyBar ? emergencyBar.offsetHeight : 0) + 'px';
+                }
             }, 50);
         }
         
@@ -333,21 +351,6 @@
             
             // 1. Toggle glassmorphism/solid state
             header.classList.toggle('scrolled', currentScrollY > 20);
-
-            // 2. Hide on scroll down / Show on scroll up
-            // Threshold of 60px to avoid hiding right at the very top
-            if (currentScrollY > 60 && !menuOpen) {
-                if (currentScrollY > lastScrollY) {
-                    // Scrolling down -> Hide navbar header only
-                    header.classList.add('nav-hidden');
-                } else {
-                    // Scrolling up -> Show navbar header
-                    header.classList.remove('nav-hidden');
-                }
-            } else {
-                // Always show at the top or if mobile menu is open
-                header.classList.remove('nav-hidden');
-            }
 
             lastScrollY = currentScrollY;
         };
