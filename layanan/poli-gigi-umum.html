@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Poli Gigi Umum - RSUD Tugu Koja</title>
+    <meta name="description" content="Pelayanan Poli Gigi Umum di RSUD Tugu Koja." />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Atkinson+Hyperlegible+Next:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script src="../assets/js/tailwind-config.js"></script>
+    <style>
+        body { animation: globalFadeIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+        @keyframes globalFadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md">
+    <div id="emergency-bar-container"></div>
+    <div id="navbar-container" style="height: 36px;"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative h-[280px] md:h-[360px] w-full overflow-hidden flex items-end">
+            <div class="absolute inset-0 z-0">
+                <img alt="Poli Gigi Umum" class="w-full h-full object-cover" src="../assets/images/hero/RS Tugu Koja.jpg">
+                <div class="absolute inset-0 bg-gradient-to-t from-jakarta-blue/90 via-jakarta-blue/60 to-jakarta-blue/20"></div>
+            </div>
+            <div class="relative z-10 max-w-container-max mx-auto px-gutter w-full pb-12">
+                <nav class="mb-4" aria-label="Breadcrumb">
+                    <ol class="flex items-center gap-2 text-sm text-white/70 font-label-md">
+                        <li><a href="../index.html" class="hover:text-white transition-colors">Beranda</a></li>
+                        <li><span class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+                        <li><span class="text-white font-semibold">Layanan</span></li>
+                        <li><span class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+                        <li class="text-white font-semibold">Poli Gigi Umum</li>
+                    </ol>
+                </nav>
+                <div class="max-w-2xl">
+                    <h1 class="font-headline-xl text-headline-xl text-white mb-2">Poli Gigi Umum</h1>
+                    <p class="font-body-md text-[16px] text-white/80">Layanan kesehatan profesional dan komprehensif bersama tenaga medis ahli kami.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content -->
+        <section class="py-16 md:py-20 max-w-container-max mx-auto px-gutter">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+                <div class="lg:col-span-2 reveal">
+                    <h2 class="font-headline-lg text-headline-lg text-jakarta-blue mb-5">Tentang Poli Gigi Umum</h2>
+                    <p class="text-on-surface-variant leading-relaxed mb-8">
+                        Poli Gigi Umum di RSUD Tugu Koja menyediakan fasilitas diagnostik dan terapeutik dengan dukungan dokter spesialis berpengalaman. Kami berkomitmen memberikan pelayanan terbaik demi kesembuhan dan kenyamanan pasien.
+                    </p>
+                    
+                    <h3 class="font-headline-md text-jakarta-blue mb-4">Jadwal Praktik Dokter</h3>
+                    <div class="bg-white rounded-xl border border-surface-subtle shadow-sm overflow-hidden">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-surface-container-low text-jakarta-blue text-sm">
+                                    <th class="p-4 font-semibold border-b border-surface-subtle">Nama Dokter</th>
+                                    <th class="p-4 font-semibold border-b border-surface-subtle">Hari Praktik</th>
+                                    <th class="p-4 font-semibold border-b border-surface-subtle">Jam Praktik</th>
+                                </tr>
+                            </thead>
+                            <tbody id="jadwal-dokter-body" class="text-sm text-on-surface-variant">
+                                <!-- Data jadwal akan dimuat di sini -->
+                                <tr>
+                                    <td colspan="3" class="p-4 text-center text-text-muted">Memuat jadwal dokter...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Info Box -->
+                <div class="reveal" style="transition-delay: 0.1s;">
+                    <div class="bg-surface-container-low rounded-2xl p-6 border border-surface-subtle">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-jakarta-blue/10 flex items-center justify-center text-jakarta-blue">
+                                <span class="material-symbols-outlined">info</span>
+                            </div>
+                            <h4 class="font-headline-sm text-jakarta-blue">Informasi Pendaftaran</h4>
+                        </div>
+                        <p class="text-sm text-on-surface-variant mb-6">
+                            Pastikan Anda telah membawa dokumen yang diperlukan seperti KTP, Kartu BPJS, atau Surat Rujukan.
+                        </p>
+                        <a href="../appointment.html" class="block w-full text-center bg-jakarta-blue text-white px-4 py-3 rounded-full font-label-md hover:bg-jakarta-blue/90 transition-colors">
+                            Buat Janji Temu
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <script>
+        const TARGET_POLI = "Klinik Gigi Umum";
+        
+        // Fetch doctor data
+        fetch('../assets/data/dokter.json')
+            .then(response => response.json())
+            .then(data => {
+                const tbody = document.getElementById('jadwal-dokter-body');
+                tbody.innerHTML = ''; // Clear loading
+                
+                // Filter doctors based on target poli
+                const matchedDoctors = data.filter(doc => doc.poliklinik.includes(TARGET_POLI));
+                
+                if (matchedDoctors.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="3" class="p-8 text-center text-on-surface-variant">Belum ada data jadwal dokter untuk layanan ini.</td></tr>`;
+                    return;
+                }
+
+                matchedDoctors.forEach(doc => {
+                    // Combine schedules by day or just list them simply
+                    // Finding the active schedule days
+                    let activeSchedules = doc.jadwal.filter(j => j.pagi !== null || j.sore !== null);
+                    if (activeSchedules.length === 0) return;
+
+                    let daysStr = activeSchedules.map(j => j.hari).join(', ');
+                    
+                    // Simple representation: combine all shifts found
+                    let times = new Set();
+                    activeSchedules.forEach(j => {
+                        if (j.pagi) times.add(j.pagi);
+                        if (j.sore) times.add(j.sore);
+                    });
+                    let timesStr = Array.from(times).join(' & ');
+
+                    const tr = document.createElement('tr');
+                    tr.className = "border-b border-surface-subtle last:border-0 hover:bg-surface-container-low/50 transition-colors";
+                    
+                    // Doctor info with photo (if any) or simple text
+                    tr.innerHTML = `
+                        <td class="p-4">
+                            <div class="flex items-center gap-3">
+                                <div>
+                                    <div class="font-bold text-jakarta-blue">${doc.nama}</div>
+                                    <div class="text-xs text-text-muted">${doc.spesialisasi}</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="p-4 font-medium text-on-surface-variant">${daysStr}</td>
+                        <td class="p-4 text-on-surface-variant">${timesStr}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+                
+                if (tbody.innerHTML === '') {
+                    tbody.innerHTML = `<tr><td colspan="3" class="p-8 text-center text-on-surface-variant">Jadwal praktik dokter sedang tidak tersedia.</td></tr>`;
+                }
+            })
+            .catch(err => {
+                console.error("Failed to load doctor data", err);
+                const tbody = document.getElementById('jadwal-dokter-body');
+                tbody.innerHTML = `<tr><td colspan="3" class="p-8 text-center text-emergency-red">Gagal memuat jadwal dokter.</td></tr>`;
+            });
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    </script>
+    <script src="../components/emergency-bar.js"></script>
+    <script src="../components/navbar.js"></script>
+    <script src="../components/footer.js"></script>
+</body>
+</html>
