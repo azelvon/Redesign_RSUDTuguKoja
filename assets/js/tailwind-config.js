@@ -21,9 +21,9 @@ tailwind.config = {
         "primary-container":       "#224266",
       },
       spacing: {
-        gutter:           "max(24px, 2vw)",
+        gutter:           "max(24px, 5vw)",
         "margin-desktop": "48px",
-        "container-max":  "min(1280px, 98vw)",
+        "container-max":  "min(1440px, 88vw)",
       },
       fontFamily: {
         "label-lg":   ["Plus Jakarta Sans", "sans-serif"],
