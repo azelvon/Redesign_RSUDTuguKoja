@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Detail Berita - RSUD Tugu Koja</title>
+    <meta name="description" content="Detail berita dari RSUD Tugu Koja Jakarta Utara.">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Atkinson+Hyperlegible+Next:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+    <script src="assets/js/tailwind-config.js"></script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            font-family: 'Atkinson Hyperlegible Next', sans-serif;
+            background-color: #f7f9fb;
+        }
+
+        /* Skeleton loading */
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        .skeleton {
+            background: linear-gradient(90deg, #e6e8ea 25%, #f2f4f6 50%, #e6e8ea 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s ease-in-out infinite;
+            border-radius: 8px;
+        }
+
+        .article-content {
+            line-height: 1.8;
+        }
+
+        .article-content p {
+            margin-bottom: 1.25rem;
+        }
+
+        .article-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #224266;
+        }
+
+        .article-content ul,
+        .article-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.25rem;
+            padding-left: 1.5rem;
+        }
+
+        .article-content ul {
+            list-style-type: disc;
+        }
+
+        .article-content ol {
+            list-style-type: decimal;
+        }
+
+        .article-content li {
+            margin-bottom: 0.5rem;
+            margin-left: 0.5rem;
+        }
+
+        /* Related articles grid */
+        .related-card {
+            transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s ease;
+            cursor: pointer;
+        }
+
+        .related-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px -8px rgba(34, 66, 102, 0.12);
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeInUp 0.4s ease-out both;
+        }
+    </style>
+</head>
+
+<body class="bg-surface text-on-surface font-body-md">
+    <div id="navbar-container" style="height: 36px;"></div>
+
+    <main class="min-h-screen">
+        <!-- Hero Section -->
+        <section class="relative h-[280px] md:h-[360px] w-full overflow-hidden flex items-end mb-12">
+            <div class="absolute inset-0 z-0">
+                <img alt="RSUD Tugu Koja Hospital Building" class="w-full h-full object-cover"
+                    src="assets/images/hero/RS%20Tugu%20Koja.jpg" />
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-jakarta-blue/90 via-jakarta-blue/50 to-jakarta-blue/20">
+                </div>
+            </div>
+            <div class="relative z-10 max-w-container-max mx-auto px-gutter w-full pb-12">
+                <nav class="mb-4" aria-label="Breadcrumb">
+                    <ol class="flex items-center gap-2 text-sm text-white/70 font-label-md flex-wrap">
+                        <li><a href="index.html" class="hover:text-white transition-colors"
+                                style="text-decoration:none;">Beranda</a></li>
+                        <li><span class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+                        <li><a href="berita.html" class="hover:text-white transition-colors"
+                                style="text-decoration:none;">Berita</a></li>
+                        <li><span class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+                        <li id="breadcrumb-title" class="text-white font-semibold line-clamp-1">Detail Berita</li>
+                    </ol>
+                </nav>
+                <div class="max-w-2xl">
+                    <h1 id="hero-title" class="font-headline-xl text-headline-xl text-white mb-2"
+                        style="text-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+                        Detail Berita
+                    </h1>
+                    <p id="hero-summary" class="font-body-md text-[16px] text-white/80 max-w-xl">
+                        Informasi lengkap seputar berita dan artikel dari RSUD Tugu Koja.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Article Content -->
+        <section class="max-w-container-max mx-auto px-gutter py-12">
+            <article class="max-w-3xl mx-auto">
+                <!-- Featured Image -->
+                <div id="featured-image" class="relative w-full h-96 rounded-2xl overflow-hidden mb-8 skeleton">
+                    <img alt="Featured" class="w-full h-full object-cover" id="article-image">
+                    <span id="category-badge"
+                        class="absolute top-4 left-4 px-3 py-1.5 bg-jakarta-blue text-white rounded-full font-label-md text-[12px] tracking-wide uppercase"></span>
+                </div>
+
+                <!-- Header -->
+                <div class="mb-8">
+                    <div class="flex items-center gap-2 text-text-muted font-label-md text-[13px] mb-4 flex-wrap">
+                        <span class="flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                            <time id="article-date"></time>
+                        </span>
+                        <span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+                        <span id="article-author"></span>
+                    </div>
+                    <h1 id="article-title"
+                        class="font-headline-lg text-[32px] lg:text-[40px] leading-tight text-jakarta-blue mb-4"></h1>
+                    <p id="article-summary" class="font-body-lg text-[16px] text-on-surface-variant leading-relaxed">
+                    </p>
+                </div>
+
+                <!-- Divider -->
+                <div class="h-px bg-outline-variant my-8"></div>
+
+                <!-- Article Body -->
+                <div id="article-body" class="article-content text-[16px] text-on-surface leading-relaxed mb-12">
+                    <!-- Content akan diisi oleh JavaScript -->
+                </div>
+
+                <!-- Share Section -->
+                <div class="border-t border-outline-variant pt-8 mt-8">
+                    <h3 class="font-headline-md text-[18px] text-jakarta-blue mb-4">Bagikan Berita</h3>
+                    <div class="flex gap-4">
+                        <button onclick="shareToWhatsApp()"
+                            class="flex items-center gap-2 px-4 py-2 rounded-lg bg-green-50 text-green-700 hover:bg-green-100 transition-colors">
+                            <span class="material-symbols-outlined">share</span>
+                            WhatsApp
+                        </button>
+                        <button onclick="shareToFacebook()"
+                            class="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-50 text-blue-700 hover:bg-blue-100 transition-colors">
+                            <span class="material-symbols-outlined">share</span>
+                            Facebook
+                        </button>
+                        <button onclick="copyLink()"
+                            class="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-50 text-gray-700 hover:bg-gray-100 transition-colors">
+                            <span class="material-symbols-outlined">link</span>
+                            Salin Link
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Related Articles -->
+                <div class="border-t border-outline-variant pt-12 mt-12">
+                    <h2 class="font-headline-lg text-[24px] text-jakarta-blue mb-6">Berita Terkait</h2>
+                    <div id="related-articles" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Related articles akan diisi oleh JavaScript -->
+                    </div>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <script>
+        const BULAN = [
+            'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+            'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+        ];
+
+        let allBerita = [];
+        let currentBerita = null;
+
+        // Format tanggal
+        function formatTanggal(dateStr) {
+            const d = new Date(dateStr);
+            return `${d.getDate()} ${BULAN[d.getMonth()]} ${d.getFullYear()}`;
+        }
+
+        // Dapatkan ID berita dari URL
+        function getBeritaId() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('id') || 'berita-001';
+        }
+
+        // Load berita.json
+        async function loadBerita() {
+            try {
+                const response = await fetch('assets/data/berita.json');
+                if (!response.ok) throw new Error('Fetch gagal');
+                allBerita = await response.json();
+                displayBerita();
+                displayRelatedArticles();
+            } catch (err) {
+                console.warn('Gagal memuat berita.json:', err.message);
+                displayBerita(FALLBACK_BERITA);
+                displayRelatedArticles(FALLBACK_BERITA);
+            }
+        }
+
+        // Tampilkan detail berita
+        function displayBerita(fallbackData = []) {
+            const beritaId = getBeritaId();
+            const dataSource = allBerita.length > 0 ? allBerita : fallbackData;
+            currentBerita = dataSource.find(b => b.id === beritaId);
+
+            if (!currentBerita) {
+                document.getElementById('article-body').innerHTML = '<p class="text-red-600">Berita tidak ditemukan.</p>';
+                return;
+            }
+
+            // Update meta data
+            document.title = currentBerita.judul + ' - RSUD Tugu Koja';
+            document.getElementById('breadcrumb-title').textContent = currentBerita.judul;
+            document.getElementById('hero-title').textContent = currentBerita.judul;
+            document.getElementById('hero-summary').textContent = currentBerita.ringkasan;
+            document.getElementById('article-title').textContent = currentBerita.judul;
+            document.getElementById('article-summary').textContent = currentBerita.ringkasan;
+            document.getElementById('article-date').textContent = formatTanggal(currentBerita.tanggal);
+            document.getElementById('article-author').textContent = currentBerita.penulis || 'Humas RSUD Tugu Koja';
+            document.getElementById('category-badge').textContent = currentBerita.kategori;
+            document.getElementById('article-image').src = currentBerita.gambar;
+            document.getElementById('article-image').onerror = function () {
+                this.src = 'assets/images/berita/1.png';
+            };
+
+            // Generate article body dengan konten dinamis
+            document.getElementById('article-body').innerHTML = generateArticleContent(currentBerita);
+
+            // Hapus skeleton loading
+            document.getElementById('featured-image').classList.remove('skeleton');
+        }
+
+        // Generate konten artikel berdasarkan berita ID
+        function generateArticleContent(berita) {
+            const contentMap = {
+                'berita-006': `
+                    <p class="font-body-lg text-[17px] text-on-surface-variant mb-8 leading-relaxed">
+                        Sebagai bagian dari komitmen RSUD Tugu Koja untuk memberikan pelayanan prima yang cepat, transparan, dan humanist, berikut kami sampaikan panduan alur pelayanan rawat jalan terbaru tahun 2025. Alur ini berlaku bagi pasien peserta Jaminan Kesehatan Nasional (JKN/BPJS Kesehatan) maupun pasien umum (non-BPJS).
+                    </p>
+
+                    <div class="relative pl-8 md:pl-10 border-l-2 border-slate-200 space-y-10 my-10">
+                        <!-- Step 1 -->
+                        <div class="relative">
+                            <!-- Circle Badge -->
+                            <span class="absolute -left-[45px] md:-left-[53px] top-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-jakarta-blue text-white flex items-center justify-center border-4 border-surface shadow-sm">
+                                <span class="material-symbols-outlined text-[16px] md:text-[18px]">assignment</span>
+                            </span>
+                            <div class="bg-white p-5 rounded-2xl border border-surface-subtle shadow-sm hover:shadow-md transition-shadow">
+                                <h4 class="font-headline-md text-[18px] text-jakarta-blue mb-2 flex items-center gap-2">
+                                    <span>1. Pendaftaran & Verifikasi Dokumen</span>
+                                    <span class="px-2 py-0.5 text-[11px] font-semibold bg-blue-50 text-blue-700 rounded-md">Langkah Awal</span>
+                                </h4>
+                                <p class="text-sm text-text-muted mb-3">
+                                    Sebelum memulai pemeriksaan, pasien wajib melakukan pendaftaran. Kami menyarankan pendaftaran secara online untuk efisiensi waktu.
+                                </p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm mt-3 pt-3 border-t border-slate-100">
+                                    <div>
+                                        <span class="font-semibold text-jakarta-blue block mb-1">Pendaftaran Online (H-1)</span>
+                                        <ul class="list-disc pl-4 space-y-1 text-on-surface-variant" style="margin-left:1.5rem; padding-left:1.5rem; list-style-type:disc;">
+                                            <li>Melalui aplikasi <strong>Mobile JKN</strong> (bagi peserta BPJS).</li>
+                                            <li>Melalui Portal Pendaftaran Online resmi RSUD Tugu Koja.</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <span class="font-semibold text-jakarta-blue block mb-1">Pendaftaran Mandiri (APM)</span>
+                                        <ul class="list-disc pl-4 space-y-1 text-on-surface-variant" style="margin-left:1.5rem; padding-left:1.5rem; list-style-type:disc;">
+                                            <li>Datang langsung ke Rumah Sakit dan gunakan mesin <strong>Anjungan Pendaftaran Mandiri (APM)</strong>.</li>
+                                            <li>Scan e-KTP atau Kartu BPJS Anda untuk mencetak Surat Eligibilitas Peserta (SEP) & nomor antrean.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="relative">
+                            <span class="absolute -left-[45px] md:-left-[53px] top-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-jakarta-blue text-white flex items-center justify-center border-4 border-surface shadow-sm">
+                                <span class="material-symbols-outlined text-[16px] md:text-[18px]">clinical_notes</span>
+                            </span>
+                            <div class="bg-white p-5 rounded-2xl border border-surface-subtle shadow-sm hover:shadow-md transition-shadow">
+                                <h4 class="font-headline-md text-[18px] text-jakarta-blue mb-2">
+                                    2. Pemeriksaan Tanda Vital di Nurse Station
+                                </h4>
+                                <p class="text-sm text-text-muted mb-2">
+                                    Setelah mendapatkan nomor antrean poli, silakan menuju ke <strong>Nurse Station</strong> di depan klinik/poliklinik tujuan Anda.
+                                </p>
+                                <p class="text-sm text-on-surface-variant mb-0">
+                                    Perawat akan memeriksa kondisi awal Anda, termasuk <strong>tekanan darah (tensi), suhu tubuh, berat badan,</strong> dan mencatat keluhan utama Anda di sistem rekam medis elektronik. Langkah ini penting untuk menentukan tingkat kedaruratan dan mempersiapkan data klinis untuk dokter.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="relative">
+                            <span class="absolute -left-[45px] md:-left-[53px] top-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-jakarta-blue text-white flex items-center justify-center border-4 border-surface shadow-sm">
+                                <span class="material-symbols-outlined text-[16px] md:text-[18px]">stethoscope</span>
+                            </span>
+                            <div class="bg-white p-5 rounded-2xl border border-surface-subtle shadow-sm hover:shadow-md transition-shadow">
+                                <h4 class="font-headline-md text-[18px] text-jakarta-blue mb-2">
+                                    3. Konsultasi & Pemeriksaan Dokter Spesialis
+                                </h4>
+                                <p class="text-sm text-text-muted mb-3">
+                                    Silakan duduk di area tunggu poliklinik dan tunggu hingga nama Anda dipanggil oleh perawat pendamping dokter.
+                                </p>
+                                <ul class="list-disc pl-4 space-y-1.5 text-sm text-on-surface-variant" style="margin-left:1.5rem; padding-left:1.5rem; list-style-type:disc;">
+                                    <li>Dokter spesialis melakukan wawancara medis (anamnesis) dan pemeriksaan fisik secara detail.</li>
+                                    <li>Jika diperlukan tindakan medis langsung (seperti ganti perban, nebulizer, dll), tindakan akan langsung dilakukan di ruang poli.</li>
+                                    <li>Dokter akan meresepkan obat melalui sistem <strong>E-Prescribing</strong> (Resep Elektronik) secara langsung ke instalasi farmasi.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="relative">
+                            <span class="absolute -left-[45px] md:-left-[53px] top-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-slate-400 text-white flex items-center justify-center border-4 border-surface shadow-sm">
+                                <span class="material-symbols-outlined text-[16px] md:text-[18px]">biotech</span>
+                            </span>
+                            <div class="bg-white p-5 rounded-2xl border border-surface-subtle shadow-sm hover:shadow-md border-l-4 border-l-slate-300">
+                                <h4 class="font-headline-md text-[18px] text-slate-700 mb-2 flex items-center gap-2">
+                                    <span>4. Pemeriksaan Penunjang (Bila Diperlukan)</span>
+                                    <span class="px-2 py-0.5 text-[11px] font-semibold bg-slate-100 text-slate-600 rounded-md">Kondisional</span>
+                                </h4>
+                                <p class="text-sm text-text-muted mb-2">
+                                    Apabila dokter membutuhkan penegakan diagnosis yang lebih akurat, Anda akan diberikan surat pengantar untuk pemeriksaan penunjang.
+                                </p>
+                                <p class="text-sm text-on-surface-variant">
+                                    Layanan penunjang meliputi <strong>Laboratorium darah/urine, Radiologi (Rontgen, USG, CT Scan), Elektrokardiogram (EKG),</strong> atau pemeriksaan penunjang khusus lainnya. Setelah pemeriksaan penunjang selesai, Anda akan kembali ke ruang poli untuk membacakan hasil diagnosis bersama dokter.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Step 5 -->
+                        <div class="relative">
+                            <span class="absolute -left-[45px] md:-left-[53px] top-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-jakarta-blue text-white flex items-center justify-center border-4 border-surface shadow-sm">
+                                <span class="material-symbols-outlined text-[16px] md:text-[18px]">local_pharmacy</span>
+                            </span>
+                            <div class="bg-white p-5 rounded-2xl border border-surface-subtle shadow-sm hover:shadow-md transition-shadow">
+                                <h4 class="font-headline-md text-[18px] text-jakarta-blue mb-2 flex items-center gap-2">
+                                    <span>5. Farmasi (Pengambilan Obat) & Pembayaran Kasir</span>
+                                    <span class="px-2 py-0.5 text-[11px] font-semibold bg-green-50 text-green-700 rounded-md">Langkah Akhir</span>
+                                </h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm mt-2">
+                                    <div>
+                                        <span class="font-semibold text-jakarta-blue block mb-1">Pasien BPJS Kesehatan</span>
+                                        <p class="text-on-surface-variant text-[13px] leading-relaxed">
+                                            Langsung menuju ke <strong>Depo Farmasi BPJS</strong>. Berikan struk pendaftaran/antrean obat, lalu tunggu obat diracik dan dipanggil. Seluruh biaya pengobatan dan konsultasi telah dijamin oleh BPJS (bebas biaya, sesuai ketentuan medis).
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <span class="font-semibold text-jakarta-blue block mb-1">Pasien Umum / Asuransi Swasta</span>
+                                        <p class="text-on-surface-variant text-[13px] leading-relaxed">
+                                            Menuju ke <strong>Loket Kasir</strong> untuk melakukan pelunasan biaya administrasi, konsultasi, tindakan, serta obat-obatan. Setelah membayar, silakan ambil obat Anda di <strong>Depo Farmasi Umum</strong> dengan menunjukkan bukti pembayaran.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-blue-50/50 border border-blue-100 rounded-2xl p-6 mb-8 mt-10">
+                        <h4 class="font-headline-md text-[18px] text-jakarta-blue mb-4 flex items-center gap-2" style="margin-top:0px;">
+                            <span class="material-symbols-outlined text-jakarta-blue">checklist</span>
+                            Checklist Dokumen yang Wajib Disiapkan
+                        </h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                            <div class="bg-white p-4 rounded-xl border border-blue-100/50">
+                                <span class="font-bold text-jakarta-blue block mb-2 text-[15px]">Pasien BPJS Kesehatan</span>
+                                <ul class="space-y-2 text-on-surface-variant" style="margin-left:0px; padding-left:0px; list-style-type:none;">
+                                    <li class="flex items-start gap-2" style="margin-left:0px; margin-bottom:0px;">
+                                        <span class="material-symbols-outlined text-green-600 text-[18px] mt-0.5">check_circle</span>
+                                        <span>Kartu BPJS Kesehatan asli / Digital (Mobile JKN)</span>
+                                    </li>
+                                    <li class="flex items-start gap-2" style="margin-left:0px; margin-bottom:0px;">
+                                        <span class="material-symbols-outlined text-green-600 text-[18px] mt-0.5">check_circle</span>
+                                        <span>Surat Rujukan asli dari Faskes Tingkat I (Puskesmas/Klinik) yang masih berlaku</span>
+                                    </li>
+                                    <li class="flex items-start gap-2" style="margin-left:0px; margin-bottom:0px;">
+                                        <span class="material-symbols-outlined text-green-600 text-[18px] mt-0.5">check_circle</span>
+                                        <span>KTP asli / Kartu Keluarga (bagi pasien anak)</span>
+                                    </li>
+                                    <li class="flex items-start gap-2" style="margin-left:0px; margin-bottom:0px;">
+                                        <span class="material-symbols-outlined text-green-600 text-[18px] mt-0.5">check_circle</span>
+                                        <span>Surat Kontrol Ulang (jika kunjungan lanjutan)</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl border border-blue-100/50">
+                                <span class="font-bold text-jakarta-blue block mb-2 text-[15px]">Pasien Umum / Non-BPJS</span>
+                                <ul class="space-y-2 text-on-surface-variant" style="margin-left:0px; padding-left:0px; list-style-type:none;">
+                                    <li class="flex items-start gap-2" style="margin-left:0px; margin-bottom:0px;">
+                                        <span class="material-symbols-outlined text-green-600 text-[18px] mt-0.5">check_circle</span>
+                                        <span>KTP asli / Kartu Keluarga</span>
+                                    </li>
+                                    <li class="flex items-start gap-2" style="margin-left:0px; margin-bottom:0px;">
+                                        <span class="material-symbols-outlined text-green-600 text-[18px] mt-0.5">check_circle</span>
+                                        <span>Kartu Asuransi Swasta / Kartu Perusahaan (jika ada)</span>
+                                    </li>
+                                    <li class="flex items-start gap-2" style="margin-left:0px; margin-bottom:0px;">
+                                        <span class="material-symbols-outlined text-green-600 text-[18px] mt-0.5">check_circle</span>
+                                        <span>Kartu Berobat RSUD Tugu Koja (jika sudah punya)</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-amber-50/50 border border-amber-100 rounded-2xl p-6 flex gap-4 items-start">
+                        <span class="material-symbols-outlined text-amber-600 text-[28px] mt-0.5">lightbulb</span>
+                        <div>
+                            <h5 class="font-bold text-amber-950 text-[15px] mb-1">Tips Layanan Cepat</h5>
+                            <p class="text-sm text-amber-900 leading-relaxed" style="margin-bottom:0px;">
+                                Untuk menghemat waktu tunggu hingga 60 menit, kami sangat merekomendasikan Anda melakukan <strong>pendaftaran online H-1</strong> melalui aplikasi Mobile JKN atau Portal RSUD Tugu Koja. Pastikan juga surat rujukan Anda dari Puskesmas/Klinik masih aktif (masa berlaku rujukan BPJS adalah 3 bulan sejak tanggal terbit).
+                            </p>
+                        </div>
+                    </div>
+                `,
+                'berita-008': `
+                    <p class="font-body-lg text-[17px] text-on-surface-variant mb-8 leading-relaxed">
+                        Imunisasi merupakan salah satu investasi kesehatan terpenting bagi masa depan anak. Melalui imunisasi, tubuh anak dilatih untuk mengenali dan melawan berbagai penyakit infeksi berbahaya yang dapat menyebabkan kecacatan atau kematian. RSUD Tugu Koja menyediakan layanan imunisasi anak terpadu yang dilayani langsung oleh dokter spesialis anak dan bidan berpengalaman.
+                    </p>
+
+                    <!-- Operational Info Card -->
+                    <div class="bg-gradient-to-br from-jakarta-blue to-primary-container text-white rounded-3xl p-6 md:p-8 shadow-md mb-8 flex flex-col md:flex-row gap-6 justify-between items-start md:items-center">
+                        <div class="space-y-2">
+                            <span class="px-3 py-1 bg-health-green text-white text-[11px] font-bold uppercase tracking-wider rounded-full">Info Pelayanan</span>
+                            <h4 class="font-headline-md text-[20px] text-white" style="color:white; margin-top:0px;">Poliklinik Imunisasi & Tumbuh Kembang</h4>
+                            <p class="text-sm text-white/80 max-w-lg" style="margin-bottom:0px;">
+                                Terletak di <strong>Lantai 2, Gedung Utama RSUD Tugu Koja</strong>. Kami melayani imunisasi program pemerintah (gratis) maupun imunisasi tambahan.
+                            </p>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 w-full md:w-auto flex-shrink-0 flex flex-col gap-2.5">
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="material-symbols-outlined text-health-green">calendar_month</span>
+                                <span>Senin - Jumat</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="material-symbols-outlined text-health-green">schedule</span>
+                                <span>08:00 - 12:00 WIB</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="material-symbols-outlined text-health-green">location_on</span>
+                                <span>Lantai 2, Poli Anak</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="font-headline-md text-[22px] text-jakarta-blue mb-4">Jadwal Imunisasi Anak Nasional (IDAI/Kemenkes)</h3>
+                    <p class="text-sm text-text-muted mb-4">
+                        Tabel berikut merupakan jadwal pemberian vaksin dasar lengkap dan lanjutan bagi anak usia 0 hingga 18 bulan yang tersedia di RSUD Tugu Koja:
+                    </p>
+
+                    <!-- Schedule Table -->
+                    <div class="overflow-x-auto border border-outline-variant rounded-2xl bg-white mb-8">
+                        <table class="w-full text-left border-collapse text-sm">
+                            <thead>
+                                <tr class="bg-jakarta-blue text-white border-b border-outline-variant font-label-md">
+                                    <th class="p-4 w-28">Usia Anak</th>
+                                    <th class="p-4">Jenis Vaksin</th>
+                                    <th class="p-4">Mencegah Penyakit</th>
+                                    <th class="p-4 w-36">Status Program</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 text-on-surface-variant font-body-md">
+                                <tr class="hover:bg-slate-50 transition-colors">
+                                    <td class="p-4 font-semibold text-jakarta-blue">0 Bulan</td>
+                                    <td class="p-4">Hepatitis B (HB-0)</td>
+                                    <td class="p-4">Infeksi hati (Hepatitis B), kanker hati</td>
+                                    <td class="p-4"><span class="px-2.5 py-1 text-[11px] bg-green-50 text-green-700 font-semibold rounded-full uppercase">Wajib Nasional</span></td>
+                                </tr>
+                                <tr class="bg-slate-50/30 hover:bg-slate-50 transition-colors">
+                                    <td class="p-4 font-semibold text-jakarta-blue">1 Bulan</td>
+                                    <td class="p-4">BCG, Polio 1</td>
+                                    <td class="p-4">Tuberkulosis (TBC) paru/selaput otak, lumpuh layu (Polio)</td>
+                                    <td class="p-4"><span class="px-2.5 py-1 text-[11px] bg-green-50 text-green-700 font-semibold rounded-full uppercase">Wajib Nasional</span></td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 transition-colors">
+                                    <td class="p-4 font-semibold text-jakarta-blue">2 Bulan</td>
+                                    <td class="p-4">DPT-HB-Hib 1, Polio 2, PCV 1, Rotavirus 1</td>
+                                    <td class="p-4">Difteri, Pertusis, Tetanus, Hepatitis B, Meningitis, Pneumonia, Diare Rotavirus</td>
+                                    <td class="p-4"><span class="px-2.5 py-1 text-[11px] bg-green-50 text-green-700 font-semibold rounded-full uppercase">Wajib Nasional</span></td>
+                                </tr>
+                                <tr class="bg-slate-50/30 hover:bg-slate-50 transition-colors">
+                                    <td class="p-4 font-semibold text-jakarta-blue">3 Bulan</td>
+                                    <td class="p-4">DPT-HB-Hib 2, Polio 3, PCV 2, Rotavirus 2</td>
+                                    <td class="p-4">Difteri, Pertusis, Tetanus, Hepatitis B, Pneumonia, Diare</td>
+                                    <td class="p-4"><span class="px-2.5 py-1 text-[11px] bg-green-50 text-green-700 font-semibold rounded-full uppercase">Wajib Nasional</span></td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 transition-colors">
+                                    <td class="p-4 font-semibold text-jakarta-blue">4 Bulan</td>
+                                    <td class="p-4">DPT-HB-Hib 3, Polio 4, IPV (Polio Suntik), Rotavirus 3</td>
+                                    <td class="p-4">Mencegah penyakit penularan polio tipe 1, 2, dan 3</td>
+                                    <td class="p-4"><span class="px-2.5 py-1 text-[11px] bg-green-50 text-green-700 font-semibold rounded-full uppercase">Wajib Nasional</span></td>
+                                </tr>
+                                <tr class="bg-slate-50/30 hover:bg-slate-50 transition-colors">
+                                    <td class="p-4 font-semibold text-jakarta-blue">9 Bulan</td>
+                                    <td class="p-4">MR (Measles Rubella) 1</td>
+                                    <td class="p-4">Campak (Measles) dan Campak Jerman (Rubella)</td>
+                                    <td class="p-4"><span class="px-2.5 py-1 text-[11px] bg-green-50 text-green-700 font-semibold rounded-full uppercase">Wajib Nasional</span></td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 transition-colors">
+                                    <td class="p-4 font-semibold text-jakarta-blue">12 Bulan</td>
+                                    <td class="p-4">PCV 3 (Booster)</td>
+                                    <td class="p-4">Infeksi bakteri pneumokokus (Pneumonia/Radang paru, Meningitis)</td>
+                                    <td class="p-4"><span class="px-2.5 py-1 text-[11px] bg-green-50 text-green-700 font-semibold rounded-full uppercase">Wajib Nasional</span></td>
+                                </tr>
+                                <tr class="bg-slate-50/30 hover:bg-slate-50 transition-colors">
+                                    <td class="p-4 font-semibold text-jakarta-blue">18 Bulan</td>
+                                    <td class="p-4">DPT-HB-Hib 4, MR 2 (Booster)</td>
+                                    <td class="p-4">Penguat daya tahan tubuh terhadap Difteri, Tetanus, Campak, Rubella</td>
+                                    <td class="p-4"><span class="px-2.5 py-1 text-[11px] bg-green-50 text-green-700 font-semibold rounded-full uppercase">Wajib Nasional</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Vaccine Cards Grid -->
+                    <h3 class="font-headline-md text-[20px] text-jakarta-blue mb-4">Informasi Tambahan Jenis Vaksin</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                        <div class="p-4 bg-white border border-surface-subtle rounded-2xl flex gap-3 shadow-sm">
+                            <div class="w-12 h-12 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center flex-shrink-0">
+                                <span class="material-symbols-outlined text-[24px]">vaccines</span>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-jakarta-blue text-sm">Vaksin Program (Kemenkes)</h5>
+                                <p class="text-xs text-text-muted mt-1 leading-relaxed">
+                                    Vaksin wajib nasional yang disubsidi penuh oleh pemerintah sehingga <strong>bebas biaya (gratis)</strong> untuk seluruh warga negara Indonesia.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-white border border-surface-subtle rounded-2xl flex gap-3 shadow-sm">
+                            <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center flex-shrink-0">
+                                <span class="material-symbols-outlined text-[24px]">biotech</span>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-jakarta-blue text-sm">Vaksin Tambahan (Non-Program)</h5>
+                                <p class="text-xs text-text-muted mt-1 leading-relaxed">
+                                    Vaksin seperti Influenza, Cacar Air, Hepatitis A, MMR, Typoid, dll. Tersedia melalui pendaftaran pasien umum.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Checklist Card -->
+                    <div class="bg-blue-50/50 border border-blue-100 rounded-2xl p-6 mb-6">
+                        <h4 class="font-headline-md text-[18px] text-jakarta-blue mb-4 flex items-center gap-2" style="margin-top:0px;">
+                            <span class="material-symbols-outlined text-jakarta-blue">clinical_notes</span>
+                            Persyaratan & Dokumen Pendaftaran Imunisasi
+                        </h4>
+                        <p class="text-sm text-text-muted mb-4">
+                            Mohon siapkan dokumen berikut sebelum melakukan registrasi di loket pendaftaran atau di mesin APM:
+                        </p>
+                        <ul class="space-y-3 text-sm text-on-surface-variant" style="margin-left:0px; padding-left:0px; list-style-type:none;">
+                            <li class="flex items-start gap-2.5" style="margin-left:0px; margin-bottom:0px;">
+                                <span class="material-symbols-outlined text-green-600 text-[18px] mt-0.5">check_circle</span>
+                                <span><strong>Buku KIA (Kesehatan Ibu dan Anak) / Buku Pink</strong>: Wajib dibawa setiap kunjungan imunisasi untuk pencatatan riwayat vaksin anak.</span>
+                            </li>
+                            <li class="flex items-start gap-2.5" style="margin-left:0px; margin-bottom:0px;">
+                                <span class="material-symbols-outlined text-green-600 text-[18px] mt-0.5">check_circle</span>
+                                <span><strong>Kartu Keluarga (KK) / Kartu Identitas Anak (KIA)</strong>: Untuk keperluan verifikasi data pendaftaran.</span>
+                            </li>
+                            <li class="flex items-start gap-2.5" style="margin-left:0px; margin-bottom:0px;">
+                                <span class="material-symbols-outlined text-green-600 text-[18px] mt-0.5">check_circle</span>
+                                <span><strong>Kartu BPJS Kesehatan Anak</strong> (jika menggunakan jaminan BPJS Kesehatan).</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-amber-50/50 border border-amber-100 rounded-2xl p-5 flex gap-3.5 items-start">
+                        <span class="material-symbols-outlined text-amber-600 text-[24px] mt-0.5">warning</span>
+                        <div class="text-sm text-amber-800">
+                            <span class="font-bold block mb-1">Ketentuan Kesehatan Anak Sebelum Imunisasi:</span>
+                            <p class="leading-relaxed" style="margin-bottom:0px;">
+                                Sebelum anak diimunisasi, pastikan anak dalam kondisi sehat, tidak sedang mengalami demam tinggi (suhu tubuh &gt;37,5°C), batuk pilek berat, atau diare parah. Jika anak Anda sedang meminum obat antibiotik atau imunosupresan, konsultasikan terlebih dahulu dengan dokter spesialis anak kami sebelum penyuntikan dilakukan.
+                            </p>
+                        </div>
+                    </div>
+                `,
+                'berita-010': `
+
+                    <p>Program screening kesehatan gratis merupakan inisiatif RSUD Tugu Koja untuk meningkatkan kesadaran masyarakat terhadap pentingnya deteksi dini penyakit kronis. Program ini diadakan secara berkala di berbagai wilayah Jakarta Utara.</p>
+                    
+                    <h3>Tujuan Program</h3>
+                    <p>Program screening kesehatan dirancang untuk:</p>
+                    <ul>
+                        <li>Mendeteksi dini berbagai penyakit kronis seperti hipertensi, diabetes, dan penyakit jantung</li>
+                        <li>Meningkatkan kesadaran kesehatan masyarakat</li>
+                        <li>Memberikan edukasi tentang gaya hidup sehat</li>
+                        <li>Memfasilitasi rujukan ke layanan kesehatan yang lebih lanjut jika diperlukan</li>
+                    </ul>
+
+                    <h3>Jenis Pemeriksaan</h3>
+                    <p>Pemeriksaan kesehatan gratis mencakup:</p>
+                    <ul>
+                        <li>Pemeriksaan tekanan darah</li>
+                        <li>Pemeriksaan kadar gula darah</li>
+                        <li>Pemeriksaan kolesterol</li>
+                        <li>Pemeriksaan kesehatan mata</li>
+                        <li>Pemeriksaan kesehatan gigi dan mulut</li>
+                        <li>Konsultasi dengan tenaga kesehatan profesional</li>
+                    </ul>
+
+                    <h3>Manfaat Mengikuti Program</h3>
+                    <p>Dengan mengikuti program screening kesehatan gratis, Anda dapat memperoleh manfaat seperti:</p>
+                    <ul>
+                        <li>Deteksi dini penyakit sebelum gejala muncul</li>
+                        <li>Edukasi kesehatan dari tenaga medis profesional</li>
+                        <li>Layanan kesehatan berkualitas tanpa biaya</li>
+                        <li>Pencegahan penyakit dan komplikasi lebih lanjut</li>
+                    </ul>
+
+                    <p>Untuk informasi lebih lanjut tentang jadwal dan lokasi program screening kesehatan, silakan menghubungi bagian Humas RSUD Tugu Koja atau kunjungi website resmi kami.</p>
+                `,
+                'berita-011': `
+                    <p>RSUD Tugu Koja dengan bangga mengumumkan pembukaan layanan konsultasi kesehatan mental yang komprehensif. Layanan ini dirancang untuk memenuhi kebutuhan kesehatan psikologis dan emosional masyarakat Jakarta Utara dengan pendekatan profesional dan penuh empati.</p>
+                    
+                    <h3>Pentingnya Kesehatan Mental</h3>
+                    <p>Kesehatan mental sama pentingnya dengan kesehatan fisik. Stres, kecemasan, depresi, dan gangguan emosional lainnya dapat mempengaruhi kualitas hidup dan produktivitas. Dengan membuka layanan konsultasi kesehatan mental, RSUD Tugu Koja berkomitmen untuk mendukung kesejahteraan psikologis masyarakat.</p>
+                    
+                    <h3>Layanan yang Ditawarkan</h3>
+                    <p>Layanan konsultasi kesehatan mental RSUD Tugu Koja mencakup:</p>
+                    <ul>
+                        <li>Konsultasi dengan psikolog profesional dan berpengalaman</li>
+                        <li>Layanan terapi individu dan keluarga</li>
+                        <li>Psikoedukasi tentang kesehatan mental</li>
+                        <li>Penanganan stress dan kecemasan</li>
+                        <li>Dukungan untuk gangguan mood dan emosional</li>
+                        <li>Referral ke spesialis psikiatri jika diperlukan</li>
+                    </ul>
+
+                    <h3>Tim Profesional</h3>
+                    <p>Layanan ini didukung oleh tim profesional berpengalaman di bidang kesehatan mental, termasuk psikolog klinis, konselor, dan spesialis psikiatri. Semua staf telah terlatih dalam memberikan pelayanan dengan standar internasional dan etika profesional yang tinggi.</p>
+
+                    <h3>Bagaimana Cara Mengakses Layanan</h3>
+                    <p>Untuk mengakses layanan konsultasi kesehatan mental, Anda dapat:</p>
+                    <ul>
+                        <li>Menghubungi bagian pendaftaran RSUD Tugu Koja</li>
+                        <li>Membuat janji temu melalui aplikasi kesehatan resmi kami</li>
+                        <li>Datang langsung ke ruang konsultasi kesehatan mental</li>
+                        <li>Meminta rujukan dari dokter praktik Anda</li>
+                    </ul>
+
+                    <h3>Komitmen Kami</h3>
+                    <p>RSUD Tugu Koja berkomitmen untuk menyediakan layanan kesehatan mental yang berkualitas, terjangkau, dan dapat diakses oleh semua lapisan masyarakat. Kami percaya bahwa kesehatan mental adalah hak fundamental setiap individu dan merupakan bagian integral dari kesehatan holistik.</p>
+
+                    <p>Jangan ragu untuk mencari bantuan jika Anda atau orang terdekat membutuhkan dukungan kesehatan mental. Tim kami siap membantu Anda dalam perjalanan menuju kesejahteraan psikologis yang lebih baik.</p>
+                `
+            };
+
+            return contentMap[berita.id] || `<p>${berita.ringkasan}</p>`;
+        }
+
+        // Tampilkan artikel terkait
+        function displayRelatedArticles(fallbackData = []) {
+            const dataSource = allBerita.length > 0 ? allBerita : fallbackData;
+
+            if (!currentBerita) return;
+
+            // Filter artikel terkait (sama kategori, bukan artikel saat ini)
+            const related = dataSource
+                .filter(b => b.id !== currentBerita.id && b.kategori === currentBerita.kategori)
+                .slice(0, 4);
+
+            const container = document.getElementById('related-articles');
+            container.innerHTML = related.map(article => `
+                <div class="related-card bg-white rounded-2xl overflow-hidden border border-surface-subtle cursor-pointer animate-fade-in" onclick="window.location.href='berita-detail.html?id=${article.id}'">
+                    <div class="relative h-40 overflow-hidden">
+                        <img
+                            alt="${article.judul}"
+                            class="w-full h-full object-cover"
+                            src="${article.gambar}"
+                            onerror="this.src='assets/images/berita/1.png'"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <p class="font-body-md text-[13px] text-text-muted mb-2 line-clamp-1">${formatTanggal(article.tanggal)}</p>
+                        <h4 class="font-headline-md text-[14px] text-jakarta-blue mb-2 line-clamp-2">${article.judul}</h4>
+                        <p class="font-body-md text-[13px] text-text-muted line-clamp-2">${article.ringkasan}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Share functions
+        function shareToWhatsApp() {
+            const title = currentBerita?.judul || 'Berita RSUD Tugu Koja';
+            const url = window.location.href;
+            const message = `Baca berita: "${title}" ${url}`;
+            window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        function shareToFacebook() {
+            const url = window.location.href;
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+        }
+
+        function copyLink() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert('Link berhasil disalin!');
+            }).catch(() => {
+                alert('Gagal menyalin link');
+            });
+        }
+
+        // Fallback data
+        const FALLBACK_BERITA = [
+            { "id": "berita-001", "judul": "Best Rating Rumah Sakit Umum Daerah Provinsi DKI Jakarta 2026", "kategori": "Penghargaan", "tanggal": "2026-04-02", "ringkasan": "RSUD Tugu Koja meraih predikat Best Rating RSUD/RSKD se-Provinsi DKI Jakarta tahun 2026. Apresiasi tertinggi atas komitmen dalam pemenuhan kebutuhan layanan kesehatan masyarakat.", "gambar": "assets/images/berita/1.png", "penulis": "Humas RSUD Tugu Koja" },
+            { "id": "berita-002", "judul": "Best Rating Rumah Sakit Provinsi DKI Jakarta 2026", "kategori": "Penghargaan", "tanggal": "2026-04-02", "ringkasan": "Penghargaan ini menjadi motivasi bagi seluruh jajaran RSUD Tugu Koja untuk terus memberikan yang terbaik demi keselamatan dan kepuasan pelanggan.", "gambar": "assets/images/berita/2.png", "penulis": "Humas RSUD Tugu Koja" },
+            { "id": "berita-003", "judul": "Penganugerahan Keterbukaan Informasi Publik Tahun 2025", "kategori": "Penghargaan", "tanggal": "2026-01-02", "ringkasan": "RSUD Tugu Koja mendapat pengakuan atas budaya transparansi dan pelayanan publik yang berkualitas dari Komisi Informasi Provinsi DKI Jakarta.", "gambar": "assets/images/berita/3.png", "penulis": "Humas RSUD Tugu Koja" },
+            { "id": "berita-004", "judul": "Penghargaan Inovasi Tingkat Nasional", "kategori": "Penghargaan", "tanggal": "2026-01-02", "ringkasan": "RSUD Tugu Koja mengikuti kompetensi nasional TKMPN di Batam dan meraih pengakuan atas inovasi layanan kesehatan.", "gambar": "assets/images/berita/4.png", "penulis": "Humas RSUD Tugu Koja" },
+            { "id": "berita-005", "judul": "Implementasi Budaya Kerja BerAKHLAK dan Zona Integritas", "kategori": "Kelembagaan", "tanggal": "2025-12-31", "ringkasan": "Budaya Kerja Berdaya, Integritas Terjaga, Pelayanan Publik Berjaya — menuju Jakarta Kota Global Mendunia.", "gambar": "assets/images/berita/5.png", "penulis": "Humas RSUD Tugu Koja" },
+            { "id": "berita-006", "judul": "Alur Layanan Rawat Jalan di RSUD Tugu Koja 2025", "kategori": "Info Layanan", "tanggal": "2025-03-24", "ringkasan": "Informasi terbaru mengenai alur pendaftaran dan pelayanan rawat jalan bagi pasien BPJS maupun umum di RSUD Tugu Koja.", "gambar": "assets/images/berita/6.png", "penulis": "Humas RSUD Tugu Koja" },
+            { "id": "berita-007", "judul": "Pencanangan Zona Integritas RSUD Tugu Koja", "kategori": "Kelembagaan", "tanggal": "2025-03-17", "ringkasan": "RSUD Tugu Koja mencanangkan Zona Integritas menuju Wilayah Bebas dari Korupsi (WBK) dan Wilayah Birokrasi Bersih Melayani (WBBM).", "gambar": "assets/images/berita/7.png", "penulis": "Humas RSUD Tugu Koja" },
+            { "id": "berita-008", "judul": "Jadwal Imunisasi Anak di RSUD Tugu Koja", "kategori": "Info Kesehatan", "tanggal": "2024-01-19", "ringkasan": "Informasi lengkap jadwal dan jenis imunisasi anak yang tersedia di RSUD Tugu Koja beserta persyaratan yang perlu disiapkan.", "gambar": "assets/images/berita/8.png", "penulis": "Humas RSUD Tugu Koja" },
+            { "id": "berita-009", "judul": "Pelatihan Penanganan Gawat Darurat untuk Kader Kesehatan", "kategori": "Kegiatan", "tanggal": "2024-05-10", "ringkasan": "Meningkatkan kesiapsiagaan masyarakat dalam menangani kondisi darurat medis sebelum dirujuk ke rumah sakit.", "gambar": "assets/images/berita/9.png", "penulis": "Humas RSUD Tugu Koja" },
+            { "id": "berita-010", "judul": "Layanan EMG (Elektromiografi) di RSUD Tugu Koja", "kategori": "Info Kesehatan", "tanggal": "2023-08-10", "ringkasan": "EMG (Elektromiografi) adalah sebuah pemeriksaan medis yang mengukur aktivitas listrik yang dihasilkan oleh otot-otot Anda.", "gambar": "assets/images/berita/13.jpg", "penulis": "Humas RSUD Tugu Koja" },
+            { "id": "berita-011", "judul": "Pusat Informasi Layanan PPID - RSUD Tugu Koja", "kategori": "Info Layanan", "tanggal": "2023-09-22", "ringkasan": "Jembatan antara Anda dan informasi yang Anda butuhkan tentang layanan dan operasi RSUD Tugu Koja.", "gambar": "assets/images/berita/14.jpg", "penulis": "Humas RSUD Tugu Koja" }
+        ];
+
+        // Initialize
+        window.addEventListener('DOMContentLoaded', () => {
+            loadBerita();
+        });
+    </script>
+
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+</body>
+
+</html>
