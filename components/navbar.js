@@ -265,6 +265,12 @@
                                 <span class="font-label-md">Gawat Darurat 24 Jam</span>
                             </a>
                             
+                            <!-- Rawat Inap (Langsung tanpa submenu) -->
+                            <a href="\layanan/rawat-inap.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-surface-container text-primary transition-colors">
+                                <span class="material-symbols-outlined text-[20px]">bed</span>
+                                <span class="font-label-md flex-1">Rawat Inap</span>
+                            </a>
+
                             <!-- Rawat Jalan (Trigger Level 2) -->
                             <div class="relative group/rj">
                                 <a href="\layanan.html#rawat-jalan" class="flex items-center gap-3 p-3 rounded-xl hover:bg-surface-container text-primary transition-colors cursor-pointer">
@@ -311,26 +317,7 @@
                                 </div>
                             </div>
 
-                            <!-- Rawat Inap (Trigger Level 2) -->
-                            <div class="relative group/ri">
-                                <a href="\layanan/rawat-inap.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-surface-container text-primary transition-colors cursor-pointer">
-                                    <span class="material-symbols-outlined text-[20px]">bed</span>
-                                    <span class="font-label-md flex-1">Rawat Inap</span>
-                                    <span class="material-symbols-outlined text-[18px]">chevron_right</span>
-                                </a>
-                                
-                                <!-- Level 2 Dropdown -->
-                                <div class="absolute top-0 left-full pl-2 opacity-0 invisible group-hover/ri:opacity-100 group-hover/ri:visible transition-all duration-300 z-50">
-                                    <div class="w-56 bg-white rounded-2xl shadow-xl border border-surface-subtle p-2 relative flex flex-col gap-1">
-                                        <a href="\layanan/rawat-inap.html" class="p-3 rounded-xl hover:bg-surface-container text-[13px] text-on-surface-variant hover:text-health-green font-medium transition-colors">Perawatan Umum</a>
-                                        <a href="\layanan/rawat-inap.html" class="p-3 rounded-xl hover:bg-surface-container text-[13px] text-on-surface-variant hover:text-health-green font-medium transition-colors">Perawatan Intensif</a>
-                                        <a href="\layanan/rawat-inap.html" class="p-3 rounded-xl hover:bg-surface-container text-[13px] text-on-surface-variant hover:text-health-green font-medium transition-colors flex items-center justify-between">
-                                            Ketersediaan Kamar
-                                            <span class="material-symbols-outlined text-[16px] text-jakarta-blue">hotel_class</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                            
 
                             <!-- Penunjang Medis (Trigger Level 2) -->
                             <div class="relative group/pm">
@@ -355,7 +342,7 @@
                 </div>
 
                 <a class="" href="\caridokter.html" accesskey="c"><span class="nav-mnemonic">C</span>ari Jadwal</a>
-                <a class=""      href="erita.html" accesskey="b"><span class="nav-mnemonic">B</span>erita</a>
+                <a class=""      href="berita.html" accesskey="b"><span class="nav-mnemonic">B</span>erita</a>
                 <a class="" href="	entangkami.html" accesskey="t"><span class="nav-mnemonic">T</span>entang Kami</a>
             </nav>
             <!-- CTA: Buat Janji -->
@@ -394,6 +381,8 @@
                     <a href="\layanan.html" class="block py-2 text-[14px] text-on-surface-variant hover:text-health-green font-medium">Semua Layanan</a>
                     <a href="\layanan/igd.html" class="block py-2 text-[14px] text-emergency-red hover:text-emergency-red/80 font-medium">Gawat Darurat 24 Jam</a>
                     
+                                        <a href="\layanan/rawat-inap.html" class="block py-2 text-[14px] text-on-surface-variant hover:text-health-green font-medium">Rawat Inap</a>
+                    
                     <!-- Rawat Jalan Accordion -->
                     <button onclick="document.getElementById('mobile-rawat-jalan').classList.toggle('hidden'); this.querySelector('.sub-arrow').classList.toggle('rotate-180');" class="w-full flex items-center justify-between py-2 text-[14px] text-on-surface-variant hover:text-health-green font-medium text-left">
                         Rawat Jalan
@@ -420,8 +409,6 @@
                         <a href="\klinik-detail.html?id=klinik-geriatri" class="block py-1.5 text-[13px] font-medium text-jakarta-blue">Klinik Geriatri</a>
                         <a href="\klinik-detail.html?id=klinik-sehati" class="block py-1.5 text-[13px] font-medium text-jakarta-blue">Klinik Sehati</a>
                     </div>
-                    
-                    <a href="\layanan/rawat-inap.html" class="block py-2 text-[14px] text-on-surface-variant hover:text-health-green font-medium">Rawat Inap</a>
                     <a href="\layanan/laboratorium.html" class="block py-2 text-[14px] text-on-surface-variant hover:text-health-green font-medium">Penunjang Medis</a>
                 </div>
             </div>
