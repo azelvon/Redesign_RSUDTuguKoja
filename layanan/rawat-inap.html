@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Rawat Inap - RSUD Tugu Koja</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Atkinson+Hyperlegible+Next:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+        }
+        body { font-family: 'Atkinson Hyperlegible Next', sans-serif; background-color: #f7f9fb; }
+    </style>
+    <script src="../assets/js/tailwind-config.js"></script>
+</head>
+
+<body class="bg-surface text-on-surface font-body-md">
+    <!-- Top Bar -->
+    <div id="emergency-bar-container"></div>
+    <!-- Navbar -->
+    <div id="navbar-container" style="height: 36px;"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative h-[340px] md:h-[420px] w-full overflow-hidden flex items-end">
+            <div class="absolute inset-0 z-0">
+                <img
+                    alt="RSUD Tugu Koja"
+                    class="w-full h-full object-cover"
+                    src="../assets/images/hero/RS Tugu Koja.jpg"
+                >
+                <div class="absolute inset-0 bg-gradient-to-t from-jakarta-blue/90 via-jakarta-blue/60 to-jakarta-blue/20"></div>
+            </div>
+            <div class="relative z-10 max-w-container-max mx-auto px-gutter w-full pb-12">
+                <nav class="mb-4" aria-label="Breadcrumb">
+                    <ol class="flex items-center gap-2 text-sm text-white/70 font-label-md">
+                        <li><a href="../index.html" class="hover:text-white transition-colors" style="text-decoration:none;">Beranda</a></li>
+                        <li><span class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+                        <li><a href="../layanan.html" class="hover:text-white transition-colors" style="text-decoration:none;">Layanan</a></li>
+                        <li><span class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+                        <li class="text-white font-semibold">Rawat Inap</li>
+                    </ol>
+                </nav>
+                <div class="max-w-2xl">
+                    <h1 class="font-headline-xl text-headline-xl text-white mb-3" style="text-shadow: 0 2px 8px rgba(0,0,0,0.15);">Pelayanan Rawat Inap</h1>
+                    <p class="font-body-md text-[16px] text-white/80 mb-6">
+                        Menyediakan berbagai tipe kamar perawatan yang dirancang khusus untuk mendukung proses pemulihan pasien secara optimal dengan standar kebersihan tertinggi.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="../kamarinap.html" style="text-decoration:none;">
+                            <button class="bg-health-green text-white px-6 py-2.5 rounded-full font-label-md text-[14px] hover:scale-105 transition-transform shadow-sm flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[18px]">bed</span>
+                                Ketersediaan Kamar Inap
+                            </button>
+                        </a>
+                        <a href="peta.html" style="text-decoration:none;">
+                            <button class="border border-white/80 bg-white/10 backdrop-blur-md text-white px-6 py-2.5 rounded-full font-label-md text-[14px] hover:bg-white/20 transition-colors flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[18px]">view_in_ar</span>
+                                Tur Virtual Fasilitas
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content (Rooms Grid) -->
+        <section class="py-16">
+            <div class="max-w-container-max mx-auto px-gutter">
+                <!-- Clean Minimalist Grid (4 Cols) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+                    
+                    <!-- Ruang Kelas I -->
+                    <div class="group bg-white p-6 rounded-2xl border border-surface-subtle hover:border-jakarta-blue/30 hover:shadow-[0_12px_40px_-12px_rgba(25,66,107,0.12)] transition-all duration-300 flex flex-col h-full">
+                        <span class="material-symbols-outlined text-[32px] text-jakarta-blue mb-4 group-hover:-translate-y-1 transition-transform duration-300">ward</span>
+                        <h3 class="font-headline-sm text-jakarta-blue mb-2 text-[17px]">Kelas I</h3>
+                        <p class="text-[14px] text-on-surface-variant leading-relaxed flex-grow">Perawatan standar dengan fasilitas memadai untuk kenyamanan maksimal selama masa pemulihan.</p>
+                    </div>
+
+                    <!-- Ruang Kelas III -->
+                    <div class="group bg-white p-6 rounded-2xl border border-surface-subtle hover:border-jakarta-blue/30 hover:shadow-[0_12px_40px_-12px_rgba(25,66,107,0.12)] transition-all duration-300 flex flex-col h-full">
+                        <span class="material-symbols-outlined text-[32px] text-jakarta-blue mb-4 group-hover:-translate-y-1 transition-transform duration-300">local_hospital</span>
+                        <h3 class="font-headline-sm text-jakarta-blue mb-2 text-[17px]">Kelas III</h3>
+                        <p class="text-[14px] text-on-surface-variant leading-relaxed flex-grow">Ruang perawatan ekonomis dengan standar pelayanan medis dan kebersihan yang tetap terjamin.</p>
+                    </div>
+
+                    <!-- Isolasi Non-Covid -->
+                    <div class="group bg-white p-6 rounded-2xl border border-surface-subtle hover:border-health-green/30 hover:shadow-[0_12px_40px_-12px_rgba(52,145,140,0.15)] transition-all duration-300 flex flex-col h-full">
+                        <span class="material-symbols-outlined text-[32px] text-health-green mb-4 group-hover:-translate-y-1 transition-transform duration-300">shield</span>
+                        <h3 class="font-headline-sm text-jakarta-blue mb-2 text-[17px]">Isolasi Non-Covid</h3>
+                        <p class="text-[14px] text-on-surface-variant leading-relaxed flex-grow">Ruang isolasi khusus infeksi umum (Non-Covid) dengan standar tekanan udara termonitor.</p>
+                    </div>
+
+                    <!-- Isolasi Covid -->
+                    <div class="group bg-white p-6 rounded-2xl border border-surface-subtle hover:border-emergency-red/30 hover:shadow-[0_12px_40px_-12px_rgba(220,38,38,0.15)] transition-all duration-300 flex flex-col h-full">
+                        <span class="material-symbols-outlined text-[32px] text-emergency-red mb-4 group-hover:-translate-y-1 transition-transform duration-300">coronavirus</span>
+                        <h3 class="font-headline-sm text-emergency-red mb-2 text-[17px]">Isolasi Covid-19</h3>
+                        <p class="text-[14px] text-on-surface-variant leading-relaxed flex-grow">Kamar perawatan khusus pasien terkonfirmasi Covid-19 dengan fasilitas isolasi ketat tersendiri.</p>
+                    </div>
+
+                    <!-- ICU -->
+                    <div class="group bg-white p-6 rounded-2xl border border-surface-subtle hover:border-emergency-red/30 hover:shadow-[0_12px_40px_-12px_rgba(220,38,38,0.15)] transition-all duration-300 flex flex-col h-full">
+                        <span class="material-symbols-outlined text-[32px] text-emergency-red mb-4 group-hover:-translate-y-1 transition-transform duration-300">monitor_heart</span>
+                        <h3 class="font-headline-sm text-emergency-red mb-2 text-[17px]">Ruang ICU</h3>
+                        <p class="text-[14px] text-on-surface-variant leading-relaxed flex-grow">Intensive Care Unit untuk pemantauan pasien kritis yang membutuhkan dukungan hidup lanjut.</p>
+                    </div>
+
+                    <!-- NICU -->
+                    <div class="group bg-white p-6 rounded-2xl border border-surface-subtle hover:border-jakarta-blue/30 hover:shadow-[0_12px_40px_-12px_rgba(25,66,107,0.12)] transition-all duration-300 flex flex-col h-full">
+                        <span class="material-symbols-outlined text-[32px] text-jakarta-blue mb-4 group-hover:-translate-y-1 transition-transform duration-300">child_care</span>
+                        <h3 class="font-headline-sm text-jakarta-blue mb-2 text-[17px]">Ruang NICU</h3>
+                        <p class="text-[14px] text-on-surface-variant leading-relaxed flex-grow">Neonatal Intensive Care Unit, penanganan intensif khusus bagi bayi baru lahir berisiko tinggi.</p>
+                    </div>
+
+                    <!-- VK (Kamar Bersalin) -->
+                    <div class="group bg-white p-6 rounded-2xl border border-surface-subtle hover:border-health-green/30 hover:shadow-[0_12px_40px_-12px_rgba(52,145,140,0.15)] transition-all duration-300 flex flex-col h-full">
+                        <span class="material-symbols-outlined text-[32px] text-health-green mb-4 group-hover:-translate-y-1 transition-transform duration-300">pregnant_woman</span>
+                        <h3 class="font-headline-sm text-jakarta-blue mb-2 text-[17px]">VK (Kamar Bersalin)</h3>
+                        <p class="text-[14px] text-on-surface-variant leading-relaxed flex-grow">Fasilitas bersalin aman dan nyaman dengan dukungan tenaga medis profesional kebidanan.</p>
+                    </div>
+
+                    <!-- Perinatologi -->
+                    <div class="group bg-white p-6 rounded-2xl border border-surface-subtle hover:border-jakarta-blue/30 hover:shadow-[0_12px_40px_-12px_rgba(25,66,107,0.12)] transition-all duration-300 flex flex-col h-full">
+                        <span class="material-symbols-outlined text-[32px] text-jakarta-blue mb-4 group-hover:-translate-y-1 transition-transform duration-300">crib</span>
+                        <h3 class="font-headline-sm text-jakarta-blue mb-2 text-[17px]">Perinatologi</h3>
+                        <p class="text-[14px] text-on-surface-variant leading-relaxed flex-grow">Ruang perawatan lanjutan untuk memantau tumbuh kembang dan stabilitas bayi pasca-lahir.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script src="../components/emergency-bar.js"></script>
+    <script src="../components/navbar.js"></script>
+    <script src="../components/footer.js"></script>
+</body>
+</html>

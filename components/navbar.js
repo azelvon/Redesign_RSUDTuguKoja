@@ -248,7 +248,7 @@
             <nav class="hidden md:flex nav-links-container" aria-label="Navigasi Utama">
                 <!-- LAYANAN NESTED DROPDOWN -->
                 <div class="relative group">
-                    <a class="\ flex items-center gap-1 cursor-pointer" href="\layanan.html" accesskey="l">
+                    <a class="\ flex items-center gap-1 cursor-pointer" href="${base}layanan.html" accesskey="l">
                         <span class="nav-mnemonic">L</span>ayanan
                         <span class="material-symbols-outlined text-[18px] transition-transform group-hover:-rotate-180">keyboard_arrow_down</span>
                     </a>
@@ -258,20 +258,20 @@
                         <div class="w-72 bg-white rounded-2xl shadow-xl border border-surface-subtle p-2 space-y-1 relative">
                             
                             <!-- Gawat Darurat -->
-                            <a href="\layanan/igd.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-emergency-red/10 text-primary hover:text-emergency-red transition-colors">
+                            <a href="${base}layanan/igd.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-emergency-red/10 text-primary hover:text-emergency-red transition-colors">
                                 <span class="material-symbols-outlined text-[20px]">emergency</span>
                                 <span class="font-label-md">Gawat Darurat 24 Jam</span>
                             </a>
                             
                             <!-- Rawat Inap (Langsung tanpa submenu) -->
-                            <a href="\layanan/rawat-inap.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-surface-container text-primary transition-colors">
+                            <a href="${base}layanan/rawat-inap.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-surface-container text-primary transition-colors">
                                 <span class="material-symbols-outlined text-[20px]">bed</span>
                                 <span class="font-label-md flex-1">Rawat Inap</span>
                             </a>
 
                             <!-- Rawat Jalan (Trigger Level 2) -->
                             <div class="relative group/rj">
-                                <a href="\layanan.html#rawat-jalan" class="flex items-center gap-3 p-3 rounded-xl hover:bg-surface-container text-primary transition-colors cursor-pointer">
+                                <a href="${base}layanan.html#rawat-jalan" class="flex items-center gap-3 p-3 rounded-xl hover:bg-surface-container text-primary transition-colors cursor-pointer">
                                     <span class="material-symbols-outlined text-[20px]">stethoscope</span>
                                     <span class="font-label-md flex-1">Rawat Jalan</span>
                                     <span class="material-symbols-outlined text-[18px]">chevron_right</span>
@@ -286,29 +286,29 @@
                                         </div>
                                         <div class="grid grid-cols-3 gap-x-6 gap-y-3">
                                             <div class="space-y-2">
-                                                <a href="\caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Kandungan & Kebidanan</a>
-                                                <a href="\caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Anak</a>
-                                                <a href="\caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Penyakit Dalam</a>
-                                                <a href="\caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Bedah Umum</a>
-                                                <a href="\caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Mata</a>
-                                                <a href="\caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli THT-KL</a>
+                                                <a href="${base}caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Kandungan & Kebidanan</a>
+                                                <a href="${base}caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Anak</a>
+                                                <a href="${base}caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Penyakit Dalam</a>
+                                                <a href="${base}caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Bedah Umum</a>
+                                                <a href="${base}caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Mata</a>
+                                                <a href="${base}caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli THT-KL</a>
                                             </div>
                                             <div class="space-y-2">
-                                                <a href="\caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Saraf</a>
-                                                <a href="\caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Paru</a>
-                                                <a href="\caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Jantung & Pembuluh</a>
-                                                <a href="\caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Kulit & Kelamin</a>
-                                                <a href="\caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Fisik & Rehab</a>
-                                                <a href="\caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Konservasi Gigi</a>
+                                                <a href="${base}caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Saraf</a>
+                                                <a href="${base}caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Paru</a>
+                                                <a href="${base}caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Jantung & Pembuluh</a>
+                                                <a href="${base}caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Kulit & Kelamin</a>
+                                                <a href="${base}caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Fisik & Rehab</a>
+                                                <a href="${base}caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Konservasi Gigi</a>
                                             </div>
                                             <div class="space-y-2">
-                                                <a href="\caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Gigi Umum</a>
-                                                <a href="\caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Akupunktur</a>
+                                                <a href="${base}caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Gigi Umum</a>
+                                                <a href="${base}caridokter.html" class="block text-[13px] text-on-surface-variant hover:text-health-green transition-colors">Poli Akupunktur</a>
                                                 <div class="h-px bg-surface-subtle my-2"></div>
-                                                <a href="\klinik-detail.html?id=klinik-gizi" class="block text-[13px] font-bold text-jakarta-blue hover:text-health-green transition-colors">Klinik Gizi</a>
-                                                <a href="\klinik-detail.html?id=klinik-mcu" class="block text-[13px] font-bold text-jakarta-blue hover:text-health-green transition-colors">Klinik MCU</a>
-                                                <a href="\klinik-detail.html?id=klinik-geriatri" class="block text-[13px] font-bold text-jakarta-blue hover:text-health-green transition-colors">Klinik Geriatri</a>
-                                                <a href="\klinik-detail.html?id=klinik-sehati" class="block text-[13px] font-bold text-jakarta-blue hover:text-health-green transition-colors">Klinik Sehati</a>
+                                                <a href="${base}klinik-detail.html?id=klinik-gizi" class="block text-[13px] font-bold text-jakarta-blue hover:text-health-green transition-colors">Klinik Gizi</a>
+                                                <a href="${base}klinik-detail.html?id=klinik-mcu" class="block text-[13px] font-bold text-jakarta-blue hover:text-health-green transition-colors">Klinik MCU</a>
+                                                <a href="${base}klinik-detail.html?id=klinik-geriatri" class="block text-[13px] font-bold text-jakarta-blue hover:text-health-green transition-colors">Klinik Geriatri</a>
+                                                <a href="${base}klinik-detail.html?id=klinik-sehati" class="block text-[13px] font-bold text-jakarta-blue hover:text-health-green transition-colors">Klinik Sehati</a>
                                             </div>
                                         </div>
                                     </div>
@@ -319,7 +319,7 @@
 
                             <!-- Penunjang Medis (Trigger Level 2) -->
                             <div class="relative group/pm">
-                                <a href="\layanan/laboratorium.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-surface-container text-primary transition-colors cursor-pointer">
+                                <a href="${base}layanan/laboratorium.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-surface-container text-primary transition-colors cursor-pointer">
                                     <span class="material-symbols-outlined text-[20px]">biotech</span>
                                     <span class="font-label-md flex-1">Penunjang Medis</span>
                                     <span class="material-symbols-outlined text-[18px]">chevron_right</span>
@@ -328,9 +328,9 @@
                                 <!-- Level 2 Dropdown -->
                                 <div class="absolute top-0 left-full pl-2 opacity-0 invisible group-hover/pm:opacity-100 group-hover/pm:visible transition-all duration-300 z-50">
                                     <div class="w-56 bg-white rounded-2xl shadow-xl border border-surface-subtle p-2 relative flex flex-col gap-1">
-                                        <a href="\layanan/laboratorium.html" class="p-3 rounded-xl hover:bg-surface-container text-[13px] text-on-surface-variant hover:text-health-green font-medium transition-colors">Laboratorium</a>
-                                        <a href="\layanan.html" class="p-3 rounded-xl hover:bg-surface-container text-[13px] text-on-surface-variant hover:text-health-green font-medium transition-colors">Radiologi</a>
-                                        <a href="\layanan.html" class="p-3 rounded-xl hover:bg-surface-container text-[13px] text-on-surface-variant hover:text-health-green font-medium transition-colors">Farmasi</a>
+                                        <a href="${base}layanan/laboratorium.html" class="p-3 rounded-xl hover:bg-surface-container text-[13px] text-on-surface-variant hover:text-health-green font-medium transition-colors">Laboratorium</a>
+                                        <a href="${base}layanan.html" class="p-3 rounded-xl hover:bg-surface-container text-[13px] text-on-surface-variant hover:text-health-green font-medium transition-colors">Radiologi</a>
+                                        <a href="${base}layanan.html" class="p-3 rounded-xl hover:bg-surface-container text-[13px] text-on-surface-variant hover:text-health-green font-medium transition-colors">Farmasi</a>
                                     </div>
                                 </div>
                             </div>
@@ -339,7 +339,7 @@
                     </div>
                 </div>
 
-                <a class="" href="\caridokter.html" accesskey="c"><span class="nav-mnemonic">C</span>ari Jadwal</a>
+                <a class="" href="${base}caridokter.html" accesskey="c"><span class="nav-mnemonic">C</span>ari Dokter</a>
                 <a class=""      href="berita.html" accesskey="b"><span class="nav-mnemonic">B</span>erita</a>
                 <a class="" href="tentangkami.html" accesskey="t"><span class="nav-mnemonic">T</span>entang Kami</a>
             </nav>
@@ -376,10 +376,10 @@
                     <span class="material-symbols-outlined arrow transition-transform text-[20px]">keyboard_arrow_down</span>
                 </button>
                 <div id="mobile-layanan-menu" class="hidden pl-11 pr-2 pb-2 space-y-1">
-                    <a href="\layanan.html" class="block py-2 text-[14px] text-on-surface-variant hover:text-health-green font-medium">Semua Layanan</a>
-                    <a href="\layanan/igd.html" class="block py-2 text-[14px] text-emergency-red hover:text-emergency-red/80 font-medium">Gawat Darurat 24 Jam</a>
+                    <a href="${base}layanan.html" class="block py-2 text-[14px] text-on-surface-variant hover:text-health-green font-medium">Semua Layanan</a>
+                    <a href="${base}layanan/igd.html" class="block py-2 text-[14px] text-emergency-red hover:text-emergency-red/80 font-medium">Gawat Darurat 24 Jam</a>
                     
-                                        <a href="\layanan/rawat-inap.html" class="block py-2 text-[14px] text-on-surface-variant hover:text-health-green font-medium">Rawat Inap</a>
+                                        <a href="${base}layanan/rawat-inap.html" class="block py-2 text-[14px] text-on-surface-variant hover:text-health-green font-medium">Rawat Inap</a>
                     
                     <!-- Rawat Jalan Accordion -->
                     <button onclick="document.getElementById('mobile-rawat-jalan').classList.toggle('hidden'); this.querySelector('.sub-arrow').classList.toggle('rotate-180');" class="w-full flex items-center justify-between py-2 text-[14px] text-on-surface-variant hover:text-health-green font-medium text-left">
@@ -387,33 +387,33 @@
                         <span class="material-symbols-outlined sub-arrow transition-transform text-[18px]">keyboard_arrow_down</span>
                     </button>
                     <div id="mobile-rawat-jalan" class="hidden pl-3 border-l-2 border-surface-subtle space-y-1 my-1">
-                        <a href="\caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Kandungan & Kebidanan</a>
-                        <a href="\caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Anak</a>
-                        <a href="\caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Penyakit Dalam</a>
-                        <a href="\caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Bedah Umum</a>
-                        <a href="\caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Mata</a>
-                        <a href="\caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli THT-KL</a>
-                        <a href="\caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Saraf</a>
-                        <a href="\caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Paru</a>
-                        <a href="\caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Jantung & Pembuluh Darah</a>
-                        <a href="\caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Kulit & Kelamin</a>
-                        <a href="\caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Kedokteran Fisik & Rehab</a>
-                        <a href="\caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Konservasi Gigi</a>
-                        <a href="\caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Gigi Umum</a>
-                        <a href="\caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Akupunktur</a>
+                        <a href="${base}caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Kandungan & Kebidanan</a>
+                        <a href="${base}caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Anak</a>
+                        <a href="${base}caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Penyakit Dalam</a>
+                        <a href="${base}caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Bedah Umum</a>
+                        <a href="${base}caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Mata</a>
+                        <a href="${base}caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli THT-KL</a>
+                        <a href="${base}caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Saraf</a>
+                        <a href="${base}caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Paru</a>
+                        <a href="${base}caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Jantung & Pembuluh Darah</a>
+                        <a href="${base}caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Kulit & Kelamin</a>
+                        <a href="${base}caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Kedokteran Fisik & Rehab</a>
+                        <a href="${base}caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Konservasi Gigi</a>
+                        <a href="${base}caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Gigi Umum</a>
+                        <a href="${base}caridokter.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Poli Akupunktur</a>
                         <div class="h-px bg-surface-subtle my-1"></div>
-                        <a href="\klinik-detail.html?id=klinik-gizi" class="block py-1.5 text-[13px] font-medium text-jakarta-blue">Klinik Gizi</a>
-                        <a href="\klinik-detail.html?id=klinik-mcu" class="block py-1.5 text-[13px] font-medium text-jakarta-blue">Klinik MCU</a>
-                        <a href="\klinik-detail.html?id=klinik-geriatri" class="block py-1.5 text-[13px] font-medium text-jakarta-blue">Klinik Geriatri</a>
-                        <a href="\klinik-detail.html?id=klinik-sehati" class="block py-1.5 text-[13px] font-medium text-jakarta-blue">Klinik Sehati</a>
+                        <a href="${base}klinik-detail.html?id=klinik-gizi" class="block py-1.5 text-[13px] font-medium text-jakarta-blue">Klinik Gizi</a>
+                        <a href="${base}klinik-detail.html?id=klinik-mcu" class="block py-1.5 text-[13px] font-medium text-jakarta-blue">Klinik MCU</a>
+                        <a href="${base}klinik-detail.html?id=klinik-geriatri" class="block py-1.5 text-[13px] font-medium text-jakarta-blue">Klinik Geriatri</a>
+                        <a href="${base}klinik-detail.html?id=klinik-sehati" class="block py-1.5 text-[13px] font-medium text-jakarta-blue">Klinik Sehati</a>
                     </div>
-                    <a href="\layanan/laboratorium.html" class="block py-2 text-[14px] text-on-surface-variant hover:text-health-green font-medium">Penunjang Medis</a>
+                    <a href="${base}layanan/laboratorium.html" class="block py-2 text-[14px] text-on-surface-variant hover:text-health-green font-medium">Penunjang Medis</a>
                 </div>
             </div>
 
             <a class="mobile-nav-link font-label-lg text-label-lg "
-               href="\caridokter.html">
-                <span class="material-symbols-outlined text-[20px]" style="color:#34918C;">person_search</span> Cari Jadwal
+               href="${base}caridokter.html">
+                <span class="material-symbols-outlined text-[20px]" style="color:#34918C;">person_search</span> Cari Dokter
             </a>
             <a class="mobile-nav-link font-label-lg text-label-lg ${page === "berita" ? "mobile-active" : ""}"
                href="${base}berita.html">
