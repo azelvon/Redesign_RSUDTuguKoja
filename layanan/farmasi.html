@@ -19,21 +19,7 @@
     />
     <script src="../assets/js/tailwind-config.js"></script>
     <style>
-      body {
-        animation: globalFadeIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-      }
 
-      @keyframes globalFadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(12px);
-        }
-
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
 
       .material-symbols-outlined {
         font-variation-settings:
@@ -222,766 +208,283 @@
               Instalasi Farmasi
             </h1>
             <p class="font-body-md text-[16px] text-white/80">
-              Layanan kefarmasian lengkap dan terpercaya untuk mendukung
-              kesembuhan pasien.
+              Layanan kefarmasian terpadu untuk mendukung kesembuhan pasien.
             </p>
           </div>
         </div>
       </section>
 
-      <!-- ============================== -->
-      <!-- PENJELASAN UMUM               -->
-      <!-- ============================== -->
-      <section class="py-16 md:py-20 max-w-container-max mx-auto px-gutter">
-        <div
-          class="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 items-start"
-        >
-          <!-- Text Content -->
-          <div class="lg:col-span-3 reveal">
-            <h2
-              class="font-headline-lg text-headline-lg text-jakarta-blue mb-5"
-            >
-              Penjelasan Umum
-            </h2>
-            <div
-              class="space-y-4 text-on-surface-variant font-body-md text-body-md leading-relaxed"
-            >
-              <p>
-                Instalasi Farmasi RSUD Tugu Koja merupakan unit pelayanan
-                kefarmasian yang bertanggung jawab atas pengelolaan sediaan
-                farmasi, alat kesehatan, dan bahan medis habis pakai secara
-                menyeluruh. Unit ini melayani kebutuhan obat-obatan untuk pasien
-                rawat jalan, rawat inap, maupun pasien gawat darurat (IGD).
-              </p>
-              <p>
-                Seluruh layanan kefarmasian ditangani oleh tenaga apoteker dan
-                tenaga teknis kefarmasian (TTK) yang profesional dan
-                bersertifikasi. Instalasi Farmasi juga terintegrasi dengan
-                sistem resep elektronik (e-prescription) yang terhubung langsung
-                dengan rekam medis pasien, sehingga proses penebusan resep lebih
-                cepat, akurat, dan meminimalkan potensi kesalahan pengobatan.
-              </p>
-              <p>
-                Kami berkomitmen untuk memastikan ketersediaan obat yang
-                berkualitas, memberikan informasi obat yang tepat, serta
-                melakukan konseling penggunaan obat kepada pasien demi
-                tercapainya terapi pengobatan yang optimal dan aman.
-              </p>
-            </div>
+        <!-- ============================== -->
+        <!-- PENJELASAN UMUM               -->
+        <!-- ============================== -->
+        <section class="py-16 md:py-20 max-w-container-max mx-auto px-gutter">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 items-start">
+                <!-- Text Content -->
+                <div class="lg:col-span-3 reveal">
+                    <span class="inline-block py-1.5 px-4 rounded-full bg-jakarta-blue/10 text-jakarta-blue font-bold text-xs uppercase tracking-widest mb-5">Tentang Farmasi</span>
+                    <h2 class="font-headline-lg text-headline-lg text-jakarta-blue mb-5">
+                        Penjelasan Umum
+                    </h2>
+                    <div class="space-y-4 text-on-surface-variant font-body-md text-body-md leading-relaxed">
+                        <p>
+                            Instalasi Farmasi RSUD Tugu Koja mengelola sediaan farmasi terpadu untuk rawat jalan, rawat inap, dan IGD secara 24 jam. Terintegrasi dengan sistem resep elektronik (e-prescription), apoteker kami siap melayani penebusan obat dan memberikan konseling agar terapi Anda optimal dan aman.
+                        </p>
+                    </div>
 
-            <!-- Quick Info Cards -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
-              <div
-                class="bg-surface-container-low rounded-xl p-4 border border-surface-subtle"
-              >
-                <div class="flex items-center gap-3 mb-2">
-                  <div
-                    class="w-9 h-9 rounded-lg bg-jakarta-blue/10 flex items-center justify-center text-jakarta-blue"
-                  >
-                    <span class="material-symbols-outlined text-[20px]"
-                      >schedule</span
-                    >
-                  </div>
-                  <span class="font-label-md text-label-md text-jakarta-blue"
-                    >Rawat Jalan</span
-                  >
+                    <!-- Quick Info Cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
+                        <div class="bg-surface-container-low rounded-xl p-4 border border-surface-subtle">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-9 h-9 rounded-lg bg-jakarta-blue/10 flex items-center justify-center text-jakarta-blue">
+                                    <span class="material-symbols-outlined text-[20px]">schedule</span>
+                                </div>
+                                <span class="font-label-md text-label-md text-jakarta-blue">Rawat Jalan</span>
+                            </div>
+                            <p class="text-sm text-on-surface-variant">Senin – Sabtu<br />08.00 – 21.00 WIB</p>
+                        </div>
+                        <div class="bg-surface-container-low rounded-xl p-4 border border-surface-subtle">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-9 h-9 rounded-lg bg-health-green/10 flex items-center justify-center text-health-green">
+                                    <span class="material-symbols-outlined text-[20px]">emergency</span>
+                                </div>
+                                <span class="font-label-md text-label-md text-health-green">IGD / Rawat Inap</span>
+                            </div>
+                            <p class="text-sm text-on-surface-variant">Tersedia 24 Jam<br />setiap hari</p>
+                        </div>
+                        <div class="bg-surface-container-low rounded-xl p-4 border border-surface-subtle">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-9 h-9 rounded-lg bg-jakarta-blue/10 flex items-center justify-center text-jakarta-blue">
+                                    <span class="material-symbols-outlined text-[20px]">location_on</span>
+                                </div>
+                                <span class="font-label-md text-label-md text-jakarta-blue">Lokasi</span>
+                            </div>
+                            <p class="text-sm text-on-surface-variant">Gedung Utama<br />Lantai 1</p>
+                        </div>
+                    </div>
                 </div>
-                <p class="text-sm text-on-surface-variant">
-                  Senin – Sabtu<br />08.00 – 21.00 WIB
-                </p>
-              </div>
-              <div
-                class="bg-surface-container-low rounded-xl p-4 border border-surface-subtle"
-              >
-                <div class="flex items-center gap-3 mb-2">
-                  <div
-                    class="w-9 h-9 rounded-lg bg-health-green/10 flex items-center justify-center text-health-green"
-                  >
-                    <span class="material-symbols-outlined text-[20px]"
-                      >emergency</span
-                    >
-                  </div>
-                  <span class="font-label-md text-label-md text-health-green"
-                    >IGD / Rawat Inap</span
-                  >
+
+                <!-- Placeholder Image -->
+                <div class="lg:col-span-2 reveal" style="transition-delay: 0.15s;">
+                    <div class="placeholder-img w-full h-[320px] md:h-[400px] rounded-2xl flex flex-col items-center justify-center border-2 border-dashed border-slate-300">
+                        <span class="material-symbols-outlined text-[56px] text-slate-400">medication</span>
+                        <p class="text-sm text-slate-400 mt-3 font-label-md">Placeholder gambar farmasi</p>
+                        <p class="text-xs text-slate-300 mt-1">Ganti dengan gambar sesungguhnya</p>
+                    </div>
+                    <!-- Additional small placeholder -->
+                    <div class="placeholder-img w-full h-[180px] rounded-2xl flex flex-col items-center justify-center border-2 border-dashed border-slate-300 mt-4">
+                        <span class="material-symbols-outlined text-[40px] text-slate-400">image</span>
+                        <p class="text-xs text-slate-300 mt-2 font-label-md">Gambar tambahan</p>
+                    </div>
                 </div>
-                <p class="text-sm text-on-surface-variant">
-                  Tersedia 24 Jam<br />setiap hari
-                </p>
-              </div>
-              <div
-                class="bg-surface-container-low rounded-xl p-4 border border-surface-subtle"
-              >
-                <div class="flex items-center gap-3 mb-2">
-                  <div
-                    class="w-9 h-9 rounded-lg bg-jakarta-blue/10 flex items-center justify-center text-jakarta-blue"
-                  >
-                    <span class="material-symbols-outlined text-[20px]"
-                      >location_on</span
-                    >
-                  </div>
-                  <span class="font-label-md text-label-md text-jakarta-blue"
-                    >Lokasi</span
-                  >
+            </div>
+        </section>
+
+        <!-- ============================== -->
+        <!-- DAFTAR LAYANAN                -->
+        <!-- ============================== -->
+        <section class="bg-surface-container-low py-16 md:py-20 border-y border-surface-subtle">
+            <div class="max-w-container-max mx-auto px-gutter">
+                <div class="text-center mb-14 reveal">
+                    <span class="inline-block py-1.5 px-4 rounded-full bg-health-green/10 text-health-green font-bold text-xs uppercase tracking-widest mb-4">Layanan Tersedia</span>
+                    <h2 class="font-headline-lg text-headline-lg text-jakarta-blue mb-3">
+                        Jenis Layanan Farmasi
+                    </h2>
                 </div>
-                <p class="text-sm text-on-surface-variant">
-                  Gedung Utama<br />Lantai 1
-                </p>
-              </div>
-            </div>
-          </div>
 
-          <!-- Placeholder Image -->
-          <div class="lg:col-span-2 reveal" style="transition-delay: 0.15s">
-            <div
-              class="placeholder-img w-full h-[320px] md:h-[400px] rounded-2xl flex flex-col items-center justify-center border-2 border-dashed border-slate-300"
-            >
-              <span class="material-symbols-outlined text-[56px] text-slate-400"
-                >medication</span
-              >
-              <p class="text-sm text-slate-400 mt-3 font-label-md">
-                Placeholder gambar farmasi
-              </p>
-              <p class="text-xs text-slate-300 mt-1">
-                Ganti dengan gambar sesungguhnya
-              </p>
-            </div>
-            <!-- Additional small placeholder -->
-            <div
-              class="placeholder-img w-full h-[180px] rounded-2xl flex flex-col items-center justify-center border-2 border-dashed border-slate-300 mt-4"
-            >
-              <span class="material-symbols-outlined text-[40px] text-slate-400"
-                >image</span
-              >
-              <p class="text-xs text-slate-300 mt-2 font-label-md">
-                Gambar tambahan
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal" style="transition-delay: 0.1s;">
+                    <!-- Service 1: Penebusan Resep -->
+                    <div class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default">
+                        <div class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5">
+                            <span class="material-symbols-outlined text-[28px]">prescriptions</span>
+                        </div>
+                        <h4 class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold">Penebusan Resep Obat</h4>
+                        <p class="text-on-surface-variant text-sm leading-relaxed">
+                            Layanan terpadu untuk rawat jalan, inap, dan IGD melalui e-prescription yang akurat dan cepat.
+                        </p>
+                    </div>
 
-      <!-- ============================== -->
-      <!-- DAFTAR LAYANAN                -->
-      <!-- ============================== -->
-      <section
-        class="bg-surface-container-low py-16 md:py-20 border-y border-surface-subtle"
-      >
-        <div class="max-w-container-max mx-auto px-gutter">
-          <div class="text-center mb-14 reveal">
-            <h2
-              class="font-headline-lg text-headline-lg text-jakarta-blue mb-3"
-            >
-              Jenis Layanan Farmasi
-            </h2>
-            <p
-              class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto"
-            >
-              Berbagai layanan kefarmasian yang tersedia di RSUD Tugu Koja untuk
-              mendukung proses pengobatan dan kesembuhan pasien.
-            </p>
-          </div>
+                    <!-- Service 2: Konseling Obat -->
+                    <div class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default">
+                        <div class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5">
+                            <span class="material-symbols-outlined text-[28px]">forum</span>
+                        </div>
+                        <h4 class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold">Konseling Obat</h4>
+                        <p class="text-on-surface-variant text-sm leading-relaxed">
+                            Konsultasi cara pakai, dosis, dan penyimpanan obat bersama apoteker.
+                        </p>
+                    </div>
 
-          <div
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal"
-            style="transition-delay: 0.1s"
-          >
-            <!-- Service 1: Penebusan Resep -->
-            <div
-              class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default"
-            >
-              <div
-                class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5"
-              >
-                <span class="material-symbols-outlined text-[28px]"
-                  >prescriptions</span
-                >
-              </div>
-              <h4
-                class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold"
-              >
-                Penebusan Resep Obat
-              </h4>
-              <p class="text-on-surface-variant text-sm leading-relaxed">
-                Pelayanan penebusan resep dari dokter untuk pasien rawat jalan,
-                rawat inap, dan IGD. Terintegrasi dengan sistem e-prescription
-                untuk memastikan akurasi dan kecepatan pelayanan.
-              </p>
-            </div>
+                    <!-- Service 3: Pelayanan Informasi Obat (PIO) -->
+                    <div class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default">
+                        <div class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5">
+                            <span class="material-symbols-outlined text-[28px]">info</span>
+                        </div>
+                        <h4 class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold">Informasi Obat</h4>
+                        <p class="text-on-surface-variant text-sm leading-relaxed">
+                            Penyediaan info akurat terkait interaksi obat, kontraindikasi, dan indikasi medis.
+                        </p>
+                    </div>
 
-            <!-- Service 2: Konseling Obat -->
-            <div
-              class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default"
-            >
-              <div
-                class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5"
-              >
-                <span class="material-symbols-outlined text-[28px]">forum</span>
-              </div>
-              <h4
-                class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold"
-              >
-                Konseling Obat
-              </h4>
-              <p class="text-on-surface-variant text-sm leading-relaxed">
-                Layanan konsultasi langsung dengan apoteker mengenai cara
-                penggunaan obat, dosis, efek samping, interaksi obat, dan
-                penyimpanan obat yang tepat untuk pasien dan keluarga.
-              </p>
-            </div>
+                    <!-- Service 4: Obat Racikan -->
+                    <div class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default">
+                        <div class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5">
+                            <span class="material-symbols-outlined text-[28px]">science</span>
+                        </div>
+                        <h4 class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold">Obat Racikan</h4>
+                        <p class="text-on-surface-variant text-sm leading-relaxed">
+                            Penyiapan obat compounding sesuai formulasi khusus, terutama untuk anak dan lansia.
+                        </p>
+                    </div>
 
-            <!-- Service 3: Pelayanan Informasi Obat (PIO) -->
-            <div
-              class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default"
-            >
-              <div
-                class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5"
-              >
-                <span class="material-symbols-outlined text-[28px]">info</span>
-              </div>
-              <h4
-                class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold"
-              >
-                Pelayanan Informasi Obat
-              </h4>
-              <p class="text-on-surface-variant text-sm leading-relaxed">
-                Penyediaan informasi obat yang akurat dan terpercaya untuk
-                tenaga medis maupun pasien, meliputi indikasi, kontraindikasi,
-                dosis, dan interaksi antar obat.
-              </p>
-            </div>
+                    <!-- Service 5: Farmasi Rawat Inap -->
+                    <div class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default">
+                        <div class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5">
+                            <span class="material-symbols-outlined text-[28px]">bed</span>
+                        </div>
+                        <h4 class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold">Farmasi Rawat Inap</h4>
+                        <p class="text-on-surface-variant text-sm leading-relaxed">
+                            Distribusi obat dan pemantauan terapi harian ke ruang rawat inap.
+                        </p>
+                    </div>
 
-            <!-- Service 4: Obat Racikan -->
-            <div
-              class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default"
-            >
-              <div
-                class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5"
-              >
-                <span class="material-symbols-outlined text-[28px]"
-                  >science</span
-                >
-              </div>
-              <h4
-                class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold"
-              >
-                Obat Racikan (Compounding)
-              </h4>
-              <p class="text-on-surface-variant text-sm leading-relaxed">
-                Penyiapan obat racikan sesuai resep dokter dengan formulasi
-                khusus yang disesuaikan dengan kebutuhan individual pasien,
-                terutama untuk pasien anak dan lansia.
-              </p>
-            </div>
-
-            <!-- Service 5: Farmasi Rawat Inap -->
-            <div
-              class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default"
-            >
-              <div
-                class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5"
-              >
-                <span class="material-symbols-outlined text-[28px]">bed</span>
-              </div>
-              <h4
-                class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold"
-              >
-                Farmasi Rawat Inap
-              </h4>
-              <p class="text-on-surface-variant text-sm leading-relaxed">
-                Pelayanan farmasi khusus untuk pasien rawat inap meliputi
-                distribusi obat ke ruang perawatan, pemantauan terapi obat
-                (PTO), dan visite bersama tim medis.
-              </p>
-            </div>
-
-            <!-- Service 6: Farmasi IGD 24 Jam -->
-            <div
-              class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default"
-            >
-              <div
-                class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5"
-              >
-                <span class="material-symbols-outlined text-[28px]"
-                  >emergency</span
-                >
-              </div>
-              <h4
-                class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold"
-              >
-                Farmasi IGD 24 Jam
-              </h4>
-              <p class="text-on-surface-variant text-sm leading-relaxed">
-                Layanan farmasi darurat yang beroperasi 24 jam nonstop untuk
-                mendukung penanganan pasien gawat darurat dengan ketersediaan
-                obat-obatan emergensi yang lengkap.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============================== -->
-      <!-- PERSYARATAN                    -->
-      <!-- ============================== -->
-      <section class="py-16 md:py-20 max-w-container-max mx-auto px-gutter">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
-          <!-- Left: Requirements -->
-          <div class="reveal">
-            <h2
-              class="font-headline-lg text-headline-lg text-jakarta-blue mb-3"
-            >
-              Syarat & Prosedur Pengambilan Obat
-            </h2>
-            <p class="font-body-md text-body-md text-on-surface-variant mb-8">
-              Berikut dokumen dan persiapan yang perlu Anda siapkan untuk
-              menebus resep obat di Instalasi Farmasi RSUD Tugu Koja.
-            </p>
-
-            <!-- Requirements List -->
-            <div class="space-y-4">
-              <!-- Req 1 -->
-              <div
-                class="flex gap-4 items-start bg-white rounded-xl p-5 border border-surface-subtle shadow-sm"
-              >
-                <div class="step-number bg-jakarta-blue text-white">1</div>
-                <div>
-                  <h4
-                    class="font-label-md text-[15px] text-jakarta-blue font-semibold mb-1"
-                  >
-                    Resep Dokter
-                  </h4>
-                  <p class="text-sm text-on-surface-variant leading-relaxed">
-                    Membawa resep asli dari dokter yang merawat. Resep dapat
-                    berasal dari poliklinik rawat jalan, IGD, atau ruang rawat
-                    inap RSUD Tugu Koja. Resep elektronik akan langsung masuk ke
-                    sistem farmasi.
-                  </p>
+                    <!-- Service 6: Farmasi IGD -->
+                    <div class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default">
+                        <div class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5">
+                            <span class="material-symbols-outlined text-[28px]">emergency</span>
+                        </div>
+                        <h4 class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold">Farmasi IGD 24 Jam</h4>
+                        <p class="text-on-surface-variant text-sm leading-relaxed">
+                            Penyediaan obat darurat secara cepat dan nonstop untuk kasus emergensi.
+                        </p>
+                    </div>
                 </div>
-              </div>
-              <!-- Req 2 -->
-              <div
-                class="flex gap-4 items-start bg-white rounded-xl p-5 border border-surface-subtle shadow-sm"
-              >
-                <div class="step-number bg-jakarta-blue text-white">2</div>
-                <div>
-                  <h4
-                    class="font-label-md text-[15px] text-jakarta-blue font-semibold mb-1"
-                  >
-                    Kartu Identitas (KTP/KIA)
-                  </h4>
-                  <p class="text-sm text-on-surface-variant leading-relaxed">
-                    Membawa kartu identitas asli pasien (KTP untuk dewasa, KIA
-                    untuk anak) sebagai verifikasi data penerima obat.
-                  </p>
-                </div>
-              </div>
-              <!-- Req 3 -->
-              <div
-                class="flex gap-4 items-start bg-white rounded-xl p-5 border border-surface-subtle shadow-sm"
-              >
-                <div class="step-number bg-jakarta-blue text-white">3</div>
-                <div>
-                  <h4
-                    class="font-label-md text-[15px] text-jakarta-blue font-semibold mb-1"
-                  >
-                    Kartu BPJS / Asuransi (jika ada)
-                  </h4>
-                  <p class="text-sm text-on-surface-variant leading-relaxed">
-                    Bagi peserta BPJS atau asuransi, wajib membawa kartu
-                    kepesertaan yang masih aktif. Obat yang ditanggung sesuai
-                    dengan formularium nasional (FORNAS) yang berlaku.
-                  </p>
-                </div>
-              </div>
-              <!-- Req 4 -->
-              <div
-                class="flex gap-4 items-start bg-white rounded-xl p-5 border border-surface-subtle shadow-sm"
-              >
-                <div class="step-number bg-jakarta-blue text-white">4</div>
-                <div>
-                  <h4
-                    class="font-label-md text-[15px] text-jakarta-blue font-semibold mb-1"
-                  >
-                    Kartu Berobat / Nomor Rekam Medis
-                  </h4>
-                  <p class="text-sm text-on-surface-variant leading-relaxed">
-                    Membawa kartu berobat atau menyebutkan nomor rekam medis
-                    untuk mempercepat proses verifikasi data pasien dan riwayat
-                    pengobatan sebelumnya.
-                  </p>
-                </div>
-              </div>
-              <!-- Req 5 -->
-              <div
-                class="flex gap-4 items-start bg-white rounded-xl p-5 border border-surface-subtle shadow-sm"
-              >
-                <div class="step-number bg-health-green text-white">5</div>
-                <div>
-                  <h4
-                    class="font-label-md text-[15px] text-jakarta-blue font-semibold mb-1"
-                  >
-                    Nomor Antrean Farmasi
-                  </h4>
-                  <p class="text-sm text-on-surface-variant leading-relaxed">
-                    Setelah menyerahkan resep, pasien akan mendapat nomor
-                    antrean. Tunggu pemanggilan nomor antrean melalui display
-                    atau speaker di ruang tunggu farmasi. Estimasi waktu tunggu
-                    akan diinformasikan oleh petugas.
-                  </p>
-                </div>
-              </div>
             </div>
-          </div>
+        </section>
 
-          <!-- Right: Important Notes + Placeholder Image -->
-          <div class="reveal" style="transition-delay: 0.15s">
-            <!-- Placeholder image -->
-            <div
-              class="placeholder-img w-full h-[240px] rounded-2xl flex flex-col items-center justify-center border-2 border-dashed border-slate-300 mb-6"
-            >
-              <span class="material-symbols-outlined text-[48px] text-slate-400"
-                >image</span
-              >
-              <p class="text-sm text-slate-400 mt-3 font-label-md">
-                Placeholder gambar prosedur farmasi
-              </p>
-              <p class="text-xs text-slate-300 mt-1">
-                Ganti dengan gambar sesungguhnya
-              </p>
+        <!-- ============================== -->
+        <!-- PERSYARATAN                    -->
+        <!-- ============================== -->
+        <section class="py-16 md:py-20 max-w-container-max mx-auto px-gutter">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+                <!-- Left: Requirements -->
+                <div class="reveal">
+                    <span class="inline-block py-1.5 px-4 rounded-full bg-jakarta-blue/10 text-jakarta-blue font-bold text-xs uppercase tracking-widest mb-5">Persyaratan</span>
+                    <h2 class="font-headline-lg text-headline-lg text-jakarta-blue mb-3">
+                        Prosedur Pengambilan Obat
+                    </h2>
+
+                    <!-- Requirements List -->
+                    <div class="space-y-4 mt-8">
+                        <div class="flex gap-4 items-center bg-white rounded-xl p-4 border border-surface-subtle shadow-sm">
+                            <div class="step-number bg-jakarta-blue text-white">1</div>
+                            <h4 class="font-label-md text-[15px] text-jakarta-blue font-semibold">Resep Dokter (Manual / E-Prescription)</h4>
+                        </div>
+                        <div class="flex gap-4 items-center bg-white rounded-xl p-4 border border-surface-subtle shadow-sm">
+                            <div class="step-number bg-jakarta-blue text-white">2</div>
+                            <h4 class="font-label-md text-[15px] text-jakarta-blue font-semibold">Kartu Identitas (KTP/KIA)</h4>
+                        </div>
+                        <div class="flex gap-4 items-center bg-white rounded-xl p-4 border border-surface-subtle shadow-sm">
+                            <div class="step-number bg-jakarta-blue text-white">3</div>
+                            <h4 class="font-label-md text-[15px] text-jakarta-blue font-semibold">Kartu BPJS (Untuk peserta JKN)</h4>
+                        </div>
+                        <div class="flex gap-4 items-center bg-white rounded-xl p-4 border border-surface-subtle shadow-sm">
+                            <div class="step-number bg-jakarta-blue text-white">4</div>
+                            <h4 class="font-label-md text-[15px] text-jakarta-blue font-semibold">Kartu Berobat Tugu Koja</h4>
+                        </div>
+                        <div class="flex gap-4 items-center bg-white rounded-xl p-4 border border-surface-subtle shadow-sm">
+                            <div class="step-number bg-health-green text-white">5</div>
+                            <h4 class="font-label-md text-[15px] text-jakarta-blue font-semibold">Ambil Nomor Antrean Farmasi</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Important Notes -->
+                <div class="reveal" style="transition-delay: 0.15s;">
+                    <div class="placeholder-img w-full h-[240px] rounded-2xl flex flex-col items-center justify-center border-2 border-dashed border-slate-300 mb-6">
+                        <span class="material-symbols-outlined text-[48px] text-slate-400">image</span>
+                        <p class="text-sm text-slate-400 mt-3 font-label-md">Placeholder gambar prosedur farmasi</p>
+                        <p class="text-xs text-slate-300 mt-1">Ganti dengan gambar sesungguhnya</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm">
+                        <h4 class="font-headline-md text-[18px] text-jakarta-blue font-semibold mb-4">Penting Diketahui</h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                                <span class="material-symbols-outlined text-emergency-red text-[18px] mt-0.5 flex-shrink-0">priority_high</span>
+                                <span>Laporkan <strong>riwayat alergi obat</strong> kepada petugas sebelum menebus resep.</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                                <span class="material-symbols-outlined text-emergency-red text-[18px] mt-0.5 flex-shrink-0">priority_high</span>
+                                <span>Resep hanya berlaku <strong>3 hari kerja</strong>.</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                                <span class="material-symbols-outlined text-jakarta-blue text-[18px] mt-0.5 flex-shrink-0">info</span>
+                                <span>Obat yang telah dibeli tidak dapat diretur/ditukar.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <!-- Important Notes -->
-            <div
-              class="bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm"
-            >
-              <div class="flex items-center gap-3 mb-5">
-                <div
-                  class="w-10 h-10 rounded-xl bg-emergency-red/10 flex items-center justify-center text-emergency-red"
-                >
-                  <span
-                    class="material-symbols-outlined text-[22px]"
-                    style="font-variation-settings: &quot;FILL&quot; 1"
-                    >warning</span
-                  >
+        <!-- ============================== -->
+        <!-- FAQ                            -->
+        <!-- ============================== -->
+        <section class="bg-surface-container-low py-16 md:py-20 border-y border-surface-subtle">
+            <div class="max-w-container-max mx-auto px-gutter">
+                <div class="max-w-3xl mx-auto">
+                    <div class="text-center mb-12 reveal">
+                        <h2 class="font-headline-lg text-headline-lg text-jakarta-blue mb-3">FAQ Farmasi</h2>
+                    </div>
+
+                    <div class="space-y-3 reveal" style="transition-delay: 0.1s;" id="faq-container">
+                        <!-- FAQ 1 -->
+                        <div class="faq-item bg-white rounded-xl border border-surface-subtle shadow-sm overflow-hidden">
+                            <button class="faq-btn w-full flex items-center justify-between p-5 text-left focus:outline-none" onclick="toggleFaq(this)" aria-expanded="false">
+                                <span class="font-label-md text-[15px] text-jakarta-blue font-semibold pr-4">Berapa lama waktu tunggu pengambilan obat?</span>
+                                <span class="faq-toggle material-symbols-outlined text-jakarta-blue text-[22px] flex-shrink-0">expand_more</span>
+                            </button>
+                            <div class="faq-answer px-5 pb-0">
+                                <p class="text-sm text-on-surface-variant leading-relaxed pb-5">15–30 menit untuk obat jadi, dan 30–60 menit untuk obat racikan (tergantung antrean).</p>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 2 -->
+                        <div class="faq-item bg-white rounded-xl border border-surface-subtle shadow-sm overflow-hidden">
+                            <button class="faq-btn w-full flex items-center justify-between p-5 text-left focus:outline-none" onclick="toggleFaq(this)" aria-expanded="false">
+                                <span class="font-label-md text-[15px] text-jakarta-blue font-semibold pr-4">Apakah ditanggung BPJS?</span>
+                                <span class="faq-toggle material-symbols-outlined text-jakarta-blue text-[22px] flex-shrink-0">expand_more</span>
+                            </button>
+                            <div class="faq-answer px-5 pb-0">
+                                <p class="text-sm text-on-surface-variant leading-relaxed pb-5">Ya, seluruh obat yang terdaftar di Formularium Nasional (FORNAS) ditanggung sepenuhnya oleh BPJS.</p>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 3 -->
+                        <div class="faq-item bg-white rounded-xl border border-surface-subtle shadow-sm overflow-hidden">
+                            <button class="faq-btn w-full flex items-center justify-between p-5 text-left focus:outline-none" onclick="toggleFaq(this)" aria-expanded="false">
+                                <span class="font-label-md text-[15px] text-jakarta-blue font-semibold pr-4">Bisa diambil oleh keluarga?</span>
+                                <span class="faq-toggle material-symbols-outlined text-jakarta-blue text-[22px] flex-shrink-0">expand_more</span>
+                            </button>
+                            <div class="faq-answer px-5 pb-0">
+                                <p class="text-sm text-on-surface-variant leading-relaxed pb-5">Bisa, asalkan membawa resep asli, KTP pengambil, dan KTP pasien bersangkutan.</p>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 4 -->
+                        <div class="faq-item bg-white rounded-xl border border-surface-subtle shadow-sm overflow-hidden">
+                            <button class="faq-btn w-full flex items-center justify-between p-5 text-left focus:outline-none" onclick="toggleFaq(this)" aria-expanded="false">
+                                <span class="font-label-md text-[15px] text-jakarta-blue font-semibold pr-4">Beli obat tanpa resep?</span>
+                                <span class="faq-toggle material-symbols-outlined text-jakarta-blue text-[22px] flex-shrink-0">expand_more</span>
+                            </button>
+                            <div class="faq-answer px-5 pb-0">
+                                <p class="text-sm text-on-surface-variant leading-relaxed pb-5">Kami tidak menjual obat bebas. Semua obat harus ditebus menggunakan resep dokter RSUD Tugu Koja.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <h4
-                  class="font-headline-md text-[18px] text-jakarta-blue font-semibold"
-                >
-                  Hal Penting
-                </h4>
-              </div>
-              <ul class="space-y-3">
-                <li
-                  class="flex items-start gap-3 text-sm text-on-surface-variant"
-                >
-                  <span
-                    class="material-symbols-outlined text-emergency-red text-[18px] mt-0.5 flex-shrink-0"
-                    >priority_high</span
-                  >
-                  <span
-                    >Informasikan kepada apoteker jika Anda memiliki
-                    <strong class="text-on-surface">riwayat alergi obat</strong>
-                    tertentu agar dapat diberikan alternatif obat yang
-                    aman.</span
-                  >
-                </li>
-                <li
-                  class="flex items-start gap-3 text-sm text-on-surface-variant"
-                >
-                  <span
-                    class="material-symbols-outlined text-emergency-red text-[18px] mt-0.5 flex-shrink-0"
-                    >priority_high</span
-                  >
-                  <span
-                    >Resep obat hanya berlaku
-                    <strong class="text-on-surface"
-                      >maksimal 3 hari kerja</strong
-                    >
-                    sejak tanggal penerbitan resep oleh dokter.</span
-                  >
-                </li>
-                <li
-                  class="flex items-start gap-3 text-sm text-on-surface-variant"
-                >
-                  <span
-                    class="material-symbols-outlined text-jakarta-blue text-[18px] mt-0.5 flex-shrink-0"
-                    >info</span
-                  >
-                  <span
-                    >Obat yang sudah dibeli
-                    <strong class="text-on-surface"
-                      >tidak dapat dikembalikan atau ditukar</strong
-                    >, kecuali terdapat kesalahan dari pihak farmasi.</span
-                  >
-                </li>
-                <li
-                  class="flex items-start gap-3 text-sm text-on-surface-variant"
-                >
-                  <span
-                    class="material-symbols-outlined text-jakarta-blue text-[18px] mt-0.5 flex-shrink-0"
-                    >info</span
-                  >
-                  <span
-                    >Jangan ragu untuk meminta
-                    <strong class="text-on-surface">konseling obat</strong>
-                    kepada apoteker kami jika ada yang belum dipahami mengenai
-                    penggunaan obat.</span
-                  >
-                </li>
-                <li
-                  class="flex items-start gap-3 text-sm text-on-surface-variant"
-                >
-                  <span
-                    class="material-symbols-outlined text-jakarta-blue text-[18px] mt-0.5 flex-shrink-0"
-                    >info</span
-                  >
-                  <span
-                    >Simpan obat sesuai
-                    <strong class="text-on-surface"
-                      >petunjuk penyimpanan</strong
-                    >
-                    yang tertera pada kemasan (suhu ruang, kulkas, dll.) untuk
-                    menjaga kualitas obat.</span
-                  >
-                </li>
-              </ul>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============================== -->
-      <!-- FAQ                            -->
-      <!-- ============================== -->
-      <section
-        class="bg-surface-container-low py-16 md:py-20 border-y border-surface-subtle"
-      >
-        <div class="max-w-container-max mx-auto px-gutter">
-          <div class="max-w-3xl mx-auto">
-            <div class="text-center mb-12 reveal">
-              <h2
-                class="font-headline-lg text-headline-lg text-jakarta-blue mb-3"
-              >
-                Pertanyaan yang Sering Diajukan
-              </h2>
-              <p class="font-body-md text-body-md text-on-surface-variant">
-                Temukan jawaban atas pertanyaan umum seputar layanan farmasi
-                kami.
-              </p>
-            </div>
-
-            <div
-              class="space-y-3 reveal"
-              style="transition-delay: 0.1s"
-              id="faq-container"
-            >
-              <!-- FAQ 1 -->
-              <div
-                class="faq-item bg-white rounded-xl border border-surface-subtle shadow-sm overflow-hidden"
-              >
-                <button
-                  class="faq-btn w-full flex items-center justify-between p-5 text-left focus:outline-none"
-                  onclick="toggleFaq(this)"
-                  aria-expanded="false"
-                >
-                  <span
-                    class="font-label-md text-[15px] text-jakarta-blue font-semibold pr-4"
-                    >Berapa lama waktu tunggu pengambilan obat?</span
-                  >
-                  <span
-                    class="faq-toggle material-symbols-outlined text-jakarta-blue text-[22px] flex-shrink-0"
-                    >expand_more</span
-                  >
-                </button>
-                <div class="faq-answer px-5 pb-0">
-                  <p
-                    class="text-sm text-on-surface-variant leading-relaxed pb-5"
-                  >
-                    Waktu tunggu bervariasi tergantung jenis resep. Untuk
-                    <strong>resep obat jadi</strong> (non-racikan), estimasi
-                    waktu tunggu sekitar <strong>15–30 menit</strong>. Untuk
-                    <strong>resep obat racikan</strong>, estimasi waktu tunggu
-                    sekitar <strong>30–60 menit</strong>. Waktu tunggu dapat
-                    lebih lama pada jam-jam sibuk (pagi hari dan setelah
-                    poliklinik selesai). Nomor antrean dan estimasi waktu akan
-                    diinformasikan saat penyerahan resep.
-                  </p>
-                </div>
-              </div>
-
-              <!-- FAQ 2 -->
-              <div
-                class="faq-item bg-white rounded-xl border border-surface-subtle shadow-sm overflow-hidden"
-              >
-                <button
-                  class="faq-btn w-full flex items-center justify-between p-5 text-left focus:outline-none"
-                  onclick="toggleFaq(this)"
-                  aria-expanded="false"
-                >
-                  <span
-                    class="font-label-md text-[15px] text-jakarta-blue font-semibold pr-4"
-                    >Apakah obat di farmasi RSUD Tugu Koja ditanggung
-                    BPJS?</span
-                  >
-                  <span
-                    class="faq-toggle material-symbols-outlined text-jakarta-blue text-[22px] flex-shrink-0"
-                    >expand_more</span
-                  >
-                </button>
-                <div class="faq-answer px-5 pb-0">
-                  <p
-                    class="text-sm text-on-surface-variant leading-relaxed pb-5"
-                  >
-                    Ya, obat-obatan yang termasuk dalam
-                    <strong>Formularium Nasional (FORNAS)</strong>
-                    ditanggung oleh BPJS Kesehatan. Apabila dokter meresepkan
-                    obat di luar FORNAS, apoteker akan menginformasikan
-                    alternatif obat yang ditanggung. Jika pasien tetap
-                    menginginkan obat di luar FORNAS, selisih biaya menjadi
-                    tanggungan pasien.
-                  </p>
-                </div>
-              </div>
-
-              <!-- FAQ 3 -->
-              <div
-                class="faq-item bg-white rounded-xl border border-surface-subtle shadow-sm overflow-hidden"
-              >
-                <button
-                  class="faq-btn w-full flex items-center justify-between p-5 text-left focus:outline-none"
-                  onclick="toggleFaq(this)"
-                  aria-expanded="false"
-                >
-                  <span
-                    class="font-label-md text-[15px] text-jakarta-blue font-semibold pr-4"
-                    >Bisakah orang lain yang mengambilkan obat saya?</span
-                  >
-                  <span
-                    class="faq-toggle material-symbols-outlined text-jakarta-blue text-[22px] flex-shrink-0"
-                    >expand_more</span
-                  >
-                </button>
-                <div class="faq-answer px-5 pb-0">
-                  <p
-                    class="text-sm text-on-surface-variant leading-relaxed pb-5"
-                  >
-                    Ya, obat dapat diambil oleh keluarga atau pihak yang
-                    dikuasakan oleh pasien. Pastikan membawa
-                    <strong>resep asli</strong>,
-                    <strong>kartu identitas pasien</strong> (fotokopi
-                    diperbolehkan), serta
-                    <strong>kartu identitas pengambil</strong>. Apoteker akan
-                    tetap memberikan informasi penggunaan obat kepada pengambil
-                    untuk disampaikan kepada pasien.
-                  </p>
-                </div>
-              </div>
-
-              <!-- FAQ 4 -->
-              <div
-                class="faq-item bg-white rounded-xl border border-surface-subtle shadow-sm overflow-hidden"
-              >
-                <button
-                  class="faq-btn w-full flex items-center justify-between p-5 text-left focus:outline-none"
-                  onclick="toggleFaq(this)"
-                  aria-expanded="false"
-                >
-                  <span
-                    class="font-label-md text-[15px] text-jakarta-blue font-semibold pr-4"
-                    >Bagaimana jika obat yang diresepkan sedang kosong?</span
-                  >
-                  <span
-                    class="faq-toggle material-symbols-outlined text-jakarta-blue text-[22px] flex-shrink-0"
-                    >expand_more</span
-                  >
-                </button>
-                <div class="faq-answer px-5 pb-0">
-                  <p
-                    class="text-sm text-on-surface-variant leading-relaxed pb-5"
-                  >
-                    Apabila obat yang diresepkan sedang tidak tersedia, apoteker
-                    akan mengkonfirmasi kepada dokter penulis resep untuk
-                    mencarikan <strong>obat pengganti (substitusi)</strong> yang
-                    memiliki kandungan dan efektivitas yang setara. Pasien akan
-                    diinformasikan mengenai penggantian obat tersebut. Dalam
-                    beberapa kasus, obat dapat dipesan dan pasien diminta
-                    kembali di waktu yang ditentukan.
-                  </p>
-                </div>
-              </div>
-
-              <!-- FAQ 5 -->
-              <div
-                class="faq-item bg-white rounded-xl border border-surface-subtle shadow-sm overflow-hidden"
-              >
-                <button
-                  class="faq-btn w-full flex items-center justify-between p-5 text-left focus:outline-none"
-                  onclick="toggleFaq(this)"
-                  aria-expanded="false"
-                >
-                  <span
-                    class="font-label-md text-[15px] text-jakarta-blue font-semibold pr-4"
-                    >Apakah bisa membeli obat tanpa resep dokter?</span
-                  >
-                  <span
-                    class="faq-toggle material-symbols-outlined text-jakarta-blue text-[22px] flex-shrink-0"
-                    >expand_more</span
-                  >
-                </button>
-                <div class="faq-answer px-5 pb-0">
-                  <p
-                    class="text-sm text-on-surface-variant leading-relaxed pb-5"
-                  >
-                    Instalasi Farmasi RSUD Tugu Koja hanya melayani penebusan
-                    <strong>resep dari dokter</strong> yang berpraktik di rumah
-                    sakit. Kami tidak menjual obat bebas tanpa resep. Untuk
-                    kebutuhan obat bebas, Anda dapat mengunjungi apotek umum
-                    terdekat. Hal ini dilakukan untuk menjamin keamanan dan
-                    ketepatan pengobatan pasien.
-                  </p>
-                </div>
-              </div>
-
-              <!-- FAQ 6 -->
-              <div
-                class="faq-item bg-white rounded-xl border border-surface-subtle shadow-sm overflow-hidden"
-              >
-                <button
-                  class="faq-btn w-full flex items-center justify-between p-5 text-left focus:outline-none"
-                  onclick="toggleFaq(this)"
-                  aria-expanded="false"
-                >
-                  <span
-                    class="font-label-md text-[15px] text-jakarta-blue font-semibold pr-4"
-                    >Apa yang harus dilakukan jika mengalami efek samping
-                    obat?</span
-                  >
-                  <span
-                    class="faq-toggle material-symbols-outlined text-jakarta-blue text-[22px] flex-shrink-0"
-                    >expand_more</span
-                  >
-                </button>
-                <div class="faq-answer px-5 pb-0">
-                  <p
-                    class="text-sm text-on-surface-variant leading-relaxed pb-5"
-                  >
-                    Jika Anda mengalami efek samping setelah mengonsumsi obat,
-                    segera
-                    <strong>hentikan penggunaan obat</strong> dan hubungi dokter
-                    atau apoteker untuk konsultasi lebih lanjut. Untuk reaksi
-                    alergi berat (sesak napas, bengkak di wajah/tenggorokan,
-                    ruam parah), segera datang ke
-                    <strong>IGD RSUD Tugu Koja</strong> atau hubungi nomor
-                    darurat <strong>112</strong>. Simpan obat yang dicurigai
-                    untuk ditunjukkan kepada dokter.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
       <!-- ============================== -->
       <!-- CTA / CONTACT                 -->
