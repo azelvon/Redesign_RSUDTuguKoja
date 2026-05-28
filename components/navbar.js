@@ -1,6 +1,6 @@
 /**
  * navbar.js — RSUD Tugu Koja Global Navbar Component
- * 
+ *
  * HCI Principles Applied (Pertemuan 7 & 7.b):
  *  - Breadth > Depth: 4 item, 1 level, no submenu (7.b hal 26)
  *  - Task-Oriented Wording: "Cari Dokter" uses verb-first (7.b hal 47)
@@ -13,29 +13,27 @@
  *  - Phrasing: Consistent, concise labels in Bahasa (7.a hal 22)
  */
 (function NavbarComponent() {
-    'use strict';
+  "use strict";
 
-    // ── Path helpers ─────────────────────────────────────────────
-    const src   = document.currentScript ? document.currentScript.getAttribute('src') : '';
-    const depth = (src.match(/\.\.\//g) || []).length;
-    const base  = '../'.repeat(depth);
-    const page  = window.location.pathname.split('/').pop().replace('.html', '') || 'index';
+  // ── Path helpers ─────────────────────────────────────────────
+  const src = document.currentScript ? document.currentScript.getAttribute("src") : "";
+  const depth = (src.match(/\.\.\//g) || []).length;
+  const base = "../".repeat(depth);
+  const page = window.location.pathname.split("/").pop().replace(".html", "") || "index";
 
-    // ── Active-link class logic ──────────────────────────────────
-    function navLinkClass(names) {
-        const pages  = Array.isArray(names) ? names : [names];
-        const active = pages.some(n => page === n || (n === 'index' && page === ''));
-        return active
-            ? 'nav-link nav-link--active font-label-lg text-label-lg no-underline'
-            : 'nav-link font-label-lg text-label-lg no-underline';
-    }
+  // ── Active-link class logic ──────────────────────────────────
+  function navLinkClass(names) {
+    const pages = Array.isArray(names) ? names : [names];
+    const active = pages.some((n) => page === n || (n === "index" && page === ""));
+    return active ? "nav-link nav-link--active font-label-lg text-label-lg no-underline" : "nav-link font-label-lg text-label-lg no-underline";
+  }
 
-    // Page groups for multi-page active states
-    const layananPages    = ['layanan', 'poliklinik', 'igd', 'rawat-inap', 'laboratorium', 'peta'];
-    const caridokterPages = ['caridokter', 'profil'];
+  // Page groups for multi-page active states
+  const layananPages = ["layanan", "poliklinik", "igd", "rawat-inap", "laboratorium", "peta"];
+  const caridokterPages = ["caridokter", "profil"];
 
-    // ── HTML Template ────────────────────────────────────────────
-    const html = `
+  // ── HTML Template ────────────────────────────────────────────
+  const html = `
 <style>
     /* ── No-underline utility ─────────────────────────────── */
     .no-underline { text-decoration: none !important; }
@@ -343,7 +341,7 @@
 
                 <a class="" href="\caridokter.html" accesskey="c"><span class="nav-mnemonic">C</span>ari Jadwal</a>
                 <a class=""      href="berita.html" accesskey="b"><span class="nav-mnemonic">B</span>erita</a>
-                <a class="" href="	entangkami.html" accesskey="t"><span class="nav-mnemonic">T</span>entang Kami</a>
+                <a class="" href="tentangkami.html" accesskey="t"><span class="nav-mnemonic">T</span>entang Kami</a>
             </nav>
             <!-- CTA: Buat Janji -->
             <a href="${base}appointment.html" class="hidden md:flex items-center gap-1.5 px-5 py-2.5 bg-health-green text-white rounded-xl font-label-lg text-label-lg hover:brightness-110 transition-all shadow-sm no-underline" style="color:white;font-size:14px;">
@@ -417,11 +415,11 @@
                href="\caridokter.html">
                 <span class="material-symbols-outlined text-[20px]" style="color:#34918C;">person_search</span> Cari Jadwal
             </a>
-            <a class="mobile-nav-link font-label-lg text-label-lg ${page === 'berita' ? 'mobile-active' : ''}"
+            <a class="mobile-nav-link font-label-lg text-label-lg ${page === "berita" ? "mobile-active" : ""}"
                href="${base}berita.html">
                 <span class="material-symbols-outlined text-[20px]" style="color:#34918C;">newspaper</span> Berita
             </a>
-            <a class="mobile-nav-link font-label-lg text-label-lg ${page === 'tentangkami' ? 'mobile-active' : ''}"
+            <a class="mobile-nav-link font-label-lg text-label-lg ${page === "tentangkami" ? "mobile-active" : ""}"
                href="${base}tentangkami.html">
                 <span class="material-symbols-outlined text-[20px]" style="color:#34918C;">info</span> Tentang Kami
             </a>
@@ -441,89 +439,89 @@
 <!-- Spacer: pushes page content below the fixed navbar -->
 <div id="navbar-spacer"></div>`;
 
-    // ── Inject & Boot ────────────────────────────────────────────
-    function inject() {
-        const placeholder = document.getElementById('navbar-container');
-        if (!placeholder) return;
-        placeholder.outerHTML = html;
-        bootInteractions();
-    }
+  // ── Inject & Boot ────────────────────────────────────────────
+  function inject() {
+    const placeholder = document.getElementById("navbar-container");
+    if (!placeholder) return;
+    placeholder.outerHTML = html;
+    bootInteractions();
+  }
 
-    // ── Interactive behaviours (post-inject) ─────────────────────
-    function bootInteractions() {
-        const fixedWrapper = document.getElementById('navbar-fixed-wrapper');
-        const header    = document.getElementById('navbar-header');
-        const mobileNav = document.getElementById('mobile-nav');
-        const toggleBtn = document.getElementById('menu-toggle-btn');
-        const toggleIcon = document.getElementById('menu-toggle-icon');
-        const spacer    = document.getElementById('navbar-spacer');
-        const emergencyBar = document.getElementById('emergency-bar');
-        
-        if (!header || !mobileNav || !toggleBtn || !fixedWrapper || !spacer) return;
+  // ── Interactive behaviours (post-inject) ─────────────────────
+  function bootInteractions() {
+    const fixedWrapper = document.getElementById("navbar-fixed-wrapper");
+    const header = document.getElementById("navbar-header");
+    const mobileNav = document.getElementById("mobile-nav");
+    const toggleBtn = document.getElementById("menu-toggle-btn");
+    const toggleIcon = document.getElementById("menu-toggle-icon");
+    const spacer = document.getElementById("navbar-spacer");
+    const emergencyBar = document.getElementById("emergency-bar");
 
-        // Dynamic spacer
-        function updateSpacer() {
-            setTimeout(() => {
-                if (document.body.classList.contains('peta-fullscreen')) {
-                    spacer.style.height = fixedWrapper.offsetHeight + 'px';
-                } else {
-                spacer.style.height = (emergencyBar ? emergencyBar.offsetHeight : 0) + 'px';
-                }
-            }, 50);
+    if (!header || !mobileNav || !toggleBtn || !fixedWrapper || !spacer) return;
+
+    // Dynamic spacer
+    function updateSpacer() {
+      setTimeout(() => {
+        if (document.body.classList.contains("peta-fullscreen")) {
+          spacer.style.height = fixedWrapper.offsetHeight + "px";
+        } else {
+          spacer.style.height = (emergencyBar ? emergencyBar.offsetHeight : 0) + "px";
         }
-        
-        updateSpacer();
-        window.addEventListener('resize', updateSpacer);
-        document.addEventListener('readystatechange', () => {
-            if (document.readyState === 'complete') updateSpacer();
-        });
-
-        // Scroll Elevation & Hide-on-Scroll Logic
-        let lastScrollY = window.scrollY;
-        
-        const scrollHandler = () => {
-            const currentScrollY = window.scrollY;
-            
-            // 1. Toggle glassmorphism/solid state
-            header.classList.toggle('scrolled', currentScrollY > 20);
-
-            lastScrollY = currentScrollY;
-        };
-        window.addEventListener('scroll', scrollHandler, { passive: true });
-        scrollHandler();
-
-        // Mobile Menu Logic
-        let menuOpen = false;
-        const toggleMenu = () => {
-            menuOpen = !menuOpen;
-            mobileNav.classList.toggle('is-open', menuOpen);
-            toggleBtn.setAttribute('aria-expanded', String(menuOpen));
-            toggleIcon.textContent = menuOpen ? 'close' : 'menu';
-            toggleBtn.classList.toggle('menu-is-open', menuOpen);
-            updateSpacer();
-        };
-
-        toggleBtn.addEventListener('click', toggleMenu);
-
-        // Close on escape
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && menuOpen) {
-                toggleMenu();
-                toggleBtn.focus();
-            }
-        });
-
-        // Close on link click
-        mobileNav.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (menuOpen) toggleMenu();
-            });
-        });
+      }, 50);
     }
 
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', inject);
-    } else {
-        inject();
-    }
+    updateSpacer();
+    window.addEventListener("resize", updateSpacer);
+    document.addEventListener("readystatechange", () => {
+      if (document.readyState === "complete") updateSpacer();
+    });
+
+    // Scroll Elevation & Hide-on-Scroll Logic
+    let lastScrollY = window.scrollY;
+
+    const scrollHandler = () => {
+      const currentScrollY = window.scrollY;
+
+      // 1. Toggle glassmorphism/solid state
+      header.classList.toggle("scrolled", currentScrollY > 20);
+
+      lastScrollY = currentScrollY;
+    };
+    window.addEventListener("scroll", scrollHandler, { passive: true });
+    scrollHandler();
+
+    // Mobile Menu Logic
+    let menuOpen = false;
+    const toggleMenu = () => {
+      menuOpen = !menuOpen;
+      mobileNav.classList.toggle("is-open", menuOpen);
+      toggleBtn.setAttribute("aria-expanded", String(menuOpen));
+      toggleIcon.textContent = menuOpen ? "close" : "menu";
+      toggleBtn.classList.toggle("menu-is-open", menuOpen);
+      updateSpacer();
+    };
+
+    toggleBtn.addEventListener("click", toggleMenu);
+
+    // Close on escape
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && menuOpen) {
+        toggleMenu();
+        toggleBtn.focus();
+      }
+    });
+
+    // Close on link click
+    mobileNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        if (menuOpen) toggleMenu();
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", inject);
+  } else {
+    inject();
+  }
 })();
