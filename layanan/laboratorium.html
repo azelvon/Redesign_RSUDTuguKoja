@@ -1,19 +1,118 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Laboratorium - RSUD Tugu Koja</title>
+    <meta name="description"
+        content="Instalasi Laboratorium RSUD Tugu Koja menyediakan layanan pemeriksaan darah, urin, dan tes laboratorium modern menggunakan LIS untuk hasil cepat dan akurat." />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Atkinson+Hyperlegible+Next:wght@400;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-    <style>
-        .material-symbols-outlined {
-            font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
-        }
-        body { font-family: 'Atkinson Hyperlegible Next', sans-serif; background-color: #f7f9fb; }
-    </style>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Atkinson+Hyperlegible+Next:wght@400;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
     <script src="../assets/js/tailwind-config.js"></script>
+    <style>
+        body {
+            animation: globalFadeIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        @keyframes globalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Service card hover */
+        .service-card {
+            transition: transform 0.3s cubic-bezier(.22, .68, 0, 1.2), box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 32px rgba(34, 66, 102, 0.10), 0 2px 8px rgba(52, 145, 140, 0.08);
+        }
+
+        .service-card:hover .service-icon {
+            background-color: #224266;
+            color: #ffffff;
+        }
+
+        .service-icon {
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.08);
+        }
+
+        /* FAQ accordion */
+        .faq-item {
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: #34918C;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1), padding 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .faq-answer.open {
+            opacity: 1;
+        }
+
+        .faq-toggle {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-toggle.rotated {
+            transform: rotate(180deg);
+        }
+
+        /* Requirement step number */
+        .step-number {
+            width: 36px;
+            height: 36px;
+            min-width: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 
 <body class="bg-surface text-on-surface font-body-md">
@@ -24,7 +123,7 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="relative h-[340px] md:h-[420px] w-full overflow-hidden flex items-end">
+        <section class="relative h-[280px] md:h-[360px] w-full overflow-hidden flex items-end">
             <div class="absolute inset-0 z-0">
                 <img
                     alt="RSUD Tugu Koja Laboratorium"
@@ -34,9 +133,11 @@
                 <div class="absolute inset-0 bg-gradient-to-t from-jakarta-blue/90 via-jakarta-blue/60 to-jakarta-blue/20"></div>
             </div>
             <div class="relative z-10 max-w-container-max mx-auto px-gutter w-full pb-12">
+                <!-- Breadcrumb -->
                 <nav class="mb-4" aria-label="Breadcrumb">
                     <ol class="flex items-center gap-2 text-sm text-white/70 font-label-md">
-                        <li><a href="../index.html" class="hover:text-white transition-colors" style="text-decoration:none;">Beranda</a></li>
+                        <li><a href="../index.html" class="hover:text-white transition-colors"
+                                style="text-decoration:none;">Beranda</a></li>
                         <li><span class="material-symbols-outlined text-[14px]">chevron_right</span></li>
                         <li><span class="text-white font-semibold">Layanan</span></li>
                         <li><span class="material-symbols-outlined text-[14px]">chevron_right</span></li>
@@ -44,140 +145,358 @@
                     </ol>
                 </nav>
                 <div class="max-w-2xl">
-                    <h1 class="font-headline-xl text-headline-xl text-white mb-3" style="text-shadow: 0 2px 8px rgba(0,0,0,0.15);">Instalasi Laboratorium</h1>
-                    <p class="font-body-md text-[16px] text-white/80 mb-6">
-                        Menggunakan teknologi <strong>Laboratory Information System (LIS)</strong> yang terintegrasi, memungkinkan data hasil pemeriksaan didapat secara lebih cepat, akurat, dan terpercaya.
+                    <h1 class="font-headline-xl text-headline-xl text-white mb-2"
+                        style="text-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+                        Instalasi Laboratorium
+                    </h1>
+                    <p class="font-body-md text-[16px] text-white/80">
+                        Pengelolaan data dengan Laboratory Information System (LIS) yang cepat, akurat, dan terpercaya.
                     </p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="../appointment.html" style="text-decoration:none;">
-                            <button class="bg-health-green text-white px-6 py-2.5 rounded-full font-label-md text-[14px] hover:scale-105 transition-transform shadow-sm flex items-center gap-2">
-                                <span class="material-symbols-outlined text-[18px]">event_available</span>
-                                Buat Janji Konsultasi
-                            </button>
-                        </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================== -->
+        <!-- PENJELASAN UMUM               -->
+        <!-- ============================== -->
+        <section class="py-16 md:py-20 max-w-container-max mx-auto px-gutter">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 items-start">
+                <!-- Text Content -->
+                <div class="lg:col-span-3 reveal">
+                    <h2 class="font-headline-lg text-headline-lg text-jakarta-blue mb-5">
+                        Penjelasan Umum
+                    </h2>
+                    <div class="space-y-4 text-on-surface-variant font-body-md text-body-md leading-relaxed">
+                        <p>
+                            Instalasi Laboratorium RSUD Tugu Koja mendukung proses diagnosis, penanganan, dan evaluasi pengobatan pasien melalui beragam tes laboratorium unggulan.
+                        </p>
+                        <p>
+                            Pengelolaan data laboratorium menggunakan <strong>Laboratory Information System (LIS)</strong> terintegrasi, yang memungkinkan hasil pemeriksaan didapat secara lebih cepat, akurat, dan otomatis terhubung ke sistem rekam medis dokter.
+                        </p>
+                        <p>
+                            Kami melayani pasien dari IGD, rawat inap, rawat jalan, serta pasien rujukan untuk menunjang kebutuhan diagnosis yang optimal dan komprehensif.
+                        </p>
+                    </div>
+
+                    <!-- Quick Info Cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
+                        <div class="bg-surface-container-low rounded-xl p-4 border border-surface-subtle">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div
+                                    class="w-9 h-9 rounded-lg bg-jakarta-blue/10 flex items-center justify-center text-jakarta-blue">
+                                    <span class="material-symbols-outlined text-[20px]">schedule</span>
+                                </div>
+                                <span class="font-label-md text-label-md text-jakarta-blue">Jam Operasional</span>
+                            </div>
+                            <p class="text-sm text-on-surface-variant">Senin - Sabtu<br />08.00 - Selesai</p>
+                        </div>
+                        <div class="bg-surface-container-low rounded-xl p-4 border border-surface-subtle">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div
+                                    class="w-9 h-9 rounded-lg bg-health-green/10 flex items-center justify-center text-health-green">
+                                    <span class="material-symbols-outlined text-[20px]">emergency</span>
+                                </div>
+                                <span class="font-label-md text-label-md text-health-green">IGD / Cito</span>
+                            </div>
+                            <p class="text-sm text-on-surface-variant">Tersedia 24 Jam<br />untuk kasus darurat</p>
+                        </div>
+                        <div class="bg-surface-container-low rounded-xl p-4 border border-surface-subtle">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div
+                                    class="w-9 h-9 rounded-lg bg-jakarta-blue/10 flex items-center justify-center text-jakarta-blue">
+                                    <span class="material-symbols-outlined text-[20px]">biotech</span>
+                                </div>
+                                <span class="font-label-md text-label-md text-jakarta-blue">Teknologi</span>
+                            </div>
+                            <p class="text-sm text-on-surface-variant">Terintegrasi LIS<br />Hasil Akurat</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image -->
+                <div class="lg:col-span-2 reveal" style="transition-delay: 0.15s;">
+                    <img src="../assets/images/layanan/lab.jpg" alt="Laboratorium" class="w-full h-[320px] md:h-[400px] object-cover rounded-2xl shadow-sm border border-surface-subtle" onerror="this.onerror=null; this.src='../assets/images/hero/RS Tugu Koja.jpg'; this.classList.add('opacity-80');">
+                    <!-- Additional small image or decorative block -->
+                    <div class="w-full bg-jakarta-blue rounded-2xl p-6 text-white mt-4 shadow-sm flex items-center gap-4">
+                        <span class="material-symbols-outlined text-[40px] text-white/50">science</span>
+                        <div>
+                            <h4 class="font-headline-sm text-lg">Keamanan Sampel</h4>
+                            <p class="text-sm text-white/80 mt-1">Kami menerapkan protokol ketat untuk keamanan tiap sampel laboratorium.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Main Content (Services Grid) -->
-        <section class="py-16">
+        <!-- ============================== -->
+        <!-- DAFTAR LAYANAN                -->
+        <!-- ============================== -->
+        <section class="bg-surface-container-low py-16 md:py-20 border-y border-surface-subtle">
             <div class="max-w-container-max mx-auto px-gutter">
+                <div class="text-center mb-14 reveal">
+                    <h2 class="font-headline-lg text-headline-lg text-jakarta-blue mb-3">
+                        Jenis Pemeriksaan Laboratorium
+                    </h2>
+                    <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">
+                        Berbagai jenis uji klinis yang tersedia di RSUD Tugu Koja untuk mendukung kebutuhan penunjang diagnostik Anda.
+                    </p>
+                </div>
 
-                <!-- Clean Minimalist Grid (3 Cols) -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal" style="transition-delay: 0.1s;">
                     
                     <!-- Hematologi Lengkap -->
-                    <div class="group bg-white p-6 rounded-2xl border border-surface-subtle hover:border-emergency-red/30 hover:shadow-[0_12px_40px_-12px_rgba(220,38,38,0.12)] transition-all duration-300 flex flex-col h-full">
-                        <span class="material-symbols-outlined text-[32px] text-emergency-red mb-4 group-hover:-translate-y-1 transition-transform duration-300">bloodtype</span>
-                        <h3 class="font-headline-sm text-jakarta-blue mb-2 text-[17px]">Hematologi Lengkap</h3>
-                        <p class="text-[14px] text-on-surface-variant leading-relaxed flex-grow">Evaluasi menyeluruh terhadap komponen darah seperti sel darah merah, putih, dan trombosit.</p>
+                    <div class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default">
+                        <div class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5">
+                            <span class="material-symbols-outlined text-[28px]">bloodtype</span>
+                        </div>
+                        <h4 class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold">Hematologi Lengkap</h4>
+                        <p class="text-on-surface-variant text-sm leading-relaxed">
+                            Evaluasi menyeluruh terhadap komponen darah seperti sel darah merah, putih, dan trombosit.
+                        </p>
                     </div>
 
                     <!-- Analisa Gas Darah & Elektrolit -->
-                    <div class="group bg-white p-6 rounded-2xl border border-surface-subtle hover:border-jakarta-blue/30 hover:shadow-[0_12px_40px_-12px_rgba(25,66,107,0.12)] transition-all duration-300 flex flex-col h-full">
-                        <span class="material-symbols-outlined text-[32px] text-jakarta-blue mb-4 group-hover:-translate-y-1 transition-transform duration-300">pulmonology</span>
-                        <h3 class="font-headline-sm text-jakarta-blue mb-2 text-[17px]">Analisa Gas Darah & Elektrolit</h3>
-                        <p class="text-[14px] text-on-surface-variant leading-relaxed flex-grow">Pemeriksaan fungsi pernapasan, oksigenasi darah, serta tingkat elektrolit tubuh yang vital.</p>
+                    <div class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default">
+                        <div class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5">
+                            <span class="material-symbols-outlined text-[28px]">pulmonology</span>
+                        </div>
+                        <h4 class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold">Analisa Gas Darah & Elektrolit</h4>
+                        <p class="text-on-surface-variant text-sm leading-relaxed">
+                            Pemeriksaan fungsi pernapasan, oksigenasi darah, serta tingkat keseimbangan elektrolit tubuh vital.
+                        </p>
                     </div>
 
                     <!-- Parasitologi -->
-                    <div class="group bg-white p-6 rounded-2xl border border-surface-subtle hover:border-health-green/30 hover:shadow-[0_12px_40px_-12px_rgba(52,145,140,0.15)] transition-all duration-300 flex flex-col h-full">
-                        <span class="material-symbols-outlined text-[32px] text-health-green mb-4 group-hover:-translate-y-1 transition-transform duration-300">bug_report</span>
-                        <h3 class="font-headline-sm text-jakarta-blue mb-2 text-[17px]">Parasitologi</h3>
-                        <p class="text-[14px] text-on-surface-variant leading-relaxed flex-grow">Diagnostik untuk infeksi parasitik termasuk pengujian khusus Malaria dan Filarial.</p>
+                    <div class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default">
+                        <div class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5">
+                            <span class="material-symbols-outlined text-[28px]">bug_report</span>
+                        </div>
+                        <h4 class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold">Parasitologi</h4>
+                        <p class="text-on-surface-variant text-sm leading-relaxed">
+                            Diagnostik mikroskopis untuk infeksi parasitik, termasuk pengujian khusus penyakit endemik seperti Malaria dan Filarial.
+                        </p>
                     </div>
 
                     <!-- Hemostasis -->
-                    <div class="group bg-white p-6 rounded-2xl border border-surface-subtle hover:border-emergency-red/30 hover:shadow-[0_12px_40px_-12px_rgba(220,38,38,0.12)] transition-all duration-300 flex flex-col h-full">
-                        <span class="material-symbols-outlined text-[32px] text-emergency-red mb-4 group-hover:-translate-y-1 transition-transform duration-300">healing</span>
-                        <h3 class="font-headline-sm text-jakarta-blue mb-2 text-[17px]">Hemostasis (PT, APTT, INR)</h3>
-                        <p class="text-[14px] text-on-surface-variant leading-relaxed flex-grow">Pengujian khusus fungsi pembekuan darah untuk persiapan operasi maupun kontrol terapi.</p>
+                    <div class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default">
+                        <div class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5">
+                            <span class="material-symbols-outlined text-[28px]">healing</span>
+                        </div>
+                        <h4 class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold">Hemostasis (PT, APTT, INR)</h4>
+                        <p class="text-on-surface-variant text-sm leading-relaxed">
+                            Pengujian khusus kemampuan fungsi pembekuan darah untuk persiapan operasi bedah maupun kontrol terapi.
+                        </p>
                     </div>
 
-                    <!-- Kimia Klinik -->
-                    <div class="group bg-white p-6 rounded-2xl border border-surface-subtle hover:border-jakarta-blue/30 hover:shadow-[0_12px_40px_-12px_rgba(25,66,107,0.12)] transition-all duration-300 flex flex-col h-full">
-                        <span class="material-symbols-outlined text-[32px] text-jakarta-blue mb-4 group-hover:-translate-y-1 transition-transform duration-300">science</span>
-                        <h3 class="font-headline-sm text-jakarta-blue mb-2 text-[17px]">Kimia Klinik Lengkap</h3>
-                        <p class="text-[14px] text-on-surface-variant leading-relaxed flex-grow">Pemantauan zat kimia dalam cairan tubuh, seperti fungsi hati, ginjal, gula darah, dan kolesterol.</p>
+                    <!-- Kimia Klinik Lengkap -->
+                    <div class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default">
+                        <div class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5">
+                            <span class="material-symbols-outlined text-[28px]">science</span>
+                        </div>
+                        <h4 class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold">Kimia Klinik Lengkap</h4>
+                        <p class="text-on-surface-variant text-sm leading-relaxed">
+                            Pemantauan keseimbangan zat kimia tubuh, mendeteksi fungsi hati, ginjal, kadar glukosa, dan metabolisme.
+                        </p>
                     </div>
 
                     <!-- Imunologi / Serologi -->
-                    <div class="group bg-white p-6 rounded-2xl border border-surface-subtle hover:border-health-green/30 hover:shadow-[0_12px_40px_-12px_rgba(52,145,140,0.15)] transition-all duration-300 flex flex-col h-full">
-                        <span class="material-symbols-outlined text-[32px] text-health-green mb-4 group-hover:-translate-y-1 transition-transform duration-300">biotech</span>
-                        <h3 class="font-headline-sm text-jakarta-blue mb-2 text-[17px]">Imunologi & Serologi</h3>
-                        <p class="text-[14px] text-on-surface-variant leading-relaxed flex-grow">Uji mendeteksi keberadaan antibodi atau antigen terkait penyakit autoimun dan infeksi kronis.</p>
+                    <div class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default">
+                        <div class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5">
+                            <span class="material-symbols-outlined text-[28px]">biotech</span>
+                        </div>
+                        <h4 class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold">Imunologi & Serologi</h4>
+                        <p class="text-on-surface-variant text-sm leading-relaxed">
+                            Uji spesifik mendeteksi keberadaan antibodi atau antigen yang berhubungan dengan reaksi autoimun dan infeksi.
+                        </p>
                     </div>
 
-                    <!-- HbA1c CRP -->
-                    <div class="group bg-white p-6 rounded-2xl border border-surface-subtle hover:border-emergency-red/30 hover:shadow-[0_12px_40px_-12px_rgba(220,38,38,0.12)] transition-all duration-300 flex flex-col h-full">
-                        <span class="material-symbols-outlined text-[32px] text-emergency-red mb-4 group-hover:-translate-y-1 transition-transform duration-300">monitor_heart</span>
-                        <h3 class="font-headline-sm text-jakarta-blue mb-2 text-[17px]">HbA1c & CRP</h3>
-                        <p class="text-[14px] text-on-surface-variant leading-relaxed flex-grow">Pemeriksaan kunci manajemen jangka panjang diabetes (HbA1c) dan indikator peradangan (CRP).</p>
+                    <!-- HbA1c & CRP -->
+                    <div class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default">
+                        <div class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5">
+                            <span class="material-symbols-outlined text-[28px]">monitor_heart</span>
+                        </div>
+                        <h4 class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold">HbA1c & CRP</h4>
+                        <p class="text-on-surface-variant text-sm leading-relaxed">
+                            Pemeriksaan esensial untuk memonitor riwayat diabetes kronis (HbA1c) dan mendeteksi kondisi peradangan akut (CRP).
+                        </p>
                     </div>
 
-                    <!-- Tes Narkoba -->
-                    <div class="group bg-white p-6 rounded-2xl border border-surface-subtle hover:border-jakarta-blue/30 hover:shadow-[0_12px_40px_-12px_rgba(25,66,107,0.12)] transition-all duration-300 flex flex-col h-full">
-                        <span class="material-symbols-outlined text-[32px] text-jakarta-blue mb-4 group-hover:-translate-y-1 transition-transform duration-300">vaccines</span>
-                        <h3 class="font-headline-sm text-jakarta-blue mb-2 text-[17px]">Tes Narkoba (Urine)</h3>
-                        <p class="text-[14px] text-on-surface-variant leading-relaxed flex-grow">Skrining akurat untuk mendeteksi berbagai jenis zat adiktif dan narkotika dalam urine.</p>
+                    <!-- Tes Narkoba Urine -->
+                    <div class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default">
+                        <div class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5">
+                            <span class="material-symbols-outlined text-[28px]">vaccines</span>
+                        </div>
+                        <h4 class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold">Tes Narkoba (Urine)</h4>
+                        <p class="text-on-surface-variant text-sm leading-relaxed">
+                            Skrining laboratorium yang presisi untuk deteksi cepat keberadaan zat adiktif atau narkotika dalam urin.
+                        </p>
                     </div>
 
-                    <!-- Urine Tampung -->
-                    <div class="group bg-white p-6 rounded-2xl border border-surface-subtle hover:border-health-green/30 hover:shadow-[0_12px_40px_-12px_rgba(52,145,140,0.15)] transition-all duration-300 flex flex-col h-full">
-                        <span class="material-symbols-outlined text-[32px] text-health-green mb-4 group-hover:-translate-y-1 transition-transform duration-300">water_drop</span>
-                        <h3 class="font-headline-sm text-jakarta-blue mb-2 text-[17px]">Urine Tampung 24 Jam</h3>
-                        <p class="text-[14px] text-on-surface-variant leading-relaxed flex-grow">Pengukuran elektrolit dan fungsi ginjal komprehensif dari sampel urine terkumpul 24 jam.</p>
+                    <!-- Urine Tampung 24 Jam -->
+                    <div class="service-card bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm cursor-default">
+                        <div class="service-icon w-14 h-14 rounded-2xl bg-jakarta-blue/10 text-jakarta-blue flex items-center justify-center mb-5">
+                            <span class="material-symbols-outlined text-[28px]">water_drop</span>
+                        </div>
+                        <h4 class="font-headline-md text-[18px] text-jakarta-blue mb-2 font-semibold">Urine Tampung 24 Jam</h4>
+                        <p class="text-on-surface-variant text-sm leading-relaxed">
+                            Analisis kimia medis komprehensif atas total output urin harian untuk evaluasi khusus penyakit ginjal.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================== -->
+        <!-- PERSYARATAN & FAQ             -->
+        <!-- ============================== -->
+        <section class="py-16 md:py-20 max-w-container-max mx-auto px-gutter">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+                <!-- Left: Requirements -->
+                <div class="reveal">
+                    
+                    <h2 class="font-headline-lg text-headline-lg text-jakarta-blue mb-3">
+                        Syarat & Prosedur Pemeriksaan
+                    </h2>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-8">
+                        Berikut adalah dokumen dan persiapan yang perlu Anda siapkan sebelum menjalani tes darah atau urin di Instalasi Laboratorium.
+                    </p>
+
+                    <!-- Requirements List -->
+                    <div class="space-y-4">
+                        <div class="flex gap-4 items-start bg-white rounded-xl p-5 border border-surface-subtle shadow-sm">
+                            <div class="step-number bg-jakarta-blue text-white">1</div>
+                            <div>
+                                <h4 class="font-label-md text-[15px] text-jakarta-blue font-semibold mb-1">Surat
+                                    Pengantar Laboratorium</h4>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">
+                                    Membawa formulir permintaan tes laboratorium asli yang dikeluarkan oleh dokter poli, dokter spesialis, atau IGD.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start bg-white rounded-xl p-5 border border-surface-subtle shadow-sm">
+                            <div class="step-number bg-jakarta-blue text-white">2</div>
+                            <div>
+                                <h4 class="font-label-md text-[15px] text-jakarta-blue font-semibold mb-1">Administrasi & Kartu BPJS</h4>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">
+                                    Membawa kartu identitas (KTP) dan Kartu BPJS aktif (jika pengguna BPJS) ke loket pendaftaran sebelum ke laboratorium.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start bg-white rounded-xl p-5 border border-surface-subtle shadow-sm">
+                            <div class="step-number bg-health-green text-white">3</div>
+                            <div>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">
+                                    Untuk pemeriksaan tertentu seperti <strong>Gula Darah Puasa, Trigliserida, dan Asam Urat</strong>, diwajibkan berpuasa (tidak makan/minum kecuali air putih) minimal 10-12 jam.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Important Notes + FAQ -->
+                <div class="reveal" style="transition-delay: 0.15s;">
+                    <!-- FAQ Block -->
+                    <div class="mb-6">
+                        <h3 class="font-headline-md text-jakarta-blue mb-4 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-health-green text-[24px]">help</span>
+                            Pertanyaan Umum (FAQ)
+                        </h3>
+                        <div class="space-y-3">
+                            <!-- FAQ 1 -->
+                            <div class="faq-item bg-white rounded-xl border border-surface-subtle shadow-sm overflow-hidden">
+                                <button
+                                    class="faq-btn w-full flex items-center justify-between p-5 text-left focus:outline-none"
+                                    onclick="toggleFaq(this)" aria-expanded="false">
+                                    <span class="font-label-md text-[15px] text-jakarta-blue font-semibold pr-4">Apakah saya perlu puasa sebelum periksa darah?</span>
+                                    <span class="faq-toggle material-symbols-outlined text-jakarta-blue text-[22px] flex-shrink-0">expand_more</span>
+                                </button>
+                                <div class="faq-answer px-5 pb-0">
+                                    <p class="text-sm text-on-surface-variant leading-relaxed pb-5">
+                                        Beberapa jenis pemeriksaan darah (seperti gula darah puasa atau kolesterol/profil lipid) umumnya memerlukan Anda untuk puasa selama 8-12 jam sebelumnya. Harap tanyakan kepada petugas atau dokter saat Anda menerima pengantar laboratorium.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- FAQ 2 -->
+                            <div class="faq-item bg-white rounded-xl border border-surface-subtle shadow-sm overflow-hidden">
+                                <button
+                                    class="faq-btn w-full flex items-center justify-between p-5 text-left focus:outline-none"
+                                    onclick="toggleFaq(this)" aria-expanded="false">
+                                    <span class="font-label-md text-[15px] text-jakarta-blue font-semibold pr-4">Berapa lama waktu tunggu hasil laboratorium?</span>
+                                    <span class="faq-toggle material-symbols-outlined text-jakarta-blue text-[22px] flex-shrink-0">expand_more</span>
+                                </button>
+                                <div class="faq-answer px-5 pb-0">
+                                    <p class="text-sm text-on-surface-variant leading-relaxed pb-5">
+                                        Waktu tunggu bervariasi tergantung jenis tes. Mayoritas tes darah rutin dapat diketahui hasilnya dalam waktu 1-2 jam. Namun, pemeriksaan spesifik seperti tes serologi kompleks atau kultur bakteri bisa memakan waktu hingga beberapa hari.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- FAQ 3 -->
+                            <div class="faq-item bg-white rounded-xl border border-surface-subtle shadow-sm overflow-hidden">
+                                <button
+                                    class="faq-btn w-full flex items-center justify-between p-5 text-left focus:outline-none"
+                                    onclick="toggleFaq(this)" aria-expanded="false">
+                                    <span class="font-label-md text-[15px] text-jakarta-blue font-semibold pr-4">Apakah hasil lab terintegrasi dengan poli dokter?</span>
+                                    <span class="faq-toggle material-symbols-outlined text-jakarta-blue text-[22px] flex-shrink-0">expand_more</span>
+                                </button>
+                                <div class="faq-answer px-5 pb-0">
+                                    <p class="text-sm text-on-surface-variant leading-relaxed pb-5">
+                                        Ya. Melalui Laboratory Information System (LIS) yang terintegrasi, hasil tes laboratorium Anda akan otomatis masuk ke dalam sistem rekam medis elektronik (EMR). Dokter di poliklinik bisa langsung mengakses hasilnya secara digital.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Important Note Block -->
+                    <div class="bg-white rounded-2xl p-6 border border-surface-subtle shadow-sm">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-emergency-red/10 flex items-center justify-center text-emergency-red">
+                                <span class="material-symbols-outlined text-[24px]">info</span>
+                            </div>
+                            <h4 class="font-headline-sm text-[16px] text-jakarta-blue font-semibold">Perhatian Penting</h4>
+                        </div>
+                        <ul class="space-y-2 text-sm text-on-surface-variant list-disc pl-5">
+                            <li>Pasien IGD dengan kondisi kritis mendapat prioritas (Cito) pemeriksaan laboratorium.</li>
+                            <li>Pastikan wadah penampung urin atau feses tertutup rapat dan segera diserahkan agar sampel tidak rusak.</li>
+                        </ul>
                     </div>
 
                 </div>
-                
-                <!-- FAQ Section -->
-                <div class="mt-16 max-w-4xl mx-auto">
-                    <h3 class="font-headline-md text-jakarta-blue mb-6 flex items-center justify-center gap-2">
-                        <span class="material-symbols-outlined text-health-green text-[28px]">help</span>
-                        Pertanyaan Umum (FAQ)
-                    </h3>
-                    <div class="space-y-3">
-                        <details class="group bg-surface rounded-xl border border-surface-subtle [&_summary::-webkit-details-marker]:hidden">
-                            <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-4 text-primary font-medium">
-                                <span class="text-[15px]">Apakah saya perlu puasa sebelum periksa darah?</span>
-                                <span class="material-symbols-outlined transition duration-300 group-open:-rotate-180">expand_more</span>
-                            </summary>
-                            <div class="px-4 pb-4 text-[14px] text-on-surface-variant">
-                                Beberapa jenis pemeriksaan darah (seperti gula darah puasa atau kolesterol) umumnya memerlukan Anda untuk puasa selama 8-12 jam sebelumnya. Harap tanyakan kepada petugas atau dokter saat Anda menerima pengantar laboratorium.
-                            </div>
-                        </details>
-                        
-                        <details class="group bg-surface rounded-xl border border-surface-subtle [&_summary::-webkit-details-marker]:hidden">
-                            <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-4 text-primary font-medium">
-                                <span class="text-[15px]">Berapa lama waktu tunggu hasil laboratorium?</span>
-                                <span class="material-symbols-outlined transition duration-300 group-open:-rotate-180">expand_more</span>
-                            </summary>
-                            <div class="px-4 pb-4 text-[14px] text-on-surface-variant">
-                                Waktu tunggu bervariasi tergantung jenis tes. Mayoritas tes darah rutin dapat diketahui hasilnya dalam waktu 1-2 jam. Namun, pemeriksaan spesifik seperti kultur bakteri bisa memakan waktu hingga beberapa hari.
-                            </div>
-                        </details>
+            </div>
+        </section>
 
-                        <details class="group bg-surface rounded-xl border border-surface-subtle [&_summary::-webkit-details-marker]:hidden">
-                            <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-4 text-primary font-medium">
-                                <span class="text-[15px]">Apakah hasil lab terintegrasi dengan poli dokter?</span>
-                                <span class="material-symbols-outlined transition duration-300 group-open:-rotate-180">expand_more</span>
-                            </summary>
-                            <div class="px-4 pb-4 text-[14px] text-on-surface-variant">
-                                Ya. Melalui Laboratory Information System (LIS) yang canggih, hasil tes laboratorium Anda akan otomatis masuk ke dalam sistem rekam medis elektronik. Dokter spesialis Anda di poliklinik bisa langsung mengakses hasilnya tanpa harus menunggu cetakan fisik.
-                            </div>
-                        </details>
+        <!-- ============================== -->
+        <!-- CTA / CONTACT                 -->
+        <!-- ============================== -->
+        <section class="py-16 md:py-20 max-w-container-max mx-auto px-gutter">
+            <div
+                class="reveal bg-gradient-to-br from-jakarta-blue to-[#1a3550] rounded-3xl p-8 md:p-12 text-white text-center relative overflow-hidden">
+                <!-- Decorative elements -->
+                <div class="absolute top-0 right-0 w-72 h-72 bg-health-green/10 rounded-full blur-3xl -translate-y-1/3 translate-x-1/3"></div>
+                <div class="absolute bottom-0 left-0 w-72 h-72 bg-white/5 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3"></div>
+
+                <div class="relative z-10">
+                    <div class="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center mx-auto mb-6">
+                        <span class="material-symbols-outlined text-[32px] text-white">support_agent</span>
                     </div>
-                </div>
-
-                <!-- Bottom CTA -->
-                <div class="mt-16 text-center">
-                    <p class="text-on-surface-variant mb-6">Informasi jadwal praktek dokter spesialis patologi klinik dan tenaga laboratorium tersedia di halaman penjadwalan.</p>
-                    <a href="../caridokter.html" class="inline-flex items-center gap-2 border border-health-green text-health-green hover:bg-health-green hover:text-white px-8 py-3 rounded-full font-label-lg transition-colors">
-                        <span class="material-symbols-outlined text-[20px]">person_search</span>
-                        Cari Dokter
-                    </a>
+                    <h2 class="font-headline-lg text-headline-lg text-white mb-3">Membutuhkan Jadwal Konsultasi?</h2>
+                    <p class="font-body-md text-body-md text-white/80 max-w-xl mx-auto mb-8">
+                        Informasi lebih lanjut mengenai jadwal dokter spesialis Patologi Klinik dan pendaftaran tersedia.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <a href="../caridokter.html"
+                            class="bg-white text-jakarta-blue px-8 py-3 rounded-full font-label-md text-[14px] hover:scale-105 transition-transform shadow-lg flex items-center gap-2"
+                            style="text-decoration:none;">
+                            <span class="material-symbols-outlined text-[18px]">person_search</span>
+                            Cari Dokter
+                        </a>
+                        <a href="../index.html"
+                            class="border border-white/50 text-white px-8 py-3 rounded-full font-label-md text-[14px] hover:bg-white/10 transition-colors flex items-center gap-2"
+                            style="text-decoration:none;">
+                            <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                            Kembali ke Beranda
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -186,9 +505,54 @@
     <!-- Footer -->
     <div id="footer-container"></div>
 
-    <!-- Scripts -->
+    <script>
+        // ========================================
+        // FAQ ACCORDION
+        // ========================================
+        function toggleFaq(btn) {
+            const answer = btn.nextElementSibling;
+            const icon = btn.querySelector('.faq-toggle');
+            const isOpen = answer.classList.contains('open');
+
+            // Close all open FAQs first
+            document.querySelectorAll('.faq-answer.open').forEach(openAnswer => {
+                openAnswer.style.maxHeight = '0px';
+                openAnswer.style.paddingBottom = '0';
+                openAnswer.classList.remove('open');
+                openAnswer.previousElementSibling.querySelector('.faq-toggle').classList.remove('rotated');
+                openAnswer.previousElementSibling.setAttribute('aria-expanded', 'false');
+            });
+
+            // Toggle current
+            if (!isOpen) {
+                answer.classList.add('open');
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+                icon.classList.add('rotated');
+                btn.setAttribute('aria-expanded', 'true');
+            }
+        }
+
+        // ========================================
+        // SCROLL REVEAL OBSERVER
+        // ========================================
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            revealObserver.observe(el);
+        });
+    </script>
+
+    <!-- Scripts components -->
     <script src="../components/emergency-bar.js"></script>
     <script src="../components/navbar.js"></script>
     <script src="../components/footer.js"></script>
 </body>
+
 </html>
