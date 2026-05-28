@@ -104,38 +104,21 @@
         gap: 24px;
     }
 
-    /* Text contrast & active styling with underline */
+    /* Text contrast & active styling */
     .nav-link {
         color: #43474e;
-        padding: 8px 4px;
+        padding: 8px 14px;
+        border-radius: 999px;
         transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
         font-weight: 600;
-        position: relative;
-    }
-    .nav-link::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 3px;
-        background-color: #34918C;
-        border-radius: 2px;
-        transform: scaleX(0);
-        transition: transform 0.3s ease;
     }
     .nav-link:hover {
         color: #34918C;
-    }
-    .nav-link:hover::after {
-        transform: scaleX(1);
+        background-color: rgba(52, 145, 140, 0.08);
     }
     .nav-link--active {
         color: #224266 !important;
-    }
-    .nav-link--active::after {
-        transform: scaleX(1);
-        background-color: #224266;
+        background-color: rgba(34, 66, 102, 0.06);
     }
 
     /* Fix 1: Keyboard Shortcuts — underline mnemonic char    */
@@ -248,7 +231,7 @@
             <nav class="hidden md:flex nav-links-container" aria-label="Navigasi Utama">
                 <!-- LAYANAN NESTED DROPDOWN -->
                 <div class="relative group">
-                    <a class="\ flex items-center gap-1 cursor-pointer" href="${base}layanan.html" accesskey="l">
+                    <a class="${navLinkClass(layananPages)} flex items-center gap-1 cursor-pointer" href="${base}layanan.html" accesskey="l">
                         <span class="nav-mnemonic">L</span>ayanan
                         <span class="material-symbols-outlined text-[18px] transition-transform group-hover:-rotate-180">keyboard_arrow_down</span>
                     </a>
@@ -339,9 +322,9 @@
                     </div>
                 </div>
 
-                <a class="" href="${base}caridokter.html" accesskey="c"><span class="nav-mnemonic">C</span>ari Dokter</a>
-                <a class=""      href="berita.html" accesskey="b"><span class="nav-mnemonic">B</span>erita</a>
-                <a class="" href="tentangkami.html" accesskey="t"><span class="nav-mnemonic">T</span>entang Kami</a>
+                <a class="${navLinkClass(caridokterPages)}" href="${base}caridokter.html" accesskey="c"><span class="nav-mnemonic">C</span>ari Dokter</a>
+                <a class="${navLinkClass('berita')}" href="${base}berita.html" accesskey="b"><span class="nav-mnemonic">B</span>erita</a>
+                <a class="${navLinkClass('tentangkami')}" href="${base}tentangkami.html" accesskey="t"><span class="nav-mnemonic">T</span>entang Kami</a>
             </nav>
             <!-- CTA: Buat Janji -->
             <a href="${base}appointment.html" class="hidden md:flex items-center gap-1.5 px-5 py-2.5 bg-health-green text-white rounded-xl font-label-lg text-label-lg hover:brightness-110 transition-all shadow-sm no-underline" style="color:white;font-size:14px;">
@@ -368,7 +351,7 @@
             
             <!-- Mobile Layanan Accordion -->
             <div class="mx-4 my-1">
-                <button onclick="document.getElementById('mobile-layanan-menu').classList.toggle('hidden'); this.querySelector('.arrow').classList.toggle('rotate-180');" class="w-full flex items-center justify-between p-3 rounded-xl hover:bg-surface-container-low transition-colors text-[#43474e] font-label-lg text-label-lg">
+                <button onclick="document.getElementById('mobile-layanan-menu').classList.toggle('hidden'); this.querySelector('.arrow').classList.toggle('rotate-180');" class="w-full flex items-center justify-between p-3 rounded-xl hover:bg-surface-container-low transition-colors text-[#43474e] font-label-lg text-label-lg ${layananPages.includes(page) ? 'mobile-active' : ''}">
                     <div class="flex items-center gap-3">
                         <span class="material-symbols-outlined text-[20px]" style="color:#34918C;">medical_services</span>
                         <span class="">Layanan</span>
@@ -411,7 +394,7 @@
                 </div>
             </div>
 
-            <a class="mobile-nav-link font-label-lg text-label-lg "
+            <a class="mobile-nav-link font-label-lg text-label-lg ${caridokterPages.includes(page) ? 'mobile-active' : ''}"
                href="${base}caridokter.html">
                 <span class="material-symbols-outlined text-[20px]" style="color:#34918C;">person_search</span> Cari Dokter
             </a>
