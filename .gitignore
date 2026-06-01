@@ -123,3 +123,12 @@ logs/
 *.pem
 *.key
 *.secret
+
+# --- File Presentasi & Tugas (Abaikan) ---
+*.pdf
+*.pptx
+*.ppt
+*.txt
+*.md
+materi/
+pemetaan_materi_implementasi.md

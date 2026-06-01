@@ -70,8 +70,12 @@
         transition: all 0.38s cubic-bezier(0.22, 1, 0.36, 1);
         display: flex;
         flex-direction: column;
-        width: calc(100% - max(48px, 10vw));
-        max-width: calc(min(1440px, 88vw) - 48px);
+        width: calc(100% - max(32px, 5vw));
+        max-width: 1392px;
+    }
+    /* Mobile Menu Open State */
+    #navbar-header.menu-is-open {
+        border-radius: 24px;
     }
     
     /* Scrolled state */
@@ -82,7 +86,7 @@
         -webkit-backdrop-filter: blur(20px);
         box-shadow: 0 8px 32px rgba(34, 66, 102, 0.12);
         border-color: rgba(226, 232, 240, 1);
-        max-width: calc(min(1440px, 88vw) - 96px); /* Sedikit mengecil saat discroll agar manis */
+        max-width: 1344px; /* Sedikit mengecil saat discroll agar manis */
     }
 
     /* ── Navbar inner layout ──────────────────────────────── */
@@ -99,7 +103,6 @@
 
     /* ── Desktop nav links ────────────── */
     .nav-links-container {
-        display: flex;
         align-items: center;
         gap: 24px;
     }
@@ -390,7 +393,16 @@
                         <a href="${base}layanan/klinik-geriatri.html" class="block py-1.5 text-[13px] font-medium text-jakarta-blue">Klinik Geriatri</a>
                         <a href="${base}layanan/klinik-sehati.html" class="block py-1.5 text-[13px] font-medium text-jakarta-blue">Klinik Sehati</a>
                     </div>
-                    <a href="${base}layanan/laboratorium.html" class="block py-2 text-[14px] text-on-surface-variant hover:text-health-green font-medium">Penunjang Medis</a>
+                    <!-- Penunjang Medis Accordion -->
+                    <button onclick="document.getElementById('mobile-penunjang-medis').classList.toggle('hidden'); this.querySelector('.sub-arrow').classList.toggle('rotate-180');" class="w-full flex items-center justify-between py-2 text-[14px] text-on-surface-variant hover:text-health-green font-medium text-left">
+                        Penunjang Medis
+                        <span class="material-symbols-outlined sub-arrow transition-transform text-[18px]">keyboard_arrow_down</span>
+                    </button>
+                    <div id="mobile-penunjang-medis" class="hidden pl-3 border-l-2 border-surface-subtle space-y-1 my-1">
+                        <a href="${base}layanan/laboratorium.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Laboratorium</a>
+                        <a href="${base}layanan/radiologi.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Radiologi</a>
+                        <a href="${base}layanan/farmasi.html" class="block py-1.5 text-[13px] text-text-muted hover:text-health-green">Farmasi</a>
+                    </div>
                 </div>
             </div>
 
@@ -481,6 +493,7 @@
       toggleBtn.setAttribute("aria-expanded", String(menuOpen));
       toggleIcon.textContent = menuOpen ? "close" : "menu";
       toggleBtn.classList.toggle("menu-is-open", menuOpen);
+      header.classList.toggle("menu-is-open", menuOpen);
       updateSpacer();
     };
 
