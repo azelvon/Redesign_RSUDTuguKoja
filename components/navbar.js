@@ -72,10 +72,7 @@
         flex-direction: column;
         width: calc(100% - max(32px, 5vw));
         max-width: 1392px;
-    }
-    /* Mobile Menu Open State */
-    #navbar-header.menu-is-open {
-        border-radius: 24px;
+        position: relative;
     }
     
     /* Scrolled state */
@@ -139,18 +136,34 @@
 
     /* ── Mobile menu: slide-down animation ────────────────── */
     #mobile-nav {
+        position: absolute;
+        top: calc(100% + 12px);
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(226, 232, 240, 0.75);
+        border-radius: 24px;
+        box-shadow: 0 8px 32px rgba(34, 66, 102, 0.12);
+        
         overflow: hidden;
         max-height: 0;
         opacity: 0;
+        transform: translateY(-16px);
         transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1),
                     opacity 0.3s ease,
+                    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
                     padding 0.3s ease;
+        pointer-events: none;
     }
     #mobile-nav.is-open {
-        max-height: calc(100vh - 80px);
+        max-height: calc(100vh - 120px);
         overflow-y: auto;
         opacity: 1;
+        transform: translateY(0);
         padding-bottom: 12px;
+        pointer-events: auto;
     }
 
     /* ── Mobile nav links ─────────────────────────────────── */
