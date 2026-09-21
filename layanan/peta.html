@@ -72,6 +72,17 @@
         .room-group.highlight-blink .room-rect {
             animation: blinkHighlight 1s infinite alternate;
         }
+
+        /* ── Responsive: Mobile Compatibility Notice vs Map Area ── */
+        /* Mobile (< 768px): tampil notice, sembunyikan peta */
+        #peta-mobile-notice { display: block; }
+        #peta-main-content  { display: none;  }
+
+        /* Desktop/Tablet (>= 768px): sembunyikan notice, tampilkan peta */
+        @media (min-width: 768px) {
+            #peta-mobile-notice { display: none; }
+            #peta-main-content  { display: flex; }
+        }
     </style>
 </head>
 <body class="bg-surface text-on-surface font-body-md">
@@ -114,7 +125,7 @@
     </section>
 
     <!-- Mobile Compatibility Notice (Tampil hanya di layar HP < 768px) -->
-    <div class="block md:hidden max-w-container-max mx-auto px-gutter py-10 w-full">
+    <div id="peta-mobile-notice" class="max-w-container-max mx-auto px-gutter py-10 w-full">
         <div class="bg-white rounded-[24px] border border-slate-200/90 p-6 sm:p-8 shadow-lg text-center flex flex-col items-center">
             <!-- Icon Badge -->
             <div class="w-20 h-20 rounded-2xl bg-amber-50 border border-amber-200/80 flex items-center justify-center text-amber-600 mb-5 shadow-sm relative">
@@ -172,7 +183,7 @@
     </div>
 
     <!-- Main Content Area (Disembunyikan di HP, Tampil di Layar Lebih Besar / Desktop) -->
-    <div class="hidden md:flex max-w-container-max mx-auto px-gutter py-12 flex-col md:flex-row gap-8 w-full">
+    <div id="peta-main-content" class="max-w-container-max mx-auto px-gutter py-12 flex-col md:flex-row gap-8 w-full">
         <!-- SideNavBar -->
         <aside class="w-full md:w-80 flex flex-col bg-white rounded-[24px] border border-surface-subtle shadow-sm z-40 relative flex-shrink-0 h-fit">
             <div class="p-6 border-b border-surface-subtle">
