@@ -84,12 +84,15 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
-        /* Fix Widget Disabilitas Overflow di Mobile */
+        /* Fix Widget Disabilitas Overflow & Mobile Bottom Bar Spacing */
         @media (max-width: 768px) {
             #widget_menu_disabilitas,
             .content_aksesbilitas,
             [id*="disabilitas"] {
                 display: none !important;
+            }
+            body {
+                padding-bottom: 74px;
             }
         }
 
@@ -179,18 +182,22 @@
             transform: translateY(-1px);
         }
 
-        /* ── Modern High-Performance Scroll-Reveal Animation ── */
+        /* ── Bidirectional Scroll-Reveal Animation (Smooth on Scroll Down & Up) ── */
         .reveal-on-scroll {
             opacity: 0;
             transform: translateY(28px);
-            transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), 
-                        transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), 
+                        transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: opacity, transform;
+        }
+
+        .reveal-on-scroll.from-top:not(.is-revealed) {
+            transform: translateY(-28px);
         }
 
         .reveal-on-scroll.is-revealed {
             opacity: 1 !important;
-            transform: translateY(0);
+            transform: translateY(0) !important;
         }
 
         /* Staggered Delay Utilities for Natural Cascade */
@@ -359,8 +366,8 @@
                 setTimeout(typeLoop, 500);
             })();
         </script>
-        <!-- Quick Access (Bento Style & Hospital Readiness Pulse) -->
-        <section class="relative -mt-24 lg:-mt-36 z-20 max-w-container-max mx-auto px-gutter mb-12 lg:mb-16">
+        <!-- Quick Access (Bento Style & Hospital Readiness Pulse) - Hidden on mobile in favor of fixed bottom bar -->
+        <section class="hidden md:block relative -mt-24 lg:-mt-36 z-20 max-w-container-max mx-auto px-gutter mb-12 lg:mb-16">
             <!-- Subtle Ambient Glow Behind Quick Access -->
             <div class="absolute inset-0 -z-10 pointer-events-none flex justify-around items-center overflow-hidden" aria-hidden="true">
                 <div class="w-72 h-32 bg-gradient-to-r from-health-green/8 to-teal-400/6 rounded-full blur-3xl -translate-y-4"></div>
@@ -455,7 +462,7 @@
             </div>
         </section>
         <!-- Layanan Unggulan (Smooth Flowing Canvas with Ambient Depth) -->
-        <section class="relative w-full pt-20 pb-20 md:pb-24 bg-gradient-to-b from-[#f7f9fb] via-[#f1f6f8] to-[#eaf2f5] overflow-hidden">
+        <section class="relative w-full pt-12 md:pt-20 pb-20 md:pb-24 bg-gradient-to-b from-[#f7f9fb] via-[#f1f6f8] to-[#eaf2f5] overflow-hidden">
             <!-- Directional Visual Flow: Alur visual mengalir dari Judul (kiri atas) memayungi 3 kartu (tengah) menuju transisi berikutnya (kanan bawah) -->
             <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
                 <!-- SVG Gradient Definitions -->
@@ -699,6 +706,50 @@
 
     <!-- Footer -->
     <div id="footer-container"></div>
+
+    <!-- Mobile Fixed Bottom Navigation Bar (5 Tombol: Jadwal -> Standar -> Emergency 112 -> Peta -> PPID) -->
+    <nav class="block md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-slate-200/90 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] pb-[max(env(safe-area-inset-bottom),4px)]" aria-label="Navigasi Cepat Mobile">
+        <div class="grid grid-cols-5 h-[62px] max-w-lg mx-auto items-center px-1">
+            <!-- 1. Jadwal -->
+            <a href="caridokter.html" class="flex flex-col items-center justify-center py-1 text-slate-600 hover:text-emerald-800 active:scale-95 transition-all text-decoration-none group">
+                <span class="material-symbols-outlined text-[22px] group-hover:text-emerald-800 transition-colors">calendar_month</span>
+                <span class="text-[11px] font-medium tracking-tight mt-0.5 group-hover:text-emerald-800 transition-colors">Jadwal</span>
+            </a>
+
+            <!-- 2. Standar -->
+            <a href="standar%20pelayanan.html" class="flex flex-col items-center justify-center py-1 text-slate-600 hover:text-emerald-800 active:scale-95 transition-all text-decoration-none group">
+                <span class="material-symbols-outlined text-[22px] group-hover:text-emerald-800 transition-colors">clinical_notes</span>
+                <span class="text-[11px] font-medium tracking-tight mt-0.5 group-hover:text-emerald-800 transition-colors">Standar</span>
+            </a>
+
+            <!-- 3. Tombol Merah Emergency 112 (Elevated Center Call Button) -->
+            <div class="flex flex-col items-center justify-center relative -top-3">
+                <a href="tel:112" 
+                   class="w-[58px] h-[58px] rounded-full bg-gradient-to-tr from-[#be123c] to-[#e11d48] border-[3.5px] border-white shadow-[0_4px_18px_rgba(225,29,72,0.48)] flex flex-col items-center justify-center text-white active:scale-90 transition-transform duration-200 relative group no-underline"
+                   aria-label="Panggilan Darurat 112">
+                    <!-- Subtle pulsing ring -->
+                    <span class="absolute inset-0 rounded-full bg-rose-500 opacity-25 animate-ping pointer-events-none"></span>
+                    <span class="material-symbols-outlined text-[22px] leading-none text-white relative z-10">call</span>
+                    <span class="text-[10px] font-extrabold text-white tracking-wider leading-none mt-0.5 relative z-10">112</span>
+                </a>
+            </div>
+
+            <!-- 4. Peta -->
+            <a href="layanan/peta.html" class="flex flex-col items-center justify-center py-1 text-slate-600 hover:text-emerald-800 active:scale-95 transition-all text-decoration-none group">
+                <span class="material-symbols-outlined text-[22px] group-hover:text-emerald-800 transition-colors">map</span>
+                <span class="text-[11px] font-medium tracking-tight mt-0.5 group-hover:text-emerald-800 transition-colors">Peta</span>
+            </a>
+
+            <!-- 5. PPID -->
+            <a href="https://rsudtugukoja.jakarta.go.id/ppid/public/page/beranda" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="flex flex-col items-center justify-center py-1 text-slate-600 hover:text-emerald-800 active:scale-95 transition-all text-decoration-none group">
+                <span class="material-symbols-outlined text-[22px] group-hover:text-emerald-800 transition-colors">folder_managed</span>
+                <span class="text-[11px] font-medium tracking-tight mt-0.5 group-hover:text-emerald-800 transition-colors">PPID</span>
+            </a>
+        </div>
+    </nav>
     <script>
         // Micro-interaction for smooth scrolling or hover effects
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -710,22 +761,46 @@
             });
         });
 
-        // Modern Smooth Scroll-Reveal Observer (fade-up on viewport entry)
+        // Bidirectional Smooth Scroll-Reveal Observer (Active on both Scroll Down & Scroll Up)
         (function initScrollReveal() {
             const revealElements = document.querySelectorAll('.reveal-on-scroll');
             if (!revealElements.length) return;
 
-            const revealObserver = new IntersectionObserver((entries, observer) => {
+            let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
+            let scrollDir = 'down';
+
+            window.addEventListener('scroll', () => {
+                const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
+                if (Math.abs(currentScrollY - lastScrollY) > 2) {
+                    scrollDir = currentScrollY < lastScrollY ? 'up' : 'down';
+                    lastScrollY = currentScrollY;
+                }
+            }, { passive: true });
+
+            const revealObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('is-revealed');
-                        observer.unobserve(entry.target);
+                        if (scrollDir === 'up') {
+                            entry.target.classList.add('from-top');
+                        } else {
+                            entry.target.classList.remove('from-top');
+                        }
+                        requestAnimationFrame(() => {
+                            entry.target.classList.add('is-revealed');
+                        });
+                    } else {
+                        entry.target.classList.remove('is-revealed');
+                        if (entry.boundingClientRect.top < 0) {
+                            entry.target.classList.add('from-top');
+                        } else {
+                            entry.target.classList.remove('from-top');
+                        }
                     }
                 });
             }, {
                 root: null,
-                rootMargin: '0px 0px -40px 0px',
-                threshold: 0.08
+                rootMargin: '-45px 0px -45px 0px',
+                threshold: 0.05
             });
 
             revealElements.forEach(el => revealObserver.observe(el));

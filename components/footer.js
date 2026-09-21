@@ -154,20 +154,13 @@
     }
 </style>
 
-<!-- Curved Top Boundary with Inward Curve (Melengkung ke Dalam Footer) & Signature Teal Outline Accent -->
-<div class="w-full overflow-hidden leading-none -mb-[1px] pointer-events-none" aria-hidden="true" style="background: transparent;">
-    <svg class="block w-full h-8 md:h-12" viewBox="0 0 1440 64" preserveAspectRatio="none">
-        <!-- Dark Navy Fill below the inward curve merging seamlessly into footer body -->
-        <path d="M 0,2 Q 720,72 1440,2 L 1440,64 L 0,64 Z" fill="#1a3554" />
-        <!-- Signature Inward Outline Stroke dipping gracefully into the footer interior -->
-        <path d="M 0,2 Q 720,72 1440,2" fill="none" stroke="#34918C" stroke-width="3" stroke-linecap="round" />
-    </svg>
-</div>
-
 <footer class="w-full" style="background: linear-gradient(180deg, #1a3554 0%, #224266 100%);" role="contentinfo" aria-label="Footer RSUD Tugu Koja">
 
+    <!-- Straight Accent line -->
+    <div class="w-full h-[3px]" style="background: linear-gradient(90deg, #224266 0%, #34918C 30%, #9af2ec 50%, #34918C 70%, #224266 100%);"></div>
+
     <!-- Main footer body -->
-    <div class="max-w-container-max mx-auto px-gutter pt-8 md:pt-10 pb-12">
+    <div class="max-w-container-max mx-auto px-gutter pt-12 md:pt-14 pb-12">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
 
             <!-- Column 1: Brand (span 4) -->
