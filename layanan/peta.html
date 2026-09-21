@@ -113,8 +113,66 @@
         </div>
     </section>
 
-    <!-- Main Content Area -->
-    <div class="max-w-container-max mx-auto px-gutter py-12 flex flex-col md:flex-row gap-8 w-full">
+    <!-- Mobile Compatibility Notice (Tampil hanya di layar HP < 768px) -->
+    <div class="block md:hidden max-w-container-max mx-auto px-gutter py-10 w-full">
+        <div class="bg-white rounded-[24px] border border-slate-200/90 p-6 sm:p-8 shadow-lg text-center flex flex-col items-center">
+            <!-- Icon Badge -->
+            <div class="w-20 h-20 rounded-2xl bg-amber-50 border border-amber-200/80 flex items-center justify-center text-amber-600 mb-5 shadow-sm relative">
+                <span class="material-symbols-outlined text-[42px]">desktop_windows</span>
+                <span class="absolute -top-1.5 -right-1.5 w-6 h-6 rounded-full bg-emergency-red text-white flex items-center justify-center text-[13px] font-bold shadow">!</span>
+            </div>
+
+            <!-- Category / Alert Tag -->
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-800 border border-amber-200 mb-3">
+                <span class="material-symbols-outlined text-[15px] text-amber-600">devices</span>
+                Kompatibilitas Perangkat
+            </span>
+
+            <!-- Title -->
+            <h2 class="font-headline-md text-jakarta-blue font-bold text-[20px] sm:text-[22px] mb-3 leading-snug">
+                Peta Fasilitas Tidak Kompatibel di Layar HP
+            </h2>
+
+            <!-- Explanation -->
+            <p class="text-slate-600 text-[14px] sm:text-[15px] leading-relaxed max-w-md mb-6">
+                Visualisasi denah interaktif multi-lantai dan tur gedung RSUD Tugu Koja memerlukan resolusi tinggi serta area navigasi yang luas. Fitur ini <strong>hanya dapat diakses secara optimal melalui perangkat berlayar lebih besar</strong> seperti Tablet, Laptop, atau Komputer Desktop.
+            </p>
+
+            <!-- Recommended Devices -->
+            <div class="w-full max-w-sm bg-slate-50 border border-slate-200/80 rounded-2xl p-4 mb-7 text-left">
+                <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2.5 text-center">Perangkat yang Didukung:</p>
+                <div class="grid grid-cols-3 gap-2 text-center text-xs font-semibold text-slate-700">
+                    <div class="flex flex-col items-center gap-1 p-2 rounded-xl bg-white border border-slate-200 shadow-2xs">
+                        <span class="material-symbols-outlined text-[20px] text-emerald-700">laptop</span>
+                        <span>Laptop</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1 p-2 rounded-xl bg-white border border-slate-200 shadow-2xs">
+                        <span class="material-symbols-outlined text-[20px] text-emerald-700">desktop_windows</span>
+                        <span>Desktop</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1 p-2 rounded-xl bg-white border border-slate-200 shadow-2xs">
+                        <span class="material-symbols-outlined text-[20px] text-emerald-700">tablet_mac</span>
+                        <span>Tablet</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alternative Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-3 w-full max-w-xs">
+                <a href="../layanan.html" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-jakarta-blue text-white font-semibold text-sm hover:bg-primary transition-all shadow-md active:scale-95 text-decoration-none">
+                    <span class="material-symbols-outlined text-[18px]">medical_services</span>
+                    <span>Lihat Layanan RS</span>
+                </a>
+                <a href="../index.html" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-slate-100 text-slate-700 font-semibold text-sm hover:bg-slate-200 transition-all border border-slate-200 active:scale-95 text-decoration-none">
+                    <span class="material-symbols-outlined text-[18px]">home</span>
+                    <span>Kembali ke Beranda</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Area (Disembunyikan di HP, Tampil di Layar Lebih Besar / Desktop) -->
+    <div class="hidden md:flex max-w-container-max mx-auto px-gutter py-12 flex-col md:flex-row gap-8 w-full">
         <!-- SideNavBar -->
         <aside class="w-full md:w-80 flex flex-col bg-white rounded-[24px] border border-surface-subtle shadow-sm z-40 relative flex-shrink-0 h-fit">
             <div class="p-6 border-b border-surface-subtle">
