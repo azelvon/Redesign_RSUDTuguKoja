@@ -212,28 +212,28 @@
         <button
           id="btn-az"
           onclick="switchTab('az')"
-          class="tab-btn flex flex-col items-center justify-center gap-1 p-3 rounded-2xl border border-surface-subtle bg-white hover:shadow-lg transition-all group"
+          class="tab-btn flex flex-col items-center justify-center gap-1 p-3 rounded-2xl border-2 border-jakarta-blue bg-jakarta-blue text-white shadow-xl cursor-pointer"
         >
           <span
-            class="material-symbols-outlined text-3xl group-hover:scale-110 transition-transform icon-color text-jakarta-blue"
+            class="material-symbols-outlined text-3xl icon-color text-white"
+            style="font-variation-settings: &quot;FILL&quot; 1"
             >person_search</span
           >
           <span
-            class="font-label-lg text-label-lg text-primary title-color"
+            class="font-label-lg text-label-lg title-color text-white"
             >Daftar Dokter A-Z</span
           >
         </button>
         <button
           id="btn-gejala"
           onclick="switchTab('gejala')"
-          class="tab-btn flex flex-col items-center justify-center gap-1 p-3 rounded-2xl border-2 border-jakarta-blue bg-jakarta-blue text-white shadow-xl"
+          class="tab-btn flex flex-col items-center justify-center gap-1 p-3 rounded-2xl border border-surface-subtle bg-white hover:shadow-lg transition-all group cursor-pointer"
         >
           <span
-            class="material-symbols-outlined text-3xl icon-color text-white"
-            style="font-variation-settings: &quot;FILL&quot; 1"
+            class="material-symbols-outlined text-3xl group-hover:scale-110 transition-transform icon-color text-jakarta-blue"
             >ecg_heart</span
           >
-          <span class="font-label-lg text-label-lg title-color text-white"
+          <span class="font-label-lg text-label-lg text-primary title-color"
             >Cari Gejala</span
           >
         </button>
@@ -257,14 +257,14 @@
         <!-- AZ Section -->
         <section
           id="section-az"
-          class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-surface-subtle hidden relative"
+          class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-surface-subtle relative"
         >
           <div class="text-center mb-6">
             <h2 class="font-headline-md text-headline-md text-primary mb-2">
-              Cari Berdasarkan Abjad
+              Daftar Dokter
             </h2>
             <p class="font-body-md text-[14px] text-text-muted">
-              Pilih inisial nama dokter yang Anda cari.
+              Semua dokter ditampilkan. Filter berdasarkan inisial nama, atau ketik langsung di kolom pencarian.
             </p>
           </div>
           <div
@@ -711,69 +711,70 @@
       // RENDER: Build doctor card HTML
       // ========================================
       function renderDoctorCard(dokter, penyakitId) {
+        const hariIni = getHariIni();
+        const hariUrutan = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+        const hariSingkat = { Senin: "Sen", Selasa: "Sel", Rabu: "Rab", Kamis: "Kam", Jumat: "Jum", Sabtu: "Sab" };
+
+        // Build minimal day chips
+        const dayChips = hariUrutan.map(hari => {
+          const j = dokter.jadwal.find(d => d.hari === hari);
+          const isToday = hari === hariIni;
+          const hasPagi = j && j.pagi;
+          const hasSore = j && j.sore;
+          const hasSchedule = hasPagi || hasSore;
+          const timeSlot = [hasPagi ? j.pagi : '', hasSore ? j.sore : ''].filter(Boolean).join(' · ');
+
+          if (isToday && hasSchedule) {
+            // Today with schedule: green chip with time
+            return `<span title="${hari}: ${timeSlot}" class="inline-flex flex-col items-center px-2 py-1 rounded-lg bg-emerald-50 border border-emerald-300 text-emerald-700 text-[10px] font-bold leading-tight whitespace-nowrap">
+              <span>${hariSingkat[hari]}</span>
+              <span class="font-normal text-[9px] text-emerald-600">${timeSlot.split('·')[0].trim()}</span>
+            </span>`;
+          } else if (isToday && !hasSchedule) {
+            // Today but no schedule: outlined grey-green
+            return `<span title="${hari}: Tidak praktik" class="inline-flex items-center px-2 py-1 rounded-lg border border-slate-200 text-slate-300 text-[10px] font-bold">
+              ${hariSingkat[hari]}
+            </span>`;
+          } else if (hasSchedule) {
+            // Other day with schedule: subtle teal dot
+            return `<span title="${hari}: ${timeSlot}" class="inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-slate-50 border border-slate-100 text-slate-500 text-[10px] font-semibold">
+              <span class="w-1.5 h-1.5 rounded-full bg-health-green inline-block flex-shrink-0"></span>${hariSingkat[hari]}
+            </span>`;
+          } else {
+            // No schedule: faded
+            return `<span title="${hari}: Tidak praktik" class="inline-flex items-center px-2 py-1 rounded-lg text-slate-200 text-[10px] font-semibold">
+              ${hariSingkat[hari]}
+            </span>`;
+          }
+        }).join('');
+
+        // Today's time (only shown if practicing today)
         const jadwalHariIni = getJadwalHariIni(dokter);
-        const jadwalBerikutnya = !jadwalHariIni
-          ? getJadwalBerikutnya(dokter)
-          : null;
-
-        let availabilityHTML = "";
-        if (jadwalHariIni) {
-          availabilityHTML = `
-                    <div class="flex items-center gap-2 text-sm text-text-muted mb-4">
-                        <span class="material-symbols-outlined text-[18px] text-health-green">check_circle</span>
-                        <span>Tersedia Hari Ini (${jadwalHariIni})</span>
-                    </div>`;
-        } else if (jadwalBerikutnya) {
-          availabilityHTML = `
-                    <div class="flex items-center gap-2 text-sm text-text-muted mb-4">
-                        <span class="material-symbols-outlined text-[18px] text-text-muted">event_available</span>
-                        <span>Tersedia ${jadwalBerikutnya.hari} (${jadwalBerikutnya.jam})</span>
-                    </div>`;
-        } else {
-          availabilityHTML = `
-                    <div class="flex items-center gap-2 text-sm text-text-muted mb-4">
-                        <span class="material-symbols-outlined text-[18px] text-text-muted">event_busy</span>
-                        <span>Jadwal belum tersedia</span>
-                    </div>`;
-        }
-
-        // Show keahlian tags (max 3)
-        const keahlianTags = (dokter.keahlian || [])
-          .slice(0, 3)
-          .map((k) => {
-            const label = k
-              .replace(/-/g, " ")
-              .replace(/\b\w/g, (c) => c.toUpperCase());
-            const isMatch = penyakitId && k === penyakitId;
-            return `<span class="px-3 py-1 ${isMatch ? "bg-health-green/15 text-health-green border border-health-green/30" : "bg-surface-container text-on-surface-variant"} text-xs rounded-full">${label}</span>`;
-          })
-          .join("");
 
         // Determine avatar
         const isFemale = dokter.foto && dokter.foto.includes("female");
         const avatarImg = isFemale ? "assets/images/dokter/dokter_wanita.png" : "assets/images/dokter/dokter_pria.png";
 
         return `
-                <div class="bg-white p-6 rounded-2xl border border-surface-subtle shadow-sm hover:shadow-md transition-shadow flex flex-col md:flex-row gap-6 items-start"
+                <div class="bg-white px-5 py-4 rounded-2xl border border-slate-100 hover:border-slate-200 hover:shadow-sm transition-all flex items-center gap-4"
                      style="animation: fadeSlideIn 0.4s ease both;">
-                    <div class="w-24 h-24 md:w-32 md:h-32 rounded-xl bg-surface-container flex-shrink-0 overflow-hidden border border-surface-subtle">
-                        <img src="${avatarImg}" alt="Foto ${dokter.nama}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+                    <div class="w-14 h-14 rounded-xl bg-surface-container flex-shrink-0 overflow-hidden">
+                        <img src="${avatarImg}" alt="Foto ${dokter.nama}" class="w-full h-full object-cover" />
                     </div>
-                    <div class="flex-grow">
-                        <h3 class="font-headline-md text-headline-md text-primary mb-1">${dokter.nama}</h3>
-                        <p class="text-text-muted mb-2">${dokter.spesialisasi}</p>
-                        ${availabilityHTML}
-                        <div class="flex items-center gap-2 flex-wrap">
-                            ${keahlianTags}
+                    <div class="flex-grow min-w-0">
+                        <h3 class="font-semibold text-[15px] text-primary truncate">${dokter.nama}</h3>
+                        <p class="text-text-muted text-[13px] mb-2 truncate">${dokter.spesialisasi}</p>
+                        <div class="flex gap-1 flex-wrap items-center">
+                            ${dayChips}
+                            ${jadwalHariIni ? `<span class="ml-1 text-[11px] text-emerald-600 font-medium">• Praktik hari ini</span>` : ''}
                         </div>
                     </div>
-                    <div class="flex items-center flex-shrink-0">
-                        <a href="caridokter/profil.html?slug=${generateSlug(dokter.nama)}" class="w-10 h-10 rounded-full border border-jakarta-blue text-jakarta-blue flex items-center justify-center hover:bg-jakarta-blue hover:text-white transition-colors">
-                            <span class="material-symbols-outlined text-[20px]">chevron_right</span>
-                        </a>
-                    </div>
+                    <a href="caridokter/profil.html?slug=${generateSlug(dokter.nama)}" class="w-8 h-8 rounded-full border border-slate-200 text-slate-400 flex items-center justify-center hover:border-jakarta-blue hover:text-jakarta-blue transition-colors flex-shrink-0">
+                        <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+                    </a>
                 </div>`;
       }
+
 
       // ========================================
       // DOM REFERENCES
@@ -1197,20 +1198,20 @@
       // A-Z & SPESIALISASI TABS
       // ========================================
 
-      // Generate A-Z buttons
+        // Generate A-Z buttons
       const azContainer = document.getElementById("az-buttons");
       if (azContainer) {
         const alphabet = Array.from({ length: 26 }, (_, i) =>
           String.fromCharCode(65 + i),
         );
-        azContainer.innerHTML = alphabet
-          .map(
-            (char) => `
-                <button class="w-12 h-12 rounded-xl border border-surface-subtle bg-white hover:bg-jakarta-blue hover:text-white font-headline-md text-primary transition-all shadow-sm flex items-center justify-center"
-                    onclick="showResults({ initial: '${char}', label: 'Dokter dengan Inisial ${char}' })">${char}</button>
-            `,
-          )
-          .join("");
+        // 'Semua' button first, then A-Z
+        const allBtn = `<button id="az-btn-all" class="px-4 h-12 rounded-xl border-2 border-jakarta-blue bg-jakarta-blue text-white font-headline-md transition-all shadow-md flex items-center justify-center gap-1.5"
+            onclick="showAZAll()"><span class="material-symbols-outlined text-[18px]">group</span> Semua</button>`;
+        const alphaButtons = alphabet.map((char) => `
+                <button class="az-alpha-btn w-12 h-12 rounded-xl border border-surface-subtle bg-white hover:bg-jakarta-blue hover:text-white font-headline-md text-primary transition-all shadow-sm flex items-center justify-center"
+                    onclick="filterAZLetter('${char}')">${char}</button>
+            `).join("");
+        azContainer.innerHTML = allBtn + alphaButtons;
       }
 
       // A-Z search input
@@ -1360,9 +1361,44 @@
       });
 
       // ========================================
+      // A-Z: Show all doctors (no letter filter)
+      // ========================================
+      window.showAZAll = function () {
+        // Reset letter button styles
+        document.querySelectorAll('.az-alpha-btn').forEach(btn => {
+          btn.className = 'az-alpha-btn w-12 h-12 rounded-xl border border-surface-subtle bg-white hover:bg-jakarta-blue hover:text-white font-headline-md text-primary transition-all shadow-sm flex items-center justify-center';
+        });
+        const allBtn = document.getElementById('az-btn-all');
+        if (allBtn) allBtn.className = 'px-4 h-12 rounded-xl border-2 border-jakarta-blue bg-jakarta-blue text-white font-headline-md transition-all shadow-md flex items-center justify-center gap-1.5';
+
+        showResults({ label: 'Semua Dokter' });
+      };
+
+      // A-Z: Filter by initial letter
+      window.filterAZLetter = function (char) {
+        // Reset 'Semua' button
+        const allBtn = document.getElementById('az-btn-all');
+        if (allBtn) allBtn.className = 'px-4 h-12 rounded-xl border border-surface-subtle bg-white hover:bg-jakarta-blue hover:text-white font-headline-md text-primary transition-all shadow-sm flex items-center justify-center gap-1.5';
+
+        // Highlight selected letter
+        document.querySelectorAll('.az-alpha-btn').forEach(btn => {
+          const isActive = btn.textContent.trim() === char;
+          btn.className = isActive
+            ? 'az-alpha-btn w-12 h-12 rounded-xl border-2 border-jakarta-blue bg-jakarta-blue text-white font-headline-md transition-all shadow-md flex items-center justify-center'
+            : 'az-alpha-btn w-12 h-12 rounded-xl border border-surface-subtle bg-white hover:bg-jakarta-blue hover:text-white font-headline-md text-primary transition-all shadow-sm flex items-center justify-center';
+        });
+
+        showResults({ initial: char, label: 'Dokter dengan Inisial ' + char });
+      };
+
+      // ========================================
       // INITIALIZE
       // ========================================
-      loadPenyakitData();
+      loadPenyakitData().then(() => {
+        // Auto-activate A-Z tab & show all doctors on load
+        switchTab('az');
+        showAZAll();
+      });
 
     </script>
 

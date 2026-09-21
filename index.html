@@ -84,15 +84,12 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
-        /* Fix Widget Disabilitas Overflow & Mobile Bottom Bar Spacing */
+        /* Fix Widget Disabilitas Overflow di Mobile */
         @media (max-width: 768px) {
             #widget_menu_disabilitas,
             .content_aksesbilitas,
             [id*="disabilitas"] {
                 display: none !important;
-            }
-            body {
-                padding-bottom: 74px;
             }
         }
 
@@ -439,8 +436,14 @@
                 <a href="https://rsudtugukoja.jakarta.go.id/ppid/public/page/beranda" 
                    target="_blank"
                    rel="noopener noreferrer"
-                   class="reveal-on-scroll delay-400 block h-full group no-underline text-inherit">
-                    <div class="menu-card-gradient p-5 md:p-6 rounded-2xl shadow-md cursor-pointer flex flex-col justify-between h-full">
+                   class="reveal-on-scroll delay-400 block h-full group no-underline text-inherit"
+                   title="Membuka website eksternal PPID RSUD Tugu Koja">
+                    <div class="menu-card-gradient p-5 md:p-6 rounded-2xl shadow-md cursor-pointer flex flex-col justify-between h-full relative">
+                        <!-- External Site Badge -->
+                        <span class="absolute top-3 right-3 inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-md bg-amber-50 border border-amber-200 text-amber-700 text-[10px] font-semibold">
+                            <span class="material-symbols-outlined text-[11px]">open_in_new</span>
+                            Eksternal
+                        </span>
                         <div>
                             <div
                                 class="w-11 h-11 md:w-12 md:h-12 bg-emerald-800/10 border border-emerald-800/20 rounded-xl flex items-center justify-center text-emerald-800 mb-3 md:mb-4 group-hover:bg-emerald-800 group-hover:text-white group-hover:scale-105 group-hover:shadow-md transition-all duration-300">
@@ -454,8 +457,8 @@
                             <p class="text-[12px] md:text-[13px] text-slate-500 font-normal leading-tight">Layanan informasi PPID</p>
                         </div>
                         <div class="mt-4 md:mt-5 flex items-center text-jakarta-blue group-hover:text-emerald-800 text-[13px] md:text-[14px] font-semibold gap-1.5 transition-colors">
-                            <span>Kunjungi Laman</span>
-                            <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1.5 transition-transform duration-300">arrow_forward</span>
+                            <span>Buka Website Eksternal</span>
+                            <span class="material-symbols-outlined text-[18px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300">open_in_new</span>
                         </div>
                     </div>
                 </a>
@@ -707,49 +710,6 @@
     <!-- Footer -->
     <div id="footer-container"></div>
 
-    <!-- Mobile Fixed Bottom Navigation Bar (5 Tombol: Jadwal -> Standar -> Emergency 112 -> Peta -> PPID) -->
-    <nav class="block md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-slate-200/90 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] pb-[max(env(safe-area-inset-bottom),4px)]" aria-label="Navigasi Cepat Mobile">
-        <div class="grid grid-cols-5 h-[62px] max-w-lg mx-auto items-center px-1">
-            <!-- 1. Jadwal -->
-            <a href="caridokter.html" class="flex flex-col items-center justify-center py-1 text-slate-600 hover:text-emerald-800 active:scale-95 transition-all text-decoration-none group">
-                <span class="material-symbols-outlined text-[22px] group-hover:text-emerald-800 transition-colors">calendar_month</span>
-                <span class="text-[11px] font-medium tracking-tight mt-0.5 group-hover:text-emerald-800 transition-colors">Jadwal</span>
-            </a>
-
-            <!-- 2. Standar -->
-            <a href="standar%20pelayanan.html" class="flex flex-col items-center justify-center py-1 text-slate-600 hover:text-emerald-800 active:scale-95 transition-all text-decoration-none group">
-                <span class="material-symbols-outlined text-[22px] group-hover:text-emerald-800 transition-colors">clinical_notes</span>
-                <span class="text-[11px] font-medium tracking-tight mt-0.5 group-hover:text-emerald-800 transition-colors">Standar</span>
-            </a>
-
-            <!-- 3. Tombol Merah Emergency 112 (Elevated Center Call Button) -->
-            <div class="flex flex-col items-center justify-center relative -top-3">
-                <a href="tel:112" 
-                   class="w-[58px] h-[58px] rounded-full bg-gradient-to-tr from-[#be123c] to-[#e11d48] border-[3.5px] border-white shadow-[0_4px_18px_rgba(225,29,72,0.48)] flex flex-col items-center justify-center text-white active:scale-90 transition-transform duration-200 relative group no-underline"
-                   aria-label="Panggilan Darurat 112">
-                    <!-- Subtle pulsing ring -->
-                    <span class="absolute inset-0 rounded-full bg-rose-500 opacity-25 animate-ping pointer-events-none"></span>
-                    <span class="material-symbols-outlined text-[22px] leading-none text-white relative z-10">call</span>
-                    <span class="text-[10px] font-extrabold text-white tracking-wider leading-none mt-0.5 relative z-10">112</span>
-                </a>
-            </div>
-
-            <!-- 4. Peta -->
-            <a href="layanan/peta.html" class="flex flex-col items-center justify-center py-1 text-slate-600 hover:text-emerald-800 active:scale-95 transition-all text-decoration-none group">
-                <span class="material-symbols-outlined text-[22px] group-hover:text-emerald-800 transition-colors">map</span>
-                <span class="text-[11px] font-medium tracking-tight mt-0.5 group-hover:text-emerald-800 transition-colors">Peta</span>
-            </a>
-
-            <!-- 5. PPID -->
-            <a href="https://rsudtugukoja.jakarta.go.id/ppid/public/page/beranda" 
-               target="_blank" 
-               rel="noopener noreferrer" 
-               class="flex flex-col items-center justify-center py-1 text-slate-600 hover:text-emerald-800 active:scale-95 transition-all text-decoration-none group">
-                <span class="material-symbols-outlined text-[22px] group-hover:text-emerald-800 transition-colors">folder_managed</span>
-                <span class="text-[11px] font-medium tracking-tight mt-0.5 group-hover:text-emerald-800 transition-colors">PPID</span>
-            </a>
-        </div>
-    </nav>
     <script>
         // Micro-interaction for smooth scrolling or hover effects
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {

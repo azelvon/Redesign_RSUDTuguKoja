@@ -83,6 +83,11 @@
             #peta-mobile-notice { display: none; }
             #peta-main-content  { display: flex; }
         }
+
+        /* Padding bawah di HP agar konten tidak tertutup bottom nav */
+        @media (max-width: 767px) {
+            body { padding-bottom: 74px; }
+        }
     </style>
 </head>
 <body class="bg-surface text-on-surface font-body-md">
@@ -1062,8 +1067,8 @@
         };
     </script>
     <div id="footer-container"></div>
+
     <script src="../components/navbar.js"></script>
     <script src="../components/footer.js"></script>
 </body>
 </html>
-
