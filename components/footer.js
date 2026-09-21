@@ -154,24 +154,35 @@
     }
 </style>
 
+<!-- Curved Top Boundary with Inward Curve (Melengkung ke Dalam Footer) & Signature Teal Outline Accent -->
+<div class="w-full overflow-hidden leading-none -mb-[1px] pointer-events-none" aria-hidden="true" style="background: transparent;">
+    <svg class="block w-full h-8 md:h-12" viewBox="0 0 1440 64" preserveAspectRatio="none">
+        <!-- Dark Navy Fill below the inward curve merging seamlessly into footer body -->
+        <path d="M 0,2 Q 720,72 1440,2 L 1440,64 L 0,64 Z" fill="#1a3554" />
+        <!-- Signature Inward Outline Stroke dipping gracefully into the footer interior -->
+        <path d="M 0,2 Q 720,72 1440,2" fill="none" stroke="#34918C" stroke-width="3" stroke-linecap="round" />
+    </svg>
+</div>
+
 <footer class="w-full" style="background: linear-gradient(180deg, #1a3554 0%, #224266 100%);" role="contentinfo" aria-label="Footer RSUD Tugu Koja">
 
-    <!-- Accent line -->
-    <div class="w-full h-[3px]" style="background: linear-gradient(90deg, #224266 0%, #34918C 30%, #9af2ec 50%, #34918C 70%, #224266 100%);"></div>
-
     <!-- Main footer body -->
-    <div class="max-w-container-max mx-auto px-gutter pt-14 pb-10">
+    <div class="max-w-container-max mx-auto px-gutter pt-8 md:pt-10 pb-12">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
 
             <!-- Column 1: Brand (span 4) -->
             <div class="lg:col-span-4 flex flex-col gap-4">
                 <a href="${base}index.html" class="no-underline flex items-center group w-fit" style="text-decoration:none;">
-                    <div style="background: white; padding: 6px 12px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); transition: transform 0.2s ease;" class="hover:scale-105">
+                    <div style="background: white; padding: 6px 14px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); transition: transform 0.2s ease;" class="hover:scale-105 flex items-center gap-2.5">
                         <img
-                            src="${base}assets/images/logo/logo_rsud.png"
-                            alt="Logo RSUD Tugu Koja"
-                            style="height:36px;width:auto;object-fit:contain;"
+                            src="${base}assets/images/logo/RumahSehat.png"
+                            alt="Logo Rumah Sehat RSUD Tugu Koja"
+                            style="height:38px;width:auto;object-fit:contain;"
                         >
+                        <div class="flex flex-col leading-tight">
+                            <span style="color:#224266;font-size:15px;font-weight:800;letter-spacing:-0.01em;">RSUD Tugu Koja</span>
+                            <span style="color:#64748b;font-size:9.5px;font-weight:600;letter-spacing:0.02em;">Rumah Sehat untuk Jakarta</span>
+                        </div>
                     </div>
                 </a>
                 <p class="font-body-md text-[14px] leading-relaxed max-w-xs" style="color:rgba(255,255,255,0.55);">
