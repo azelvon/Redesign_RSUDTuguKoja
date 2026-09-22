@@ -293,9 +293,9 @@
         body { padding-bottom: 74px !important; }
     }
 
-    /* The nav bar itself */
+    /* The nav bar itself — hidden on desktop, shown on mobile via CSS only */
     #global-mobile-nav {
-        display: none; /* shown via JS based on window width */
+        display: none; /* hidden on desktop ≥ 768px */
         position: fixed;
         bottom: 0; left: 0; right: 0;
         z-index: 9500;
@@ -304,7 +304,11 @@
         -webkit-backdrop-filter: blur(12px);
         border-top: 1px solid rgba(203,213,225,0.7);
         box-shadow: 0 -4px 20px rgba(0,0,0,0.07);
-        padding-bottom: max(env(safe-area-inset-bottom), 4px);
+        padding-bottom: 4px;
+    }
+    /* Show only on mobile */
+    @media (max-width: 767px) {
+        #global-mobile-nav { display: block; }
     }
     #global-mobile-nav .gmn-inner {
         display: grid;
@@ -421,9 +425,14 @@
 
     function inject() {
         const placeholder = document.getElementById('footer-container');
-        if (placeholder) placeholder.outerHTML = html;
-        bootBackToTop();
-        bootMobileNav();
+        if (placeholder) {
+            placeholder.outerHTML = html;
+            bootBackToTop();
+            bootMobileNav();
+        } else {
+            // Retry on next frame if placeholder not ready yet
+            requestAnimationFrame(inject);
+        }
     }
 
     function bootBackToTop() {
@@ -442,17 +451,7 @@
     }
 
     function bootMobileNav() {
-        const nav = document.getElementById('global-mobile-nav');
-        if (!nav) return;
-
-        // Show/hide based on viewport width
-        function updateVisibility() {
-            nav.style.display = window.innerWidth < 768 ? 'block' : 'none';
-        }
-        updateVisibility();
-        window.addEventListener('resize', updateVisibility, { passive: true });
-
-        // Highlight active button based on current page URL
+        // CSS media query handles show/hide — JS only needed for active tab highlighting
         const path = window.location.pathname.toLowerCase();
         const mappings = [
             { id: 'gmn-jadwal',  keywords: ['caridokter', 'profil'] },
