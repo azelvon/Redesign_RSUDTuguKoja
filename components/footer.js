@@ -156,22 +156,26 @@
 
 <footer class="w-full" style="background: linear-gradient(180deg, #1a3554 0%, #224266 100%);" role="contentinfo" aria-label="Footer RSUD Tugu Koja">
 
-    <!-- Accent line -->
+    <!-- Straight Accent line -->
     <div class="w-full h-[3px]" style="background: linear-gradient(90deg, #224266 0%, #34918C 30%, #9af2ec 50%, #34918C 70%, #224266 100%);"></div>
 
     <!-- Main footer body -->
-    <div class="max-w-container-max mx-auto px-gutter pt-14 pb-10">
+    <div class="max-w-container-max mx-auto px-gutter pt-12 md:pt-14 pb-12">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
 
             <!-- Column 1: Brand (span 4) -->
             <div class="lg:col-span-4 flex flex-col gap-4">
                 <a href="${base}index.html" class="no-underline flex items-center group w-fit" style="text-decoration:none;">
-                    <div style="background: white; padding: 6px 12px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); transition: transform 0.2s ease;" class="hover:scale-105">
+                    <div style="background: white; padding: 6px 14px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); transition: transform 0.2s ease;" class="hover:scale-105 flex items-center gap-2.5">
                         <img
-                            src="${base}assets/images/logo/logo_rsud.png"
-                            alt="Logo RSUD Tugu Koja"
-                            style="height:36px;width:auto;object-fit:contain;"
+                            src="${base}assets/images/logo/RumahSehat.png"
+                            alt="Logo Rumah Sehat RSUD Tugu Koja"
+                            style="height:38px;width:auto;object-fit:contain;"
                         >
+                        <div class="flex flex-col leading-tight">
+                            <span style="color:#224266;font-size:15px;font-weight:800;letter-spacing:-0.01em;">RSUD Tugu Koja</span>
+                            <span style="color:#64748b;font-size:9.5px;font-weight:600;letter-spacing:0.02em;">Rumah Sehat untuk Jakarta</span>
+                        </div>
                     </div>
                 </a>
                 <p class="font-body-md text-[14px] leading-relaxed max-w-xs" style="color:rgba(255,255,255,0.55);">
@@ -280,12 +284,155 @@
 <!-- Back to Top button -->
 <button id="back-to-top" aria-label="Kembali ke atas" title="Kembali ke atas">
     <span class="material-symbols-outlined text-[22px]">keyboard_arrow_up</span>
-</button>`;
+</button>
+
+<!-- ── Global Mobile Fixed Bottom Navigation Bar ──────────────────── -->
+<style>
+    /* Mobile body spacing so content isn't hidden behind the bar */
+    @media (max-width: 767px) {
+        body { padding-bottom: 74px !important; }
+    }
+
+    /* The nav bar itself — hidden on desktop, shown on mobile via CSS only */
+    #global-mobile-nav {
+        display: none; /* hidden on desktop ≥ 768px */
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        z-index: 9500;
+        background: rgba(255,255,255,0.97);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-top: 1px solid rgba(203,213,225,0.7);
+        box-shadow: 0 -4px 20px rgba(0,0,0,0.07);
+        padding-bottom: 4px;
+    }
+    /* Show only on mobile */
+    @media (max-width: 767px) {
+        #global-mobile-nav { display: block; }
+    }
+    #global-mobile-nav .gmn-inner {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        height: 62px;
+        max-width: 480px;
+        margin: 0 auto;
+        padding: 0 4px;
+        align-items: center;
+    }
+    #global-mobile-nav a.gmn-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        padding: 6px 2px;
+        color: #64748b;
+        text-decoration: none !important;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        transition: color 0.18s ease, transform 0.15s ease;
+        border-radius: 10px;
+        -webkit-tap-highlight-color: transparent;
+    }
+    #global-mobile-nav a.gmn-btn:active { transform: scale(0.91); }
+    #global-mobile-nav a.gmn-btn .gmn-icon { font-size: 22px; line-height: 1; }
+    #global-mobile-nav a.gmn-btn:hover,
+    #global-mobile-nav a.gmn-btn.gmn-active { color: #1b6b62; }
+
+    /* Center Emergency button wrapper */
+    #global-mobile-nav .gmn-emergency-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        top: -12px;
+    }
+    #global-mobile-nav a.gmn-emergency {
+        width: 58px; height: 58px;
+        border-radius: 9999px;
+        background: linear-gradient(135deg, #be123c 0%, #e11d48 100%);
+        border: 3.5px solid white;
+        box-shadow: 0 4px 18px rgba(225,29,72,0.45);
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        color: white;
+        text-decoration: none !important;
+        position: relative;
+        transition: transform 0.15s ease;
+        -webkit-tap-highlight-color: transparent;
+    }
+    #global-mobile-nav a.gmn-emergency:active { transform: scale(0.88); }
+    #global-mobile-nav a.gmn-emergency .gmn-pulse {
+        position: absolute; inset: 0;
+        border-radius: 9999px;
+        background: #f43f5e;
+        opacity: 0.25;
+        animation: gmnPing 2s cubic-bezier(0,0,0.2,1) infinite;
+        pointer-events: none;
+    }
+    @keyframes gmnPing {
+        0%   { transform: scale(1); opacity: 0.25; }
+        75%,100% { transform: scale(1.55); opacity: 0; }
+    }
+    #global-mobile-nav a.gmn-emergency .gmn-e-icon { font-size: 22px; line-height: 1; position: relative; z-index: 1; }
+    #global-mobile-nav a.gmn-emergency .gmn-e-label { font-size: 10px; font-weight: 800; letter-spacing: 0.05em; line-height: 1; margin-top: 2px; position: relative; z-index: 1; }
+</style>
+
+<nav id="global-mobile-nav" aria-label="Navigasi Cepat Mobile">
+    <div class="gmn-inner">
+        <!-- 1. Jadwal -->
+        <a href="${base}caridokter.html" class="gmn-btn" id="gmn-jadwal">
+            <span class="material-symbols-outlined gmn-icon">calendar_month</span>
+            <span>Jadwal</span>
+        </a>
+
+        <!-- 2. Standar -->
+        <a href="${base}standar%20pelayanan.html" class="gmn-btn" id="gmn-standar">
+            <span class="material-symbols-outlined gmn-icon">clinical_notes</span>
+            <span>Standar</span>
+        </a>
+
+        <!-- 3. Emergency 112 (Elevated Center) -->
+        <div class="gmn-emergency-wrap">
+            <a href="tel:112" class="gmn-emergency" aria-label="Panggilan Darurat 112">
+                <span class="gmn-pulse"></span>
+                <span class="material-symbols-outlined gmn-e-icon">call</span>
+                <span class="gmn-e-label">112</span>
+            </a>
+        </div>
+
+        <!-- 4. Peta -->
+        <a href="${base}layanan/peta.html" class="gmn-btn" id="gmn-peta">
+            <span class="material-symbols-outlined gmn-icon">map</span>
+            <span>Peta</span>
+        </a>
+
+        <!-- 5. PPID -->
+        <a href="https://rsudtugukoja.jakarta.go.id/ppid/public/page/beranda" target="_blank" rel="noopener noreferrer" class="gmn-btn" id="gmn-ppid" title="Membuka website eksternal PPID">
+            <span style="position:relative;display:inline-block;">
+                <span class="material-symbols-outlined gmn-icon">folder_managed</span>
+                <span style="position:absolute;top:-3px;right:-5px;width:10px;height:10px;border-radius:9999px;background:#d97706;border:1.5px solid white;display:flex;align-items:center;justify-content:center;">
+                    <span class="material-symbols-outlined" style="font-size:7px;color:white;line-height:1;">open_in_new</span>
+                </span>
+            </span>
+            <span>PPID</span>
+        </a>
+    </div>
+</nav>`;
+
 
     function inject() {
         const placeholder = document.getElementById('footer-container');
-        if (placeholder) placeholder.outerHTML = html;
-        bootBackToTop();
+        if (placeholder) {
+            placeholder.outerHTML = html;
+            bootBackToTop();
+            bootMobileNav();
+        } else {
+            // Retry on next frame if placeholder not ready yet
+            requestAnimationFrame(inject);
+        }
     }
 
     function bootBackToTop() {
@@ -302,6 +449,26 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
+
+    function bootMobileNav() {
+        // CSS media query handles show/hide — JS only needed for active tab highlighting
+        const path = window.location.pathname.toLowerCase();
+        const mappings = [
+            { id: 'gmn-jadwal',  keywords: ['caridokter', 'profil'] },
+            { id: 'gmn-standar', keywords: ['standar'] },
+            { id: 'gmn-peta',    keywords: ['peta'] },
+            { id: 'gmn-ppid',    keywords: ['ppid'] },
+        ];
+        mappings.forEach(({ id, keywords }) => {
+            const btn = document.getElementById(id);
+            if (btn && keywords.some(k => path.includes(k))) {
+                btn.style.color = '#1b6b62';
+                const icon = btn.querySelector('.gmn-icon');
+                if (icon) icon.style.fontVariationSettings = "'FILL' 1,'wght' 500,'GRAD' 0,'opsz' 24";
+            }
+        });
+    }
+
 
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', inject);

@@ -7,7 +7,7 @@
     <title>RSUD Tugu Koja - Rumah Sehat untuk Jakarta</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
-        href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700&amp;family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@300;400;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"
         rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
@@ -30,9 +30,49 @@
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Menu Card: Frosted Glass (Blur & Transparan) + Gradient Border (#224266 -> #34918C) */
+        .menu-card-gradient {
+            position: relative;
+            background: rgba(255, 255, 255, 0.84);
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            box-shadow: 0 10px 25px -4px rgba(34, 66, 102, 0.08), 0 4px 10px -2px rgba(52, 145, 140, 0.05);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                        box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                        background-color 0.3s ease;
+            will-change: transform, box-shadow;
+        }
+
+        .menu-card-gradient::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 2px;
+            background: linear-gradient(135deg, #224266 0%, #34918C 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            pointer-events-none;
+            transition: all 0.3s ease;
+        }
+
+        .menu-card-gradient:hover,
+        .group:hover .menu-card-gradient {
+            background: rgba(255, 255, 255, 0.95);
+            transform: translateY(-8px) !important;
+            box-shadow: 0 20px 38px -8px rgba(34, 66, 102, 0.20), 0 0 25px -2px rgba(52, 145, 140, 0.35) !important;
+        }
+
+        .menu-card-gradient:hover::before,
+        .group:hover .menu-card-gradient::before {
+            padding: 3.5px;
+            background: linear-gradient(135deg, #34918C 0%, #224266 100%);
         }
 
         body {
@@ -52,31 +92,171 @@
                 display: none !important;
             }
         }
+
+        /* Hero Section Curved Bottom (Ultra Smooth Continuous Arc) */
+        .hero-curved {
+            -webkit-clip-path: ellipse(160% 100% at 50% 0%);
+            clip-path: ellipse(160% 100% at 50% 0%);
+        }
+
+        @media (min-width: 768px) {
+            .hero-curved {
+                -webkit-clip-path: ellipse(120% 100% at 50% 0%);
+                clip-path: ellipse(120% 100% at 50% 0%);
+            }
+        }
+
+        /* Hero mentok ke paling atas layar agar tembus di balik emergency bar */
+        #navbar-spacer {
+            display: none !important;
+            height: 0 !important;
+        }
+
+        /* Animasi abstrak halus di latar belakang Layanan Unggulan */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-14px) rotate(4deg); }
+        }
+        @keyframes floatReverse {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(12px) rotate(-4deg); }
+        }
+        @keyframes pulseSoft {
+            0%, 100% { opacity: 0.16; transform: scale(1); }
+            50% { opacity: 0.26; transform: scale(1.06); }
+        }
+        .animate-float-slow {
+            animation: floatSlow 12s ease-in-out infinite;
+        }
+        .animate-float-reverse {
+            animation: floatReverse 14s ease-in-out infinite;
+        }
+        .animate-pulse-soft {
+            animation: pulseSoft 8s ease-in-out infinite;
+        }
+
+        /* ── Hero Search Bar with Subtle Shadow & Focus Glow ── */
+        .hero-search-bar {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 2px solid rgba(255, 255, 255, 0.85);
+            box-shadow: 0 10px 30px -4px rgba(10, 25, 45, 0.28), 0 4px 12px -2px rgba(0, 0, 0, 0.08);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .hero-search-bar:hover {
+            background: #ffffff;
+            border-color: rgba(52, 145, 140, 0.45);
+            box-shadow: 0 14px 36px -4px rgba(10, 25, 45, 0.34), 0 0 0 3px rgba(52, 145, 140, 0.15);
+            transform: translateY(-1px);
+        }
+
+        .hero-search-bar:focus-within {
+            background: #ffffff;
+            border-color: #34918C;
+            box-shadow: 
+                0 0 0 4px rgba(52, 145, 140, 0.25), 
+                0 18px 42px -6px rgba(10, 25, 45, 0.38),
+                0 6px 16px -2px rgba(52, 145, 140, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .hero-search-bar:focus-within .search-icon {
+            color: #34918C;
+            transform: scale(1.1);
+        }
+
+        .hero-search-bar .search-btn {
+            background: #224266;
+            box-shadow: 0 4px 14px rgba(34, 66, 102, 0.3);
+            transition: all 0.25s ease;
+        }
+
+        .hero-search-bar .search-btn:hover {
+            background: #183350;
+            box-shadow: 0 6px 18px rgba(34, 66, 102, 0.45);
+            transform: translateY(-1px);
+        }
+
+        /* ── Bidirectional Scroll-Reveal Animation (Smooth on Scroll Down & Up) ── */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), 
+                        transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal-on-scroll.from-top:not(.is-revealed) {
+            transform: translateY(-28px);
+        }
+
+        .reveal-on-scroll.is-revealed {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        /* Staggered Delay Utilities for Natural Cascade */
+        .delay-100 { transition-delay: 0.1s; }
+        .delay-150 { transition-delay: 0.15s; }
+        .delay-200 { transition-delay: 0.2s; }
+        .delay-250 { transition-delay: 0.25s; }
+        .delay-300 { transition-delay: 0.3s; }
+        .delay-350 { transition-delay: 0.35s; }
+        .delay-400 { transition-delay: 0.4s; }
     </style>
 </head>
 
 <body class="bg-surface text-on-surface font-body-md">
-    <div id="navbar-container" style="height: 36px;"></div>
+    <div id="navbar-container"></div>
     <script type="text/javascript" src="widget_disabilitas.js"></script>
     <main>
         <!-- Hero Section -->
-        <section class="relative w-full h-[600px] flex items-center overflow-hidden">
+        <section class="hero-curved relative w-full h-[650px] flex items-center overflow-hidden">
             <div class="absolute inset-0 z-0">
                 <img 
                     alt="RSUD Tugu Koja Building"
-                    class="w-full h-full object-cover"
-                    src="assets/images/hero/RS%20Tugu%20Koja.jpg"
+                    class="w-full h-full object-cover object-right md:object-center"
+                    src="assets/images/hero/Hero.jpg"
                 >
 
-                <div class="absolute inset-0 bg-gradient-to-r from-jakarta-blue/80 via-jakarta-blue/40 to-transparent">
+                <!-- Multi-layer Organic Gradient Overlay: Transisi Halus Tanpa Dua Blok Terpisah -->
+                <!-- Layer 1: Horizontal Deep Blend (Tebal di kiri -> memudar sangat halus ke kanan) -->
+                <div class="absolute inset-0" style="background: linear-gradient(90deg, rgba(13, 34, 56, 0.95) 0%, rgba(18, 44, 72, 0.88) 32%, rgba(22, 53, 86, 0.65) 54%, rgba(28, 66, 102, 0.25) 75%, transparent 100%);">
+                </div>
+
+                <!-- Layer 2: Organic Radial Spotlight di belakang teks (kedalaman visual & kontras maksimal) -->
+                <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 65% 85% at 18% 50%, rgba(10, 26, 44, 0.9) 0%, rgba(16, 40, 66, 0.6) 50%, transparent 100%);">
+                </div>
+
+                <!-- Layer 3: Atmospheric Health-Green Soft Glow di sudut kiri bawah -->
+                <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(circle 500px at 12% 85%, rgba(52, 145, 140, 0.22) 0%, transparent 70%);">
+                </div>
+
+                <!-- Layer 4: Soft Top & Bottom Vignette untuk menyatukan header atas & lengkungan bawah -->
+                <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(180deg, rgba(15, 29, 46, 0.45) 0%, transparent 25%, transparent 75%, rgba(10, 24, 40, 0.35) 100%);">
                 </div>
             </div>
 
-            <div class="relative z-10 max-w-container-max mx-auto px-gutter w-full">
+            <!-- Curved Bottom Outline Accent (Solid #34918C: Ilang -> Tipis -> 1.5x Lebih Tebel di 90-100%) -->
+            <div class="absolute inset-0 pointer-events-none z-[1] overflow-hidden">
+                <!-- Desktop Solid Outline (0px di kiri -> ~16px di tengah -> ~60px di kanan 90-100%) -->
+                <svg class="hidden md:block w-full h-full" viewBox="0 0 1000 600" preserveAspectRatio="none">
+                    <path d="M 0,545 C 200,582 350,605 500,605 C 650,605 800,582 1000,545 L 1000,485 C 800,532 650,586 500,588 C 350,588 200,576 0,545 Z" fill="#34918C" />
+                </svg>
+
+                <!-- Mobile Solid Outline (0px di kiri -> ~12px di tengah -> ~39px di kanan 90-100%) -->
+                <svg class="block md:hidden w-full h-full" viewBox="0 0 1000 600" preserveAspectRatio="none">
+                    <path d="M 0,570 C 200,592 350,605 500,605 C 650,605 800,592 1000,570 L 1000,531 C 800,560 650,590 500,592 C 350,592 200,585 0,570 Z" fill="#34918C" />
+                </svg>
+            </div>
+
+            <div class="relative z-10 max-w-container-max mx-auto px-gutter w-full -mt-18 md:-mt-28">
                 <div class="max-w-2xl">
                     <h1 class="font-headline-xl text-[32px] md:text-headline-xl text-white mb-4 leading-tight">
                         Transformasi Menuju <br>
-                        <span class="text-secondary-fixed">Rumah Sehat untuk Jakarta</span>
+                        <span class="text-amber-400 font-bold">Rumah Sehat untuk Jakarta</span>
                     </h1>
 
                     <p class="font-body-lg text-body-lg text-white/90 mb-8 max-w-lg">
@@ -84,23 +264,25 @@
                         masyarakat Jakarta Utara.
                     </p>
 
-                    <!-- Global Search Bar -->
-                    <div class="flex items-center bg-white rounded-2xl p-1.5 md:p-2 shadow-xl max-w-xl w-full">
-                        <span class="material-symbols-outlined text-outline ml-3 md:ml-4 text-[20px] md:text-[24px]">search</span>
+                    <!-- Global Search Bar with Subtle Shadow & Focus Glow -->
+                    <div class="hero-search-bar relative flex items-center rounded-2xl p-1.5 md:p-2 max-w-xl w-full group/search">
+                        <span class="search-icon material-symbols-outlined ml-3 md:ml-4 text-[22px] md:text-[24px] text-slate-400 transition-all duration-300">search</span>
 
                         <input
                             id="globalSearchInput"
-                            class="flex-1 border-none focus:ring-0 font-body-md text-[14px] md:text-body-md px-2 md:px-4 py-2 md:py-3 outline-none w-full min-w-0"
-                            placeholder="Cari layanan atau dokter..."
+                            class="flex-1 bg-transparent border-none focus:ring-0 font-body-md text-[14px] md:text-body-md px-2 md:px-4 py-2 md:py-3 text-jakarta-blue placeholder-slate-400 outline-none w-full min-w-0"
+                            placeholder="Cari dokter spesialis anak..."
                             type="text"
+                            autocomplete="off"
                             onkeydown="if (event.key === 'Enter') redirectSearch()"
                         >
 
                         <button
                             type="button"
-                            class="bg-health-green text-white px-5 md:px-8 py-2 md:py-3 rounded-[12px] md:rounded-xl font-label-lg text-[14px] md:text-label-lg hover:brightness-110 transition-all flex-shrink-0"
+                            class="search-btn text-white px-5 md:px-8 py-2 md:py-3 rounded-[12px] md:rounded-xl font-label-lg text-[14px] md:text-label-lg transition-all flex-shrink-0 flex items-center gap-1.5 shadow-sm font-bold tracking-wide"
                             onclick="redirectSearch()">
-                            Cari
+                            <span>Cari</span>
+                            <span class="material-symbols-outlined text-[16px] hidden md:inline-block transition-transform duration-200 group-hover/search:translate-x-0.5">arrow_forward</span>
                         </button>
                     </div>
                 </div>
@@ -113,251 +295,421 @@
                 const target = query ? `pencarian.html?q=${encodeURIComponent(query)}` : 'pencarian.html';
                 window.location.href = target;
             }
-        </script>
-        <!-- Quick Access (Bento Style) -->
-        <section class="relative -mt-20 z-20 max-w-container-max mx-auto px-gutter mb-24">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                <!-- Card 1 -->
-                <div class="glass-card p-8 rounded-2xl shadow-md hover:shadow-xl transition-all cursor-pointer group flex flex-col justify-between h-full duration-700 opacity-100 translate-y-0 hover:-translate-y-2"
-                    onclick="window.location.href='caridokter.html'">
-                    <div>
-                        <div
-                            class="w-14 h-14 bg-jakarta-blue/10 rounded-xl flex items-center justify-center text-jakarta-blue mb-6 group-hover:bg-jakarta-blue group-hover:text-white transition-colors">
-                            <span class="material-symbols-outlined text-[32px]">stethoscope</span>
-                        </div>
-                        <h3 class="font-headline-md text-headline-md text-jakarta-blue mb-2">Jadwal Dokter</h3>
-                    </div>
-                    <div class="mt-8 flex items-center text-jakarta-blue font-label-lg gap-2">
-                        Cek Jadwal <span class="material-symbols-outlined">arrow_forward</span>
-                    </div>
-                </div>
-                <!-- Card 2 -->
-                <div class="glass-card p-8 rounded-2xl shadow-md hover:shadow-xl transition-all cursor-pointer group flex flex-col justify-between h-full duration-700 opacity-100 translate-y-0 hover:-translate-y-2"
-                    onclick="window.location.href='standar%20pelayanan.html'">
-                    <div>
-                        <div
-                            class="w-14 h-14 bg-jakarta-blue/10 rounded-xl flex items-center justify-center text-jakarta-blue mb-6 group-hover:bg-jakarta-blue group-hover:text-white transition-colors">
-                            <span class="material-symbols-outlined text-[32px]">clinical_notes</span>
-                        </div>
-                        <h3 class="font-headline-md text-headline-md text-jakarta-blue mb-2">
-                            Standar Pelayanan
-                        </h3>
-                    </div>
-                    <div class="mt-8 flex items-center text-jakarta-blue font-label-lg gap-2">
-                        Lihat Detail
-                        <span class="material-symbols-outlined">arrow_forward</span>
-                    </div>
-                </div>
-                <!-- Card 3 -->
-                <div class="glass-card p-8 rounded-2xl shadow-md hover:shadow-xl transition-all cursor-pointer group flex flex-col justify-between h-full duration-700 opacity-100 translate-y-0 hover:-translate-y-2"
-                    onclick="window.location.href='layanan/peta.html'">
-                    <div>
-                        <div
-                            class="w-14 h-14 bg-jakarta-blue/10 rounded-xl flex items-center justify-center text-jakarta-blue mb-6 group-hover:bg-jakarta-blue group-hover:text-white transition-colors">
 
-                            <span class="material-symbols-outlined text-[32px]">
-                                map
-                            </span>
-                        </div> 
-                        <h3 class="font-headline-md text-headline-md text-jakarta-blue mb-2">
-                            Peta RS
-                        </h3>
-                    </div>
-                    <div class="mt-8 flex items-center text-jakarta-blue font-label-lg gap-2">
-                        Lihat Peta
-                        <span class="material-symbols-outlined">arrow_forward</span>
-                    </div>
-                </div>
-                <!-- Card 4 -->
-                <a href="https://rsudtugukoja.jakarta.go.id/ppid/public/page/beranda" 
-                target="_blank"
-                class="block h-full">
-                    <div
-                        class="glass-card p-8 rounded-2xl shadow-md hover:shadow-xl transition-all cursor-pointer group flex flex-col justify-between h-full border-2 border-jakarta-blue/10 duration-700 opacity-100 translate-y-0 hover:-translate-y-2">
+            // Dynamic Typing Effect Placeholder for Hero Search Bar
+            (function initSearchPlaceholderTyping() {
+                const input = document.getElementById('globalSearchInput');
+                if (!input) return;
+
+                const phrases = [
+                    "Cari dokter spesialis anak...",
+                    "Cari jadwal poliklinik rawat jalan...",
+                    "Cari dokter penyakit dalam...",
+                    "Cari layanan IGD 24 jam...",
+                    "Cari dokter kandungan & kebidanan...",
+                    "Cari fasilitas rawat inap...",
+                    "Cari dokter spesialis saraf...",
+                    "Cari standar pelayanan RS..."
+                ];
+
+                let phraseIndex = 0;
+                let charIndex = 0;
+                let isDeleting = false;
+                let isPaused = false;
+
+                // Stop typing effect if user interacts/focuses/types
+                input.addEventListener('focus', () => { isPaused = true; });
+                input.addEventListener('blur', () => {
+                    if (!input.value.trim()) {
+                        isPaused = false;
+                    }
+                });
+                input.addEventListener('input', () => {
+                    isPaused = !!input.value.trim();
+                });
+
+                function typeLoop() {
+                    if (isPaused) {
+                        setTimeout(typeLoop, 200);
+                        return;
+                    }
+
+                    const currentPhrase = phrases[phraseIndex];
+
+                    if (isDeleting) {
+                        charIndex--;
+                        input.setAttribute('placeholder', currentPhrase.substring(0, charIndex));
+                    } else {
+                        charIndex++;
+                        input.setAttribute('placeholder', currentPhrase.substring(0, charIndex));
+                    }
+
+                    let delay = isDeleting ? 30 : 65;
+
+                    if (!isDeleting && charIndex === currentPhrase.length) {
+                        // Pause on full sentence
+                        delay = 2000;
+                        isDeleting = true;
+                    } else if (isDeleting && charIndex === 0) {
+                        isDeleting = false;
+                        phraseIndex = (phraseIndex + 1) % phrases.length;
+                        delay = 350;
+                    }
+
+                    setTimeout(typeLoop, delay);
+                }
+
+                // Initial start
+                setTimeout(typeLoop, 500);
+            })();
+        </script>
+        <!-- Quick Access (Bento Style & Hospital Readiness Pulse) - Hidden on mobile in favor of fixed bottom bar -->
+        <section class="hidden md:block relative -mt-24 lg:-mt-36 z-20 max-w-container-max mx-auto px-gutter mb-12 lg:mb-16">
+            <!-- Subtle Ambient Glow Behind Quick Access -->
+            <div class="absolute inset-0 -z-10 pointer-events-none flex justify-around items-center overflow-hidden" aria-hidden="true">
+                <div class="w-72 h-32 bg-gradient-to-r from-health-green/8 to-teal-400/6 rounded-full blur-3xl -translate-y-4"></div>
+                <div class="w-80 h-32 bg-gradient-to-r from-jakarta-blue/6 to-health-green/8 rounded-full blur-3xl -translate-y-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-5">
+                <!-- Card 1: Jadwal Dokter -->
+                <a href="caridokter.html" class="reveal-on-scroll delay-100 block h-full group no-underline text-inherit">
+                    <div class="menu-card-gradient p-5 md:p-6 rounded-2xl shadow-md cursor-pointer flex flex-col justify-between h-full">
                         <div>
                             <div
-                                class="w-14 h-14 bg-jakarta-blue/10 rounded-xl flex items-center justify-center text-jakarta-blue mb-6 group-hover:bg-jakarta-blue group-hover:text-white transition-colors">
+                                class="w-11 h-11 md:w-12 md:h-12 bg-emerald-800/10 border border-emerald-800/20 rounded-xl flex items-center justify-center text-emerald-800 mb-3 md:mb-4 group-hover:bg-emerald-800 group-hover:text-white group-hover:scale-105 group-hover:shadow-md transition-all duration-300">
+                                <span class="material-symbols-outlined text-[24px] md:text-[28px]">stethoscope</span>
+                            </div>
+                            <h3 class="text-[17px] md:text-[19px] font-bold text-jakarta-blue mb-0.5">Jadwal Dokter</h3>
+                            <p class="text-[12px] md:text-[13px] text-slate-500 font-normal leading-tight">Praktek & reservasi spesialis</p>
+                        </div>
+                        <div class="mt-4 md:mt-5 flex items-center text-jakarta-blue group-hover:text-emerald-800 text-[13px] md:text-[14px] font-semibold gap-1.5 transition-colors">
+                            <span>Cek Jadwal</span>
+                            <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1.5 transition-transform duration-300">arrow_forward</span>
+                        </div>
+                    </div>
+                </a>
 
-                                <span class="material-symbols-outlined text-[32px]">
+                <!-- Card 2: Standar Pelayanan -->
+                <a href="standar%20pelayanan.html" class="reveal-on-scroll delay-200 block h-full group no-underline text-inherit">
+                    <div class="menu-card-gradient p-5 md:p-6 rounded-2xl shadow-md cursor-pointer flex flex-col justify-between h-full">
+                        <div>
+                            <div
+                                class="w-11 h-11 md:w-12 md:h-12 bg-emerald-800/10 border border-emerald-800/20 rounded-xl flex items-center justify-center text-emerald-800 mb-3 md:mb-4 group-hover:bg-emerald-800 group-hover:text-white group-hover:scale-105 group-hover:shadow-md transition-all duration-300">
+                                <span class="material-symbols-outlined text-[24px] md:text-[28px]">clinical_notes</span>
+                            </div>
+                            <h3 class="text-[17px] md:text-[19px] font-bold text-jakarta-blue mb-0.5">
+                                Standar Pelayanan
+                            </h3>
+                            <p class="text-[12px] md:text-[13px] text-slate-500 font-normal leading-tight">Alur & transparansi medis</p>
+                        </div>
+                        <div class="mt-4 md:mt-5 flex items-center text-jakarta-blue group-hover:text-emerald-800 text-[13px] md:text-[14px] font-semibold gap-1.5 transition-colors">
+                            <span>Lihat Detail</span>
+                            <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1.5 transition-transform duration-300">arrow_forward</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 3: Peta RS -->
+                <a href="layanan/peta.html" class="reveal-on-scroll delay-300 block h-full group no-underline text-inherit">
+                    <div class="menu-card-gradient p-5 md:p-6 rounded-2xl shadow-md cursor-pointer flex flex-col justify-between h-full">
+                        <div>
+                            <div
+                                class="w-11 h-11 md:w-12 md:h-12 bg-emerald-800/10 border border-emerald-800/20 rounded-xl flex items-center justify-center text-emerald-800 mb-3 md:mb-4 group-hover:bg-emerald-800 group-hover:text-white group-hover:scale-105 group-hover:shadow-md transition-all duration-300">
+                                <span class="material-symbols-outlined text-[24px] md:text-[28px]">
+                                    map
+                                </span>
+                            </div> 
+                            <h3 class="text-[17px] md:text-[19px] font-bold text-jakarta-blue mb-0.5">
+                                Peta RS
+                            </h3>
+                            <p class="text-[12px] md:text-[13px] text-slate-500 font-normal leading-tight">Panduan denah & lokasi poli</p>
+                        </div>
+                        <div class="mt-4 md:mt-5 flex items-center text-jakarta-blue group-hover:text-emerald-800 text-[13px] md:text-[14px] font-semibold gap-1.5 transition-colors">
+                            <span>Lihat Peta</span>
+                            <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1.5 transition-transform duration-300">arrow_forward</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 4: Manajemen Integritas -->
+                <a href="https://rsudtugukoja.jakarta.go.id/ppid/public/page/beranda" 
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="reveal-on-scroll delay-400 block h-full group no-underline text-inherit"
+                   title="Membuka website eksternal PPID RSUD Tugu Koja">
+                    <div class="menu-card-gradient p-5 md:p-6 rounded-2xl shadow-md cursor-pointer flex flex-col justify-between h-full relative">
+                        <!-- External Site Badge -->
+                        <span class="absolute top-3 right-3 inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-md bg-amber-50 border border-amber-200 text-amber-700 text-[10px] font-semibold">
+                            <span class="material-symbols-outlined text-[11px]">open_in_new</span>
+                            Eksternal
+                        </span>
+                        <div>
+                            <div
+                                class="w-11 h-11 md:w-12 md:h-12 bg-emerald-800/10 border border-emerald-800/20 rounded-xl flex items-center justify-center text-emerald-800 mb-3 md:mb-4 group-hover:bg-emerald-800 group-hover:text-white group-hover:scale-105 group-hover:shadow-md transition-all duration-300">
+                                <span class="material-symbols-outlined text-[24px] md:text-[28px]">
                                     folder_managed
                                 </span>
                             </div>
-                            <h3 class="font-headline-md text-headline-md text-jakarta-blue mb-2">
+                            <h3 class="text-[17px] md:text-[19px] font-bold text-jakarta-blue mb-0.5">
                                 Manajemen Integritas
                             </h3>
+                            <p class="text-[12px] md:text-[13px] text-slate-500 font-normal leading-tight">Layanan informasi PPID</p>
                         </div>
-                        <div class="mt-8 flex items-center text-jakarta-blue font-label-lg gap-2">
-                            Kunjungi Laman
-                            <span class="material-symbols-outlined">arrow_forward</span>
+                        <div class="mt-4 md:mt-5 flex items-center text-jakarta-blue group-hover:text-emerald-800 text-[13px] md:text-[14px] font-semibold gap-1.5 transition-colors">
+                            <span>Buka Website Eksternal</span>
+                            <span class="material-symbols-outlined text-[18px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300">open_in_new</span>
                         </div>
                     </div>
                 </a>
             </div>
         </section>
-        <!-- Layanan Unggulan -->
-        <section class="w-full py-24 bg-surface-container-low">
-            <div class="max-w-container-max mx-auto px-gutter">
-                <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-                    <div class="max-w-xl">
-                        <span class="text-health-green font-label-lg tracking-widest uppercase mb-2 block">Layanan
-                            Kami</span>
-                        <h2 class="font-headline-lg text-headline-lg text-jakarta-blue">Layanan Kesehatan Unggulan</h2>
-                        <p class="font-body-md text-body-md text-on-surface-variant mt-4">Kami menyediakan berbagai
-                            fasilitas medis modern dengan tenaga ahli yang siap melayani Anda dan keluarga dengan
-                            sepenuh hati.</p>
+        <!-- Layanan Unggulan (Smooth Flowing Canvas with Ambient Depth) -->
+        <section class="relative w-full pt-12 md:pt-20 pb-20 md:pb-24 bg-gradient-to-b from-[#f7f9fb] via-[#f1f6f8] to-[#eaf2f5] overflow-hidden">
+            <!-- Directional Visual Flow: Alur visual mengalir dari Judul (kiri atas) memayungi 3 kartu (tengah) menuju transisi berikutnya (kanan bawah) -->
+            <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
+                <!-- SVG Gradient Definitions -->
+                <svg class="absolute w-0 h-0" aria-hidden="true" focusable="false">
+                    <defs>
+                        <!-- Guiding Ribbon Gradient (Top-Left Title -> 3 Cards -> Bottom-Right Transition) -->
+                        <linearGradient id="flowRibbonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#34918C" stop-opacity="0.14" />
+                            <stop offset="45%" stop-color="#224266" stop-opacity="0.08" />
+                            <stop offset="100%" stop-color="#34918C" stop-opacity="0.12" />
+                        </linearGradient>
+
+                        <!-- Vital Guiding Lines Gradient -->
+                        <linearGradient id="vitalLineGrad1" x1="0%" y1="0%" x2="100%" y2="80%">
+                            <stop offset="0%" stop-color="#34918C" stop-opacity="0.50" />
+                            <stop offset="50%" stop-color="#224266" stop-opacity="0.30" />
+                            <stop offset="100%" stop-color="#34918C" stop-opacity="0.10" />
+                        </linearGradient>
+
+                        <linearGradient id="vitalLineGrad2" x1="0%" y1="20%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#224266" stop-opacity="0.35" />
+                            <stop offset="60%" stop-color="#34918C" stop-opacity="0.25" />
+                            <stop offset="100%" stop-color="#224266" stop-opacity="0.05" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+
+                <!-- 1. Directional Guiding Ribbon & Vital Flow Lines (Guiding the eye from Header -> Cards -> Next Section) -->
+                <svg class="absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 1440 900" fill="none">
+                    <!-- Broad Guiding Contour Path (Unifies Section Title with the 3 Cards) -->
+                    <path d="M -100,120 C 280,80 520,380 920,320 C 1220,280 1400,420 1560,460 L 1560,620 C 1380,560 1180,420 880,460 C 480,520 220,240 -100,280 Z" fill="url(#flowRibbonGrad)" />
+                    
+                    <!-- Dynamic Leading Rhythm Line 1 (Sweeps smoothly along the reading direction) -->
+                    <path d="M -80,160 C 300,110 540,410 940,350 C 1240,310 1420,450 1580,490" stroke="url(#vitalLineGrad1)" stroke-width="2.5" stroke-linecap="round" />
+                    
+                    <!-- Dynamic Leading Rhythm Line 2 (Dashed secondary guide) -->
+                    <path d="M -60,195 C 320,145 560,445 960,385 C 1260,345 1440,485 1580,525" stroke="url(#vitalLineGrad2)" stroke-width="1.5" stroke-dasharray="8 8" />
+                </svg>
+
+                <!-- 2. Content Anchor Spotlights: Cradling the 3 Cards directly as focal anchors -->
+                <div class="max-w-container-max mx-auto px-gutter h-full relative">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 h-full items-center pt-24 pointer-events-none">
+                        <!-- Anchor Glow 1 (Under Poliklinik): Soft Health Green Glow -->
+                        <div class="w-full h-72 bg-gradient-to-br from-health-green/14 to-transparent rounded-full blur-3xl -translate-y-6"></div>
+                        <!-- Anchor Glow 2 (Under IGD): Balanced Teal-Navy Center Anchor -->
+                        <div class="w-full h-80 bg-gradient-to-b from-health-green/12 via-jakarta-blue/8 to-transparent rounded-full blur-3xl translate-y-4"></div>
+                        <!-- Anchor Glow 3 (Under Rawat Inap): Soft Jakarta Blue Anchor -->
+                        <div class="w-full h-72 bg-gradient-to-tl from-jakarta-blue/10 to-health-green/8 rounded-full blur-3xl -translate-y-6"></div>
                     </div>
-                    <a class="text-jakarta-blue font-label-lg flex items-center gap-2 hover:underline"
+                </div>
+            </div>
+
+            <!-- Content Container (z-10 strictly above background decorations) -->
+            <div class="relative z-10 max-w-container-max mx-auto px-gutter">
+                <div class="reveal-on-scroll flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                    <div class="max-w-xl">
+                        <h2 class="text-[28px] md:text-[36px] font-bold text-jakarta-blue tracking-tight leading-tight">Layanan Kesehatan Unggulan</h2>
+                        <p class="text-[15px] md:text-[16px] text-slate-600 font-normal leading-relaxed mt-3">
+                            Kami menyediakan berbagai fasilitas medis modern dengan tenaga ahli yang siap melayani Anda dan keluarga dengan sepenuh hati.
+                        </p>
+                    </div>
+                    <a class="text-jakarta-blue font-label-lg flex items-center gap-2 hover:text-health-green transition-colors font-semibold group/link"
                         href="layanan.html">
-                        Lihat Semua Layanan <span class="material-symbols-outlined">chevron_right</span>
+                        <span>Lihat Semua Layanan</span>
+                        <span class="material-symbols-outlined transition-transform duration-200 group-hover/link:translate-x-1">chevron_right</span>
                     </a>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Poliklinik -->
                     <div
-                        class="bg-white rounded-[24px] p-2 overflow-hidden shadow-sm hover:shadow-lg transition-all group duration-700 opacity-100 translate-y-0">
-                        <div class="relative h-64 w-full rounded-[18px] overflow-hidden mb-6">
-                            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                src="assets/images/layanan/poliklinik.png"
-                                alt="Poliklinik Rawat Jalan">
-                            <div
-                                class="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full flex items-center gap-2">
-                                <span class="material-symbols-outlined text-jakarta-blue"
-                                    style="font-variation-settings: 'FILL' 1;">
-                                    medical_services
-                                </span>
-                                <span class="font-label-md text-label-md text-jakarta-blue">
-                                    Klinik Spesialis
-                                </span>
+                        class="reveal-on-scroll delay-100 bg-white rounded-[24px] p-2 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 group flex flex-col justify-between h-full hover:-translate-y-1.5">
+                        <div>
+                            <div class="relative h-60 w-full rounded-[18px] overflow-hidden mb-5">
+                                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    src="assets/images/layanan/poliklinik.png"
+                                    alt="Poliklinik Rawat Jalan">
+                                <div
+                                    class="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full flex items-center gap-2 shadow-sm">
+                                    <span class="material-symbols-outlined text-jakarta-blue text-[18px]"
+                                        style="font-variation-settings: 'FILL' 1;">
+                                        medical_services
+                                    </span>
+                                    <span class="text-[12px] font-bold text-jakarta-blue">
+                                        Klinik Spesialis
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="px-5 pb-2 text-center">
+                                <h4 class="text-[19px] md:text-[21px] font-bold text-jakarta-blue mb-2">
+                                    Poliklinik Rawat Jalan
+                                </h4>
+                                <p class="text-[13.5px] md:text-[14px] leading-relaxed text-slate-500 font-normal">
+                                    Melayani lebih dari 15 spesialisasi dengan dukungan dokter ahli dan peralatan medis terkini.
+                                </p>
                             </div>
                         </div>
-                        <div class="px-6 pb-6 text-center">
-                            <h4 class="font-headline-md text-headline-md text-jakarta-blue mb-2">
-                                Poliklinik Rawat Jalan
-                            </h4>
-                            <p class="font-body-md text-body-md text-on-surface-variant">
-                                Melayani lebih dari 15 spesialisasi dengan dukungan dokter ahli dan peralatan medis terkini.
-                            </p>
+                        <div class="px-5 pb-5 pt-3 border-t border-slate-100 flex items-center justify-center gap-1.5 text-[13px] font-semibold text-health-green group-hover:text-jakarta-blue transition-colors">
+                            <span>Informasi Layanan</span>
+                            <span class="material-symbols-outlined text-[16px] transition-transform duration-200 group-hover:translate-x-1">arrow_forward</span>
                         </div>
                     </div>
                     <!-- IGD -->
                     <div
-                        class="bg-white rounded-[24px] p-2 overflow-hidden shadow-sm hover:shadow-lg transition-all group duration-700 opacity-100 translate-y-0">
-                        <div class="relative h-64 w-full rounded-[18px] overflow-hidden mb-6">
-                            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                src="assets/images/layanan/IGD.png"
-                                alt="IGD">
-                            <div
-                                class="absolute top-4 left-4 bg-emergency-red/90 backdrop-blur-md px-4 py-2 rounded-full flex items-center gap-2">
-                                <span class="material-symbols-outlined text-white"
-                                    style="font-variation-settings: 'FILL' 1;">emergency</span>
-                                <span class="font-label-md text-label-md text-white">IGD 24 Jam</span>
+                        class="reveal-on-scroll delay-200 bg-white rounded-[24px] p-2 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 group flex flex-col justify-between h-full hover:-translate-y-1.5">
+                        <div>
+                            <div class="relative h-60 w-full rounded-[18px] overflow-hidden mb-5">
+                                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    src="assets/images/layanan/IGD.png"
+                                    alt="IGD">
+                                <div
+                                    class="absolute top-3 left-3 bg-emergency-red/95 backdrop-blur-md px-3.5 py-1.5 rounded-full flex items-center gap-2 shadow-sm">
+                                    <span class="material-symbols-outlined text-white text-[18px]"
+                                        style="font-variation-settings: 'FILL' 1;">emergency</span>
+                                    <span class="text-[12px] font-bold text-white">IGD 24 Jam</span>
+                                </div>
+                            </div>
+                            <div class="px-5 pb-2 text-center">
+                                <h4 class="text-[19px] md:text-[21px] font-bold text-jakarta-blue mb-2">Gawat Darurat</h4>
+                                <p class="text-[13.5px] md:text-[14px] leading-relaxed text-slate-500 font-normal">Respon cepat dan penanganan
+                                    medis darurat oleh tim terlatih selama 24 jam penuh setiap hari.</p>
                             </div>
                         </div>
-                        <div class="px-6 pb-6 text-center">
-                            <h4 class="font-headline-md text-headline-md text-jakarta-blue mb-2">Gawat Darurat</h4>
-                            <p class="font-body-md text-body-md text-on-surface-variant">Respon cepat dan penanganan
-                                medis darurat oleh tim terlatih selama 24 jam penuh setiap hari.</p>
+                        <div class="px-5 pb-5 pt-3 border-t border-slate-100 flex items-center justify-center gap-1.5 text-[13px] font-semibold text-emergency-red group-hover:text-jakarta-blue transition-colors">
+                            <span>Informasi Layanan</span>
+                            <span class="material-symbols-outlined text-[16px] transition-transform duration-200 group-hover:translate-x-1">arrow_forward</span>
                         </div>
                     </div>
                     <!-- Rawat Inap -->
                     <div
-                        class="bg-white rounded-[24px] p-2 overflow-hidden shadow-sm hover:shadow-lg transition-all group duration-700 opacity-100 translate-y-0">
-                        <div class="relative h-64 w-full rounded-[18px] overflow-hidden mb-6">
-                            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                src="assets/images/layanan/rawat inap.png"
-                                alt="Rawat Inap">
-                            <div
-                                class="absolute top-4 left-4 bg-jakarta-blue/90 backdrop-blur-md px-4 py-2 rounded-full flex items-center gap-2">
-                                <span class="material-symbols-outlined text-white"
-                                    style="font-variation-settings: 'FILL' 1;">bed</span>
-                                <span class="font-label-md text-label-md text-white">Fasilitas Rawat Inap</span>
+                        class="reveal-on-scroll delay-300 bg-white rounded-[24px] p-2 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 group flex flex-col justify-between h-full hover:-translate-y-1.5">
+                        <div>
+                            <div class="relative h-60 w-full rounded-[18px] overflow-hidden mb-5">
+                                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    src="assets/images/layanan/rawat inap.png"
+                                    alt="Rawat Inap">
+                                <div
+                                    class="absolute top-3 left-3 bg-jakarta-blue/95 backdrop-blur-md px-3.5 py-1.5 rounded-full flex items-center gap-2 shadow-sm">
+                                    <span class="material-symbols-outlined text-white text-[18px]"
+                                        style="font-variation-settings: 'FILL' 1;">bed</span>
+                                    <span class="text-[12px] font-bold text-white">Fasilitas Rawat Inap</span>
+                                </div>
+                            </div>
+                            <div class="px-5 pb-2 text-center">
+                                <h4 class="text-[19px] md:text-[21px] font-bold text-jakarta-blue mb-2">Rawat Inap
+                                </h4>
+                                <p class="text-[13.5px] md:text-[14px] leading-relaxed text-slate-500 font-normal">Kenyamanan maksimal dengan
+                                    berbagai kelas kamar yang didesain untuk mempercepat proses penyembuhan.</p>
                             </div>
                         </div>
-                        <div class="px-6 pb-6 text-center">
-                            <h4 class="font-headline-md text-headline-md text-jakarta-blue mb-2">Rawat Inap
-                            </h4>
-                            <p class="font-body-md text-body-md text-on-surface-variant">Kenyamanan maksimal dengan
-                                berbagai kelas kamar yang didesain untuk mempercepat proses penyembuhan.</p>
+                        <div class="px-5 pb-5 pt-3 border-t border-slate-100 flex items-center justify-center gap-1.5 text-[13px] font-semibold text-health-green group-hover:text-jakarta-blue transition-colors">
+                            <span>Informasi Layanan</span>
+                            <span class="material-symbols-outlined text-[16px] transition-transform duration-200 group-hover:translate-x-1">arrow_forward</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="w-full py-24 bg-white">
-        <div class="max-w-container-max mx-auto px-gutter">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div>
-                    <img 
-                        alt="Achievements and Ratings" 
-                        class="w-full rounded-3xl shadow-2xl"
-                        src="assets/images/berita/6.png">
+
+        <!-- Komitmen Pelayanan Pasien (Inspirasi: Cleveland Clinic Editorial Style) -->
+        <section class="w-full py-16 lg:py-24 bg-white overflow-hidden">
+            <div class="max-w-container-max mx-auto px-gutter">
+                <!-- Section Intro -->
+                <div class="w-full mb-14 lg:mb-20 reveal-on-scroll">
+                    <h3 class="text-[14px] md:text-[16px] font-normal text-slate-900 mb-2.5">
+                        Kenapa Memilih RSUD Tugu Koja?
+                    </h3>
+                    <p class="text-[18px] md:text-[21px] lg:text-[23px] text-slate-500 font-light leading-relaxed w-full">
+                        Di Rumah Sehat RSUD Tugu Koja, standar medis bermutu tinggi selalu berpadu dengan ketulusan hati untuk mendengarkan, merawat, dan mendampingi pemulihan Anda.
+                    </p>
                 </div>
 
-                <div class="flex flex-col gap-8">
-                    <div>
-                        <span class="text-health-green font-label-lg tracking-widest uppercase mb-2 block">
-                            Berita &amp; Capaian
-                        </span>
-
-                        <h2 class="font-headline-lg text-headline-lg text-jakarta-blue leading-tight">
-                            Rumah Sakit Umum Daerah dengan Rating Terbaik se-DKI Jakarta
-                        </h2>
-
-                        <p class="font-body-md text-body-md text-on-surface-variant mt-6">
-                            RSUD Tugu Koja terus berkomitmen meningkatkan kualitas pelayanan publik. 
-                            Kepercayaan Anda adalah prioritas utama kami dalam mewujudkan masyarakat 
-                            Jakarta yang lebih sehat.
+                <!-- Story 1: We don't just care for your health. We care about you. (Text Left, Image Right) -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-16 lg:mb-24 reveal-on-scroll">
+                    <div class="max-w-xl">
+                        <h3 class="text-[24px] md:text-[30px] font-bold text-jakarta-blue leading-snug tracking-tight">
+                            Bukan sekadar mengobati. Kami peduli seutuhnya.
+                        </h3>
+                        <div class="w-12 h-1 bg-jakarta-blue rounded-full my-4"></div>
+                        <p class="text-[15px] md:text-[16px] text-slate-600 leading-relaxed font-normal">
+                            Bagi kami, kesembuhan bukan hanya tentang resep obat dan tindakan medis, melainkan rasa aman dan kehangatan yang Anda rasakan selama menjalani perawatan bersama kami.
                         </p>
                     </div>
+                    <div class="relative overflow-hidden rounded-3xl shadow-lg border border-slate-100 group">
+                        <img 
+                            src="assets/images/about/caring_patient.jpg" 
+                            alt="Pelayanan penuh empati kepada pasien RSUD Tugu Koja"
+                            class="w-full h-[280px] sm:h-[360px] md:h-[390px] object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                        >
+                    </div>
+                </div>
 
-                    <div class="space-y-4">
-                        <a href="berita-detail.html?id=berita-010" class="flex items-start gap-4 p-4 rounded-2xl hover:bg-surface-container-low transition-colors group cursor-pointer border border-transparent hover:border-surface-subtle block" aria-label="Layanan EMG (Elektromiografi) di Rumah Sehat untuk Jakarta RSUD Tugu Koja">
-                                <div class="bg-jakarta-blue/5 p-3 rounded-xl text-jakarta-blue group-hover:bg-jakarta-blue group-hover:text-white transition-all flex-shrink-0">
-                                    <span class="material-symbols-outlined">query_stats</span>
-                                </div>
+                <!-- Story 2: We're stronger together. (Image Left, Text Right) -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-16 lg:mb-24 reveal-on-scroll">
+                    <div class="order-2 lg:order-1 relative overflow-hidden rounded-3xl shadow-lg border border-slate-100 group">
+                        <img 
+                            src="assets/images/about/doctors_team.jpg" 
+                            alt="Kolaborasi tim dokter spesialis dan tenaga medis RSUD Tugu Koja"
+                            class="w-full h-[280px] sm:h-[360px] md:h-[390px] object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                        >
+                    </div>
+                    <div class="order-1 lg:order-2 max-w-xl">
+                        <h3 class="text-[24px] md:text-[30px] font-bold text-jakarta-blue leading-snug tracking-tight">
+                            Bersama menghadirkan penanganan yang tepat.
+                        </h3>
+                        <div class="w-12 h-1 bg-jakarta-blue rounded-full my-4"></div>
+                        <p class="text-[15px] md:text-[16px] text-slate-600 leading-relaxed font-normal">
+                            Tim dokter spesialis, perawat, dan tenaga penunjang medis berkolaborasi secara terpadu lintas disiplin untuk memastikan setiap pasien memperoleh diagnosis akurat dan rencana perawatan terbaik.
+                        </p>
+                    </div>
+                </div>
 
-                                <div>
-                                    <h5 class="font-label-lg text-label-lg text-jakarta-blue">
-                                        Layanan EMG (Elektromiografi) RSUD Tugu Koja
-                                    </h5>
-
-                                    <p class="text-sm text-on-surface-variant">
-                                        Pemeriksaan medis untuk mengukur aktivitas listrik otot guna mendeteksi gangguan saraf dan otot secara dini.
-                                    </p>
-                                </div>
-                            </a>
-
-                        <a href="berita-detail.html?id=berita-011" class="flex items-start gap-4 p-4 rounded-2xl hover:bg-surface-container-low transition-colors group cursor-pointer border border-transparent hover:border-surface-subtle block" aria-label="Pusat Informasi Layanan PPID - RSUD Tugu Koja">
-                            <div class="bg-jakarta-blue/5 p-3 rounded-xl text-jakarta-blue group-hover:bg-jakarta-blue group-hover:text-white transition-all flex-shrink-0">
-                                <span class="material-symbols-outlined">info</span>
-                            </div>
-
-                            <div>
-                                <h5 class="font-label-lg text-label-lg text-jakarta-blue">
-                                    Pusat Informasi Layanan PPID - RSUD Tugu Koja
-                                </h5>
-
-                                <p class="text-sm text-on-surface-variant">
-                                    Layanan informasi publik transparan untuk memenuhi kebutuhan informasi seputar aktivitas dan operasional rumah sakit.
-                                </p>
-                            </div>
+                <!-- Story 3: Health information & updates you can trust. (Text Left, Image Right) -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center reveal-on-scroll">
+                    <div class="max-w-xl">
+                        <h3 class="text-[24px] md:text-[30px] font-bold text-jakarta-blue leading-snug tracking-tight">
+                            Informasi &amp; edukasi kesehatan yang dapat Anda percaya.
+                        </h3>
+                        <div class="w-12 h-1 bg-jakarta-blue rounded-full my-4"></div>
+                        <p class="text-[15px] md:text-[16px] text-slate-600 leading-relaxed font-normal mb-6">
+                            Temukan panduan pencegahan penyakit, jadwal kegiatan kesehatan masyarakat, serta informasi keterbukaan publik terkini dari RSUD Tugu Koja.
+                        </p>
+                        <a 
+                            href="berita.html" 
+                            class="inline-flex items-center gap-2.5 px-6 py-3.5 bg-jakarta-blue hover:bg-[#183350] text-white rounded-xl font-label-lg text-[14px] md:text-[15px] font-bold transition-all shadow-sm group w-fit no-underline"
+                        >
+                            <span>Lihat Berita &amp; Informasi</span>
+                            <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
                         </a>
                     </div>
-
-                    <button
-                        class="w-fit px-8 py-4 bg-jakarta-blue text-white rounded-full font-label-lg text-label-lg hover:shadow-lg transition-all flex items-center gap-2 group"
-                        onclick="window.location.href='berita.html'">
-                        Lihat Semua Berita
-                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">
-                            arrow_forward
-                        </span>
-                    </button>
+                    <div class="relative overflow-hidden rounded-3xl shadow-lg border border-slate-100 group">
+                        <img 
+                            src="assets/images/hero/RS Tugu Koja.jpg" 
+                            alt="Gedung Rumah Sehat untuk Jakarta RSUD Tugu Koja"
+                            class="w-full h-[280px] sm:h-[360px] md:h-[390px] object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                        >
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
+
     <!-- Footer -->
     <div id="footer-container"></div>
+
     <script>
         // Micro-interaction for smooth scrolling or hover effects
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -369,24 +721,50 @@
             });
         });
 
-        // Simple animation on scroll visibility (Intersection Observer)
-        const observerOptions = {
-            threshold: 0.1
-        };
+        // Bidirectional Smooth Scroll-Reveal Observer (Active on both Scroll Down & Scroll Up)
+        (function initScrollReveal() {
+            const revealElements = document.querySelectorAll('.reveal-on-scroll');
+            if (!revealElements.length) return;
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('opacity-100', 'translate-y-0');
-                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+            let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
+            let scrollDir = 'down';
+
+            window.addEventListener('scroll', () => {
+                const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
+                if (Math.abs(currentScrollY - lastScrollY) > 2) {
+                    scrollDir = currentScrollY < lastScrollY ? 'up' : 'down';
+                    lastScrollY = currentScrollY;
                 }
-            });
-        }, observerOptions);
+            }, { passive: true });
 
-        document.querySelectorAll('.glass-card, .bg-white.rounded-\\[24px\\]').forEach(el => {
-            el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
-            observer.observe(el);
-        });
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (scrollDir === 'up') {
+                            entry.target.classList.add('from-top');
+                        } else {
+                            entry.target.classList.remove('from-top');
+                        }
+                        requestAnimationFrame(() => {
+                            entry.target.classList.add('is-revealed');
+                        });
+                    } else {
+                        entry.target.classList.remove('is-revealed');
+                        if (entry.boundingClientRect.top < 0) {
+                            entry.target.classList.add('from-top');
+                        } else {
+                            entry.target.classList.remove('from-top');
+                        }
+                    }
+                });
+            }, {
+                root: null,
+                rootMargin: '-45px 0px -45px 0px',
+                threshold: 0.05
+            });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+        })();
     </script>
 
     <script src="components/navbar.js"></script>

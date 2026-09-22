@@ -72,6 +72,22 @@
         .room-group.highlight-blink .room-rect {
             animation: blinkHighlight 1s infinite alternate;
         }
+
+        /* ── Responsive: Mobile Compatibility Notice vs Map Area ── */
+        /* Mobile (< 768px): tampil notice, sembunyikan peta */
+        #peta-mobile-notice { display: block; }
+        #peta-main-content  { display: none;  }
+
+        /* Desktop/Tablet (>= 768px): sembunyikan notice, tampilkan peta */
+        @media (min-width: 768px) {
+            #peta-mobile-notice { display: none; }
+            #peta-main-content  { display: flex; }
+        }
+
+        /* Padding bawah di HP agar konten tidak tertutup bottom nav */
+        @media (max-width: 767px) {
+            body { padding-bottom: 74px; }
+        }
     </style>
 </head>
 <body class="bg-surface text-on-surface font-body-md">
@@ -81,29 +97,98 @@
     <!-- Hero Section -->
     <section class="relative h-[280px] md:h-[360px] w-full overflow-hidden flex items-end">
         <div class="absolute inset-0 z-0">
-            <img alt="RSUD Tugu Koja" class="w-full h-full object-cover" src="../assets/images/hero/RS%20Tugu%20Koja.jpg">
-            <div class="absolute inset-0 bg-gradient-to-t from-jakarta-blue/90 via-jakarta-blue/50 to-jakarta-blue/20"></div>
+            <img alt="Denah dan Peta Fasilitas RSUD Tugu Koja" class="w-full h-full object-cover object-center" src="../assets/images/layanan/poliklinik.png">
+            <!-- Multi-layer Organic Gradient Overlay: Selaras dengan Beranda Utama -->
+            <div class="absolute inset-0" style="background: linear-gradient(90deg, rgba(13, 34, 56, 0.95) 0%, rgba(18, 44, 72, 0.85) 45%, rgba(22, 53, 86, 0.5) 75%, rgba(28, 66, 102, 0.25) 100%);"></div>
+            <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(circle 500px at 10% 85%, rgba(52, 145, 140, 0.22) 0%, transparent 70%);"></div>
+            <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(180deg, rgba(15, 29, 46, 0.35) 0%, transparent 40%, rgba(10, 24, 40, 0.4) 100%);"></div>
         </div>
-        <div class="relative z-10 max-w-container-max mx-auto px-gutter w-full pb-12">
+
+        <!-- Bottom Signature Teal Line -->
+        <div class="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-health-green via-teal-400 to-transparent z-10"></div>
+
+        <div class="relative z-10 max-w-container-max mx-auto px-gutter w-full pb-10 md:pb-12">
             <!-- Breadcrumb inside hero -->
-            <nav class="mb-4" aria-label="Breadcrumb">
-                <ol class="flex items-center gap-2 text-sm text-white/70 font-label-md">
+            <nav class="mb-3.5" aria-label="Breadcrumb">
+                <ol class="flex items-center gap-2 text-sm text-white/75 font-label-md">
                     <li><a href="../index.html" class="hover:text-white transition-colors" style="text-decoration:none;">Beranda</a></li>
                     <li><span class="material-symbols-outlined text-[14px]">chevron_right</span></li>
                     <li><a href="../layanan.html" class="hover:text-white transition-colors" style="text-decoration:none;">Layanan</a></li>
                     <li><span class="material-symbols-outlined text-[14px]">chevron_right</span></li>
-                    <li class="text-white font-semibold">Tur Virtual & Peta</li>
+                    <li class="text-white font-semibold">Tur Virtual &amp; Peta</li>
                 </ol>
             </nav>
-            <h1 class="font-headline-xl text-headline-xl text-white mb-2" style="text-shadow: 0 2px 8px rgba(0,0,0,0.15);">Tur Virtual & Peta RS</h1>
-            <p class="font-body-md text-[16px] text-white/80 max-w-xl">
-                Jelajahi denah dan lokasi fasilitas gedung secara interaktif.
-            </p>
+            <div class="max-w-2xl">
+                <h1 class="font-headline-xl text-[28px] md:text-headline-xl text-white mb-2 leading-tight" style="text-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                    Tur Virtual &amp; <span class="text-amber-400 font-bold">Peta Fasilitas</span>
+                </h1>
+                <p class="font-body-md text-[15px] md:text-[16px] text-white/85 leading-relaxed">
+                    Jelajahi denah interaktif, navigasi lantai, dan lokasi fasilitas gedung RSUD Tugu Koja dengan mudah.
+                </p>
+            </div>
         </div>
     </section>
 
-    <!-- Main Content Area -->
-    <div class="max-w-container-max mx-auto px-gutter py-12 flex flex-col md:flex-row gap-8 w-full">
+    <!-- Mobile Compatibility Notice (Tampil hanya di layar HP < 768px) -->
+    <div id="peta-mobile-notice" class="max-w-container-max mx-auto px-gutter py-10 w-full">
+        <div class="bg-white rounded-[24px] border border-slate-200/90 p-6 sm:p-8 shadow-lg text-center flex flex-col items-center">
+            <!-- Icon Badge -->
+            <div class="w-20 h-20 rounded-2xl bg-amber-50 border border-amber-200/80 flex items-center justify-center text-amber-600 mb-5 shadow-sm relative">
+                <span class="material-symbols-outlined text-[42px]">desktop_windows</span>
+                <span class="absolute -top-1.5 -right-1.5 w-6 h-6 rounded-full bg-emergency-red text-white flex items-center justify-center text-[13px] font-bold shadow">!</span>
+            </div>
+
+            <!-- Category / Alert Tag -->
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-800 border border-amber-200 mb-3">
+                <span class="material-symbols-outlined text-[15px] text-amber-600">devices</span>
+                Kompatibilitas Perangkat
+            </span>
+
+            <!-- Title -->
+            <h2 class="font-headline-md text-jakarta-blue font-bold text-[20px] sm:text-[22px] mb-3 leading-snug">
+                Peta Fasilitas Tidak Kompatibel di Layar HP
+            </h2>
+
+            <!-- Explanation -->
+            <p class="text-slate-600 text-[14px] sm:text-[15px] leading-relaxed max-w-md mb-6">
+                Visualisasi denah interaktif multi-lantai dan tur gedung RSUD Tugu Koja memerlukan resolusi tinggi serta area navigasi yang luas. Fitur ini <strong>hanya dapat diakses secara optimal melalui perangkat berlayar lebih besar</strong> seperti Tablet, Laptop, atau Komputer Desktop.
+            </p>
+
+            <!-- Recommended Devices -->
+            <div class="w-full max-w-sm bg-slate-50 border border-slate-200/80 rounded-2xl p-4 mb-7 text-left">
+                <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2.5 text-center">Perangkat yang Didukung:</p>
+                <div class="grid grid-cols-3 gap-2 text-center text-xs font-semibold text-slate-700">
+                    <div class="flex flex-col items-center gap-1 p-2 rounded-xl bg-white border border-slate-200 shadow-2xs">
+                        <span class="material-symbols-outlined text-[20px] text-emerald-700">laptop</span>
+                        <span>Laptop</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1 p-2 rounded-xl bg-white border border-slate-200 shadow-2xs">
+                        <span class="material-symbols-outlined text-[20px] text-emerald-700">desktop_windows</span>
+                        <span>Desktop</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1 p-2 rounded-xl bg-white border border-slate-200 shadow-2xs">
+                        <span class="material-symbols-outlined text-[20px] text-emerald-700">tablet_mac</span>
+                        <span>Tablet</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alternative Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-3 w-full max-w-xs">
+                <a href="../layanan.html" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-jakarta-blue text-white font-semibold text-sm hover:bg-primary transition-all shadow-md active:scale-95 text-decoration-none">
+                    <span class="material-symbols-outlined text-[18px]">medical_services</span>
+                    <span>Lihat Layanan RS</span>
+                </a>
+                <a href="../index.html" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-slate-100 text-slate-700 font-semibold text-sm hover:bg-slate-200 transition-all border border-slate-200 active:scale-95 text-decoration-none">
+                    <span class="material-symbols-outlined text-[18px]">home</span>
+                    <span>Kembali ke Beranda</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Area (Disembunyikan di HP, Tampil di Layar Lebih Besar / Desktop) -->
+    <div id="peta-main-content" class="max-w-container-max mx-auto px-gutter py-12 flex-col md:flex-row gap-8 w-full">
         <!-- SideNavBar -->
         <aside class="w-full md:w-80 flex flex-col bg-white rounded-[24px] border border-surface-subtle shadow-sm z-40 relative flex-shrink-0 h-fit">
             <div class="p-6 border-b border-surface-subtle">
@@ -982,8 +1067,8 @@
         };
     </script>
     <div id="footer-container"></div>
+
     <script src="../components/navbar.js"></script>
     <script src="../components/footer.js"></script>
 </body>
 </html>
-
